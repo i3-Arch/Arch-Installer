@@ -29,9 +29,9 @@ echo
 read toolchoice
 if [ "$toolchoice" -eq "cfdisk" "$toolchoice" -eq "CFDISK" ]
 	then
-		cfdisk "$yourdrive"
+cfdisk $yourdrive
 	else
-		fdisk "$youdrive"
+fdisk $youdrive
 fi
 echo
 echo " ENTER YOUR BOOT PARTITION"
