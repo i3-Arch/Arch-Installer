@@ -40,8 +40,6 @@ touch /etc/local.gen
 printf " NOW GENERATING LOCALES\n"
 locale-gen 
 mkinitcpio -p linux
-pacman -Syy
-pacman -S grub --noconfirm
 grub-install --boot-directory=/mnt/boot $bootpart
 grub-mkconfig -o /mnt/boot/grub/grub.cfg
 echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg; printf "\n"
