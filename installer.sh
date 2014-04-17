@@ -36,18 +36,18 @@ mkfs.ext4 "$BOOTPART" -L bootfs
 export BOOTPART
 printf " Enter Your Root Partition:\n" 
 printf " i.e  /dev/sda1\n"
-read rewtpart
-mkfs.ext4 "$rewtpart" -L rootfs
+read REWTPART
+mkfs.ext4 "$REWTPART" -L rootfs
 printf " Enter Your Home Partition:\n"
-read homepart
-mkfs.ext4 "$homepart"
+read HOMEPART
+mkfs.ext4 "$HOMEPART"
 printf " What is your swap partition:\n"
-read swappart
-mkswap "$swappart" -L swapfs
+read SWAPPART
+mkswap "$SWAPPART" -L swapfs
 printf " Setting up install\n"
 	pacman -Syy
 	pacman -S rsync --noconfirm
-	mount $rewtpart /mnt
+	mount $REWTPART /mnt
 	mkdir -pv /mnt/var/lib/pacman
 	pacman -r /mnt -Sy base base-devel --noconfirm
 	pacman -r /mnt -Syy
