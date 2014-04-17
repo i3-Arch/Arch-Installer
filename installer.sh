@@ -55,4 +55,4 @@ printf " Setting up install\n"
 	mount --bind /sys/ /mnt/sys
 	mount --bind /proc/ /mnt/proc
 	cp chrootnset.sh /mnt
-	chroot /mnt /bin/bash -C "bash chrootnset.sh"
+	chroot /mnt bash chrootnset.sh
