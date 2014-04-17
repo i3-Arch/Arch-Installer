@@ -56,7 +56,7 @@ partnmnt()
 		mount --bind /dev/ /mnt/dev
 		mount --bind /sys/ /mnt/sys
 		mount --bind /proc/ /mnt/proc
-	
+}
 chnset()
 {
 	chroot /mnt /bin/bash
@@ -100,11 +100,9 @@ chnset()
 #program flow control
 main()
 {
-	partnmnt ${*}
-	chnset ${*}
+	partnmnt
+	chnset
 }
 
 #start program
-main ${*}
-
-#EOF
+main
