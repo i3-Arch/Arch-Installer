@@ -50,4 +50,6 @@ echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg; printf "\n
 echo "	}"
 
 #cleanup
+printf " Cleaning up...\n"
+sleep 10
 rm chrootnset.sh
