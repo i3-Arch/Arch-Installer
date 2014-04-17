@@ -31,8 +31,9 @@ cfdisk $yourdrive
 fdisk $yourdrive
 fi
 printf " Enter Your Boot Partition:\n"
-read bootpart
-mkfs.ext4 "$bootpart" -L bootfs
+read BOOTPART
+mkfs.ext4 "$BOOTPART" -L bootfs
+export BOOTPART
 printf " Enter Your Root Partition:\n" 
 printf " i.e  /dev/sda1\n"
 read rewtpart
