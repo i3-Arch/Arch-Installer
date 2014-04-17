@@ -13,18 +13,18 @@
 #	Reminder  -  Add option for LUKS
 ############################################
 echo
-echo " \n \n \n WELCOME TO i3 ARCHLINUX INSTALL SCRIPT \n"
+echo " WELCOME TO i3 ARCHLINUX INSTALL SCRIPT "
 echo
-echo " Running lsblk to list block devices \n "
+echo " Running lsblk to list block devices  "
 echo
 lsblk
-echo " Which Drive would you like to install to \n "
-echo " i.e - /dev/sda \n "
-echo " WARNING : /dev/sda may not be empty for you \n"
+echo " Which Drive would you like to install to "
+echo " i.e - /dev/sda "
+echo " WARNING : /dev/sda may not be empty for you "
 read yourdrive
 echo
-echo " CREATE ::  boot - root -  home  - swap  partitions \n "
-echo " Would you like to use cfdisk or fdisk ? \n "
+echo " CREATE ::  boot - root -  home  - swap  partitions "
+echo " Would you like to use cfdisk or fdisk ? "
 echo
 read toolchoice
 if [ "$toolchoice" -eq "cfdisk" "$toolchoice" -eq "CFDISK" ]
@@ -34,12 +34,12 @@ if [ "$toolchoice" -eq "cfdisk" "$toolchoice" -eq "CFDISK" ]
 		$(fdisk "$youdrive")
 fi
 echo
-echo " ENTER YOUR BOOT PARTITION \n \n"
+echo " ENTER YOUR BOOT PARTITION"
 read bootpart
 mkfs.ext4 "$bootpart" -L bootfs
 echo
-echo " Enter Your Root Partition \n " 
-echo " i.e  /dev/sda1 \n "
+echo " Enter Your Root Partition " 
+echo " i.e  /dev/sda1  "
 echo
 read rewtpart
 mkfs.ext4 "$rewtpart" -L rootfs
@@ -73,9 +73,11 @@ echo " $bootpart	/boot	ext4	defaults	0	1"	>> /etc/fstab
 echo " Choose your hostname"
 read hostresponse
 echo "$hostresponse" > /etc/hostname
-echo " Enter Your Time Zone \n \n "
-echo " CHOICES ARE  ' New York or Athens;         \n \n"
-echo " Sorry I didnt do all timezones yet \n "
+echo " Enter Your Time Zone "
+echo
+echo " CHOICES ARE  ' New York or Athens ' "
+echo
+echo " Sorry I didnt do all timezones yet "
 read timezoneresponse
 if [ $timezoneresponse -eq "New York" -o $timezoneresponse -eq "new york" -o $timezoneresponse -eq "NEW YORK" -o $timezoneresponse -eq " newyork " ] 
 	then
