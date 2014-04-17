@@ -85,4 +85,4 @@ echo "    set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg; printf "\n"
 echo " linux /boot/vmlinuz-linux root=$rewtpart " >> /mnt/boot/grub/grub.cfg; printf "\n"
 echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg; printf "\n"
 echo "	}"
-$(reboot) ;
+$(shutdown) ;
