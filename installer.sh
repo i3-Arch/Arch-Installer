@@ -38,12 +38,15 @@ printf " Enter Your Root Partition:\n"
 printf " i.e  /dev/sda1\n"
 read REWTPART
 mkfs.ext4 "$REWTPART" -L rootfs
+export REWTPART
 printf " Enter Your Home Partition:\n"
 read HOMEPART
 mkfs.ext4 "$HOMEPART"
+export HOMEPART
 printf " What is your swap partition:\n"
 read SWAPPART
 mkswap "$SWAPPART" -L swapfs
+export SWAPPART
 printf " Setting up install\n"
 	pacman -Syy
 	pacman -S rsync --noconfirm
