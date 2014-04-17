@@ -12,20 +12,15 @@
 #
 #	Reminder  -  Add option for LUKS
 ############################################
-echo
-echo " WELCOME TO i3 ARCHLINUX INSTALL SCRIPT "
-echo
-echo " Running lsblk to list block devices  "
-echo
+printf " WELCOME TO i3 ARCHLINUX INSTALL SCRIPT\n"
+printf " Running lsblk to list block devices\n"
 lsblk
-echo " Which Drive would you like to install to "
-echo " i.e - /dev/sda "
-echo " WARNING : /dev/sda may not be empty for you "
+printf " Which Drive would you like to install to\n"
+printf " i.e - /dev/sda\n"
+printf " WARNING : /dev/sda may not be empty for you\n"
 read yourdrive
-echo
-echo " CREATE ::  boot - root -  home  - swap  partitions "
-echo " Would you like to use cfdisk or fdisk ? "
-echo
+printf " CREATE ::  boot - root -  home  - swap  partitions\n"
+printf " Would you like to use cfdisk or fdisk ?\n"
 read toolchoice
 if [ "$toolchoice" == cfdisk -o "$toolchoice" == CFDISK ]
 	then
@@ -33,28 +28,20 @@ cfdisk $yourdrive
 	else
 fdisk $yourdrive
 fi
-echo
-echo " ENTER YOUR BOOT PARTITION"
+printf " Enter Your Boot Partition:\n"
 read bootpart
 mkfs.ext4 "$bootpart" -L bootfs
-echo
-echo " Enter Your Root Partition " 
-echo " i.e  /dev/sda1  "
-echo
+printf " Enter Your Root Partition:\n" 
+printf " i.e  /dev/sda1\n"
 read rewtpart
 mkfs.ext4 "$rewtpart" -L rootfs
-echo 
-echo " Enter Your Home Partition"
-echo
+printf " Enter Your Home Partition:\n"
 read homepart
 mkfs.ext4 "$homepart"
-echo
-echo " What is your swap partition"
-echo
+printf " What is your swap partition:\n"
 read swappart
 mkswap "$swappart" -L swapfs
-echo
-echo " Setting up install "
+printf " Setting up install\n"
 	$(mount $rewtpart /mnt) ;
 	$(mkdir -pv /mnt/var/lib/pacman) ;
 	$(pacman -r /mnt -Sy base base-devel) ;
@@ -63,21 +50,17 @@ echo " Setting up install "
 	$(mount --bind /sys/ /mnt/sys) ;
 	$(mount --bind /proc/ /mnt/proc) ;
 	$(chroot /mnt /bin/bash) ;
-echo
-echo " Setting up fstab"
-echo
-echo " $rewtpart    /    	ext4   defaults    0    1" >> /etc/fstab
-echo " $swappart    none     swap    defaults    0    1" >> /etc/fstab
-echo " $homepart    /home 	ext4	defaults	0	 1" >> /etc/fstab
-echo " $bootpart	/boot	ext4	defaults	0	1"	>> /etc/fstab
-echo " Choose your hostname"
+printf " Setting up fstab\n"
+echo " $rewtpart    /    	ext4   defaults    0    1" >> /etc/fstab; printf "\n"
+echo " $swappart    none     swap    defaults    0    1" >> /etc/fstab; printf "\n"
+echo " $homepart    /home 	ext4	defaults	0	 1" >> /etc/fstab; printf "\n"
+echo " $bootpart	/boot	ext4	defaults	0	1"	>> /etc/fstab; printf "\n"
+printf " Choose your hostname:\n"
 read hostresponse
-echo "$hostresponse" > /etc/hostname
-echo " Enter Your Time Zone "
-echo
-echo " CHOICES ARE  ' New York or Athens ' "
-echo
-echo " Sorry I didnt do all timezones yet "
+echo "$hostresponse" > /etc/hostname; printf "\n"
+printf " Enter Your Time Zone:\n"
+printf " CHOICES ARE  ' New York or Athens '\n"
+printf " Sorry I didnt do all timezones yet\n"
 read timezoneresponse
 if [ $timezoneresponse -eq "New York" -o $timezoneresponse -eq "new york" -o $timezoneresponse -eq "NEW YORK" -o $timezoneresponse -eq " newyork " ] 
 	then
@@ -86,22 +69,20 @@ if [ $timezoneresponse -eq "New York" -o $timezoneresponse -eq "new york" -o $ti
 		then
 			$( ln -s /usr/share/zoneinfo/Europe/Athens /etc/localtime) ;
 	else
-		echo " Not Understood | skipped | do it yourself |  with 'ln -s' "
+		printf " Not Understood | skipped | do it yourself |  with 'ln -s'\n"
 fi
-echo
-echo " YOU NOW NEED TO UNCOMMENT LOCALE "
+printf " YOU NOW NEED TO UNCOMMENT LOCALE\n"
 sleep 2
 vim /etc/local.gen
-echo
-echo " NOW GENERATING LOCALES"
+printf " NOW GENERATING LOCALES\n"
 $(locale-gen) ;
 $(mkinitcpio -p linux) ;
 exit
 $(grub-install --boot-directory=/mnt/boot $bootpart) ;
 $(grub-mkconfig -o /mnt/boot/grub/grub.cfg) ;
-echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
-echo "    set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
-echo " linux /boot/vmlinuz-linux root=$rewtpart " >> /mnt/boot/grub/grub.cfg
-echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg
-echo "	} "
+echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg; printf "\n"
+echo "    set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg; printf "\n"
+echo " linux /boot/vmlinuz-linux root=$rewtpart " >> /mnt/boot/grub/grub.cfg; printf "\n"
+echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg; printf "\n"
+echo "	}"
 $(reboot) ;
