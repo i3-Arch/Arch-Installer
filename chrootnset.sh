@@ -13,7 +13,6 @@
 #	Reminder  -  Add option for LUKS
 ############################################
 
-chroot /mnt /bin/bash
 printf " Setting up fstab\n"
 echo " $rewtpart    /    	ext4   defaults    0    1" >> /etc/fstab; printf "\n"
 echo " $swappart    none     swap    defaults    0    1" >> /etc/fstab; printf "\n"
