@@ -27,7 +27,7 @@ echo " CREATE ::  boot - root -  home  - swap  partitions "
 echo " Would you like to use cfdisk or fdisk ? "
 echo
 read toolchoice
-if [ "$toolchoice" == "cfdisk" -o "$toolchoice" == "CFDISK" ]
+if [ "$toolchoice" == cfdisk -o "$toolchoice" == CFDISK ]
 	then
 cfdisk $yourdrive
 	else
