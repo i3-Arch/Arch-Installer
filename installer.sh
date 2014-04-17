@@ -31,7 +31,7 @@ if [ "$toolchoice" == cfdisk -o "$toolchoice" == CFDISK ]
 	then
 cfdisk $yourdrive
 	else
-fdisk $youdrive
+fdisk $yourdrive
 fi
 echo
 echo " ENTER YOUR BOOT PARTITION"
