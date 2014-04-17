@@ -45,11 +45,11 @@ printf " Setting up install\n"
 	$(mount $rewtpart /mnt)
 	mkdir -pv /mnt/var/lib/pacman
 	pacman -r /mnt -Sy base base-devel --noconfirm
-	$(rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/)
+	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
 	$(mount --bind /dev/ /mnt/dev)
 	$(mount --bind /sys/ /mnt/sys)
 	$(mount --bind /proc/ /mnt/proc)
-	$(chroot /mnt /bin/bash)
+	chroot /mnt /bin/bash
 printf " Setting up fstab\n"
 echo " $rewtpart    /    	ext4   defaults    0    1" >> /etc/fstab; printf "\n"
 echo " $swappart    none     swap    defaults    0    1" >> /etc/fstab; printf "\n"
