@@ -44,7 +44,7 @@ mkswap "$swappart" -L swapfs
 printf " Setting up install\n"
 	$(mount $rewtpart /mnt)
 	mkdir -pv /mnt/var/lib/pacman
-	pacman -r /mnt -Sy base base-devel
+	pacman -r /mnt -Sy base base-devel --noconfirm
 	$(rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/)
 	$(mount --bind /dev/ /mnt/dev)
 	$(mount --bind /sys/ /mnt/sys)
