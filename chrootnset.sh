@@ -38,11 +38,12 @@ printf " YOU NOW NEED TO UNCOMMENT LOCALE\n"
 sleep 2
 touch /etc/local.gen
 printf " NOW GENERATING LOCALES\n"
-$(locale-gen) ;
-$(mkinitcpio -p linux) ;
-exit
-$(grub-install --boot-directory=/mnt/boot $bootpart) ;
-$(grub-mkconfig -o /mnt/boot/grub/grub.cfg) ;
+$(locale-gen) 
+$(mkinitcpio -p linux) 
+pacman -Syy
+pacman -S grub --noconfirm
+$(grub-install --boot-directory=/mnt/boot $bootpart) 
+$(grub-mkconfig -o /mnt/boot/grub/grub.cfg) 
 echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg; printf "\n"
 echo "    set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg; printf "\n"
 echo " linux /boot/vmlinuz-linux root=$rewtpart " >> /mnt/boot/grub/grub.cfg; printf "\n"
