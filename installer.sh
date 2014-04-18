@@ -30,27 +30,28 @@ cfdisk $yourdrive
 	else
 fdisk $yourdrive
 fi
+touch config.sh #create file to store bootpart, rewtpart, homepart, swappart for chrootnset.sh
 printf " Enter Your Boot Partition:\n"
-read BOOTPART
-mkfs.ext4 "$BOOTPART" -L bootfs
-export BOOTPART
+read bootpart
+echo "bootpart=$bootpart" > config.sh
+mkfs.ext4 "$bootpart" -L bootfs
 printf " Enter Your Root Partition:\n" 
 printf " i.e  /dev/sda1\n"
-read REWTPART
-mkfs.ext4 "$REWTPART" -L rootfs
-export REWTPART
+read rewtpart
+echo "rewtpart=$rewtpart" >> config.sh
+mkfs.ext4 "$rewtpart" -L rootfs
 printf " Enter Your Home Partition:\n"
-read HOMEPART
-mkfs.ext4 "$HOMEPART"
-export HOMEPART
+read homepart
+echo "homepart=$homepart" >> config.sh
+mkfs.ext4 "$homepart"
 printf " What is your swap partition:\n"
-read SWAPPART
-mkswap "$SWAPPART" -L swapfs
-export SWAPPART
+read swappart
+echo "swappart=$swappart" >> config.sh
+mkswap "$swappart" -L swapfs
 printf " Setting up install\n"
 	pacman -Syy
 	pacman -S rsync --noconfirm
-	mount $REWTPART /mnt
+	mount $rewtpart /mnt
 	mkdir -pv /mnt/var/lib/pacman
 	pacman -r /mnt -Sy base base-devel --noconfirm
 	pacman -r /mnt -Syy
@@ -60,4 +61,5 @@ printf " Setting up install\n"
 	mount --bind /sys/ /mnt/sys
 	mount --bind /proc/ /mnt/proc
 	cp chrootnset.sh /mnt
+	cp config.sh /mnt
 	chroot /mnt bash chrootnset.sh
