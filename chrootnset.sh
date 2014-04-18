@@ -47,7 +47,7 @@ echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
 echo "    set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
 echo " linux /boot/vmlinuz-linux root=$rewtpart " >> /mnt/boot/grub/grub.cfg
 echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg
-echo "	}"
+echo "	}" >> /mnt/boot/grub/grub.cfg
 
 #cleanup
 printf " Cleaning up...\n"
