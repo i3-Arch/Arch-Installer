@@ -12,12 +12,12 @@
 #
 #	Reminder  -  Add option for LUKS
 ############################################
-
+source config.sh #grab rewtpart, swappart, homepart, bootpart var values
 printf " Setting up fstab\n"
-echo " $REWTPART    /    	ext4   defaults    0    1" >> /etc/fstab; printf "\n"
-echo " $SWAPPART    none     swap    defaults    0    1" >> /etc/fstab; printf "\n"
-echo " $HOMEPART    /home 	ext4	defaults	0	 1" >> /etc/fstab; printf "\n"
-echo " $BOOTPART	/boot	ext4	defaults	0	1"	>> /etc/fstab; printf "\n"
+echo " $rewtpart    /    	ext4   defaults    0    1" >> /etc/fstab; printf "\n"
+echo " $swappart    none     swap    defaults    0    1" >> /etc/fstab; printf "\n"
+echo " $homepart    /home 	ext4	defaults	0	 1" >> /etc/fstab; printf "\n"
+echo " $bootpart	/boot	ext4	defaults	0	1"	>> /etc/fstab; printf "\n"
 printf " Choose your hostname:\n"
 read hostresponse
 echo "$hostresponse" > /etc/hostname; printf "\n"
@@ -40,11 +40,11 @@ touch /etc/local.gen
 printf " NOW GENERATING LOCALES\n"
 locale-gen 
 mkinitcpio -p linux
-grub-install --boot-directory=/mnt/boot $BOOTPART
+grub-install --boot-directory=/mnt/boot $bootpart
 grub-mkconfig -o /mnt/boot/grub/grub.cfg
 echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg; printf "\n"
 echo "    set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg; printf "\n"
-echo " linux /boot/vmlinuz-linux root=$REWTPART " >> /mnt/boot/grub/grub.cfg; printf "\n"
+echo " linux /boot/vmlinuz-linux root=$rewtpart " >> /mnt/boot/grub/grub.cfg; printf "\n"
 echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg; printf "\n"
 echo "	}"
 
