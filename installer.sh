@@ -2,7 +2,8 @@
 #
 #
 # 	BY : i3-Arch
-#					
+#		 trewchainz
+#
 #		Made to install archlinux
 #		
 #		VERSION 1.0-BETA
@@ -21,6 +22,7 @@ printf " Which Drive would you like to install to\n"
 printf " i.e - /dev/sda\n"
 printf " WARNING : /dev/sda may not be empty for you\n"
 read yourdrive
+echo "yourdrive=$yourdrive" > config.sh
 printf " CREATE ::  boot - root -  home  - swap  partitions\n"
 printf " Would you like to use cfdisk or fdisk ?\n"
 read toolchoice
@@ -33,7 +35,7 @@ fi
 touch config.sh #create file to store bootpart, rewtpart, homepart, swappart for chrootnset.sh
 printf " Enter Your Boot Partition:\n"
 read bootpart
-echo "bootpart=$bootpart" > config.sh
+echo "bootpart=$bootpart" >> config.sh
 mkfs.ext4 "$bootpart" -L bootfs
 printf " Enter Your Root Partition:\n" 
 printf " i.e  /dev/sda1\n"
