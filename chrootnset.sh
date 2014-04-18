@@ -2,6 +2,7 @@
 #
 #
 # 	BY : i3-Arch
+#		 trewchainz
 #					
 #		Made to install archlinux
 #		
@@ -40,15 +41,15 @@ touch /etc/local.gen
 printf " NOW GENERATING LOCALES\n"
 locale-gen 
 mkinitcpio -p linux
-grub-install --boot-directory=/mnt/boot $bootpart
+grub-install --boot-directory=$yourdrive
 grub-mkconfig -o /mnt/boot/grub/grub.cfg
-echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg; printf "\n"
-echo "    set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg; printf "\n"
-echo " linux /boot/vmlinuz-linux root=$rewtpart " >> /mnt/boot/grub/grub.cfg; printf "\n"
-echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg; printf "\n"
+echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
+echo "    set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
+echo " linux /boot/vmlinuz-linux root=$rewtpart " >> /mnt/boot/grub/grub.cfg
+echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg
 echo "	}"
 
 #cleanup
 printf " Cleaning up...\n"
 sleep 10
-rm chrootnset.sh
+rm chrootnset.su
