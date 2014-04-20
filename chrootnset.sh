@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #
-# 	Authors ::->>       i3-Arch   <>  trewchainz    	<<-::
+# 	Authors  ::->>     i3-Arch,  trewchainz    <<-::
 #					
 #		Made to install archlinux
 #		
