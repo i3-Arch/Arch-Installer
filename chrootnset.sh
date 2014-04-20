@@ -1,12 +1,11 @@
 #!/bin/bash
 #
 #
-# 	BY : i3-Arch
-#		 trewchainz
+# 	Authors ::->>       i3-Arch   <>  trewchainz    	<<-::
 #					
 #		Made to install archlinux
 #		
-#		VERSION 1.0-BETA
+#		VERSION 1.1-BETA
 #	
 #	WARNING : THIS SCRIPT IS CURRENTLY BEING DEVELOPED
 #			RUN AT YOUR OWN RISK
@@ -26,10 +25,10 @@ printf " Enter Your Time Zone:\n"
 printf " CHOICES ARE  ' New York or Athens '\n"
 printf " Sorry I didnt do all timezones yet\n"
 read timezoneresponse
-if [ $timezoneresponse -eq "New York" -o $timezoneresponse -eq "new york" -o $timezoneresponse -eq "NEW YORK" -o $timezoneresponse -eq " newyork " ] 
+if [ "$timezoneresponse" -eq "New York" -o "$timezoneresponse" -eq "new york" -o "$timezoneresponse" -eq "NEW YORK" -o "$timezoneresponse" -eq " newyork " ] 
 	then
 		$(ln -s /usr/share/zoneinfo/America/New_York /etc/localtime) ;
-	elif	[ $timezoneresponse -eq "Athens" -o $timezoneresponse -eq "athens" -o $timezoneresponse -eq "ATHENS" ]
+	elif	[ "$timezoneresponse" -eq "Athens" -o "$timezoneresponse" -eq "athens" -o "$timezoneresponse" -eq "ATHENS" ]
 		then
 			$( ln -s /usr/share/zoneinfo/Europe/Athens /etc/localtime) ;
 	else
@@ -37,7 +36,16 @@ if [ $timezoneresponse -eq "New York" -o $timezoneresponse -eq "new york" -o $ti
 fi
 printf " YOU NOW NEED TO UNCOMMENT LOCALE\n"
 sleep 2
-touch /etc/local.gen
+printf " Would you like to use default locale or choose your own ? \n"
+printf " Default locale is en_US.UTF-8 UTF-8 \n"
+printf " (Y) for default locale  (N) for choose your own"
+read inputscuzlocale
+if [ "$inputscuzlocale" -eq "y" -o "$inputscuzlocale" -eq "Y" -o "$inputscuzlocale" "(Y)" -o "$inputscuzlocale" -eq "(y)" ]
+	then
+		echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+	else
+		nano /etc/locale.gen
+fi
 printf " NOW GENERATING LOCALES\n"
 locale-gen 
 mkinitcpio -p linux
