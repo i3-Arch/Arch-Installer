@@ -40,8 +40,8 @@
 	... ........       .III,.                             ..77I                    
 	... ........      .?~.                    .       .       ,I.  
 				
-					: Authors ::
+			              :: Authors ::
 			
-					  i3-Arch
+				 	  i3-Arch
 				  	 trewchainz
 				  	   t60r
