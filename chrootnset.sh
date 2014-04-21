@@ -24,7 +24,7 @@ echo "$hostresponse" > /etc/hostname
 printf " \n Enter Your Time Zone:\n"
 printf " CHOICES ARE  ' New York or Athens ' \n"
 printf " Sorry I didnt do all timezones yet \n"
-printf " Enter  1    for New York  :    Enter 2 for Athens"
+printf " Enter  1    for New York  \n \n   Enter 2 for Athens"
 read timezoneresponse
 if [ "$timezoneresponse" == NewYork -o "$timezoneresponse" == 1 ] 
 	then
@@ -35,11 +35,10 @@ if [ "$timezoneresponse" == NewYork -o "$timezoneresponse" == 1 ]
 	else
 		printf " Not Understood | skipped | do it yourself |  with 'ln -s'\n"
 fi
-printf " YOU NOW NEED TO UNCOMMENT LOCALE\n"
-sleep 2
+printf " YOU NOW NEED TO UNCOMMENT A LOCALE\n"
 printf " Would you like to use default locale or choose your own ? \n"
 printf " Default locale is en_US.UTF-8 UTF-8 \n"
-printf " (Y) for default locale  (N) for choose your own"
+printf " (Y) for default locale \n  (N) for choose your own \n "
 read inputscuzlocale
 if [ "$inputscuzlocale" == y -o "$inputscuzlocale" == Y ]
 	then
@@ -48,11 +47,13 @@ if [ "$inputscuzlocale" == y -o "$inputscuzlocale" == Y ]
 		nano /etc/locale.gen
 	else
 		echo "not understood"
+		echo " uncomment it yourself"
+		nano /etc/locale.gen
 fi
 printf " NOW GENERATING LOCALES\n"
 locale-gen 
 mkinitcpio -p linux
-grub-install --boot-directory=$yourdrive
+grub-install --boot-directory="$yourdrive"
 grub-mkconfig -o /mnt/boot/grub/grub.cfg
 echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
 echo "    set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
