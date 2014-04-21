@@ -65,3 +65,9 @@ echo "	}" >> /mnt/boot/grub/grub.cfg
 printf " Cleaning up...\n"
 sleep 10
 rm chrootnset.su
+printf " \n NOW SHUTTING DOWN \n "
+printf " \n REMOVE LIVE IMAGE \n "
+printf " \n THEN REBOOT SYSTEM ! \n"
+sleep 3
+sdn="$(shutdown now)"
+$sdn
