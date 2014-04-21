@@ -42,6 +42,6 @@
 				
 			              :: Authors ::
 			
-				 	  i3-Arch
-				  	 trewchainz
-				  	   t60r
+				 	*  i3-Arch
+				  	* trewchainz
+				  	*  t60r
