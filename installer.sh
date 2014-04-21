@@ -23,6 +23,7 @@ cat <<"EOT"
  ####### #####  #      #    # #      # #  # # #    #   ##          
  #     # #   #  #    # #    # #      # #   ## #    #  #  #     ### 
  #     # #    #  ####  #    # ###### # #    #  ####  #    #    ### 
+EOT
 }
 asd
 printf " Running lsblk to list block devices\n"
