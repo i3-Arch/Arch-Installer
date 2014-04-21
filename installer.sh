@@ -28,7 +28,7 @@ EOT
 asd
 printf "\n \n \n Running lsblk to list block devices\n"
 lsblk
-printf " Which Drive would you like to install to\n"
+printf " \n Which Drive would you like to install to\n"
 printf " i.e - /dev/sda\n"
 printf " WARNING : /dev/sda may not be empty for you\n"
 read yourdrive
