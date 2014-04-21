@@ -43,11 +43,7 @@ read inputscuzlocale
 if [ "$inputscuzlocale" == y -o "$inputscuzlocale" == Y ]
 	then
 		echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-	elif [ "$inputscuzlocale" == n -o "$inputscuzlocale" == N  ]
-		nano /etc/locale.gen
 	else
-		echo "not understood"
-		echo " uncomment it yourself"
 		nano /etc/locale.gen
 fi
 printf " NOW GENERATING LOCALES\n"
