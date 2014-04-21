@@ -12,7 +12,8 @@
 #
 #	Reminder  -  Add option for LUKS
 ############################################
-printf " WELCOME TO i3 ARCHLINUX INSTALL SCRIPT\n"
+printf " \n WELCOME TO i3 ARCHLINUX INSTALL SCRIPT\n"
+sleep 3
 asd() {
 cat <<"EOT"
 
