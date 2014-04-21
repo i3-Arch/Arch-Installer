@@ -22,9 +22,10 @@ printf " Choose your hostname:\n"
 read hostresponse
 echo "$hostresponse" > /etc/hostname
 printf " \n Enter Your Time Zone:\n"
-printf " CHOICES ARE  ' New York or Athens ' \n"
-printf " Sorry I didnt do all timezones yet \n"
-printf " Enter  1    for New York  \n \n   Enter 2 for Athens"
+printf " \n CHOICES ARE  ' New York or Athens ' \n"
+printf " \n Sorry I didnt do all timezones yet \n"
+printf " \n Enter  1    for New York  \n "
+printf " \n Enter 2 for Athens \n "
 read timezoneresponse
 if [ "$timezoneresponse" == NewYork -o "$timezoneresponse" == 1 ] 
 	then
