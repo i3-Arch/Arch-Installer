@@ -44,4 +44,4 @@
 			
 					  i3-Arch
 				  	 trewchainz
-				            t60r
+				  	   t60r
