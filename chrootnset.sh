@@ -20,8 +20,8 @@ echo " $homepart    /home 	ext4	defaults	0	 1" >> /etc/fstab; printf "\n"
 echo " $bootpart	/boot	ext4	defaults	0	1"	>> /etc/fstab; printf "\n"
 printf " Choose your hostname:\n"
 read hostresponse
-echo "$hostresponse" > /etc/hostname; printf "\n"
-printf " Enter Your Time Zone:\n"
+echo "$hostresponse" > /etc/hostname
+printf " \n Enter Your Time Zone:\n"
 printf " CHOICES ARE  ' New York or Athens ' \n"
 printf " Sorry I didnt do all timezones yet \n"
 printf " Enter  1    for New York  :    Enter 2 for Athens"
