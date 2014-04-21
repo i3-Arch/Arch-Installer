@@ -22,13 +22,14 @@ printf " Choose your hostname:\n"
 read hostresponse
 echo "$hostresponse" > /etc/hostname; printf "\n"
 printf " Enter Your Time Zone:\n"
-printf " CHOICES ARE  ' New York or Athens '\n"
-printf " Sorry I didnt do all timezones yet\n"
+printf " CHOICES ARE  ' New York or Athens ' \n"
+printf " Sorry I didnt do all timezones yet \n"
+printf " Enter  1    for New York  :    Enter 2 for Athens"
 read timezoneresponse
-if [ "$timezoneresponse" -eq "New York" -o "$timezoneresponse" -eq "new york" -o "$timezoneresponse" -eq "NEW YORK" -o "$timezoneresponse" -eq " newyork " ] 
+if [ "$timezoneresponse" == NewYork -o "$timezoneresponse" == 1 ] 
 	then
 		$(ln -s /usr/share/zoneinfo/America/New_York /etc/localtime) ;
-	elif	[ "$timezoneresponse" -eq "Athens" -o "$timezoneresponse" -eq "athens" -o "$timezoneresponse" -eq "ATHENS" ]
+	elif	[ "$timezoneresponse" == Athens -o "$timezoneresponse" == 2 ]
 		then
 			$( ln -s /usr/share/zoneinfo/Europe/Athens /etc/localtime) ;
 	else
@@ -40,11 +41,13 @@ printf " Would you like to use default locale or choose your own ? \n"
 printf " Default locale is en_US.UTF-8 UTF-8 \n"
 printf " (Y) for default locale  (N) for choose your own"
 read inputscuzlocale
-if [ "$inputscuzlocale" -eq "y" -o "$inputscuzlocale" -eq "Y" -o "$inputscuzlocale" "(Y)" -o "$inputscuzlocale" -eq "(y)" ]
+if [ "$inputscuzlocale" -eq == y -o "$inputscuzlocale" == Y ]
 	then
 		echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-	else
+	elif [ "$inputscuzlocale" == n -o "$inputscuzlocale" == N  ]
 		nano /etc/locale.gen
+	else
+		echo "not understood"
 fi
 printf " NOW GENERATING LOCALES\n"
 locale-gen 
