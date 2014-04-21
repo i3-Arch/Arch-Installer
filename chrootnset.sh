@@ -41,7 +41,7 @@ printf " Would you like to use default locale or choose your own ? \n"
 printf " Default locale is en_US.UTF-8 UTF-8 \n"
 printf " (Y) for default locale  (N) for choose your own"
 read inputscuzlocale
-if [ "$inputscuzlocale" -eq == y -o "$inputscuzlocale" == Y ]
+if [ "$inputscuzlocale" == y -o "$inputscuzlocale" == Y ]
 	then
 		echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 	elif [ "$inputscuzlocale" == n -o "$inputscuzlocale" == N  ]
