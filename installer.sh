@@ -26,7 +26,7 @@ cat <<"EOT"
 EOT
 }
 asd
-printf " Running lsblk to list block devices\n"
+printf "\n \n \n Running lsblk to list block devices\n"
 lsblk
 printf " Which Drive would you like to install to\n"
 printf " i.e - /dev/sda\n"
