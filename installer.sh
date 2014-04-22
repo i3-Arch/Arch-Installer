@@ -29,7 +29,7 @@ EOT
 asd
 printf "\n \n \n Running lsblk to list block devices\n"
 lsblk
-printf " \n Which Drive would you like to install to\n"
+printf " \n Which Drive would you like to install to?\n"
 printf " i.e - /dev/sda\n"
 printf " WARNING : /dev/sda may not be empty for you\n"
 read yourdrive
@@ -45,6 +45,7 @@ fdisk $yourdrive
 fi
 touch config.sh #create file to store bootpart, rewtpart, homepart, swappart for chrootnset.sh
 printf " Enter Your Boot Partition:\n"
+printf " i.e  /dev/sda1\n"
 read bootpart
 echo "bootpart=$bootpart" >> config.sh
 mkfs.ext4 "$bootpart" -L bootfs
@@ -54,10 +55,12 @@ read rewtpart
 echo "rewtpart=$rewtpart" >> config.sh
 mkfs.ext4 "$rewtpart" -L rootfs
 printf " Enter Your Home Partition:\n"
+printf " i.e  /dev/sda1\n"
 read homepart
 echo "homepart=$homepart" >> config.sh
 mkfs.ext4 "$homepart"
-printf " What is your swap partition:\n"
+printf " Enter your swap partition:\n"
+printf " i.e  /dev/sda1\n"
 read swappart
 echo "swappart=$swappart" >> config.sh
 mkswap "$swappart" -L swapfs
@@ -67,7 +70,7 @@ printf " Setting up install\n"
 	mount $rewtpart /mnt
 	mkdir -pv /mnt/var/lib/pacman
 	pacman -r /mnt -Sy base base-devel --noconfirm
-	pacman -r /mnt -Syy
+	pacman -r /mnt -Syy 2> /dev/null
 	pacman -r /mnt -S rsync grub --noconfirm
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
 	mount --bind /dev/ /mnt/dev
