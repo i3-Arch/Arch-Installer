@@ -14,6 +14,20 @@
 	       	==============================================
 
 
+# CURRENT OBJECTIVES
+	
+	1. Make seperate partition optional
+		i. for boot,root,home ..... etc
+
+	2. Add More Options In General
+
+	3. Misc
+		i. Luks
+
+	4. Cleanup
+
+	5. Release
+
 	       
 	.... .........    .       . .. .....  .I.......  ..      .                     
 	.... .......                       .  I7?.                                     
