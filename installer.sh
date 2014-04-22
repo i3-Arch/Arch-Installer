@@ -5,7 +5,7 @@
 #
 #		Made to install archlinux
 #		
-#		VERSION 1.1-BETA
+#		VERSION 1.2-BETA
 #	
 #	WARNING : THIS SCRIPT IS CURRENTLY BEING DEVELOPED
 #			RUN AT YOUR OWN RISK
@@ -93,5 +93,5 @@ printf " \n NOW SHUTTING DOWN \n "
 printf " \n REMOVE LIVE IMAGE \n "
 printf " \n THEN REBOOT SYSTEM ! \n"
 sleep 3
-#sdn="$(shutdown now)"
-#$sdn
+sdn="$(shutdown now)"
+$sdn
