@@ -79,3 +79,19 @@ printf " Setting up install\n"
 	cp chrootnset.sh /mnt
 	cp config.sh /mnt
 	chroot /mnt bash chrootnset.sh
+echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
+echo " set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
+echo " linux /boot/vmlinuz-linux root=$rewtpart " >> /mnt/boot/grub/grub.cfg
+echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg
+echo " }" >> /mnt/boot/grub/grub.cfg
+
+#cleanup
+printf " Cleaning up...\n"
+sleep 10
+rm chrootnset.sh config.sh
+printf " \n NOW SHUTTING DOWN \n "
+printf " \n REMOVE LIVE IMAGE \n "
+printf " \n THEN REBOOT SYSTEM ! \n"
+sleep 3
+sdn="$(shutdown now)"
+$sdn
