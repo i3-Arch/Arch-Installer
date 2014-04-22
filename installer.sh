@@ -79,6 +79,8 @@ printf " Setting up install\n"
 	cp chrootnset.sh /mnt
 	cp config.sh /mnt
 	chroot /mnt bash chrootnset.sh
+$(grub-install --boot-directory=/mnt $yourdrive)
+$(grub-mkconfig -o /mnt /boot/grub/grub.cfg)
 echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
 echo " set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
 echo " linux /boot/vmlinuz-linux root=$rewtpart " >> /mnt/boot/grub/grub.cfg
