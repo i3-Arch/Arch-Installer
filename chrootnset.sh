@@ -14,18 +14,18 @@
 ############################################
 source config.sh #grab rewtpart, swappart, homepart, bootpart var values
 printf " Setting up fstab\n"
-echo " $rewtpart    /    	ext4   defaults    0    1" >> /etc/fstab; printf "\n"
-echo " $swappart    none     swap    defaults    0    1" >> /etc/fstab; printf "\n"
-echo " $homepart    /home 	ext4	defaults	0	 1" >> /etc/fstab; printf "\n"
-echo " $bootpart	/boot	ext4	defaults	0	1"	>> /etc/fstab; printf "\n"
+echo " $rewtpart    /    	ext4   defaults    0    1" >> /etc/fstab
+echo " $swappart    none     swap    defaults    0    1" >> /etc/fstab
+echo " $homepart    /home 	ext4	defaults	0	 1" >> /etc/fstab
+echo " $bootpart	/boot	ext4	defaults	0	1"	>> /etc/fstab
 printf " Choose your hostname:\n"
 read hostresponse
 echo "$hostresponse" > /etc/hostname
 printf " \n Enter Your Time Zone:\n"
 printf " \n CHOICES ARE  ' New York or Athens ' \n"
 printf " \n Sorry I didnt do all timezones yet \n"
-printf " \n Enter  1    for New York  \n "
-printf " \n Enter 2 for Athens \n "
+printf " \n Enter (1) for New York  \n "
+printf " \n Enter (2) for Athens \n "
 read timezoneresponse
 if [ "$timezoneresponse" == NewYork -o "$timezoneresponse" == 1 ] 
 	then
@@ -50,8 +50,8 @@ fi
 printf " NOW GENERATING LOCALES\n"
 locale-gen 
 mkinitcpio -p linux
-printf "$(grub-install --boot-directory="$yourdrive")"
-printf "$(grub-mkconfig -o /mnt/boot/grub/grub.cfg)"
+$(grub-install --boot-directory='$yourdrive')
+$(grub-mkconfig -o /mnt/boot/grub/grub.cfg)
 echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
 echo "    set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
 echo " linux /boot/vmlinuz-linux root=$rewtpart " >> /mnt/boot/grub/grub.cfg
@@ -61,7 +61,7 @@ echo "	}" >> /mnt/boot/grub/grub.cfg
 #cleanup
 printf " Cleaning up...\n"
 sleep 10
-rm chrootnset.su
+rm chrootnset.sh config.sh
 printf " \n NOW SHUTTING DOWN \n "
 printf " \n REMOVE LIVE IMAGE \n "
 printf " \n THEN REBOOT SYSTEM ! \n"
