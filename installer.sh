@@ -66,7 +66,7 @@ echo "swappart=$swappart" >> config.sh
 mkswap "$swappart" -L swapfs
 printf " Setting up install\n"
 	pacman -Syy
-	pacman -S rsync --noconfirm
+	pacman -S rsync grub --noconfirm
 	mount $rewtpart /mnt
 	mkdir -pv /mnt/var/lib/pacman
 	pacman -r /mnt -Sy base base-devel --noconfirm
