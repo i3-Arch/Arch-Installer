@@ -50,7 +50,7 @@ fi
 printf " NOW GENERATING LOCALES\n"
 locale-gen 
 mkinitcpio -p linux
-$(grub-install --boot-directory='/mnt $yourdrive')
+$(grub-install --boot-directory=/mnt $yourdrive)
 $(grub-mkconfig -o /mnt /boot/grub/grub.cfg)
 echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
 echo "    set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
