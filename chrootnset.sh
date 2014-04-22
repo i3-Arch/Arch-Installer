@@ -15,9 +15,9 @@
 source config.sh #grab rewtpart, swappart, homepart, bootpart var values
 printf " Setting up fstab\n"
 echo " $rewtpart    /    	ext4   defaults    0    1" >> /etc/fstab
-echo " $swappart    none     swap    defaults    0    1" >> /etc/fstab
-echo " $homepart    /home 	ext4	defaults	0	 1" >> /etc/fstab
-echo " $bootpart	/boot	ext4	defaults	0	1"	>> /etc/fstab
+echo " $swappart	none     swap    defaults    0    1" >> /etc/fstab
+echo " $homepart	/home 	ext4	defaults	0	 1" >> /etc/fstab
+echo " $bootpart	/mnt/boot	ext4	defaults	0	1"	>> /etc/fstab
 printf " Choose your hostname:\n"
 read hostresponse
 echo "$hostresponse" > /etc/hostname
