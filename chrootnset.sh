@@ -5,7 +5,7 @@
 #					
 #		Made to install archlinux
 #		
-#		VERSION 1.1-BETA
+#		VERSION 1.2-BETA
 #	
 #	WARNING : THIS SCRIPT IS CURRENTLY BEING DEVELOPED
 #			RUN AT YOUR OWN RISK
