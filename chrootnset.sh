@@ -50,4 +50,5 @@ fi
 printf " NOW GENERATING LOCALES\n"
 locale-gen 
 mkinitcpio -p linux
+rm chrootnset.sh config.sh
 exit
