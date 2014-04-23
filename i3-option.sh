@@ -5,6 +5,32 @@
 #  Author: i3-Arch
 #
 ###############################################
+banner() {
+cat <<"EOT"
+     ____________________________
+    !\__________________________/!\
+    !!                           !!\
+    !!                           !! \
+    !!   ARCHLINUX   IS          !! !
+    !!                           !! !
+    !!       MASTER RACE         !! !
+    !!                           !! !
+    !! lulz@arch~> hu	         !! !
+    !! zsh:command not found:hue !! /
+    !! 			         !!/
+    !!___________________________!!
+    !/________________________\!/
+       __\_________________/__/!_
+      !_______________________!/ )
+    ________________________    (__
+   /oooo  oooo  oooo  oooo /!   _  )_
+  /ooooooooooooooooooooooo/ /  (_)_(_)
+ /ooooooooooooooooooooooo/ /    (o o)
+/C=_____________________/_/    ==\o/==
+
+EOT
+sleep 3
+}
 greetz() {
 	cd ~
 	printf " \n \n   :: Lets Do This ::  \n \n   "
@@ -62,6 +88,7 @@ i3fin() {
 
 
 main() {
+	banner
 	greetz
 	makeitbro
 	xseti3
