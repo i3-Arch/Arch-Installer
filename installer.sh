@@ -34,10 +34,10 @@ disk() {
 	printf " WARNING : /dev/sda may not be empty for you\n"
 	read yourdrive
 	if [ "$toolchoice" == cfdisk -o "$toolchoice" == CFDISK ]
-		then
-			cfdisk $yourdrive
-		else
-			fdisk $yourdrive
+	then
+		cfdisk $yourdrive
+	else
+		fdisk $yourdrive
 	fi
 }
 
