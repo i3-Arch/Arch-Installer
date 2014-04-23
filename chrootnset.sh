@@ -17,10 +17,10 @@ source config.sh #grab rewtpart, swappart, homepart, bootpart var values
 decisions(){
 	if [ $thechoiceman -eq 3 ]
 		then
-			fstab3
+		    fstab3
 			elif [ $thechoiceman -eq 2 ]
 				then
-					fstab2
+				    fstab2
 		elif [ $thechoiceman -eq 1 ]
 			then
 				fstab1
