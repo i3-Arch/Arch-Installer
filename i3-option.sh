@@ -5,20 +5,20 @@
 #  Author: i3-Arch
 #
 ###############################################
-GREETZ() {
+greetz() {
 	cd ~
 	printf " \n \n   :: Lets Do This ::  \n \n   "
 	printf " \n \n 		#SWAG	      \n \n  "
 }
 
 
-MAKEITBRO() {
+makeitbro() {
 	pacman -Syyu --noconfirm
 	pacman -S base-devel xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 }
 
 
-XSETi3() {
+xseti3() {
 	X -configure
 	if [ "$HOME/xorg.conf.new" ]
 		then
@@ -45,7 +45,7 @@ XSETi3() {
 }
 
 
-i3FIN() {
+i3fin() {
 	printf " \n Setting up .Xresources, .vimrc and .xinitrc \n "
 		
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
@@ -61,10 +61,10 @@ i3FIN() {
 }
 
 
-MAIN() {
-	GREETZ
-	MAKEITBRO
-	XSETi3
-	i3FIN
+main() {
+	greetz
+	makeitbro
+	xseti3
+	i3fin
 }
-MAIN
+main
