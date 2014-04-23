@@ -8,11 +8,16 @@
 GREETZ() {
 	cd ~
 	printf " \n \n   :: Lets Do This ::  \n \n   "
+	printf " \n \n 		#SWAG	      \n \n  "
 }
+
+
 MAKEITBRO() {
 pacman -Syyu --noconfirm
 pacman -S base-devel xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 }
+
+
 XSETi3() {
 X -configure
 if [ "$HOME/xorg.conf.new" ]
@@ -37,6 +42,8 @@ if [ "$HOME/.i3/config" ]
 		echo " $(mv config ~/.i3/config) "
 fi
 }
+
+
 i3FIN() {
 echo
 echo " Setting up .Xresources, .vimrc and .xinitrc"
@@ -50,6 +57,8 @@ printf " \n TIP :: In the future you will need to Run ' startx :: \n "
 sleep 3 &&
 $(startx)
 }
+
+
 MAIN() {
 	GREETZ
 	MAKEITBRO
