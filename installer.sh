@@ -125,17 +125,15 @@ grub(){
 }
 
 CALLpart(){
-            if [ $thechoiceman -eq 3 ]
-			    then
-	                FULLpart
-		          elif [ $thechoiceman -eq 2 ]
-			          then
-						HALFpart																																			                   elif [ $thechoiceman -eq 1 ]
-			          then	
-					    SMALLpart
-				else
-					FULLpart
-			fi
+	if [ $thechoiceman -eq 3 ]
+    	then FULLpart
+	elif [ $thechoiceman -eq 2 ]
+		then HALFpart
+	elif [ $thechoiceman -eq 1 ]
+		then SMALLpart
+	else 
+		FULLpart
+	fi
 }
 
 main() {
@@ -143,7 +141,7 @@ main() {
 	disk
 	touch config.sh ## Create file to store bootpart, rewtpart, homepart, swappart for chroot
 	ASKme 			## ASK NUMBER OF PARTITIONS
-    CALLpart 		## CALL PARTITIONING IF STATEMENT 
+    	CALLpart 		## CALL PARTITIONING IF STATEMENT 
 	pkgmntchroot 	## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.sh
 	grub 			## Runs after chrootnset.sh
 	printf " \n COMPLETE !  \n "
