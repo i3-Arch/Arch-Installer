@@ -13,6 +13,11 @@
 #	Reminder  -  Add option for LUKS
 ############################################
 source config.sh #grab rewtpart, swappart, homepart, bootpart var values
+nicetty(){
+		wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/issue
+		cp issue /etc/issue
+		rm issue
+}
 
 decisions(){
 	if [ $thechoiceman -eq 3 ]
@@ -88,7 +93,7 @@ timelocale() {
 }
 
 main(){
-	
+	nicetty
 	decisions
 	hostname
 	timelocale
