@@ -14,7 +14,7 @@
 ############################################
 printf " \n WELCOME TO i3 ARCHLINUX INSTALL SCRIPT\n"
 sleep 3
-asd() {
+banner() {
 cat <<"EOT"
 
     #                                                          ### 
@@ -26,45 +26,43 @@ cat <<"EOT"
  #     # #    #  ####  #    # ###### # #    #  ####  #    #    ### 
 EOT
 }
-asd
-printf "\n \n \n Running lsblk to list block devices\n"
-lsblk
-printf " \n Which Drive would you like to install to?\n"
-printf " i.e - /dev/sda\n"
-printf " WARNING : /dev/sda may not be empty for you\n"
-read yourdrive
-echo "yourdrive=$yourdrive" > config.sh
-printf " CREATE ::  boot - root -  home  - swap  partitions\n"
-printf " Would you like to use cfdisk or fdisk ?\n"
-read toolchoice
-if [ "$toolchoice" == cfdisk -o "$toolchoice" == CFDISK ]
-	then
-cfdisk $yourdrive
-	else
-fdisk $yourdrive
-fi
-touch config.sh #create file to store bootpart, rewtpart, homepart, swappart for chrootnset.sh
-printf " Enter Your Boot Partition:\n"
-printf " i.e  /dev/sda1\n"
-read bootpart
-echo "bootpart=$bootpart" >> config.sh
-mkfs.ext4 "$bootpart" -L bootfs
-printf " Enter Your Root Partition:\n" 
-printf " i.e  /dev/sda1\n"
-read rewtpart
-echo "rewtpart=$rewtpart" >> config.sh
-mkfs.ext4 "$rewtpart" -L rootfs
-printf " Enter Your Home Partition:\n"
-printf " i.e  /dev/sda1\n"
-read homepart
-echo "homepart=$homepart" >> config.sh
-mkfs.ext4 "$homepart"
-printf " Enter your swap partition:\n"
-printf " i.e  /dev/sda1\n"
-read swappart
-echo "swappart=$swappart" >> config.sh
-mkswap "$swappart" -L swapfs
-printf " Setting up install\n"
+
+disk() {
+	printf "\n \n \n Running lsblk to list block devices\n"
+	lsblk
+	printf " \n Which drive would you like to install to?: i.e. /dev/sda\n"
+	printf " WARNING : /dev/sda may not be empty for you\n"
+	read yourdrive
+	if [ "$toolchoice" == cfdisk -o "$toolchoice" == CFDISK ]
+		then
+			cfdisk $yourdrive
+		else
+			fdisk $yourdrive
+	fi
+}
+
+part() {
+
+	printf " Enter your Boot Partition: i.e. /dev/sda1\n"
+	read bootpart
+	echo "bootpart=$bootpart" >> config.sh
+	mkfs.ext4 "$bootpart" -L bootfs
+	printf " Enter your Root Partition: i.e. /dev/sda1\n" 
+	read rewtpart
+	echo "rewtpart=$rewtpart" >> config.sh
+	mkfs.ext4 "$rewtpart" -L rootfs
+	printf " Enter your Home Partition: i.e. /dev/sda1\n" 
+	read homepart
+	echo "homepart=$homepart" >> config.sh
+	mkfs.ext4 "$homepart"
+	printf " Enter your Swap Partition: i.e. /dev/sda1\n"
+	read swappart
+	echo "swappart=$swappart" >> config.sh
+	mkswap "$swappart" -L swapfs
+}
+
+pkgmntchroot() {
+	printf " Setting up install...\n"
 	pacman -Syy
 	pacman -S rsync grub --noconfirm
 	mount $rewtpart /mnt
@@ -79,19 +77,31 @@ printf " Setting up install\n"
 	cp chrootnset.sh /mnt
 	cp config.sh /mnt
 	chroot /mnt bash chrootnset.sh
+}
 
-# after chrootnset.sh runs
+grub(){
+	grub-install --boot-directory=/mnt/boot $yourdrive
+	grub-mkconfig -o /mnt/boot/grub/grub.cfg
+	echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
+	echo " set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
+	echo " linux /boot/vmlinuz-linux root=$rewtpart " >> /mnt/boot/grub/grub.cfg
+	echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg
+	echo " }" >> /mnt/boot/grub/grub.cfg
+}
 
-grub-install --boot-directory=/mnt/boot $yourdrive
-grub-mkconfig -o /mnt/boot/grub/grub.cfg
-echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
-echo " set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
-echo " linux /boot/vmlinuz-linux root=$rewtpart " >> /mnt/boot/grub/grub.cfg
-echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg
-echo " }" >> /mnt/boot/grub/grub.cfg
-printf " \n NOW SHUTTING DOWN \n "
-printf " \n REMOVE LIVE IMAGE \n "
-printf " \n THEN REBOOT SYSTEM ! \n"
-sleep 3
-sdn="$(shutdown now)"
-$sdn
+main() {
+	banner
+	disk
+	touch config.sh #create file to store bootpart, rewtpart, homepart, swappart for chroot
+	part
+	pkgmntchroot #setup packages and mounts, then chroot hook for additional setup w/ chrootnset.sh
+	grub # runs after chrootnset.sh
+	printf " \n NOW SHUTTING DOWN \n "
+	printf " \n REMOVE LIVE IMAGE \n "
+	printf " \n THEN REBOOT SYSTEM ! \n"
+	sleep 3
+	sdn="$(shutdown now)"
+	$sdn
+}
+
+main
