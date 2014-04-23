@@ -39,7 +39,7 @@ fstab2(){
      printf " Setting up fstab...\n"
      echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab	
      echo " $homepart        /home   ext4    defaults        0        1" >> /etc/fstab
-	 echo " $bootpart        /mnt/boot       ext4    defaults        0       1"      >> /etc/fstab	
+     echo " $bootpart        /mnt/boot       ext4    defaults        0       1"      >> /etc/fstab	
 }
 
 fstab3() {
