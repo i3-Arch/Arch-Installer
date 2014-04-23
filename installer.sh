@@ -41,11 +41,14 @@ disk() {
 	fi
 }
 
-printf " \n 3 CHOICES FOR PARTITIONING \n "
-printf " \n (1) boot and root partitions \n "
-printf " \n (2) boot, root, home partitions \n "
-printf " \n (3) boot, root, home, swap partitions \n "
-read thechoiceman
+ASKme(){
+	printf " \n 3 CHOICES FOR PARTITIONING \n "
+	printf " \n (1) boot and root partitions \n "
+	printf " \n (2) boot, root, home partitions \n "
+	printf " \n (3) boot, root, home, swap partitions \n "
+	read thechoiceman
+	echo "thechoiceman=$thechoiceman" >> config.sh 
+}
 
 SMALLpart() {
 	printf " \n Enter your Boot Partition: i.e. /dev/sda1 \n"
@@ -121,30 +124,32 @@ grub(){
 	echo " }" >> /mnt/boot/grub/grub.cfg
 }
 
+CALLpart(){
+            if [ $thechoiceman -eq 3 ]
+			    then
+	                FULLpart
+		          elif [ $thechoiceman -eq 2 ]
+			          then
+						HALFpart																																			                   elif [ $thechoiceman -eq 1 ]
+			          then	
+					    SMALLpart
+				else
+					FULLpart
+			fi
+}
+
 main() {
 	banner
 	disk
-	touch config.sh #create file to store bootpart, rewtpart, homepart, swappart for chroot
-		if [ $thechoiceman -eq 3 ]
-			then
-				FULLpart
-			elif [ $thechoiceman -eq 2 ]
-				then
-					HALFpart
-				elif [ $thechoiceman -eq 1 ]
-					then
-						SMALLpart
-			else
-				FULLpart
-		fi
-	pkgmntchroot #setup packages and mounts, then chroot hook for additional setup w/ chrootnset.sh
-	grub # runs after chrootnset.sh
-	printf " \n NOW SHUTTING DOWN \n "
+	touch config.sh ## Create file to store bootpart, rewtpart, homepart, swappart for chroot
+	ASKme 			## ASK NUMBER OF PARTITIONS
+    CALLpart 		## CALL PARTITIONING IF STATEMENT 
+	pkgmntchroot 	## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.sh
+	grub 			## Runs after chrootnset.sh
+	printf " \n COMPLETE !  \n "
+	printf " \n SHUT DOWN SYSTEM AND THEN \n"
 	printf " \n REMOVE LIVE IMAGE \n "
 	printf " \n THEN REBOOT SYSTEM ! \n"
-	sleep 3
-	sdn="$(shutdown now)"
-	$sdn
 }
 
 main
