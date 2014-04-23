@@ -41,10 +41,10 @@ disk() {
 	fi
 }
 
-printf " \n 3 CHOICES FOR PARTITIONING \n"
+printf " \n 3 CHOICES FOR PARTITIONING \n "
 printf " \n (1) boot and root partitions \n "
-printf " \n (2) boot, root, home partitions "
-printf " \n (3) boot, root, home, swap partitions "
+printf " \n (2) boot, root, home partitions \n "
+printf " \n (3) boot, root, home, swap partitions \n "
 read thechoiceman
 
 SMALLpart() {
