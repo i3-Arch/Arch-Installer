@@ -41,7 +41,39 @@ disk() {
 	fi
 }
 
-part() {
+printf " \n 3 CHOICES FOR PARTITIONING \n"
+printf " \n (1) boot and root partitions \n "
+printf " \n (2) boot, root, home partitions "
+printf " \n (3) boot, root, home, swap partitions "
+read thechoiceman
+
+SMALLpart() {
+	printf " \n Enter your Boot Partition: i.e. /dev/sda1 \n"
+        read bootpart
+        echo "bootpart=$bootpart" >> config.sh
+        mkfs.ext4 "$bootpart" -L bootfs
+	printf " \n Enter your Root Partition: i.e. /dev/sda2 \n"
+        read rewtpart
+        echo "rewtpart=$rewtpart" >> config.sh
+        mkfs.ext4 "$rewtpart" -L rootfs
+}
+
+HALFpart() {
+        printf " \n Enter your Boot Partition: i.e. /dev/sda1 \n"
+        read bootpart
+        echo "bootpart=$bootpart" >> config.sh
+        mkfs.ext4 "$bootpart" -L bootfs
+        printf " \n Enter your Root Partition: i.e. /dev/sda2 \n"
+        read rewtpart
+        echo "rewtpart=$rewtpart" >> config.sh
+        mkfs.ext4 "$rewtpart" -L rootfs
+	printf " \n Enter your Home Partition: i.e. /dev/sda3 \n"
+        read homepart
+        echo "homepart=$homepart" >> config.sh
+        mkfs.ext4 "$homepart"
+}
+
+FULLpart() {
 
 	printf " Enter your Boot Partition: i.e. /dev/sda1\n"
 	read bootpart
@@ -93,7 +125,18 @@ main() {
 	banner
 	disk
 	touch config.sh #create file to store bootpart, rewtpart, homepart, swappart for chroot
-	part
+		if [ $thechoiceman -eq 3 ]
+			then
+				FULLpart
+			elif [ $thechoiceman -eq 2 ]
+				then
+					HALFpart
+				elif [ $thechoiceman -eq 1 ]
+					then
+						SMALLpart
+			else
+				FULLpart
+		fi
 	pkgmntchroot #setup packages and mounts, then chroot hook for additional setup w/ chrootnset.sh
 	grub # runs after chrootnset.sh
 	printf " \n NOW SHUTTING DOWN \n "
