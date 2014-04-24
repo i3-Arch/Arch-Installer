@@ -38,6 +38,8 @@ disk () {
 	fi
 }
 
+# According to i3, the functions below will probably be removed anyway
+# If you don't know how to partition properly, you don't need this OS.
 ASKme () {
 	printf "\n Running lsblk to list block devices\n"
 	lsblk
@@ -143,7 +145,7 @@ main () {
 	ASKme	## ASK NUMBER OF PARTITIONS
 	disk	## PARTITION WITH CFDISK or FDISK
 	touch config.sh ## Create file to store bootpart, rewtpart, homepart, swappart for chroot
-    	CALLpart 		## CALL PARTITIONING IF STATEMENT
+    CALLpart 		## CALL PARTITIONING IF STATEMENT
 	pkgmntchroot 	## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.sh
 	grub 			## Runs after chrootnset.sh
 	printf " \n COMPLETE !  \n "
