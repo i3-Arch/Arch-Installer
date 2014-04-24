@@ -50,6 +50,8 @@ ASKme () {
 	printf " \n (1) boot and root partitions \n "
 	printf " \n (2) boot, root, home partitions \n "
 	printf " \n (3) boot, root, home, swap partitions \n "
+	printf " \n IF PLANNING TO USE SYSLINUX \n "
+	printf " \n MAKE BOOT PARTITION /dev/sda1 \n "
 	read thechoiceman
 	echo "thechoiceman=$thechoiceman" >> config.sh
 }
@@ -171,9 +173,9 @@ main () {
 	ASKme	## ASK NUMBER OF PARTITIONS
 	disk	## PARTITION WITH CFDISK or FDISK
 	touch config.sh ## Create file to store bootpart, rewtpart, homepart, swappart for chroot
-    CALLpart 		## CALL PARTITIONING IF STATEMENT
+    	CALLpart 		## CALL PARTITIONING IF STATEMENT
 	pkgmntchroot 	## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.sh
-	BOOTload 			## Runs after chrootnset.sh
+	BOOTload 	## CHOOSE BOOTLOADER ## Runs after chrootnset.sh
 	printf " \n COMPLETE !  \n "
 	printf " \n SHUT DOWN SYSTEM AND THEN \n"
 	printf " \n REMOVE LIVE IMAGE \n "
