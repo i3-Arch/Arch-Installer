@@ -53,26 +53,26 @@ SMALLpart () {
 	printf " \n Enter your Boot Partition: i.e. /dev/sda1 \n"
         read bootpart
         echo "bootpart=$bootpart" >> config.sh
-        mkfs.ext4 "$bootpart" -L bootfs
+        mkfs.ext3 "$bootpart" -L bootfs
 	printf " \n Enter your Root Partition: i.e. /dev/sda2 \n"
         read rewtpart
         echo "rewtpart=$rewtpart" >> config.sh
-        mkfs.ext4 "$rewtpart" -L rootfs
+        mkfs.ext3 "$rewtpart" -L rootfs
 }
 
 HALFpart () {
         printf " \n Enter your Boot Partition: i.e. /dev/sda1 \n"
         read bootpart
         echo "bootpart=$bootpart" >> config.sh
-        mkfs.ext4 "$bootpart" -L bootfs
+        mkfs.ext3 "$bootpart" -L bootfs
         printf " \n Enter your Root Partition: i.e. /dev/sda2 \n"
         read rewtpart
         echo "rewtpart=$rewtpart" >> config.sh
-        mkfs.ext4 "$rewtpart" -L rootfs
+        mkfs.ext3 "$rewtpart" -L rootfs
 	printf " \n Enter your Home Partition: i.e. /dev/sda3 \n"
         read homepart
         echo "homepart=$homepart" >> config.sh
-        mkfs.ext4 "$homepart"
+        mkfs.ext3 "$homepart"
 }
 
 FULLpart () {
@@ -80,15 +80,15 @@ FULLpart () {
 	printf " Enter your Boot Partition: i.e. /dev/sda1\n"
 	read bootpart
 	echo "bootpart=$bootpart" >> config.sh
-	mkfs.ext4 "$bootpart" -L bootfs
+	mkfs.ext3 "$bootpart" -L bootfs
 	printf " Enter your Root Partition: i.e. /dev/sda1\n"
 	read rewtpart
 	echo "rewtpart=$rewtpart" >> config.sh
-	mkfs.ext4 "$rewtpart" -L rootfs
+	mkfs.ext3 "$rewtpart" -L rootfs
 	printf " Enter your Home Partition: i.e. /dev/sda1\n"
 	read homepart
 	echo "homepart=$homepart" >> config.sh
-	mkfs.ext4 "$homepart"
+	mkfs.ext3 "$homepart"
 	printf " Enter your Swap Partition: i.e. /dev/sda1\n"
 	read swappart
 	echo "swappart=$swappart" >> config.sh
