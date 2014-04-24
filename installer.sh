@@ -28,8 +28,6 @@ EOT
 }
 
 disk() {
-	printf "\n \n \n Running lsblk to list block devices\n"
-	lsblk
 	printf " \n Which drive would you like to install to?: i.e. /dev/sda\n"
 	printf " WARNING : /dev/sda may not be empty for you\n"
 	read yourdrive
@@ -42,6 +40,8 @@ disk() {
 }
 
 ASKme(){
+	printf "\n Running lsblk to list block devices\n"
+	lsblk
 	printf " \n 3 CHOICES FOR PARTITIONING \n "
 	printf " \n (1) boot and root partitions \n "
 	printf " \n (2) boot, root, home partitions \n "
