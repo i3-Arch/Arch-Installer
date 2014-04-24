@@ -138,9 +138,9 @@ CALLpart(){
 
 main() {
 	banner
-	disk
+	ASKme	## ASK NUMBER OF PARTITIONS
+	disk	## PARTITION WITH CFDISK or FDISK
 	touch config.sh ## Create file to store bootpart, rewtpart, homepart, swappart for chroot
-	ASKme 			## ASK NUMBER OF PARTITIONS
     	CALLpart 		## CALL PARTITIONING IF STATEMENT 
 	pkgmntchroot 	## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.sh
 	grub 			## Runs after chrootnset.sh
