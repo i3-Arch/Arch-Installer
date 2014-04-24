@@ -1,10 +1,20 @@
-# About
-			----------- In Progress -----------
+# ABOUT
+		              :: Authors ::
+			
+			 	*  i3-Arch
+			  	* trewchainz
+			  	*  t60r
+			
+			
+		-----------THIS IS A WORK IN PROGRESS -----------
 
 
 
 	* This is made to install archlinux with base base/devel
-		* And then setup i3 afterwards
+			
+		* And then optionally setup i3 afterwards........
+			
+			i. Eventually other WM/DE's will be added
 
 
 		
@@ -39,9 +49,9 @@
 	... .......                       .IIIIIIII?.                                  
 	... ... ..                        .?IIIIIIII+..   .                            
 	... ........                    ..?..II?IIII??.   .                            
-	... .......                     .?????~????????.                               
-	... .......                   ..??????????????+.                               
-	... ........                  .????????????????+...                            
+	... .......                     .??IIIIII??????.                               
+	... .......                   ..????????II????+..                               
+	... ........                  .?????II?II??????+...                            
 	... ........                 .:++???+?77IIIII7??+.                             
 	... .......      .           .++?IIIIIIIIIIIIIII7?.      .                     
 	............               ..+IIIIIIIIIIIIIIIIIIII?                            
@@ -56,9 +66,3 @@
 	... ........       ..III7I,                        .,7I7II...                  
 	... ........       .III,.                             ..77I                    
 	... ........      .?~.                    .       .       ,I.  
-				
-			              :: Authors ::
-			
-				 	*  i3-Arch
-				  	* trewchainz
-				  	*  t60r
