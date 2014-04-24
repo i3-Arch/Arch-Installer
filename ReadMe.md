@@ -8,13 +8,21 @@
 			
 		-----------THIS IS A WORK IN PROGRESS -----------
 
+	1. Download installer.sh & chrootnset.sh 
+		wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/installer.sh
+		wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/chrootnset.sh
+	
+		
+	2. run installer.sh
+		source installer.sh
 
 
-	* This is made to install archlinux with base base/devel
+
+			* This is made to install archlinux with base base/devel
 			
-		* And then optionally setup i3 afterwards........
+				* And then optionally setup i3 afterwards........
 			
-			i. Eventually other WM/DE's will be added
+					i. Eventually other WM/DE's will be added
 
 
 		
