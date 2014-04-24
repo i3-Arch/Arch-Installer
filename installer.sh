@@ -46,12 +46,12 @@ ASKme () {
 	printf "\n Running lsblk to list block devices\n"
 	lsblk |grep -v "loop*"
 	printf " \n 3 CHOICES FOR PARTITIONING \n "
-	printf " \n (1) boot and root partitions \n "
-	printf " \n (2) boot, root, home partitions \n "
-	printf " \n (3) boot, root, home, swap partitions \n "
+	printf "  (1) boot and root partitions \n "
+	printf "  (2) boot, root, home partitions \n "
+	printf "  (3) boot, root, home, swap partitions \n \n "
 	sleep 2
-	printf " REMINDER\n\n IF PLANNING TO USE SYSLINUX \n\n "
-	printf "  MAKE BOOT PARTITION /dev/sda1 \n "
+	printf " * REMINDER *\n\n IF PLANNING TO USE SYSLINUX \n "
+	printf "  MAKE SURE BOOT PARTITION IS /dev/sda1 \n "
 	read thechoiceman
 	echo "thechoiceman=$thechoiceman" >> config.sh
 }
