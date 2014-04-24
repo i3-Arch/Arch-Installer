@@ -16,7 +16,12 @@
 	2. run installer.sh
 		source installer.sh
 
-
+		
+		{ OPTIONAL: download and run i3-option.sh }
+		
+			1. wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/i3-option.sh
+		
+			2. source i3-option.sh
 
 			* This is made to install archlinux with base base/devel
 			
