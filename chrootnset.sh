@@ -2,24 +2,24 @@
 #
 #
 # 	Authors  ::->>     i3-Arch,  trewchainz, t60r    <<-::
-#					
+#
 #		Made to install archlinux
-#		
+#
 #		VERSION 1.2-BETA
-#	
+#
 #	WARNING : THIS SCRIPT IS CURRENTLY BEING DEVELOPED
 #			RUN AT YOUR OWN RISK
 #
 #	Reminder  -  Add option for LUKS
 ############################################
 source config.sh #grab rewtpart, swappart, homepart, bootpart var values
-nicetty(){
+nicetty () {
 	wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/issue
 	cp issue /etc/issue
 	rm issue
 }
 
-decisions(){
+decisions () {
 	if [ $thechoiceman -eq 3 ]
 		then
 		    fstab3
@@ -34,20 +34,20 @@ decisions(){
 	fi
 }
 
-fstab1(){
+fstab1 () {
 	printf " Setting up fstab...\n"
 	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab
 	echo " $bootpart        /mnt/boot       ext4    defaults        0       1"      >> /etc/fstab
 }
 
-fstab2(){
+fstab2 () {
         printf " Setting up fstab...\n"
-     	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab	
+     	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab
      	echo " $homepart        /home   ext4    defaults        0        1" >> /etc/fstab
-     	echo " $bootpart        /mnt/boot       ext4    defaults        0       1"      >> /etc/fstab	
+     	echo " $bootpart        /mnt/boot       ext4    defaults        0       1"      >> /etc/fstab
 }
 
-fstab3() {
+fstab3 () {
 	printf " Setting up fstab...\n"
 	echo " $rewtpart	/    	ext4   defaults    0    1" >> /etc/fstab
 	echo " $swappart	none     swap    defaults    0    1" >> /etc/fstab
@@ -55,20 +55,20 @@ fstab3() {
 	echo " $bootpart	/mnt/boot	ext4	defaults	0	1"	>> /etc/fstab
 }
 
-hostname() {
+hostname () {
 	printf " Choose your hostname:\n"
 	read hostresponse
 	echo "$hostresponse" > /etc/hostname
 }
 
-timelocale() {
+timelocale () {
 	printf " \n Enter your Time Zone:\n"
 	printf " CHOICES ARE: New York or Athens \n"
 	printf "  Sorry I didnt do all timezones yet\n"
 	printf " \n Enter (1) for New York \n "
 	printf "  Enter (2) for Athens \n "
 	read timezoneresponse
-	if [ "$timezoneresponse" == NewYork -o "$timezoneresponse" == 1 ] 
+	if [ "$timezoneresponse" == NewYork -o "$timezoneresponse" == 1 ]
 		then
 			$(ln -s /usr/share/zoneinfo/America/New_York /etc/localtime) ;
 	elif	[ "$timezoneresponse" == Athens -o "$timezoneresponse" == 2 ]
@@ -89,17 +89,17 @@ timelocale() {
 		nano /etc/locale.gen
 	fi
 	printf " NOW GENERATING LOCALES...\n"
-	locale-gen 
+	locale-gen
 }
 
-main(){
+main () {
 	nicetty
 	decisions
 	hostname
 	timelocale
 	mkinitcpio -p linux
 	rm chrootnset.sh config.sh #cleanup
-	exit 
+	exit
 }
 
 main
