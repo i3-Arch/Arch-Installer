@@ -31,18 +31,17 @@ cat <<"EOT"
 EOT
 sleep 3
 }
+
 greetz() {
 	cd ~
 	printf " \n \n   :: Lets Do This ::  \n \n   "
 	printf " \n \n 		#SWAG	      \n \n  "
 }
 
-
 makeitbro() {
 	pacman -Syyu --noconfirm
 	pacman -S base-devel xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 }
-
 
 xseti3() {
 	X -configure
@@ -51,8 +50,7 @@ xseti3() {
 			$(cp $HOME/xorg.conf.new $HOME/xorg.conf)
 			$(rm $HOME/xorg.conf.new)
 		else
-			echo
-			echo " where is xorg.conf.new ? -- skipping"
+			printf " \n Where is xorg.conf.new ? -- skipping \n"
 	fi
 
 		printf " \n Setting Up i3 config in ~/.i3/config \n "
@@ -70,7 +68,6 @@ xseti3() {
 	fi
 }
 
-
 i3fin() {
 	printf " \n Setting up .Xresources, .vimrc and .xinitrc \n "
 		
@@ -85,7 +82,6 @@ i3fin() {
 		sleep 3 &&
 		$(startx)
 }
-
 
 main() {
 	banner
