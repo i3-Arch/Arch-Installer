@@ -41,7 +41,6 @@ disk () {
 	fi
 }
 
-# According to i3, the functions below will probably be removed anyway
 # If you don't know how to partition properly, you don't need this OS.
 ASKme () {
 	printf "\n Running lsblk to list block devices\n"
