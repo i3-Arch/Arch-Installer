@@ -20,7 +20,7 @@ echo "But ultimately this entire operation is up to you. That's why it's not cal
 echo "the main function after partitioning."
 echo ""
 echo "Only you are responsible for any changes made after this, so do not run unless"
-echo "yu absolutely have read and trust the source code."
+echo "you absolutely have read and trust the source code."
 
 echo ""
 echo -n "I accept these terms. [y|n]: "
