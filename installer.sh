@@ -11,6 +11,9 @@
 #			RUN AT YOUR OWN RISK
 #
 #	Reminder  -  Add option for LUKS
+#
+#   Note : Since this script directly modifies the system
+#        It is required to be operated as root
 ############################################
 printf " \n WELCOME TO i3 ARCHLINUX INSTALL SCRIPT\n"
 sleep 3
@@ -99,7 +102,7 @@ FULLpart () {
 
 pkgmntchroot () {
 	printf " Setting up install...\n"
-	pacman -Syy
+	pacman -Syu
 	pacman -S rsync grub --noconfirm
 	mount $rewtpart /mnt
 	mkdir -pv /mnt/var/lib/pacman
