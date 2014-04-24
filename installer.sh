@@ -136,19 +136,35 @@ syslinux () { #Needs to have syslinux installed, perhaps in an 'if' statement to
 } #ONLY WORKS ON /dev/sda1 AS BOOT!!!
 
 CALLpart () {
-	if [ $thechoiceman -eq 3 ]
+	if [ "$thechoiceman" -eq 3 ]
     		then
     		    FULLpart
-		elif [ $thechoiceman -eq 2 ]
+		elif [ "$thechoiceman" -eq 2 ]
 		then
 		    HALFpart
-		elif [ $thechoiceman -eq 1 ]
+		elif [ "$thechoiceman" -eq 1 ]
 		then
 		    SMALLpart
 		else
 		    SMALLpart
 	fi
 }
+
+BOOTload () {
+	printf " \n CHOOSE YOUR BOOTLOADER \n"
+	printf " \n (1) For Grub \n "
+	printf " \n (2) For SysLinux \n " 
+	read bootloadchoice
+	if [ "$bootloadchoice" -eq 1 ]
+		then
+			grub
+		elif [ "$bootloadchoice" -eq 2 ]
+			then
+				syslinux
+		else
+			grub
+	fi
+}		
 
 main () {
 	banner
@@ -157,7 +173,7 @@ main () {
 	touch config.sh ## Create file to store bootpart, rewtpart, homepart, swappart for chroot
     CALLpart 		## CALL PARTITIONING IF STATEMENT
 	pkgmntchroot 	## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.sh
-	grub 			## Runs after chrootnset.sh
+	BOOTload 			## Runs after chrootnset.sh
 	printf " \n COMPLETE !  \n "
 	printf " \n SHUT DOWN SYSTEM AND THEN \n"
 	printf " \n REMOVE LIVE IMAGE \n "
