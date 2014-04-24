@@ -49,7 +49,7 @@
 	2. Add More Options In General
 
 	3. Misc
-		i. Luks
+		i. LUKS
 
 	4. Cleanup
 
