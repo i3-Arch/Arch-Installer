@@ -128,6 +128,13 @@ grub () {
 	echo " }" >> /mnt/boot/grub/grub.cfg
 }
 
+syslinux () { #Needs to have syslinux installed, perhaps in an 'if' statement to choose bootloader
+	echo "Warning! /boot/ MUST be on /dev/sda1 for this function to work!i \n"
+	syslinux-install_update -i -a -m
+	sed '/sda3/ s//sda1/' /mnt/boot/syslinux/syslinux.cfg >> syslinux.cfg 
+	mv syslinux.cfg /mnt/boot/syslinux/syslinux.cfg
+} #ONLY WORKS ON /dev/sda1 AS BOOT!!!
+
 CALLpart () {
 	if [ $thechoiceman -eq 3 ]
     		then
