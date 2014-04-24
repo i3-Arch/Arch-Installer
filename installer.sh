@@ -126,14 +126,13 @@ grub(){
 
 CALLpart(){
 	if [ $thechoiceman -eq 3 ]
-    		then 
-    		    FULLpart
+    		then FULLpart
 		elif [ $thechoiceman -eq 2 ]
-			then HALFpart
+		then HALFpart
 		elif [ $thechoiceman -eq 1 ]
-			then SMALLpart
+		then SMALLpart
 		else 
-			SMALLpart
+		SMALLpart
 	fi
 }
 
