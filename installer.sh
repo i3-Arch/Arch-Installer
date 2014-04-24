@@ -16,7 +16,6 @@ printf " \n WELCOME TO i3 ARCHLINUX INSTALL SCRIPT\n"
 sleep 3
 banner() {
 cat <<"EOT"
-
     #                                                          ### 
    # #   #####   ####  #    # #      # #    # #    # #    #    ### 
   #   #  #    # #    # #    # #      # ##   # #    #  #  #     ### 
@@ -34,7 +33,7 @@ disk() {
 	if [ "$toolchoice" == cfdisk -o "$toolchoice" == CFDISK ]
 		then
 			cfdisk $yourdrive
-	else
+		else
 		fdisk $yourdrive
 	fi
 }
