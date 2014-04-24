@@ -132,7 +132,7 @@ CALLpart(){
 	elif [ $thechoiceman -eq 1 ]
 		then SMALLpart
 	else 
-		FULLpart
+		SMALLpart
 	fi
 }
 
