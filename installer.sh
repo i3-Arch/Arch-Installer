@@ -16,7 +16,6 @@
 #        It is required to be operated as root
 ############################################
 printf " \n WELCOME TO i3 ARCHLINUX INSTALL SCRIPT\n"
-sleep 3
 banner () {
 cat <<"EOT"
     #                                                          ###
@@ -27,6 +26,7 @@ cat <<"EOT"
  #     # #   #  #    # #    # #      # #   ## #    #  #  #     ###
  #     # #    #  ####  #    # ###### # #    #  ####  #    #    ###
 EOT
+sleep 3
 }
 
 disk () {
