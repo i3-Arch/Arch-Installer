@@ -1,7 +1,9 @@
 #!/bin/bash
 #
-# MENU FOR ARCH-INSTALLER
-#
+#  MENU FOR ARCH-INSTALLER
+#  
+#   i3-Arch
+#   trewchainz 
 ##############################
 
 scriptdir=$HOME/Arch-Installer
