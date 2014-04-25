@@ -13,13 +13,12 @@
 			
 		-----------THIS IS A WORK IN PROGRESS -----------
 
-	1. Download installer.sh & chrootnset.sh 
-		wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/installer.sh
-		wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/chrootnset.sh
-	
-		
-	2. run installer.sh
-		source installer.sh
+              1. :DOWNLOAD: 
+                    wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh
+               
+                2. :RUN: 
+                        source menu.sh
+
 
 		
 		{ OPTIONAL: download and run i3-option.sh }
