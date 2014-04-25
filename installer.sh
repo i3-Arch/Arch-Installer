@@ -165,6 +165,7 @@ BOOTload () {
 	printf " \n CHOOSE YOUR BOOTLOADER \n"
 	printf " \n (1) For Grub \n "
 	printf " \n (2) For SysLinux \n " 
+	printf " \n CHOICE: "
 	read bootloadchoice
 	if [ "$bootloadchoice" -eq 1 ]
 		then
