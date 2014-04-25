@@ -60,45 +60,54 @@ ASKme () {
 
 SMALLpart () {
 	printf " \n Enter your Boot Partition: i.e. /dev/sda1 \n"
-        read bootpart
+    printf " \n Boot Partition: "    
+		read bootpart
         echo "bootpart=$bootpart" >> config.sh
         mkfs.ext4 "$bootpart" -L bootfs
 	printf " \n Enter your Root Partition: i.e. /dev/sda2 \n"
-        read rewtpart
+    printf " \n Root Partition: \n "
+		read rewtpart
         echo "rewtpart=$rewtpart" >> config.sh
         mkfs.ext4 "$rewtpart" -L rootfs
 }
 
 HALFpart () {
         printf " \n Enter your Boot Partition: i.e. /dev/sda1 \n"
-        read bootpart
+        printf " \n Boot Partition: \n"
+		read bootpart
         echo "bootpart=$bootpart" >> config.sh
         mkfs.ext4 "$bootpart" -L bootfs
         printf " \n Enter your Root Partition: i.e. /dev/sda2 \n"
-        read rewtpart
+        printf " \n Root Partition: \n"
+		read rewtpart
         echo "rewtpart=$rewtpart" >> config.sh
         mkfs.ext4 "$rewtpart" -L rootfs
 	printf " \n Enter your Home Partition: i.e. /dev/sda3 \n"
-        read homepart
+    printf " \n Home Partition: "
+		read homepart
         echo "homepart=$homepart" >> config.sh
         mkfs.ext4 "$homepart"
 }
 
 FULLpart () {
 
-	printf " Enter your Boot Partition: i.e. /dev/sda1 \n"
+	printf " \n Enter your Boot Partition: i.e. /dev/sda1 \n"
+	printf " \n Boot Partition: \n"
 	read bootpart
 	echo "bootpart=$bootpart" >> config.sh
 	mkfs.ext4 "$bootpart" -L bootfs
-	printf " Enter your Root Partition: i.e. /dev/sda2 \n"
+	printf " \n Enter your Root Partition: i.e. /dev/sda2 \n"
+	printf " \n Root Partition: \n"
 	read rewtpart
 	echo "rewtpart=$rewtpart" >> config.sh
 	mkfs.ext4 "$rewtpart" -L rootfs
-	printf " Enter your Home Partition: i.e. /dev/sda3 \n"
+	printf " \n Enter your Home Partition: i.e. /dev/sda3 \n"
+	printf " \n Home Partition: \n"
 	read homepart
 	echo "homepart=$homepart" >> config.sh
 	mkfs.ext4 "$homepart"
-	printf " Enter your Swap Partition: i.e. /dev/sda4 \n"
+	printf " \n Enter your Swap Partition: i.e. /dev/sda4 \n"
+	printf " \n Swap Partition: \n"
 	read swappart
 	echo "swappart=$swappart" >> config.sh
 	mkswap "$swappart" -L swapfs
