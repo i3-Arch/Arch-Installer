@@ -43,8 +43,7 @@
 
 # CURRENT OBJECTIVES
 	
-	1. Make seperate partition optional
-		i. for boot,root,home ..... etc
+	1. Make a menu that makes things easier
 
 	2. Add More Options In General
 
