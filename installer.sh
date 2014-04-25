@@ -52,6 +52,8 @@ ASKme () {
 	sleep 2
 	printf " * REMINDER *\n\n IF PLANNING TO USE SYSLINUX \n "
 	printf "  MAKE SURE BOOT PARTITION IS /dev/sda1 \n "
+	printf " \n SELECT [1] [2] or [3] \n"
+	printf " Selection: "
 	read thechoiceman
 	echo "thechoiceman=$thechoiceman" >> config.sh
 }
