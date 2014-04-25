@@ -37,7 +37,8 @@ clear
 	echo -e " \033[1m ${red}2)${white}\033[1m VIEW chrootnset.sh ( OTHER HALF OF SCRIPT )  \033[0m"
 	echo -e " \033[1m ${red}3)${white}\033[1m VIEW README  \033[0m"
 	echo -e " \033[1m ${red}4)${white}\033[1m INSTALL ARCHLINUX ! \033[0m"
-	echo -e " \033[1m ${red}5)${white}\033[1m CLEANUP ( RUN AFTER INSTALL | BEFORE YOU REBOOT ) \033[0m"
+	echo -e " \033[1m ${red}5)${white}\033[1m CLEANUP ( RUN AFTER INSTALL | BEFORE YOU REBOOT ) \033[0m" 
+                            ## cleanup not needed cuz live system ?
 	echo -e " \033[1m ${red}6)${white}\033[1m Exit\033[0m"
 	echo
 read CHOICE
