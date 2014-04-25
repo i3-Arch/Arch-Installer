@@ -13,7 +13,11 @@
 			
 		-----------THIS IS A WORK IN PROGRESS -----------
 
-              1. :DOWNLOAD: 
+             i. * FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE *
+			  				i. * BOOT INTO LIVE ARCH MACHINE *
+			  
+			  
+			  1. :DOWNLOAD: 
                              wget 7.ly/menu         
            
                
