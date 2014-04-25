@@ -119,9 +119,7 @@ pkgmntchroot () {
 	pacman -S rsync grub --noconfirm
 	mount $rewtpart /mnt
 	mkdir -pv /mnt/var/lib/pacman
-	pacman -r /mnt -Sy base base-devel --noconfirm
-	pacman -r /mnt -Syy 2> /dev/null
-	pacman -r /mnt -S rsync grub --noconfirm
+	pacman -r /mnt -Syy base base-devel rsync grub --noconfirm
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
 	mount --bind /dev/ /mnt/dev
 	mount --bind /sys/ /mnt/sys
