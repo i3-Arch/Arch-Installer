@@ -24,8 +24,8 @@ calculate () {
 	fi
 }	
 
-CHOICE=6
-until [ $CHOICE -eq 5 ]
+CHOICE=7
+until [ $CHOICE -eq 6 ]
 do
 	clear
 	echo -e "\033[1m ${red} TAKE YOUR PICK \033[0m"
