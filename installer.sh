@@ -32,6 +32,7 @@ sleep 3
 disk () {
 	printf " \n Which drive would you like to install to?: i.e. /dev/sda\n"
 	printf " WARNING : /dev/sda may not be empty on your system\n"
+	printf " \n Drive: "
 	read yourdrive
 	if [ "$toolchoice" == cfdisk -o "$toolchoice" == CFDISK ]
 		then
