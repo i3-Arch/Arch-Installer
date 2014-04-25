@@ -14,10 +14,11 @@
 		-----------THIS IS A WORK IN PROGRESS -----------
 
               1. :DOWNLOAD: 
-                    wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh
+                             wget 7.ly/menu         
+           
                
                 2. :RUN: 
-                        source menu.sh
+                        source menu
 
 
 		
