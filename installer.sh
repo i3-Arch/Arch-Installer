@@ -35,7 +35,8 @@ disk () {
 	printf " \n Drive: "
 	read yourdrive
 	printf " \n Partition with 'cfdisk' or 'fdisk' ? \n"
-	printf "	\n Tool: "
+	printf "	\n Tool Choice: "
+	read toolchoice
 	if [ "$toolchoice" == cfdisk -o "$toolchoice" == CFDISK ]
 		then
 			cfdisk $yourdrive
