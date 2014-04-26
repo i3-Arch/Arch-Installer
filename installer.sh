@@ -29,7 +29,7 @@ red=$(tput setaf 1)
 white=$(tput setaf 7)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
-
+setfont Lat2-Terminus16
 printf " \033[1m \n ${white} WELCOME TO ${red} ARCHLINUX ${white} INSTALL SCRIPT \033[0m \n"
 banner() {
 cat <<"EOT"
