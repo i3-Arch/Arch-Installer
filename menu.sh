@@ -19,7 +19,7 @@ pacman -Syy git --noconfirm
 git clone https://github.com/i3-Arch/Arch-Installer.git
 cd $scriptdir
 
-calculate () {
+calculate() {
 	if [ $CHOICE -eq 4 ]
 		then
 		   sleep 2 && source installer.sh
