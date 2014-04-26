@@ -56,7 +56,7 @@ disk() {
 		then
 			cfdisk $yourdrive
 		else
-		fdisk $yourdrive
+			fdisk $yourdrive
 	fi
 }
 
@@ -191,8 +191,8 @@ BOOTload() {
 		then
 			grub
 		elif [ "$bootloadchoice" -eq 2 ]
-			then
-				syslinux
+		then
+			syslinux
 		else
 			grub
 	fi
