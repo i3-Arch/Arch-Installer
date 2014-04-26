@@ -15,7 +15,14 @@
 #   Note : Since this script directly modifies the system
 #        It is required to be operated as root
 ############################################
-printf " \n WELCOME TO i3 ARCHLINUX INSTALL SCRIPT\n"
+
+#COLORS
+red=$(tput setaf 1)
+white=$(tput setaf 7)
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
+
+printf " \033[1m \n ${white} WELCOME TO ${red} ARCHLINUX ${white} INSTALL SCRIPT \033[0m \n"
 banner () {
 cat <<"EOT"
     #                                                          ###
@@ -30,9 +37,9 @@ sleep 3
 }
 
 disk () {
-	printf " \n Which drive would you like to install to?: i.e. /dev/sda\n"
-	printf " WARNING : /dev/sda may not be empty on your system\n"
-	printf " \n Drive: "
+	printf " \033[1m \n ${white} Which drive would you like to install to?: i.e. /dev/sda \n \033[0m "
+	printf " \033[1m ${red} WARNING : ${white} /dev/sda may not be empty on your system\n \033[0m "
+	printf " \033[1m \n ${green} Drive: ${white} \033[0m "
 	read yourdrive
 	printf " \n Partition with 'cfdisk' or 'fdisk' ? \n"
 	printf "	\n Tool Choice: "
