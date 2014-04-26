@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 #  MENU FOR ARCH-INSTALLER
-#  
+#
 #   i3-Arch
-#   trewchainz 
+#   trewchainz
 ##############################
 
 scriptdir=$HOME/Arch-Installer
@@ -12,7 +12,7 @@ white=$(tput setaf 7)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
 
-# SETTING THINGS UP FIRST 
+# SETTING THINGS UP FIRST
 printf " \033[1m ${red} \n Setting Things Up First \n \033[0m "
 cd $HOME
 pacman -Syy git --noconfirm
@@ -24,7 +24,7 @@ calculate() {
 		then
 		   sleep 2 && source installer.sh
 	fi
-}	
+}
 
 CHOICE=7
 until [ $CHOICE -eq 6 ]

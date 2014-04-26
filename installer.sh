@@ -23,7 +23,7 @@ green=$(tput setaf 2)
 yellow=$(tput setaf 3)
 
 printf " \033[1m \n ${white} WELCOME TO ${red} ARCHLINUX ${white} INSTALL SCRIPT \033[0m \n"
-banner() {
+banner(){
 cat <<"EOT"
     #                                                          ###
    # #   #####   ####  #    # #      # #    # #    # #    #    ###
@@ -36,7 +36,7 @@ EOT
 sleep 3
 }
 
-disk() {
+disk(){
 	printf " \033[1m \n ${white} Which drive would you like to install to?: i.e. /dev/sda \n \033[0m "
 	printf " \033[1m ${red} WARNING: ${green} /dev/sda ${white} may not be empty on your system\n \033[0m "
 	printf " \033[1m \n ${yellow} Drive:${white}\033[0m "
@@ -53,7 +53,7 @@ disk() {
 }
 
 # If you don't know how to partition properly, you don't need this OS.
-ASKme() {
+ASKme(){
 	printf "\033[1m \n ${white} Running lsblk to list block devices\n \033[0m"
 	lsblk |grep -v "loop*"
 	printf " \033[1m \n ${white} ENTER YOUR CHOICE OF ${green}[1]${yellow}[2]${red}[3] \n \033[0m"
@@ -69,9 +69,9 @@ ASKme() {
 	echo "thechoiceman=$thechoiceman" >> config.sh
 }
 
-SMALLpart() {
+SMALLpart(){
 	printf " \n Enter your Boot Partition: i.e. /dev/sda1 \n"
-    printf " \n Boot Partition: "    
+    printf " \n Boot Partition: "
 		read bootpart
         echo "bootpart=$bootpart" >> config.sh
         mkfs.ext4 "$bootpart" -L bootfs
@@ -82,7 +82,7 @@ SMALLpart() {
         mkfs.ext4 "$rewtpart" -L rootfs
 }
 
-HALFpart() {
+HALFpart(){
         printf " \n Enter your Boot Partition: i.e. /dev/sda1 \n"
         printf " \n Boot Partition: "
 		read bootpart
@@ -100,7 +100,7 @@ HALFpart() {
         mkfs.ext4 "$homepart"
 }
 
-FULLpart() {
+FULLpart(){
 
 	printf " \n Enter your Boot Partition: i.e. /dev/sda1 \n"
 	printf " \n Boot Partition: "
@@ -124,7 +124,7 @@ FULLpart() {
 	mkswap "$swappart" -L swapfs
 }
 
-pkgmntchroot() {
+pkgmntchroot(){
 	printf " Setting up install...\n"
 	pacman -Syyu --noconfirm
 	pacman -S rsync grub --noconfirm
@@ -140,7 +140,7 @@ pkgmntchroot() {
 	chroot /mnt bash chrootnset.sh
 }
 
-grub() {
+grub(){
 	grub-install --boot-directory=/mnt/boot $yourdrive
 	grub-mkconfig -o /mnt/boot/grub/grub.cfg
 	echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
@@ -150,14 +150,14 @@ grub() {
 	echo " }" >> /mnt/boot/grub/grub.cfg
 }
 
-syslinux() { 
+syslinux(){
 	printf " \n Warning! /boot/ MUST be on /dev/sda1 for this function to work! \n"
 	syslinux-install_update -i -a -m
-	sed '/sda3/ s//sda1/' /mnt/boot/syslinux/syslinux.cfg >> syslinux.cfg 
+	sed '/sda3/ s//sda1/' /mnt/boot/syslinux/syslinux.cfg >> syslinux.cfg
 	mv syslinux.cfg /mnt/boot/syslinux/syslinux.cfg
 } #ONLY WORKS ON /dev/sda1 AS BOOT!!!
 
-CALLpart() {
+CALLpart(){
 	if [ "$thechoiceman" -eq 3 ]
     		then
     		    FULLpart
@@ -172,10 +172,10 @@ CALLpart() {
 	fi
 }
 
-BOOTload() {
+BOOTload(){
 	printf " \n CHOOSE YOUR BOOTLOADER \n"
 	printf " \n (1) For Grub \n "
-	printf " \n (2) For SysLinux \n " 
+	printf " \n (2) For SysLinux \n "
 	printf " \n CHOICE: "
 	read bootloadchoice
 	if [ "$bootloadchoice" -eq 1 ]
@@ -187,16 +187,16 @@ BOOTload() {
 		else
 			grub
 	fi
-}		
+}
 
-main() {
+main(){
 	banner
-	ASKme     	 ## ASK NUMBER OF PARTITIONS
-	disk	         ## PARTITION WITH CFDISK or FDISK
-	touch config.sh  ## Create file to store bootpart, rewtpart, homepart, swappart for chroot
-        CALLpart 	 ## CALL PARTITIONING IF STATEMENT
-	pkgmntchroot 	 ## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.sh
-	BOOTload 	 ## CHOOSE BOOTLOADER ## Runs after chrootnset.sh
+	ASKme	## ASK NUMBER OF PARTITIONS
+	disk	## PARTITION WITH CFDISK or FDISK
+	touch config.sh ## Create file to store bootpart, rewtpart, homepart, swappart for chroot
+    CALLpart 		## CALL PARTITIONING IF STATEMENT
+	pkgmntchroot 	## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.sh
+	BOOTload 	## CHOOSE BOOTLOADER ## Runs after chrootnset.sh
 	printf " \n COMPLETE !  \n "
 	printf " \n SHUT DOWN SYSTEM AND THEN \n"
 	printf " \n REMOVE LIVE IMAGE \n "
