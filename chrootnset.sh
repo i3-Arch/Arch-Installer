@@ -20,7 +20,11 @@ source config.sh #grab rewtpart, swappart, homepart, bootpart var values
 #	cp issue /etc/issue
 #	rm issue
 #}
-
+#COLORS
+red=$(tput setaf 1)
+white=$(tput setaf 7)
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
 decisions() {
 	if [ $thechoiceman -eq 3 ]
 		then
