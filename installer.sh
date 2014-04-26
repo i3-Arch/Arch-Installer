@@ -38,11 +38,11 @@ sleep 3
 
 disk () {
 	printf " \033[1m \n ${white} Which drive would you like to install to?: i.e. /dev/sda \n \033[0m "
-	printf " \033[1m ${red} WARNING : ${white} /dev/sda may not be empty on your system\n \033[0m "
-	printf " \033[1m \n ${green} Drive: ${white} \033[0m "
+	printf " \033[1m ${red} WARNING: ${green} /dev/sda ${white} may not be empty on your system\n \033[0m "
+	printf " \033[1m \n ${yellow} Drive:${white}\033[0m "
 	read yourdrive
-	printf " \n Partition with 'cfdisk' or 'fdisk' ? \n"
-	printf "	\n Tool Choice: "
+	printf " \033[1m ${white} \n Partition with ${green} cfdisk ${white} or ${green} fdisk ? \n \033[0m"
+	printf " \033[1m \n ${yellow} Tool Choice:${white}\033[0m"
 	read toolchoice
 	if [ "$toolchoice" == cfdisk -o "$toolchoice" == CFDISK ]
 		then
@@ -54,14 +54,14 @@ disk () {
 
 # If you don't know how to partition properly, you don't need this OS.
 ASKme () {
-	printf "\n Running lsblk to list block devices\n"
+	printf "\033[1m \n ${white} Running lsblk to list block devices\n \033[0m"
 	lsblk |grep -v "loop*"
-	printf " \n  ENTER YOUR CHOICE OF [1] [2] [3] \n"
-	printf "  (1) boot and root partitions \n "
-	printf " (2) boot, root, home partitions \n "
-	printf " (3) boot, root, home, swap partitions \n \n "
+	printf " \033[1m \n ${white} ENTER YOUR CHOICE OF ${green}[1]${yellow}[2]${red}[3] \n \033[0m"
+	printf " \033[1m  ${white} (1)${red}boot and root partitions \n \033[0m"
+	printf " \033[1m ${white}(2)${yellow}boot, root, home partitions \n \033[0m "
+	printf " \033[1m ${white}(3)${green}boot, root, home, swap partitions \n \n \033[0m"
 	sleep 2
-	printf " * REMINDER *\n\n IF PLANNING TO USE SYSLINUX \n "
+	printf " \033[1m ${red} * REMINDER * ${white}\n\n IF PLANNING TO USE SYSLINUX \n "
 	printf "  MAKE SURE BOOT PARTITION IS /dev/sda1 \n "
 	printf " \n SELECT [1] [2] or [3] \n"
 	printf " Selection: "
