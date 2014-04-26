@@ -16,6 +16,14 @@
 #        It is required to be operated as root
 ############################################
 
+############
+#
+#  STATUS: NOT WORKING
+#  REASON:  Grub is looking for UUID's
+#  LAST RAN = 4-26-2014 
+#	
+########################
+
 #COLORS
 red=$(tput setaf 1)
 white=$(tput setaf 7)
