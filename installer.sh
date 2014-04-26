@@ -45,8 +45,8 @@ sleep 3
 }
 
 disk() {
-	printf " \033[1m \n ${white} Which drive would you like to install to?: i.e. /dev/sda \n \033[0m "
-	printf " \033[1m ${red} WARNING: ${green} /dev/sda ${white} may not be empty on your system\n \033[0m "
+	printf " \033[1m \n ${white} Which drive would you like to install to?:${red} i.e. ${white}/dev/sda \n \033[0m "
+	printf " \033[1m ${red} WARNING:${green}/dev/sda${white}may not be empty on your system\n \033[0m "
 	printf " \033[1m \n ${yellow} Drive:${white}\033[0m "
 	read yourdrive
 	printf " \033[1m ${white} \n Partition with ${green} cfdisk ${white} or ${green} fdisk ? \n \033[0m"
@@ -65,26 +65,26 @@ ASKme() {
 	printf "\033[1m \n ${white} Running lsblk to list block devices\n \033[0m"
 	lsblk |grep -v "loop*"
 	printf " \033[1m \n ${white} ENTER YOUR CHOICE OF ${green}[1]${yellow}[2]${red}[3] \n \033[0m"
-	printf " \033[1m  ${white} (1)${red}boot and root partitions \n \033[0m"
-	printf " \033[1m ${white}(2)${yellow}boot, root, home partitions \n \033[0m "
-	printf " \033[1m ${white}(3)${green}boot, root, home, swap partitions \n \n \033[0m"
+	printf " \033[1m  ${red} (1)${white}boot and root partitions \n \033[0m"
+	printf " \033[1m  ${red}(2)${white}boot, root, home partitions \n \033[0m "
+	printf " \033[1m  ${red}(3)${white}boot, root, home, swap partitions \n \n \033[0m"
 	sleep 2
-	printf " \033[1m ${red} * REMINDER * ${white}\n\n IF PLANNING TO USE SYSLINUX \n "
-	printf "  MAKE SURE BOOT PARTITION IS /dev/sda1 \n "
-	printf " \n SELECT [1] [2] or [3] \n"
-	printf " Selection: "
+	printf " \033[1m ${red} * REMINDER * ${white}\n\n IF PLANNING TO USE SYSLINUX \n \033[0m"
+	printf " \033[1m ${white}MAKE SURE BOOT PARTITION IS ${green}/dev/sda1 \n \033[0m"
+	printf " \033[1m ${white}\n SELECT ${green}[1] ${yellow}[2] ${white}or${red} [3] \n \033[0m"
+	printf " \033[1m ${yellow}Your Selection:${white}\033[0m"
 	read thechoiceman
 	echo "thechoiceman=$thechoiceman" >> config.sh
 }
 
 SMALLpart() {
-	printf " \n Enter your Boot Partition: i.e. /dev/sda1 \n"
-    printf " \n Boot Partition: "    
+	printf " \033[1m ${white}\n Enter your Boot Partition: ${red}i.e. ${green}/dev/sda1 \n \033[0m"
+    printf " \033[1m \n ${yellow}Boot Partition: ${white}\033[0m"    
 		read bootpart
         echo "bootpart=$bootpart" >> config.sh
         mkfs.ext4 "$bootpart" -L bootfs
-	printf " \n Enter your Root Partition: i.e. /dev/sda2 \n"
-    printf " \n Root Partition: "
+	printf " \033[1m ${white}\n Enter your Root Partition:${red} i.e. ${green}/dev/sda2 \n \033[0m"
+    printf " \033[1m ${yellow}\n Root Partition: ${white}\033[0m"
 		read rewtpart
         echo "rewtpart=$rewtpart" >> config.sh
         mkfs.ext4 "$rewtpart" -L rootfs
