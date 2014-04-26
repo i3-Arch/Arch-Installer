@@ -149,7 +149,7 @@ pkgmntchroot() {
 	chroot /mnt bash chrootnset.sh
 }
 
-grub() {
+grubinst() {
 	grub-install --boot-directory=/mnt/boot $yourdrive
 	grub-mkconfig -o /mnt/boot/grub/grub.cfg
 	echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
@@ -159,7 +159,7 @@ grub() {
 	echo " }" >> /mnt/boot/grub/grub.cfg
 }
 
-syslinux() { 
+syslinuxinst() { 
 	printf " \n Warning! /boot/ MUST be on /dev/sda1 for this function to work! \n"
 	syslinux-install_update -i -a -m
 	sed '/sda3/ s//sda1/' /mnt/boot/syslinux/syslinux.cfg >> syslinux.cfg 
@@ -189,12 +189,12 @@ BOOTload() {
 	read bootloadchoice
 	if [ "$bootloadchoice" -eq 1 ]
 		then
-			grub
+			grubinst
 		elif [ "$bootloadchoice" -eq 2 ]
 		then
-			syslinux
+			syslinuxinst
 		else
-			grub
+			grubinst
 	fi
 }		
 
