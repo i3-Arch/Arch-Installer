@@ -21,7 +21,7 @@ source config.sh #grab rewtpart, swappart, homepart, bootpart var values
 #	rm issue
 #}
 
-decisions () {
+decisions() {
 	if [ $thechoiceman -eq 3 ]
 		then
 		    fstab3
@@ -36,20 +36,20 @@ decisions () {
 	fi
 }
 
-fstab1 () {
+fstab1() {
 	printf " Setting up fstab...\n"
 	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab
 	echo " $bootpart        /mnt/boot       ext4    defaults        0       1"      >> /etc/fstab
 }
 
-fstab2 () {
+fstab2() {
         printf " Setting up fstab...\n"
      	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab
      	echo " $homepart        /home   ext4    defaults        0        1" >> /etc/fstab
      	echo " $bootpart        /mnt/boot       ext4    defaults        0       1"      >> /etc/fstab
 }
 
-fstab3 () {
+fstab3() {
 	printf " Setting up fstab...\n"
 	echo " $rewtpart	/    	ext4   defaults    0    1" >> /etc/fstab
 	echo " $swappart	none     swap    defaults    0    1" >> /etc/fstab
@@ -57,13 +57,13 @@ fstab3 () {
 	echo " $bootpart	/mnt/boot	ext4	defaults	0	1"	>> /etc/fstab
 }
 
-hostname () {
+hostname() {
 	printf " Choose your hostname:\n"
 	read hostresponse
 	echo "$hostresponse" > /etc/hostname
 }
 
-timelocale () {
+timelocale() {
 	printf " \n Enter your Time Zone:\n"
 	printf " CHOICES ARE: New York or Athens \n"
 	printf "  Sorry I didnt do all timezones yet\n"
@@ -94,7 +94,7 @@ timelocale () {
 	locale-gen
 }
 
-main () {
+main() {
 	decisions
 	hostname
 	timelocale
