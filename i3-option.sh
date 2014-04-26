@@ -5,7 +5,7 @@
 #  Author: i3-Arch
 #
 ###############################################
-banner () {
+banner() {
 cat <<"EOT"
      _____________________________
     !\___________________________/\
@@ -32,18 +32,18 @@ EOT
 sleep 3
 }
 
-greetz () {
+greetz() {
 	cd ~
 	printf " \n \n   :: Lets Do This ::  \n \n   "
 	printf " \n \n 		#SWAG	      \n \n  "
 }
 
-makeitbro () {
+makeitbro() {
 	pacman -Syyu --noconfirm
 	pacman -S base-devel xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 }
 
-xseti3 () {
+xseti3() {
 	X -configure
 	if [ "$HOME/xorg.conf.new" ]
 		then
@@ -68,7 +68,7 @@ xseti3 () {
 	fi
 }
 
-i3fin () {
+i3fin() {
 	printf " \n Setting up .Xresources, .vimrc and .xinitrc \n "
 
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
@@ -83,7 +83,7 @@ i3fin () {
 		$(startx)
 }
 
-main () {
+main() {
 	banner
 	greetz
 	makeitbro
