@@ -143,9 +143,7 @@ pkgmntchroot() {
 	mount --bind /dev/ /mnt/dev
 	mount --bind /sys/ /mnt/sys
 	mount --bind /proc/ /mnt/proc
-	cp chrootnset.sh /mnt
-	cp config.sh /mnt
-	genfstab -L -p /mnt >> /mnt/etc/fstab
+	cp chrootnset.sh config.sh /mnt
 	chroot /mnt bash chrootnset.sh
 }
 
