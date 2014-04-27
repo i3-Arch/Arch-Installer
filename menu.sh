@@ -5,7 +5,7 @@
 #   i3-Arch
 #   trewchainz 
 ##############################
-
+setfont Lat2-Terminus16
 scriptdir=$HOME/Arch-Installer
 red=$(tput setaf 1)
 white=$(tput setaf 7)
