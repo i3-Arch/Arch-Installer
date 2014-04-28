@@ -147,8 +147,10 @@ grubinst() {
 	grub-install --boot-directory=/mnt/boot $yourdrive
 	grub-mkconfig -o /mnt/boot/grub/grub.cfg
 	echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
-	echo " set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
-	echo " linux /boot/vmlinuz-linux root=$rewtpart " >> /mnt/boot/grub/grub.cfg
+	UUIDboot=`lsblk -no UUID $bootpart`
+	UUIDrewt=`lsblk -no UUID $rewtpart`
+	echo " set root=/dev/disk/by-uuid/$UUIDboot " >> /mnt/boot/grub/grub.cfg
+	echo " linux /boot/vmlinuz-linux root=/dev/disk/by-uuid/$UUIDrewt " >> /mnt/boot/grub/grub.cfg
 	echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg
 	echo " }" >> /mnt/boot/grub/grub.cfg
 }
