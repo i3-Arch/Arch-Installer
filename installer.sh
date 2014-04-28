@@ -143,7 +143,7 @@ pkgmntchroot() {
 }
 
 grubinst() {
-	grub-install --recheck --boot-directory=/mnt/boot $yourdrive 
+	grub-install --target=i386-pc --recheck --boot-directory=/mnt/boot $yourdrive 
 	grub-mkconfig -o /mnt/boot/grub/grub.cfg
 	echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
 	echo " set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
