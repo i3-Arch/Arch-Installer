@@ -64,10 +64,10 @@ hostname() {
 
 timelocale() {
 	printf "\033[1m \n ${yellow}Enter your Time Zone: ${white}\n \033[0m"
-	printf " COICES ARE: New York or Athens \n \033[0m"
-	printf " Sornt do all timezones yet\n \033[0m"
-	printf " ENTER (1) for New York \n "
-	printf "  Enter (2) for Athens \n "
+	printf "\033[1m \n ${red}CHOICES ARE: ${white}New York ${green}or ${white}Athens \n \033[0m"
+	printf "\033[1m \n ${yellow}Sorry I didnt do all timezones yet\n \n \033[0m"
+	printf "\033[1m \n ${white}ENTER ${green}(1)${red}for New York \n \033[0m"
+	printf "\033[1m    ${white}ENTER ${green}(2)${red}for Athens \n \033[0m"
 	read timezoneresponse
 	if [ "$timezoneresponse" == NewYork -o "$timezoneresponse" == 1 ]
 		then
