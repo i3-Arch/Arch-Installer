@@ -143,9 +143,7 @@ pkgmntchroot() {
 }
 
 grubinst() {
-	unamestr='uname -m'
-	if [[ "$unamestr" == 'x86_64' ]]
-	then
+	if [[ "$(uname -m)" = "x86_64"]]; then
 		grub-install --target=x86_64 --boot-directory=/mnt/boot $yourdrive
 	else
 		grub-install --target=i386-pc --boot-directory=/mnt/boot $yourdrive 
