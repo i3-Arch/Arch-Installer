@@ -17,7 +17,9 @@ printf " \033[1m ${red} \n Setting Things Up First \n \033[0m "
 cd $HOME
 pacman -Syy git --noconfirm
 git clone https://github.com/i3-Arch/Arch-Installer.git
-cd $scriptdir
+printf "\033[1m \n \n Copying Files and Removing Clone Dir \n \033[0m"
+cp $scriptdir/* $HOME/
+rm -rf $scriptdir
 
 calculate() {
 	if [ $CHOICE -eq 4 ]
@@ -26,8 +28,8 @@ calculate() {
 	fi
 }	
 
-CHOICE=7
-until [ $CHOICE -eq 6 ]
+CHOICE=4
+until [ $CHOICE -eq 5 ]
 do
 	clear
 	echo -e "\033[1m ${red} TAKE YOUR PICK \033[0m"
@@ -36,8 +38,7 @@ do
 	echo -e " \033[1m ${red}2)${white}\033[1m VIEW chrootnset.sh ( OTHER HALF OF SCRIPT )  \033[0m"
 	echo -e " \033[1m ${red}3)${white}\033[1m VIEW README  \033[0m"
 	echo -e " \033[1m ${red}4)${white}\033[1m INSTALL ARCHLINUX ! \033[0m"
-	echo -e " \033[1m ${red}5)${white}\033[1m CLEANUP ( RUN AFTER INSTALL | BEFORE YOU REBOOT ) \033[0m"  ## cleanup not needed cuz live system ?
-	echo -e " \033[1m ${red}6)${white}\033[1m Exit\033[0m"
+	echo -e " \033[1m ${red}5)${white}\033[1m Exit\033[0m"
 	read CHOICE
 
 case $CHOICE in
@@ -45,8 +46,7 @@ case $CHOICE in
 	2) echo -e "\033[1m ${yellow} " && cat chrootnset.sh|less ;;
 	3) echo -e "\033[1m ${white}  " && cat ReadMe.md |less ;;
 	4) echo -e "\033[1m ${white}  LETS DO IT " && calculate ;;
-	5) echo -e "\033[1m ${white} " && $(cd $HOME) && $(rm -rf $HOME/Arch-Installer) ;;
-	6) echo -e "\033[1m ${yellow} HOPE YOU ENJOY \033[0m" ;;
+	5) echo -e "\033[1m ${yellow} HOPE YOU ENJOY \033[0m" ;;
 	*) echo -e "\033[1m ${yellow} invalid option ${red} try again\033[0m"
 esac
 
