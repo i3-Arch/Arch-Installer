@@ -64,7 +64,6 @@ ASKme() {
 	printf " \033[1m  ${red}(1)${white}boot and root partitions \n \033[0m"
 	printf " \033[1m  ${red}(2)${white}boot, root, home partitions \n \033[0m "
 	printf " \033[1m  ${red}(3)${white}boot, root, home, swap partitions \n \n \033[0m"
-	sleep 2
 	printf " \033[1m ${red} * REMINDER * ${white}\n\n IF PLANNING TO USE SYSLINUX \n \033[0m"
 	printf " \033[1m ${white}MAKE SURE BOOT PARTITION IS ${green}/dev/sda1 \n \033[0m"
 	printf " \033[1m ${white}\n SELECT ${green}[1] ${yellow}[2] ${white}or${red} [3] \n \033[0m"
@@ -140,7 +139,7 @@ pkgmntchroot() {
 	mount --bind /sys/ /mnt/sys
 	mount --bind /proc/ /mnt/proc
 	cp chrootnset.sh config.sh /mnt
-	chroot /mnt bash chrootnset.sh
+	arch-chroot /mnt bash chrootnset.sh
 }
 
 grubinst() {
