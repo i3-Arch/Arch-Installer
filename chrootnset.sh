@@ -78,10 +78,10 @@ timelocale() {
 	else
 		printf " Not Understood | skipped | do it yourself |  with 'ln -s'\n"
 	fi
-	printf " YOU NOW NEED TO UNCOMMENT A LOCALE\n"
-	printf " Would you like to use default locale or choose your own? \n"
-	printf " Default locale is en_US.UTF-8 UTF-8 \n"
-	printf " \n(Y) for default locale \n(N) for choose your own \n "
+	printf "\033[1m ${white}YOU NOW NEED TO UNCOMMENT A LOCALE\n \033[0m"
+	printf "\033[1m ${green}Would you like to use default locale or choose your own? \n \033[0m"
+	printf "\033[1m ${white}Default locale is ${red}en_US.UTF-8 UTF-8 \n \033[0m"
+	printf "\033[1m \n${yellow}(Y)${green} for default locale \n${yellow}(N) ${green}for choose your own \n \033[0m"
 	read inputscuzlocale
 	if [ "$inputscuzlocale" == y -o "$inputscuzlocale" == Y ]
 		then
@@ -89,7 +89,7 @@ timelocale() {
 	else
 		nano /etc/locale.gen
 	fi
-	printf " NOW GENERATING LOCALES...\n"
+	printf "\033[1m NOW GENERATING LOCALES...\n \033[0m"
 	locale-gen
 }
 
