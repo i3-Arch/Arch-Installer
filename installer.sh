@@ -28,7 +28,7 @@ yellow=$(tput setaf 3)
 
 banner() {
 	printf " \033[1m \n ${white} WELCOME TO ${red} ARCHLINUX ${white} INSTALL SCRIPT \033[0m \n"
-	cat <<"EOT"
+cat <<"EOT"
     #                                                          ###
    # #   #####   ####  #    # #      # #    # #    # #    #    ###
   #   #  #    # #    # #    # #      # ##   # #    #  #  #     ###
@@ -36,7 +36,7 @@ banner() {
  ####### #####  #      #    # #      # #  # # #    #   ##
  #     # #   #  #    # #    # #      # #   ## #    #  #  #     ###
  #     # #    #  ####  #    # ###### # #    #  ####  #    #    ###
-	EOT
+EOT
 	sleep 3
 }
 
