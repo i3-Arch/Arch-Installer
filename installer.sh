@@ -139,7 +139,7 @@ pkgmntchroot() {
 	mount --bind /sys/ /mnt/sys
 	mount --bind /proc/ /mnt/proc
 	cp chrootnset.sh config.sh /mnt
-	arch-chroot /mnt bash chrootnset.sh
+	chroot /mnt bash chrootnset.sh
 }
 
 grubinst() {
