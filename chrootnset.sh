@@ -97,8 +97,8 @@ main() {
 	decisions
 	hostname
 	timelocale
-	#mkinitcpio -p linux
-	#rm chrootnset.sh config.sh #cleanup
+	mkinitcpio -p linux
+	rm chrootnset.sh config.sh #cleanup
 	exit
 }
 
