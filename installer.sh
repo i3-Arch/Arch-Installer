@@ -199,19 +199,11 @@ main() {
 	touch config.sh  ## Create file to store bootpart, rewtpart, homepart, swappart for chroot
         CALLpart 	 ## CALL PARTITIONING IF STATEMENT
 	pkgmntchroot 	 ## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.sh
-<<<<<<< HEAD
 	#BOOTload 	 ## CHOOSE BOOTLOADER ## Runs after chrootnset.sh
 	printf " \n COMPLETE !  \n "
 	printf " \n SHUT DOWN SYSTEM AND THEN \n"
 	printf " \n REMOVE LIVE IMAGE \n "
 	printf " \n AND REBOOT SYSTEM ! \n"
-=======
-	BOOTload 	 ## CHOOSE BOOTLOADER ## Runs after chrootnset.sh
-	printf " \033[1m \n ${green}COMPLETE !  \n \033[0m"
-	printf " \033[1m \n ${white}SHUT DOWN SYSTEM AND THEN \n \033[0m"
-	printf " \033[1m \n ${white}REMOVE LIVE IMAGE \n \033[0m"
-	printf " \033[1m \n ${white}AND REBOOT SYSTEM ! \n \033[0m"
->>>>>>> cc9d1c4711d12ee8d956da739c4bf542f176abbf
 }
 
 main
