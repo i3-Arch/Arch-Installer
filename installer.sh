@@ -130,7 +130,7 @@ FULLpart() {
 
 pkgmntchroot() {
 	printf " Setting up install...\n"
-	pacman -Syyu --noconfirm
+	pacman -Sy --noconfirm
 	pacman -S rsync grub --noconfirm
 	mount $rewtpart /mnt
 	mkdir -pv /mnt/var/lib/pacman
