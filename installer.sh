@@ -157,7 +157,7 @@ syslinuxinst() {
 	printf " \033[1m ${red} Edit APPEND root=/dev/sda3 to point to your / partition. ${white} \n \033[0m"
 	echo -e "\033[1m ${green} Press Enter to Continue\033[0m"
 	read Enter
-	nano /boot/syslinux/syslinux.cfg
+	nano /mnt/boot/syslinux/syslinux.cfg
 } #Edited to have user edit the file to their needs
 
 CALLpart() {
