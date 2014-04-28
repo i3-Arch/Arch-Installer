@@ -14,17 +14,12 @@
 ############################################
 source config.sh #grab rewtpart, swappart, homepart, bootpart, thechoiceman var values
 
-# THIS FUNCTION NEEDS TO BE FIXED
-#nicetty () {
-#	wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/issue
-#	cp issue /etc/issue
-#	rm issue
-#}
 #COLORS
 red=$(tput setaf 1)
 white=$(tput setaf 7)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
+
 decisions() {
 	if [ $thechoiceman -eq 3 ]
 		then
@@ -41,20 +36,20 @@ decisions() {
 }
 
 fstab1() {
-	printf " Setting up fstab...\n"
+	printf " \033[1m \n ${red} Setting up fstab...\n \033[0m"
 	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab
 	echo " $bootpart        /mnt/boot       ext4    defaults        0       1"      >> /etc/fstab
 }
 
 fstab2() {
-        printf " Setting up fstab...\n"
+        printf " \033[1m \n ${red} Setting up fstab...\n \033[0m"
      	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab
      	echo " $homepart        /home   ext4    defaults        0        1" >> /etc/fstab
      	echo " $bootpart        /mnt/boot       ext4    defaults        0       1"      >> /etc/fstab
 }
 
 fstab3() {
-	printf " Setting up fstab...\n"
+	printf " \033[1m \n ${red} Setting up fstab...\n \033[0m"
 	echo " $rewtpart	/    	ext4   defaults    0    1" >> /etc/fstab
 	echo " $swappart	none     swap    defaults    0    1" >> /etc/fstab
 	echo " $homepart	/home 	ext4	defaults	0	 1" >> /etc/fstab
@@ -62,17 +57,17 @@ fstab3() {
 }
 
 hostname() {
-	printf " Choose your hostname:\n"
+	printf "\033[1m \n ${yellow}Choose your hostname: ${white}\n \033[0m"
 	read hostresponse
 	echo "$hostresponse" > /etc/hostname
 }
 
 timelocale() {
-	printf " \n Enter your Time Zone:\n"
-	printf " CHOICES ARE: New York or Athens \n"
-	printf "  Sorry I didnt do all timezones yet\n"
-	printf " \n Enter (1) for New York \n "
-	printf "  Enter (2) for Athens \n "
+	printf "\033[1m \n ${yellow}Enter your Time Zone: ${white}\n \033[0m"
+	printf "\033[1m \n ${red}CHOICES ARE: ${white}New York ${green}or ${white}Athens \n \033[0m"
+	printf "\033[1m \n ${yellow}Sorry I didnt do all timezones yet\n \n \033[0m"
+	printf "\033[1m \n ${white}ENTER ${green}(1)${red}for New York \n \033[0m"
+	printf "\033[1m    ${white}ENTER ${green}(2)${red}for Athens \n \033[0m"
 	read timezoneresponse
 	if [ "$timezoneresponse" == NewYork -o "$timezoneresponse" == 1 ]
 		then
