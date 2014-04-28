@@ -143,12 +143,7 @@ pkgmntchroot() {
 }
 
 grubinst() {
-	if [[ "$(uname -m)" = "x86_64"]]; then
-		grub-install --target=x86_64 --boot-directory=/mnt/boot $yourdrive
-	else
-		grub-install --target=i386-pc --boot-directory=/mnt/boot $yourdrive 
-	fi 
-
+	grub-install --recheck --boot-directory=/mnt/boot $yourdrive 
 	grub-mkconfig -o /mnt/boot/grub/grub.cfg
 	echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
 	echo " set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
