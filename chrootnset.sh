@@ -12,7 +12,7 @@
 #
 #	Reminder  -  Add option for LUKS
 ############################################
-source config.sh #grab rewtpart, swappart, homepart, bootpart var values
+source config.sh #grab rewtpart, swappart, homepart, bootpart, thechoiceman var values
 
 # THIS FUNCTION NEEDS TO BE FIXED
 #nicetty () {
@@ -102,8 +102,8 @@ main() {
 	decisions
 	hostname
 	timelocale
-	mkinitcpio -p linux
-	rm chrootnset.sh config.sh #cleanup
+	#mkinitcpio -p linux
+	#rm chrootnset.sh config.sh #cleanup
 	exit
 }
 
