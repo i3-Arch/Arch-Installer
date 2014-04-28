@@ -153,11 +153,12 @@ grubinst() {
 }
 
 syslinuxinst() { 
-	printf " \n Warning! /boot/ MUST be on /dev/sda1 for this function to work! \n"
-	syslinux-install_update -i -a -m
-	sed '/sda3/ s//sda1/' /mnt/boot/syslinux/syslinux.cfg >> syslinux.cfg 
-	mv syslinux.cfg /mnt/boot/syslinux/syslinux.cfg
-} #ONLY WORKS ON /dev/sda1 AS BOOT!!!
+		syslinux-install_update -i -a -m
+		printf " \033[1m ${red}# Edit APPEND root=/dev/sda3 to point to your / partition. #${white} \n \033[0m"
+		echo -e "\033[1m ${green} Press Enter to Continue\033[0m"
+		read Enter
+		nano /boot/syslinux/syslinux.cfg
+} #Edited to have user edit the file to their needs
 
 CALLpart() {
 	if [ "$thechoiceman" -eq 3 ]
