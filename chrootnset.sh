@@ -38,14 +38,14 @@ decisions() {
 fstab1() {
 	printf " \033[1m \n ${red} Setting up fstab...\n \033[0m"
 	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab
-	echo " $bootpart        /mnt/boot       ext4    defaults        0       1"      >> /etc/fstab
+	echo " $bootpart        /boot       ext4    defaults        0       1"      >> /etc/fstab
 }
 
 fstab2() {
         printf " \033[1m \n ${red} Setting up fstab...\n \033[0m"
      	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab
      	echo " $homepart        /home   ext4    defaults        0        1" >> /etc/fstab
-     	echo " $bootpart        /mnt/boot       ext4    defaults        0       1"      >> /etc/fstab
+     	echo " $bootpart        /boot       ext4    defaults        0       1"      >> /etc/fstab
 }
 
 fstab3() {
@@ -53,7 +53,7 @@ fstab3() {
 	echo " $rewtpart	/    	ext4   defaults    0    1" >> /etc/fstab
 	echo " $swappart	none     swap    defaults    0    1" >> /etc/fstab
 	echo " $homepart	/home 	ext4	defaults	0	 1" >> /etc/fstab
-	echo " $bootpart	/mnt/boot	ext4	defaults	0	1"	>> /etc/fstab
+	echo " $bootpart	/boot	ext4	defaults	0	1"	>> /etc/fstab
 }
 
 hostname() {
