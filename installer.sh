@@ -147,7 +147,8 @@ grubinst() {
 	then
 		grub-install --target=i386-pc --boot-directory=/mnt/boot $yourdrive 
 	else
-		grub-install --target=x86_64-pc --boot-directory=/mnt/boot $yourdrive 
+		grub-install --target=x86_64-pc --boot-directory=/mnt/boot $yourdrive
+	fi 
 
 	grub-mkconfig -o /mnt/boot/grub/grub.cfg
 	echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
