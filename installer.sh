@@ -45,6 +45,7 @@ disk() {
 	printf " \033[1m ${red} WARNING:${green} /dev/sda ${white}may not be empty on your system\n \033[0m "
 	printf " \033[1m \n ${yellow} Drive: ${white}\033[0m "
 	read yourdrive
+	echo "yourdrive=$yourdrive" >> config.sh
 	printf " \033[1m ${white} \n Partition with ${green} cfdisk ${white} or ${green} fdisk ? \n \033[0m"
 	printf " \033[1m \n ${yellow} Tool Choice: ${white}\033[0m"
 	read toolchoice
