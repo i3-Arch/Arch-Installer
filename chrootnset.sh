@@ -93,11 +93,47 @@ timelocale() {
 	locale-gen
 }
 
+grubinst() {
+	grub-install --target=i386-pc --recheck --boot-directory=/mnt/boot $yourdrive
+	grub-mkconfig -o /mnt/boot/grub/grub.cfg
+	echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
+	echo " set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
+	echo " linux /boot/vmlinuz-linux root=$rewtpart ro" >> /mnt/boot/grub/grub.cfg
+	echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg
+	echo " }" >> /mnt/boot/grub/grub.cfg
+}
+
+syslinuxinst() {
+	syslinux-install_update -i -a -m
+	printf " \033[1m ${red} Edit APPEND root=/dev/sda3 to point to your / partition. ${white} \n \033[0m"
+	echo -e "\033[1m ${green} Press Enter to Continue\033[0m"
+	read Enter
+	nano /mnt/boot/syslinux/syslinux.cfg
+} #Edited to have user edit the file to their needs
+
+BOOTload() {
+	printf "\033[1m \n ${white} CHOOSE YOUR BOOTLOADER \n \033[0m"
+	printf "\033[1m \n ${white}(1)${red}For Grub \n \033[0m"
+	printf "\033[1m \n ${white}(2)${red}For SysLinux \n \033[0m"
+	printf "\033[1m \n ${yellow}CHOICE: ${white}\033[0m"
+	read bootloadchoice
+	if [ "$bootloadchoice" -eq 1 ]
+		then
+			grubinst
+		elif [ "$bootloadchoice" -eq 2 ]
+		then
+			syslinuxinst
+		else
+			grubinst
+	fi
+}	
+
 main() {
 	decisions
 	hostname
 	timelocale
 	mkinitcpio -p linux
+	BOOTload
 	rm chrootnset.sh config.sh #cleanup
 	exit
 }
