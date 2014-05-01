@@ -35,17 +35,19 @@ usersetup() {
 			read usernowbro
 			if	[ "$usernowbro" = Y -o "$usernowbro" = y -o "$usernowbro" = Yes -o "$usernowbro" = yes -o "$usernowbro" = YES ]
 				then
-					printf " \n \n Enter The Username to Create ! \n"
-					printf " \n Username: "
-					read thenameuneed
-					$(useradd -m -G disk,audio,network,video $thenameuneed)
-					printf " \n \n Set a Password for this USER ? \n \n"
-					printf " [ Yes / No ] \n \n"
-					read cuzuwanna
-					if	[ "$cuzuwanna" = Y -o "$cuzuwanna" = y -o "$cuzuwanna" = YES -o "$cuzuwanna" = yes -o "$cuzuwanna" = Yes ]
-						then
-							passwd $thenameuneed
-					fi
+				printf " \n \n Enter The Username to Create ! \n"
+				printf " \n Username: "
+				read thenameuneed
+				$(useradd -m -G disk,audio,network,video $thenameuneed)
+				printf " \n \n Set a Password for this USER ? \n \n"
+				printf " [ Yes / No ] \n \n"
+				read cuzuwanna
+				if	[ "$cuzuwanna" = Y -o "$cuzuwanna" = y -o "$cuzuwanna" = YES -o "$cuzuwanna" = yes -o "$cuzuwanna" = Yes ]
+					then
+					passwd $thenameuneed
+					else
+						printf "\n Moving on \n"
+				fi
 			fi
 		else
 			printf " \n Sorry You Are Not Root \n "
