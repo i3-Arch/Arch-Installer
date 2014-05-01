@@ -40,15 +40,11 @@ usersetup() {
 				printf " \n Username: "
 				read thenameuneed
 				$(useradd -m -G disk,audio,network,video $thenameuneed)
-				printf " \n \n Set a Password for this USER ? \n \n"
-				printf " [Y|N] \n \n"
-				read cuzuwanna
-				if	[ "$cuzuwanna" = Y -o "$cuzuwanna" = y ]
-					then
-					passwd $thenameuneed
-					else
-					printf "\n Moving on \n"
-				fi
+				printf " \n \n Set a Password for this USER now \n \n"
+				printf " \n If you dont you will not be able to use it .\n"
+				passwd $thenameuneed
+				else
+				printf "\n Moving on \n"
 			fi
 		else
 		printf " \n Sorry You Are Not Root \n "
