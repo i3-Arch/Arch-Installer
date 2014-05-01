@@ -94,13 +94,13 @@ timelocale() {
 }
 
 grubinst() {
-	grub-install --target=i386-pc --recheck --boot-directory=/mnt/boot $yourdrive
-	grub-mkconfig -o /mnt/boot/grub/grub.cfg
-	echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
+	grub-install --target=i386-pc --recheck --boot-directory=/boot $yourdrive
+	grub-mkconfig -o /boot/grub/grub.cfg
+	echo "menuentry"\ "Archlinux"\ "{" >> /boot/grub/grub.cfg
 	echo " set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
-	echo " linux /boot/vmlinuz-linux root=$rewtpart ro" >> /mnt/boot/grub/grub.cfg
-	echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg
-	echo " }" >> /mnt/boot/grub/grub.cfg
+	echo " linux /boot/vmlinuz-linux root=$rewtpart ro" >> /boot/grub/grub.cfg
+	echo " initrd /boot/initramfs-linux.img " >> /boot/grub/grub.cfg
+	echo " }" >> /boot/grub/grub.cfg
 }
 
 syslinuxinst() {
