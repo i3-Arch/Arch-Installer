@@ -39,8 +39,21 @@ greetz() {
 }
 
 makeitbro() {
-	pacman -Syyu --noconfirm
-	pacman -S base-devel xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+	if [ $(id -u) -eq 0 ]
+		then
+		printf " \n You will need to create a user and move these dotfiles \n"
+		printf " to your user's home dir \n"
+		printf " \n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n"
+		pacman -Syyu --noconfirm
+		pacman -S base-devel xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+		else
+		printf " \n Everything Seems Fine \n "
+		printf " \n \n Enter Password for root ( installing packages ) \n"
+		su root
+		pacman -Syyu --noconfirm
+		pacman -S base-devel xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
+		exit
+	fi
 }
 
 xseti3() {
@@ -75,12 +88,6 @@ i3fin() {
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.xinitrc
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.zshrc
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.vimrc
-
-	printf " \n NOW STARTING X \n"
-	printf " \n TIP :: In the future you will need to Run ' startx :: \n "
-
-		sleep 3 &&
-		$(startx)
 }
 
 main() {
@@ -89,6 +96,8 @@ main() {
 	makeitbro
 	xseti3
 	i3fin
+	
+	printf " \n EXTRA TIP :: In the future you will need to Run ' startx :: \n "
 }
 
 main
