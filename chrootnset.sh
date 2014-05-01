@@ -12,7 +12,7 @@
 #
 #	Reminder  -  Add option for LUKS
 ############################################
-source config.sh #grab rewtpart, swappart, homepart, bootpart, thechoiceman var values
+source config.sh #grab yourdrive, rewtpart, swappart, homepart, bootpart, thechoiceman var values
 
 #COLORS
 red=$(tput setaf 1)
