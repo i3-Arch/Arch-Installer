@@ -133,32 +133,32 @@ pkgmntchroot() {
 	pacman -S rsync grub --noconfirm
 	mount $rewtpart /mnt
 	mkdir -pv /mnt/var/lib/pacman
-	pacman -r /mnt -Syy base base-devel rsync --noconfirm
+	pacman -r /mnt -Syy base base-devel rsync grub efibootmgr --noconfirm
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
 	mount --bind /dev/ /mnt/dev
 	mount --bind /sys/ /mnt/sys
 	mount --bind /proc/ /mnt/proc
 	cp chrootnset.sh config.sh /mnt
-	chroot /mnt bash chrootnset.sh
+	arch-chroot /mnt bash chrootnset.sh
 }
 
-grubinst() {
-	grub-install --target=i386-pc --recheck --boot-directory=/mnt/boot $yourdrive 
-	grub-mkconfig -o /mnt/boot/grub/grub.cfg
-	echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
-	echo " set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
-	echo " linux /boot/vmlinuz-linux root=$rewtpart ro" >> /mnt/boot/grub/grub.cfg
-	echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg
-	echo " }" >> /mnt/boot/grub/grub.cfg
-}
+#grubinst() {
+#	grub-install --target=i386-pc --recheck --boot-directory=/mnt/boot $yourdrive 
+#	grub-mkconfig -o /mnt/boot/grub/grub.cfg
+#	echo "menuentry"\ "Archlinux"\ "{" >> /mnt/boot/grub/grub.cfg
+#	echo " set root=(hd0,1) " >> /mnt/boot/grub/grub.cfg
+#	echo " linux /boot/vmlinuz-linux root=$rewtpart ro" >> /mnt/boot/grub/grub.cfg
+#	echo " initrd /boot/initramfs-linux.img " >> /mnt/boot/grub/grub.cfg
+#	echo " }" >> /mnt/boot/grub/grub.cfg
+#}
 
-syslinuxinst() { 
-	syslinux-install_update -i -a -m
-	printf " \033[1m ${red} Edit APPEND root=/dev/sda3 to point to your / partition. ${white} \n \033[0m"
-	echo -e "\033[1m ${green} Press Enter to Continue\033[0m"
-	read Enter
-	nano /mnt/boot/syslinux/syslinux.cfg
-} #Edited to have user edit the file to their needs
+#syslinuxinst() { 
+#	syslinux-install_update -i -a -m
+#	printf " \033[1m ${red} Edit APPEND root=/dev/sda3 to point to your / partition. ${white} \n \033[0m"
+#	echo -e "\033[1m ${green} Press Enter to Continue\033[0m"
+#	read Enter
+#	nano /mnt/boot/syslinux/syslinux.cfg
+#} #Edited to have user edit the file to their needs
 
 CALLpart() {
 	if [ "$thechoiceman" -eq 3 ]
@@ -175,22 +175,22 @@ CALLpart() {
 	fi
 }
 
-BOOTload() {
-	printf "\033[1m \n ${white} CHOOSE YOUR BOOTLOADER \n \033[0m"
-	printf "\033[1m \n ${white}(1)${red}For Grub \n \033[0m"
-	printf "\033[1m \n ${white}(2)${red}For SysLinux \n \033[0m" 
-	printf "\033[1m \n ${yellow}CHOICE: ${white}\033[0m"
-	read bootloadchoice
-	if [ "$bootloadchoice" -eq 1 ]
-		then
-			grubinst
-		elif [ "$bootloadchoice" -eq 2 ]
-		then
-			syslinuxinst
-		else
-			grubinst
-	fi
-}		
+#BOOTload() {
+#	printf "\033[1m \n ${white} CHOOSE YOUR BOOTLOADER \n \033[0m"
+#	printf "\033[1m \n ${white}(1)${red}For Grub \n \033[0m"
+#	printf "\033[1m \n ${white}(2)${red}For SysLinux \n \033[0m" 
+#	printf "\033[1m \n ${yellow}CHOICE: ${white}\033[0m"
+#	read bootloadchoice
+#	if [ "$bootloadchoice" -eq 1 ]
+#		then
+#			grubinst
+#		elif [ "$bootloadchoice" -eq 2 ]
+#		then
+#			syslinuxinst
+#		else
+#			grubinst
+#	fi
+#}		
 
 main() {
 	banner
@@ -199,7 +199,7 @@ main() {
 	touch config.sh  ## Create file to store bootpart, rewtpart, homepart, swappart for chroot
         CALLpart 	 ## CALL PARTITIONING IF STATEMENT
 	pkgmntchroot 	 ## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.sh
-	BOOTload 	 ## CHOOSE BOOTLOADER ## Runs after chrootnset.sh
+	## BOOTload 	 ## CHOOSE BOOTLOADER ## Runs after chrootnset.sh
 	printf " \n COMPLETE !  \n "
 	printf " \n SHUT DOWN SYSTEM AND THEN \n"
 	printf " \n REMOVE LIVE IMAGE \n "
