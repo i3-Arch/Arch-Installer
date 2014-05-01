@@ -7,7 +7,7 @@ lemmeknow() {
 		then
     		needpass
 		else
-			printf " \n Moving on since you already have a user account \n"
+		printf " \n Moving on since you already have a user account \n"
 	fi
 }
 
@@ -19,11 +19,11 @@ needpass() {
 	read wutdawg
 	if [ "$wutdawg" = Y -o "$wutdawg" = y ]
 		then
-			passwd
-			usersetup
+		passwd
+		usersetup
 		else
-			printf " \n Ok, Moving on then.... \n "
-			usersetup
+		printf " \n Ok, Moving on then.... \n "
+		usersetup
 	fi
 }
 
@@ -47,11 +47,11 @@ usersetup() {
 					then
 					passwd $thenameuneed
 					else
-						printf "\n Moving on \n"
+					printf "\n Moving on \n"
 				fi
 			fi
 		else
-			printf " \n Sorry You Are Not Root \n "
+		printf " \n Sorry You Are Not Root \n "
 	fi
 }
 
