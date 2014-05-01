@@ -2,7 +2,8 @@
 #
 #	 POST INSTALL SCRIPT
 # 				-  i3-Arch
-lemmeknow() {
+
+lemmeknow() {  ##CALLED BY     main
 	if [ $(id -u) -eq 0 ]
 		then
     		needpass
@@ -11,7 +12,7 @@ lemmeknow() {
 	fi
 }
 
-needpass() {
+needpass() { ## CALLED BY lemmeknow
 	clear
 	printf " \n Would you like to set a root password ?\n \n"
 	printf " [Y|N] \n"
@@ -27,7 +28,7 @@ needpass() {
 	fi
 }
 
-usersetup() {
+usersetup() {  ## CALLED BY needpass
 	if [ $(id -u) -eq 0 ]
 		then
 			printf " \n Would you like to setup a USER now ? \n \n"
