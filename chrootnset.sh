@@ -13,6 +13,7 @@
 #	Reminder  -  Add option for LUKS
 ############################################
 source config.sh #grab yourdrive, rewtpart, swappart, homepart, bootpart, thechoiceman var values
+rewpartUUID=$(tune2fs -l $rewtpart | grep UUID | tail -c 37)
 
 #COLORS
 red=$(tput setaf 1)
@@ -98,7 +99,7 @@ grubinst() {
 	grub-mkconfig -o /boot/grub/grub.cfg
 	echo "menuentry"\ "Archlinux"\ "{" >> /boot/grub/grub.cfg
 	echo " set root=(hd0,1) " >> /boot/grub/grub.cfg
-	echo " linux /boot/vmlinuz-linux root=$rewtpart ro" >> /boot/grub/grub.cfg
+	echo " linux /boot/vmlinuz-linux root=$rewtpartUUID ro" >> /boot/grub/grub.cfg
 	echo " initrd /boot/initramfs-linux.img " >> /boot/grub/grub.cfg
 	echo " }" >> /boot/grub/grub.cfg
 }
