@@ -45,13 +45,13 @@ makeitbro() {
 		printf " to your user's home dir \n"
 		printf " \n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n"
 		pacman -Syyu --noconfirm
-		pacman -S base-devel xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+		pacman -S base-devel wget xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 		else
 		printf " \n Everything Seems Fine \n "
 		printf " \n \n Enter Password for root ( installing packages ) \n"
 		su root
 		pacman -Syyu --noconfirm
-		pacman -S base-devel xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
+		pacman -S base-devel xorg-server wget xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
 		exit
 	fi
 }
