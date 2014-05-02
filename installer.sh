@@ -133,16 +133,12 @@ pkgmntchroot() {
 	pacman -Sy --noconfirm
 	pacman -S rsync grub --noconfirm
 	mount $rewtpart /mnt
-	mkdir /mnt/home
-	mkdir /mnt/boot
-	mount $bootpart /mnt/boot
-	mount $homepart /mnt/home
 	mkdir -pv /mnt/var/lib/pacman
 	pacman -r /mnt -Syyu base base-devel grub rsync --noconfirm
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
-	mount --bind /sys /mnt/sys
-	mount --bind /proc /mnt/proc
-	mount --bind /dev /mnt/dev
+	mount /sys /mnt/sys
+	mount /proc /mnt/proc
+	mount /dev /mnt/dev
 	cp chrootnset.sh config.sh /mnt
 	chroot /mnt bash chrootnset.sh
 }
