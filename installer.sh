@@ -135,14 +135,8 @@ pkgmntchroot() {
 	mount $rewtpart /mnt
 	mkdir /mnt/home
 	mkdir /mnt/boot
-	mkdir /mnt/dev
-	mkdir /mnt/sys
-	mkdir /mnt/proc
 	mount $bootpart /mnt/boot
 	mount $homepart /mnt/home
-	mount --bind /dev/ /mnt/dev 	#says mount point doesn't exits
-	mount --bind /sys/ /mnt/sys 	#says mount point doesn't exits
-	mount --bind /proc/ /mnt/proc 	#says mount point doesn't exits
 	mkdir -pv /mnt/var/lib/pacman
 	pacman -r /mnt -Syy base base-devel rsync grub --noconfirm
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
