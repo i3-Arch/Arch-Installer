@@ -98,7 +98,7 @@ grubinst() {
 	REWTPARTUUID=$(tune2fs -l $rewtpart | grep UUID | tail -c 37)
 	grub-install --target=i386-pc --recheck --boot-directory=/boot $YOURDRIVE --force
 	grub-mkconfig -o /boot/grub/grub.cfg
-	echo "\033[1m \n ${yellow}root UUID is ${white}\n \033[0m $REWTPARTUUID"
+	printf "\033[1m \n ${yellow}root UUID is ${white}\n \033[0m $REWTPARTUUID"
 	sleep 3
 	echo "menuentry"\ "Archlinux"\ "{" >> /boot/grub/grub.cfg
 	if [ $rewtpart ?? '1']; then
