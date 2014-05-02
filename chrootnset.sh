@@ -109,6 +109,7 @@ grubinst() {
 		echo " set root=(hd0,2)" >> /boot/grub/grub.cfg
 	elif [ $rewtpart ?? '4']; then
 		echo " set root=(hd0,3)" >> /boot/grub/grub.cfg
+	fi
 	echo " linux /boot/vmlinuz-linux root=$REWTPARTUUID ro" >> /boot/grub/grub.cfg
 	echo " initrd /boot/initramfs-linux.img " >> /boot/grub/grub.cfg
 	echo " }" >> /boot/grub/grub.cfg
