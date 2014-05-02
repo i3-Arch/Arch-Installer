@@ -136,10 +136,8 @@ pkgmntchroot() {
 	mkdir -pv /mnt/var/lib/pacman
 	pacman -r /mnt -Syyu base base-devel grub rsync --noconfirm
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
-	mkdir /mnt/home
-	mkdir /mnt/boot
-	mount /home /mnt/home
-	mount /boot /mnt/boot
+	mount --bind /home /mnt/home
+	mount --bind /boot /mnt/boot
 	mount --bind /sys /mnt/sys
 	mount --bind /proc /mnt/proc
 	mount --bind /dev /mnt/dev
