@@ -144,7 +144,7 @@ pkgmntchroot() {
 	pacman -r /mnt -Syy base base-devel rsync grub --noconfirm
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
 	cp chrootnset.sh config.sh /mnt
-	chroot /mnt /bin/bash $(bash chrootnset.sh)
+	chroot /mnt bash chrootnset.sh
 }
 
 
