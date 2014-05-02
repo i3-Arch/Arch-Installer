@@ -160,13 +160,15 @@ CALLpart() {
 }
 
 
+
 main() {
 	banner
 	ASKme     	 ## ASK NUMBER OF PARTITIONS
 	disk	         ## PARTITION WITH CFDISK or FDISK
 	touch config.sh  ## Create file to store bootpart, rewtpart, homepart, swappart for chroot
         CALLpart 	 ## CALL PARTITIONING IF STATEMENT
-	pkgmntchroot 	 ## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.sh
+	pkgmntchroot 	 ## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
+	$(umount -R /mnt)
 	printf " \n COMPLETE !  \n "
 	printf " \n SHUT DOWN SYSTEM AND THEN \n"
 	printf " \n REMOVE LIVE IMAGE \n "
