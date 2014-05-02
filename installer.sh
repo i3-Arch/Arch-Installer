@@ -133,11 +133,11 @@ pkgmntchroot() {
 	pacman -Sy --noconfirm
 	pacman -S rsync grub --noconfirm
 	mount $rewtpart /mnt
-	mkdir /mnt/home
-	mkdir /mnt/boot
-	mkdir /mnt/sys
-	mkdir /mnt/proc
-	mkdir /mnt/dev
+	mkdir -v /mnt/home
+	mkdir -v /mnt/boot
+	mkdir -v /mnt/sys
+	mkdir -v /mnt/proc
+	mkdir -v /mnt/dev
 	mkdir -pv /mnt/var/lib/pacman
 	mount $bootpart /mnt/boot
 	mount $homepart /mnt/boot
