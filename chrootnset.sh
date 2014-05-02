@@ -94,8 +94,9 @@ timelocale() {
 }
 
 grubinst() {
+	YOURDRIVE=$yourdrive
 	REWTPARTUUID=$(tune2fs -l $rewtpart | grep UUID | tail -c 37)
-	grub-install --target=i386-pc --recheck --boot-directory=/boot $yourdrive
+	grub-install --target=i386-pc --recheck --boot-directory=/boot $YOURDRIVE
 	grub-mkconfig -o /boot/grub/grub.cfg
 	echo "menuentry"\ "Archlinux"\ "{" >> /boot/grub/grub.cfg
 	echo " set root=(hd0,1) " >> /boot/grub/grub.cfg
