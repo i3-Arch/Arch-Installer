@@ -138,7 +138,7 @@ pkgmntchroot() {
 	mount --bind $bootpart /mnt/boot
 	mount --bind $homepart /mnt/home
 	mkdir -pv /mnt/var/lib/pacman
-	pacman -i /mnt base base-devel rsync grub
+	pacman -r /mnt base base-devel grub rsync --noconfirm
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
 	mount --bind /sys /mnt/sys
 	mount --bind /proc /mnt/proc
