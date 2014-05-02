@@ -94,12 +94,12 @@ timelocale() {
 }
 
 grubinst() {
-	YOURDRIVE=$yourdrive
+	YOURDRIVE=$yourdrive 										
 	REWTPARTUUID=$(tune2fs -l $rewtpart | grep UUID | tail -c 37)
 	grub-install --target=i386-pc --recheck --boot-directory=/boot $YOURDRIVE
 	grub-mkconfig -o /boot/grub/grub.cfg
 	echo "menuentry"\ "Archlinux"\ "{" >> /boot/grub/grub.cfg
-	echo " set root=(hd0,1) " >> /boot/grub/grub.cfg
+	echo " set root=(hd0,0) " >> /boot/grub/grub.cfg
 	echo " root UUID is $REWTPARTUUID"
 	sleep 10
 	echo " linux /boot/vmlinuz-linux root=$REWTPARTUUID ro" >> /boot/grub/grub.cfg
