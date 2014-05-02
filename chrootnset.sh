@@ -93,10 +93,9 @@ timelocale() {
 	locale-gen
 }
 
-grubinst() {
-	YOURDRIVE=$yourdrive 										
+grubinst() {										
 	REWTPARTUUID=$(tune2fs -l $rewtpart | grep UUID | tail -c 37)
-	grub-install --target=i386-pc $YOURDRIVE --force
+	grub-install --target=i386-pc $yourdrive --force
 	grub-mkconfig -o /boot/grub/grub.cfg
 	printf "\033[1m \n ${yellow}root UUID is ${white}\033[0m $REWTPARTUUID"
 	sleep 3
