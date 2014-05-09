@@ -52,7 +52,31 @@ usersetup() {  ## CALLED BY needpass
 	fi
 }
 
+uwantme() {
+	printf "\n  Do you want to install a WM/DE now ? \n "
+	printf "\n \n Current Choices Are \n \n "
+	printf "\n (1) Custom i3 Setup \n "
+	printf "\n (2) NULL \n "
+	printf "\n (3) NULL \n "
+	printf " \n \n Please Enter Your Choice: "
+	read wutdebro
+	if [ "$wutdebro" -eq 1 ]
+		then
+			source i3-option.sh
+		else
+		printf "\n \n  Sorry Thats The Choices So Far \n \n"
+	fi
+}
+
+thankyoubro() {
+	printf " \n Thanks for being lazy and using our script ! \n "
+	printf " \n If you have any problems afterwards \n "
+	printf " \n Search The ARCHWIKI \n \n "
+}
+
 main() {
+	thankyoubro
 	lemmeknow
+	uwantme
 }
 main
