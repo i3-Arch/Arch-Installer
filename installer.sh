@@ -134,15 +134,13 @@ pkgmntchroot() {
 	pacman -S rsync grub os-prober --noconfirm
 	mkdir /mnt/home
 	mkdir /mnt/boot
-	mkdir /mnt/sys
-	mkdir /mnt/proc
-	mkdir /mnt/dev
 	mkdir -pv /mnt/var/lib/pacman
 	mount $rewtpart /mnt
 	mount $bootpart /mnt/boot
 	mount $homepart /mnt/home
-	pacstrap -i /mnt base base-devel grub os-prober rsync --noconfirm
+	pacstrap /mnt base base-devel grub os-prober rsync --noconfirm
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
+	genfstab -p /mnt >> /mnt/etc/fstab
 	cp chrootnset.sh config.sh /mnt
 	arch-chroot /mnt /bin/bash bash chrootnset.sh
 }
@@ -172,10 +170,12 @@ main() {
 	touch config.sh  ## Create file to store bootpart, rewtpart, homepart, swappart for chroot
     CALLpart 	 ## CALL PARTITIONING IF STATEMENT
 	pkgmntchroot 	 ## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
+	umount -R /mnt
 	printf " \n COMPLETE !  \n "
 	printf " \n SHUT DOWN SYSTEM AND THEN \n"
 	printf " \n REMOVE LIVE IMAGE \n "
 	printf " \n AND REBOOT SYSTEM ! \n"
+
 }
 
 main
