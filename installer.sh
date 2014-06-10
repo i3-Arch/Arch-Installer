@@ -132,15 +132,15 @@ pkgmntchroot() {
 	printf " Setting up install...\n"
 	pacman -Syy --noconfirm
 	pacman -S rsync grub os-prober --noconfirm
+	mount $rewtpart /mnt
 	mkdir /mnt/home
 	mkdir /mnt/boot
 	mkdir -pv /mnt/var/lib/pacman
-	mount $rewtpart /mnt
 	mount $bootpart /mnt/boot
 	mount $homepart /mnt/home
 	pacstrap /mnt base base-devel grub os-prober rsync --noconfirm
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
-	genfstab -p /mnt >> /mnt/etc/fstab
+	genfstab -p -U /mnt >> /mnt/etc/fstab
 	cp chrootnset.sh config.sh /mnt
 	arch-chroot /mnt /bin/bash bash chrootnset.sh
 }
