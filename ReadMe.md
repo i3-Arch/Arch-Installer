@@ -9,6 +9,8 @@
 					- RUN AT YOUR OWN RISK
 		
 
+		---------- Grub Working    as of   6-10-2014   ------------
+
 	___________________________________________________________________
 	===================================================================
 
@@ -27,7 +29,7 @@
 			  
 			  
 			  1. :DOWNLOAD: 
-                             wget 7.ly/menu         
+                       wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh
            
                
                 2. :RUN: 
