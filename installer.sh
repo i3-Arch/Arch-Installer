@@ -138,11 +138,11 @@ pkgmntchroot() {
 	mkdir -pv /mnt/var/lib/pacman
 	mount $bootpart /mnt/boot
 	mount $homepart /mnt/home
-	pacstrap /mnt base base-devel grub os-prober rsync --noconfirm
+	pacstrap /mnt base base-devel grub os-prober rsync
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
 	genfstab -p -U /mnt >> /mnt/etc/fstab
 	cp chrootnset.sh config.sh /mnt
-	arch-chroot /mnt /bin/bash bash chrootnset.sh
+	arch-chroot /mnt /bin/bash chrootnset.sh
 }
 
 
