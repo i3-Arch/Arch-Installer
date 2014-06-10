@@ -20,41 +20,41 @@ white=$(tput setaf 7)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
 
-decisions() {
-	if [ $thechoiceman -eq 3 ]
-		then
-		    fstab3
-		elif [ $thechoiceman -eq 2 ]
-	 		then
-		   	fstab2
-		elif [ $thechoiceman -eq 1 ]
-			then
-	  	    	fstab1
-		else
-	    	    fstab1
-	fi
-}
+#decisions() {
+#	if [ $thechoiceman -eq 3 ]
+#		then
+#		    fstab3
+#		elif [ $thechoiceman -eq 2 ]
+#	 		then
+#		   	fstab2
+#		elif [ $thechoiceman -eq 1 ]
+#			then
+#	  	    	fstab1
+#		else
+#	    	    fstab1
+#	fi
+# }
 
-fstab1() {
-	printf " \033[1m \n ${red} Setting up fstab...\n \033[0m"
-	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab
-	echo " $bootpart        /boot       ext4    defaults        0       1"      >> /etc/fstab
-}
+#fstab1() {
+#	printf " \033[1m \n ${red} Setting up fstab...\n \033[0m"
+#	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab
+#	echo " $bootpart        /boot       ext4    defaults        0       1"      >> /etc/fstab
+#}
 
-fstab2() {
-        printf " \033[1m \n ${red} Setting up fstab...\n \033[0m"
-     	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab
-     	echo " $homepart        /home   ext4    defaults        0        1" >> /etc/fstab
-     	echo " $bootpart        /boot       ext4    defaults        0       1"      >> /etc/fstab
-}
+#fstab2() {
+#        printf " \033[1m \n ${red} Setting up fstab...\n \033[0m"
+#    	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab
+#		echo " $homepart        /home   ext4    defaults        0        1" >> /etc/fstab
+#     	echo " $bootpart        /boot       ext4    defaults        0       1"      >> /etc/fstab
+#}
 
-fstab3() {
-	printf " \033[1m \n ${red} Setting up fstab...\n \033[0m"
-	echo " $rewtpart	/    	ext4   defaults    0    1" >> /etc/fstab
-	echo " $swappart	none     swap    defaults    0    1" >> /etc/fstab
-	echo " $homepart	/home 	ext4	defaults	0	 1" >> /etc/fstab
-	echo " $bootpart	/boot	ext4	defaults	0	1"	>> /etc/fstab
-}
+#fstab3() {
+#	printf " \033[1m \n ${red} Setting up fstab...\n \033[0m"
+#	echo " $rewtpart	/    	ext4   defaults    0    1" >> /etc/fstab
+#	echo " $swappart	none     swap    defaults    0    1" >> /etc/fstab
+#	echo " $homepart	/home 	ext4	defaults	0	 1" >> /etc/fstab
+#	echo " $bootpart	/boot	ext4	defaults	0	1"	>> /etc/fstab
+#}
 
 hostname() {
 	printf "\033[1m \n ${yellow}Choose your hostname: ${white}\n \033[0m"
@@ -94,24 +94,25 @@ timelocale() {
 }
 
 grubinst() {										
-	REWTPARTUUID=$(tune2fs -l $rewtpart | grep UUID | tail -c 37)
-	grub-install --target=i386-pc $yourdrive --force
+	# REWTPARTUUID=$(tune2fs -l $rewtpart | grep UUID | tail -c 37)
+	grub-install --target=i386-pc $yourdrive
 	grub-mkconfig -o /boot/grub/grub.cfg
-	printf "\033[1m \n ${yellow}root UUID is ${white}\033[0m $REWTPARTUUID \n"
-	sleep 3
-	echo "menuentry"\ "Archlinux"\ "{" >> /boot/grub/grub.cfg;
-	if [[ $rewtpart == *1* ]]; then
-		echo " set root=(hd0,0) " >> /boot/grub/grub.cfg;
-	elif [[ $rewtpart == *2* ]]; then
-		echo " set root=(hd0,1)" >> /boot/grub/grub.cfg;
-	elif [[ $rewtpart == *3* ]]; then
-		echo " set root=(hd0,2)" >> /boot/grub/grub.cfg;
-	elif [[ $rewtpart == *4* ]]; then
-		echo " set root=(hd0,3)" >> /boot/grub/grub.cfg;
-	fi
-	echo " linux /boot/vmlinuz-linux root=UUID=$REWTPARTUUID ro" >> /boot/grub/grub.cfg
-	echo " initrd /boot/initramfs-linux.img " >> /boot/grub/grub.cfg
-	echo " }" >> /boot/grub/grub.cfg
+	# printf "\033[1m \n ${yellow}root UUID is ${white}\033[0m $REWTPARTUUID \n"
+	#sleep 3
+	#echo "menuentry"\ "Archlinux"\ "{" >> /boot/grub/grub.cfg;
+	#if [[ $rewtpart == *1* ]]; then
+	#	echo " set root=(hd0,0) " >> /boot/grub/grub.cfg;
+	#elif [[ $rewtpart == *2* ]]; then
+	#	echo " set root=(hd0,1)" >> /boot/grub/grub.cfg;
+	#elif [[ $rewtpart == *3* ]]; then
+	#	echo " set root=(hd0,2)" >> /boot/grub/grub.cfg;
+	#elif [[ $rewtpart == *4* ]]; then
+	#	echo " set root=(hd0,3)" >> /boot/grub/grub.cfg;
+	#fi
+	#echo " linux /boot/vmlinuz-linux root=UUID=$REWTPARTUUID ro" >> /boot/grub/grub.cfg
+	#echo " initrd /boot/initramfs-linux.img " >> /boot/grub/grub.cfg
+	#echo " }" >> /boot/grub/grub.cfg
+	
 }
 
 syslinuxinst() {
@@ -140,7 +141,7 @@ BOOTload() {
 }	
 
 main() {
-	decisions
+	# decisions
 	hostname
 	timelocale
 	mkinitcpio -p linux
