@@ -140,7 +140,11 @@ pkgmntchroot() {
 	mount $homepart /mnt/home
 	pacstrap /mnt base base-devel grub os-prober rsync --noconfirm
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
+<<<<<<< HEAD
 	genfstab -p -U /mnt >> /mnt/etc/fstab
+=======
+	genfstab -U -p /mnt >> /mnt/etc/fstab
+>>>>>>> 86206d3be0be26e475b4eee592dfc6505416872c
 	cp chrootnset.sh config.sh /mnt
 	arch-chroot /mnt /bin/bash bash chrootnset.sh
 }
