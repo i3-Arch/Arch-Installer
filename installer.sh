@@ -130,20 +130,20 @@ FULLpart() {
 
 pkgmntchroot() {
 	printf " Setting up install...\n"
-	pacman -Sy --noconfirm
-	pacman -S rsync grub --noconfirm
+	pacman -Syy --noconfirm
+	pacman -S rsync grub os-prober --noconfirm
 	mount $rewtpart /mnt
 	mkdir -v /mnt/{home,boot,sys,proc,dev}
 	mkdir -pv /mnt/var/lib/pacman
 	mount $bootpart /mnt/boot
-	mount $homepart /mnt/boot
+	mount $homepart /mnt/home
 	mount --bind /proc /mnt/proc
-	pacman -r /mnt -Syyu base base-devel grub rsync --noconfirm
-	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
 	mount --bind /sys /mnt/sys
 	mount --bind /dev /mnt/dev
+	pacstrap -i /mnt base base-devel grub os-prober rsync --noconfirm
+	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
 	cp chrootnset.sh config.sh /mnt
-	chroot /mnt bash chrootnset.sh
+	arch-chroot /mnt bash chrootnset.sh
 }
 
 
@@ -169,7 +169,7 @@ main() {
 	ASKme     	 ## ASK NUMBER OF PARTITIONS
 	disk	         ## PARTITION WITH CFDISK or FDISK
 	touch config.sh  ## Create file to store bootpart, rewtpart, homepart, swappart for chroot
-        CALLpart 	 ## CALL PARTITIONING IF STATEMENT
+    CALLpart 	 ## CALL PARTITIONING IF STATEMENT
 	pkgmntchroot 	 ## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
 	printf " \n COMPLETE !  \n "
 	printf " \n SHUT DOWN SYSTEM AND THEN \n"
