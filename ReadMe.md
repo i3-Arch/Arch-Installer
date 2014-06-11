@@ -24,16 +24,30 @@
 			
 		-----------THIS IS A WORK IN PROGRESS -----------
 
-             i. * FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE *
-			  				i. * BOOT INTO LIVE ARCH MACHINE *
+             i. ** FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE **
+	 	i. ** BOOT INTO LIVE ARCH IMAGE **
 			  
 			  
 			  1. :DOWNLOAD: 
+		       
+		       wget https://goo.gl/4v5IyX
+		       
+		       		1A. then run this
+		       		
+		       		mv 4v5IyX menu
+		       
+		       ** If Shortened URL is 404 **
+		       
+		       ** Run This ** 
                        wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh
            
                
                 2. :RUN: 
+                        ** If you downloaded the script via goo.gl link **
                         source menu
+                        
+                        **If you downloaded the long url **
+                        source menu.sh
 
 
 		
