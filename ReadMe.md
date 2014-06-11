@@ -24,8 +24,8 @@
 			
 		-----------THIS IS A WORK IN PROGRESS -----------
 
-             i. * FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE *
-			  				i. * BOOT INTO LIVE ARCH MACHINE *
+             i. ** FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE **
+	 	i. ** BOOT INTO LIVE ARCH IMAGE **
 			  
 			  
 			  1. :DOWNLOAD: 
