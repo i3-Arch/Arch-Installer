@@ -12,56 +12,25 @@
 #
 #	Reminder  -  Add option for LUKS
 ############################################
-source config.sh #grab yourdrive, rewtpart, swappart, homepart, bootpart, thechoiceman var values
 
-#COLORS
+# Grab var values
+# Which are: yourdrive, rewtpart, swappart, homepart, bootpart, thechoiceman
+source config.sh
+
+# COLORS
 red=$(tput setaf 1)
 white=$(tput setaf 7)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
 
-#decisions() {
-#	if [ $thechoiceman -eq 3 ]
-#		then
-#		    fstab3
-#		elif [ $thechoiceman -eq 2 ]
-#	 		then
-#		   	fstab2
-#		elif [ $thechoiceman -eq 1 ]
-#			then
-#	  	    	fstab1
-#		else
-#	    	    fstab1
-#	fi
-# }
-
-#fstab1() {
-#	printf " \033[1m \n ${red} Setting up fstab...\n \033[0m"
-#	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab
-#	echo " $bootpart        /boot       ext4    defaults        0       1"      >> /etc/fstab
-#}
-
-#fstab2() {
-#        printf " \033[1m \n ${red} Setting up fstab...\n \033[0m"
-#    	echo " $rewtpart        /       ext4   defaults    0    1" >> /etc/fstab
-#		echo " $homepart        /home   ext4    defaults        0        1" >> /etc/fstab
-#     	echo " $bootpart        /boot       ext4    defaults        0       1"      >> /etc/fstab
-#}
-
-#fstab3() {
-#	printf " \033[1m \n ${red} Setting up fstab...\n \033[0m"
-#	echo " $rewtpart	/    	ext4   defaults    0    1" >> /etc/fstab
-#	echo " $swappart	none     swap    defaults    0    1" >> /etc/fstab
-#	echo " $homepart	/home 	ext4	defaults	0	 1" >> /etc/fstab
-#	echo " $bootpart	/boot	ext4	defaults	0	1"	>> /etc/fstab
-#}
-
+# Set Your Hostname
 hostname() {
 	printf "\033[1m \n ${yellow}Choose your hostname: ${white}\n \033[0m"
 	read hostresponse
 	echo "$hostresponse" > /etc/hostname
 }
 
+# Set Time Zone
 timelocale() {
 	printf "\033[1m \n ${yellow}Enter your Time Zone: ${white}\n \033[0m"
 	printf "\033[1m \n ${red}CHOICES ARE: ${white}New York ${green}or ${white}Athens \n \033[0m"
@@ -93,36 +62,22 @@ timelocale() {
 	locale-gen
 }
 
+# Install Grub
 grubinst() {										
-	# REWTPARTUUID=$(tune2fs -l $rewtpart | grep UUID | tail -c 37)
 	grub-install --target=i386-pc $yourdrive
 	grub-mkconfig -o /boot/grub/grub.cfg
-	# printf "\033[1m \n ${yellow}root UUID is ${white}\033[0m $REWTPARTUUID \n"
-	#sleep 3
-	#echo "menuentry"\ "Archlinux"\ "{" >> /boot/grub/grub.cfg;
-	#if [[ $rewtpart == *1* ]]; then
-	#	echo " set root=(hd0,0) " >> /boot/grub/grub.cfg;
-	#elif [[ $rewtpart == *2* ]]; then
-	#	echo " set root=(hd0,1)" >> /boot/grub/grub.cfg;
-	#elif [[ $rewtpart == *3* ]]; then
-	#	echo " set root=(hd0,2)" >> /boot/grub/grub.cfg;
-	#elif [[ $rewtpart == *4* ]]; then
-	#	echo " set root=(hd0,3)" >> /boot/grub/grub.cfg;
-	#fi
-	#echo " linux /boot/vmlinuz-linux root=UUID=$REWTPARTUUID ro" >> /boot/grub/grub.cfg
-	#echo " initrd /boot/initramfs-linux.img " >> /boot/grub/grub.cfg
-	#echo " }" >> /boot/grub/grub.cfg
-	
 }
 
+# Install Syslinux
 syslinuxinst() {
 	syslinux-install_update -i -a -m
 	printf " \033[1m ${red} Edit APPEND root=/dev/sda3 to point to your / partition. ${white} \n \033[0m"
 	echo -e "\033[1m ${green} Press Enter to Continue\033[0m"
 	read Enter
-	nano /mnt/boot/syslinux/syslinux.cfg
-} #Edited to have user edit the file to their needs
+	nano /mnt/boot/syslinux/syslinux.cfg   #Edited to have user edit the file to their needs
+}
 
+# Choose Your Bootloader
 BOOTload() {
 	printf "\033[1m \n ${white} CHOOSE YOUR BOOTLOADER \n \033[0m"
 	printf "\033[1m \n ${white}(1)${red}For Grub \n \033[0m"
@@ -140,8 +95,8 @@ BOOTload() {
 	fi
 }	
 
+# Main Function
 main() {
-	# decisions
 	hostname
 	timelocale
 	mkinitcpio -p linux

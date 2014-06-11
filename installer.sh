@@ -1,31 +1,23 @@
 #!/bin/bash
 #
-#
 # 	Authors ::->>	 i3-Arch, trewchainz, t60r  <<-::
 #
 #		Made to install archlinux
 #
-#		VERSION 1.2-BETA
+#		VERSION 1.3-BETA
 #
-#	WARNING : THIS SCRIPT IS CURRENTLY BEING DEVELOPED
-#			RUN AT YOUR OWN RISK
-#
-#	Reminder  -  Add option for LUKS
-#
-#   Note : Since this script directly modifies the system
-#        It is required to be operated as root
 ############################################
 
-#FONT
+# FONT
 setfont Lat2-Terminus16
 
-#COLORS
+# COLORS
 red=$(tput setaf 1)
 white=$(tput setaf 7)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
 
-
+# BANNER
 banner() {
 	printf " \033[1m \n ${white} WELCOME TO ${red} ARCHLINUX ${white} INSTALL SCRIPT \033[0m \n"
 cat <<"EOT"
@@ -129,8 +121,7 @@ FULLpart() {
 }
 
 pkgmntchroot() {
-	printf " Setting up install...\n"
-	pacman -Syy --noconfirm
+	printf " \033[1m ${green} Setting up install... ${white} \n \033[0m "
 	pacman -S rsync grub os-prober --noconfirm
 	mount $rewtpart /mnt
 	mkdir /mnt/home
@@ -144,7 +135,6 @@ pkgmntchroot() {
 	cp chrootnset.sh config.sh /mnt
 	arch-chroot /mnt /bin/bash chrootnset.sh
 }
-
 
 CALLpart() {
 	if [ "$thechoiceman" -eq 3 ]
@@ -161,8 +151,6 @@ CALLpart() {
 	fi
 }
 
-
-
 main() {
 	banner
 	ASKme     	 ## ASK NUMBER OF PARTITIONS
@@ -175,7 +163,6 @@ main() {
 	printf " \n SHUT DOWN SYSTEM AND THEN \n"
 	printf " \n REMOVE LIVE IMAGE \n "
 	printf " \n AND REBOOT SYSTEM ! \n"
-
 }
 
 main
