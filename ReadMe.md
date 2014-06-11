@@ -32,6 +32,10 @@
 		       
 		       wget https://goo.gl/4v5IyX
 		       
+		       		1A. then run this
+		       		
+		       		mv 4v5IyX menu
+		       
 		       ** If Shortened URL is 404 **
 		       
 		       ** Run This ** 
@@ -39,7 +43,11 @@
            
                
                 2. :RUN: 
+                        ** If you downloaded the script via goo.gl link **
                         source menu
+                        
+                        **If you downloaded the long url **
+                        source menu.sh
 
 
 		
