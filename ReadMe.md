@@ -29,6 +29,12 @@
 			  
 			  
 			  1. :DOWNLOAD: 
+		       
+		       wget https://goo.gl/4v5IyX
+		       
+		       ** If Shortened URL is 404 **
+		       
+		       ** Run This ** 
                        wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh
            
                
