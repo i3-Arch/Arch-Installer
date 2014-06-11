@@ -159,6 +159,7 @@ main() {
 	touch config.sh  ## Create file to store bootpart, rewtpart, homepart, swappart for chroot
         CALLpart 	 ## CALL PARTITIONING IF STATEMENT
 	pkgmntchroot 	 ## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
+	cp issue /mnt/etc/issue
 	umount -R /mnt
 	printf " \n COMPLETE !  \n "
 	printf " \n SHUT DOWN SYSTEM AND THEN \n"
