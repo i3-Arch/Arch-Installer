@@ -118,6 +118,7 @@ FULLpart() {
 	read swappart
 	echo "swappart=$swappart" >> config.sh
 	mkswap "$swappart" -L swapfs
+	echo "FULLpart=696" >> config.sh
 }
 
 pkgmntchroot() {

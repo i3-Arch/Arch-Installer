@@ -17,6 +17,14 @@
 # Which are: yourdrive, rewtpart, swappart, homepart, bootpart, thechoiceman
 source config.sh
 
+# IF statement for swap | if it exists
+check4swap() {
+if [ $FULLpart -eq 696 ]
+	then
+		echo -n "$swappart"   "none"   "swap"   "defaults"   "0"   "1" >> /etc/fstab
+fi
+}
+
 # COLORS
 red=$(tput setaf 1)
 white=$(tput setaf 7)
@@ -97,9 +105,9 @@ BOOTload() {
 
 # Main Function
 main() {
+	check4swap
 	hostname
 	timelocale
-	mkinitcpio -p linux
 	BOOTload
 	rm chrootnset.sh config.sh #cleanup
 	exit
