@@ -117,7 +117,7 @@ FULLpart() {
 	printf "\033[0m \n ${yellow}Swap Partition: ${white}\033[0m"
 	read swappart
 	echo "swappart=$swappart" >> config.sh
-	mkswap "$swappart" -U 13371337-0000-4000-0000-133700133700
+	mkswap -U 13371337-0000-4000-0000-133700133700 $swappart
 	echo "FULLpart=696" >> config.sh
 }
 
