@@ -21,7 +21,7 @@ source config.sh
 check4swap() {
 if [ $FULLpart -eq 696 ]
 	then
-		echo -n "13371337-0000-4000-0000-133700133700"   "none"   "swap"   "defaults"   "0"   "1" >> /etc/fstab
+		echo -n "13371337-0000-4000-0000-133700133700"   "none"   "swap"   "defaults"   "0"   "0" >> /etc/fstab
 fi
 }
 

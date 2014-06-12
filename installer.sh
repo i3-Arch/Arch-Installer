@@ -118,6 +118,7 @@ FULLpart() {
 	read swappart
 	echo "swappart=$swappart" >> config.sh
 	mkswap -U 13371337-0000-4000-0000-133700133700 $swappart
+	swapon $swappart
 	echo "FULLpart=696" >> config.sh
 }
 
