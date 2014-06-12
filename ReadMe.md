@@ -34,7 +34,7 @@
 		       
 		       		1A. then run this
 		       		
-		       		mv 4v5IyX menu
+		       		mv 4v5IyX menu.sh
 		       
 		       ** If Shortened URL is 404 **
 		       
@@ -43,10 +43,7 @@
            
                
                 2. :RUN: 
-                        ** If you downloaded the script via goo.gl link **
-                        source menu
-                        
-                        **If you downloaded the long url **
+
                         source menu.sh
 
 
