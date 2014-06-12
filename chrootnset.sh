@@ -18,12 +18,12 @@
 source config.sh
 
 # IF statement for swap | if it exists
-check4swap() {
-if [ $FULLpart -eq 696 ]
-	then
-		echo -n "13371337-0000-4000-0000-133700133700"   "none"   "swap"   "defaults"   "0"   "0" >> /etc/fstab
-fi
-}
+#check4swap() {
+#if [ $FULLpart -eq 696 ]
+#	then
+#		echo -n "13371337-0000-4000-0000-133700133700"   "none"   "swap"   "defaults"   "0"   "0" >> /etc/fstab
+#fi
+#}
 
 # COLORS
 red=$(tput setaf 1)
@@ -105,7 +105,7 @@ BOOTload() {
 
 # Main Function
 main() {
-	check4swap
+	#check4swap
 	hostname
 	timelocale
 	BOOTload
