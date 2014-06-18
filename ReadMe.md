@@ -31,6 +31,9 @@
 			  1. :DOWNLOAD: 
 		       
 		       wget https://goo.gl/4v5IyX
+		       		
+		       		-or-
+		       	wget is.gd/iTNqig
 		       
 		       		1A. then run this
 		       		
