@@ -28,16 +28,14 @@
 	 	i. ** BOOT INTO LIVE ARCH IMAGE **
 			  
 			  
-			  1. :DOWNLOAD: 
+	1. :DOWNLOAD: 
 		       
-		       wget https://goo.gl/4v5IyX
+		       wget https://goo.gl/4v5IyX -O menu.sh
 		       		
 		       		-or-
-		       	wget is.gd/iTNqig
-		       
-		       		1A. then run this
+	
+		       	wget is.gd/iTNqig -O menu.sh
 		       		
-		       		mv 4v5IyX menu.sh
 		       
 		       ** If Shortened URL is 404 **
 		       
