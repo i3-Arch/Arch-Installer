@@ -33,7 +33,7 @@ sleep 3
 }
 
 greetz() {
-	cd ~
+	cd "$HOME"
 	printf " \n \n   :: Lets Do This ::  \n \n   "
 	printf " \n \n 		#SWAG	      \n \n  "
 }
@@ -58,10 +58,10 @@ makeitbro() {
 
 xseti3() {
 	X -configure
-	if [ "$HOME/xorg.conf.new" ]
+	if [ -f "$HOME/xorg.conf.new" ]
 		then
-			$(cp $HOME/xorg.conf.new $HOME/xorg.conf)
-			$(rm $HOME/xorg.conf.new)
+			cp "$HOME/xorg.conf.new" "$HOME/xorg.conf"
+			rm "$HOME/xorg.conf.new"
 		else
 			printf " \n Where is xorg.conf.new ? -- skipping \n"
 	fi
@@ -70,14 +70,14 @@ xseti3() {
 
 	wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/config
 
-	if [ "$HOME/.i3/config" ]
+	if [ -f "$HOME/.i3/config" ]
 		then
-			echo " $(rm -rf ~/.i3) "
-			echo " $(mkdir ~/.i3) "
-			echo " $(mv config ~/.i3/config) "
+			rm -rf ~/.i3
+			mkdir ~/.i3
+			mv config ~/.i3/config
 		else
-			echo " $(mkdir ~/.i3) "
-			echo " $(mv config ~/.i3/config) "
+			mkdir ~/.i3
+			mv config ~/.i3/config
 	fi
 }
 
