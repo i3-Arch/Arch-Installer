@@ -3,6 +3,12 @@
 #	 POST INSTALL SCRIPT
 # 				-  i3-Arch
 
+mirrorSelect() {
+	printf " \n \n Select Your Mirrors \n \n"
+	sleep 2
+	nano /etc/pacman.d/mirrorlist
+}
+
 lemmeknow() {  ##CALLED BY     main
 	if [ $(id -u) -eq 0 ]
 		then
@@ -77,6 +83,7 @@ thankyoubro() {
 main() {
 	thankyoubro
 	lemmeknow
+	mirrorSelect
 	uwantme
 }
 main

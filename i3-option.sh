@@ -33,6 +33,15 @@ sleep 3
 }
 
 greetz() {
+	printf "\n \n Enable DHCP now ? \n \n"
+	printf "\n \n Choose Yes if unsure \n \n"
+	printf "\n [Y/N] \n \n"
+	printf "\n Answer: "
+	read thatANSWERbro
+	if [ "$thatANSWERbro" = Y -o "$thatANSWERbro" = y ]
+		then
+			dhcpcd
+	fi
 	cd "$HOME"
 	printf " \n \n   :: Lets Do This ::  \n \n   "
 	printf " \n \n 		#SWAG	      \n \n  "
@@ -41,14 +50,21 @@ greetz() {
 makeitbro() {
 	if [ $(id -u) -eq 0 ]
 		then
-		printf " \n You will need to create a user and move these dotfiles \n"
-		printf " to your user's home dir \n"
-		printf " \n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n"
-		pacman -Syyu --noconfirm
-		pacman -S base-devel wget xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			printf "\n Did you use our Arch-Installer ?\n\n"
+			printf "\n\n [Y/N]"
+			printf "\n Answer: "
+			read wutUdoBro
+				if	[ "$wutUdoBro" = Y -o "$wutUdoBro" = y ]
+					then
+					pacman -Syyu
+					pacman -S wget xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+					printf " \n You will need to create a user and move these dotfiles \n"
+					printf " to your user's home dir \n"
+					printf " \n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n"
+			fi
 		else
-		printf " \n Everything Seems Fine \n "
 		printf " \n \n Enter Password for root ( installing packages ) \n"
+		printf "\n Enter Pass: "
 		su root
 		pacman -Syyu --noconfirm
 		pacman -S base-devel xorg-server wget xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
@@ -90,14 +106,29 @@ i3fin() {
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.vimrc
 }
 
+guestbro() {
+	printf "\n Are you using virtualbox ? \n\n"
+	printf " \n [Y/N] \n"
+	printf " \n Answer: "
+	read wutUsay
+	if [ "$wutUsay" = Y -o "$wutUsay" = y ]
+		then
+			pacman -S virtualbox-guest-utils --noconfirm
+			modprobe -a vboxguest vboxsf vboxvideo
+			echo -n "vboxguest\nvboxsf\nvboxvideo" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
+			printf "\n Done ! \n"
+	fi
+}
+
 main() {
 	banner
 	greetz
+	guestbro
 	makeitbro
 	xseti3
 	i3fin
-	
 	printf " \n EXTRA TIP :: In the future you will need to Run ' startx :: \n "
+	
 }
 
 main
