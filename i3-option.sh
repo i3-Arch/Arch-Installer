@@ -56,8 +56,8 @@ makeitbro() {
 			read wutUdoBro
 				if	[ "$wutUdoBro" = Y -o "$wutUdoBro" = y ]
 					then
-					pacman -Syyu
-					pacman -S wget xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+					pacman -Syyu --noconfirm
+					pacman -S zsh wget xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 					printf " \n You will need to create a user and move these dotfiles \n"
 					printf " to your user's home dir \n"
 					printf " \n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n"
@@ -67,7 +67,7 @@ makeitbro() {
 		printf "\n Enter Pass: "
 		su root
 		pacman -Syyu --noconfirm
-		pacman -S base-devel xorg-server wget xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
+		pacman -S base-devel zsh xorg-server wget xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
 		exit
 	fi
 }
