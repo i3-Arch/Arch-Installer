@@ -56,19 +56,38 @@ makeitbro() {
 			read wutUdoBro
 				if	[ "$wutUdoBro" = Y -o "$wutUdoBro" = y ]
 					then
-					pacman -Syyu --noconfirm
-					pacman -S zsh wget xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+						printf "\n\n Option 1: Install default xfce setup \n"
+						printf "\n\n Option 2: Install our CUSTOM i3 setup\n\n"
+						printf "\n Choose 1 or 2: "
+						read DemChoice
+						if [ "$DemChoice" -eq 1 ]
+							then
+								pacman -Syy zsh wget xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+							else
+					pacman -Syy zsh wget xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 					printf " \n You will need to create a user and move these dotfiles \n"
 					printf " to your user's home dir \n"
 					printf " \n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n"
+						fi
 			fi
 		else
+		printf "\n\n Option 1: Install Default XFCE Setup \n\n"
+		printf "\n\n Option 2: Install CUSTOM i3 Setup \n\n"
+		printf "\n Choose 1 or 2: "
+		read DoYouEven
+			if [ "$DoYouEven" -eq 1 ]
+				then
+					printf "\n\n Enter Password for root ( installing packages ) \n\n"
+					printf "\n Enter Pass: "
+					su root
+					pacman -Syy base-devel zsh xorg-server wget xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+				else
 		printf " \n \n Enter Password for root ( installing packages ) \n"
 		printf "\n Enter Pass: "
 		su root
-		pacman -Syyu --noconfirm
-		pacman -S base-devel zsh xorg-server wget xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
+		pacman -Syy base-devel zsh xorg-server wget xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
 		exit
+		  	fi
 	fi
 }
 
