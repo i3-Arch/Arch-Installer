@@ -144,10 +144,13 @@ main() {
 	greetz
 	guestbro
 	makeitbro
-	xseti3
-	i3fin
-	printf " \n EXTRA TIP :: In the future you will need to Run ' startx :: \n "
-	
+	if [ "$DemChoice" -eq 1 -o "$DoYouEven" -eq 1 ]
+		then
+			xseti3
+			i3fin
+		else
+			printf " \n EXTRA TIP :: In the future you will need to Run ' startx :: \n "
+	fi
 }
 
 main
