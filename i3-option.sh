@@ -83,7 +83,7 @@ makeitbro() {
 }
 
 xseti3() {
-	X -configure
+	X -configure 2> /dev/null
 	if [ -f "$HOME/xorg.conf.new" ]
 		then
 			cp "$HOME/xorg.conf.new" "$HOME/xorg.conf"
