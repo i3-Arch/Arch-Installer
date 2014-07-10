@@ -108,7 +108,7 @@ xseti3() {
 }
 
 i3fin() {
-	if [ "$DoYouEven" == 2 ]
+	if [ "$DoYouEven" == 2 -o "$DoYouEven" == 2 ]
 		then
 			printf " \n Setting up .Xresources, .vimrc and .xinitrc \n "
 			wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
