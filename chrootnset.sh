@@ -33,7 +33,7 @@ yellow=$(tput setaf 3)
 
 # Set Your Hostname
 hostname() {
-	printf "\033[1m \n ${yellow}Choose your hostname: ${white}\n \033[0m"
+	printf "\033[1m \n ${yellow}Choose your hostname: ${white} \033[0m"
 	read hostresponse
 	echo "$hostresponse" > /etc/hostname
 }
