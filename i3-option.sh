@@ -33,15 +33,15 @@ sleep 3
 }
 
 greetz() {
-	printf "\n \n Enable DHCP now ? \n \n"
-	printf "\n \n Choose Yes if unsure \n \n"
-	printf "\n [Y/N] \n \n"
-	printf "\n Answer: "
-	read thatANSWERbro
-	if [ "$thatANSWERbro" = Y -o "$thatANSWERbro" = y ]
-		then
-			dhcpcd
-	fi
+	#printf "\n \n Enable DHCP on boot ? \n \n"
+	#printf "\n \n Choose Yes if unsure \n \n"
+	#printf "\n [Y/N] \n \n"
+	#printf "\n Answer: "
+	#read thatANSWERbro
+	#if [ "$thatANSWERbro" = Y -o "$thatANSWERbro" = y ]
+	#	then
+	#		dhcpcd
+	#fi
 	cd "$HOME"
 	printf " \n \n   :: Lets Do This ::  \n \n   "
 	printf " \n \n 		#SWAG	      \n \n  "
