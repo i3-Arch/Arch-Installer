@@ -33,15 +33,6 @@ sleep 3
 }
 
 greetz() {
-	#printf "\n \n Enable DHCP on boot ? \n \n"
-	#printf "\n \n Choose Yes if unsure \n \n"
-	#printf "\n [Y/N] \n \n"
-	#printf "\n Answer: "
-	#read thatANSWERbro
-	#if [ "$thatANSWERbro" = Y -o "$thatANSWERbro" = y ]
-	#	then
-	#		dhcpcd
-	#fi
 	cd "$HOME"
 	printf " \n \n   :: Lets Do This ::  \n \n   "
 	printf " \n \n 		#SWAG	      \n \n  "
@@ -54,7 +45,7 @@ makeitbro() {
 			printf "\n\n [Y/N]"
 			printf "\n Answer: "
 			read wutUdoBro
-				if	[ "$wutUdoBro" = Y -o "$wutUdoBro" = y ]
+				if	[ "$wutUdoBro" == Y -o "$wutUdoBro" == y ]
 					then
 						printf "\n\n Option 1: Install default xfce setup \n"
 						printf "\n\n Option 2: Install our CUSTOM i3 setup\n\n"
