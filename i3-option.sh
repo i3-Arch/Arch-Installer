@@ -51,7 +51,7 @@ makeitbro() {
 						printf "\n\n Option 2: Install our CUSTOM i3 setup\n\n"
 						printf "\n Choose 1 or 2: "
 						read DemChoice
-						if [ "$DemChoice" -eq "1" ]
+						if [ "$DemChoice" == 1 ]
 							then
 								pacman -Syy zsh wget xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 							else
@@ -66,7 +66,7 @@ makeitbro() {
 		printf "\n\n Option 2: Install CUSTOM i3 Setup \n\n"
 		printf "\n Choose 1 or 2: "
 		read DoYouEven
-			if [ "$DoYouEven" -eq "1" ]
+			if [ "$DoYouEven" == 1 ]
 				then
 					printf "\n\n Enter Password for root ( installing packages ) \n\n"
 					printf "\n Enter Pass: "
@@ -135,7 +135,7 @@ main() {
 	greetz
 	guestbro
 	makeitbro
-	if [ "$DemChoice" -eq "1" -o "$DoYouEven" -eq "1" ]
+	if [ "$DemChoice" == 1 -o "$DoYouEven" == 1 ]
 		then
 			xseti3
 			i3fin
