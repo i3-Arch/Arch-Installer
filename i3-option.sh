@@ -91,20 +91,20 @@ xseti3() {
 		else
 			printf " \n Where is xorg.conf.new ? -- skipping \n"
 	fi
-
-		printf " \n Setting Up i3 config in ~/.i3/config \n "
-
-	wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/config
-
-	if [ -f "$HOME/.i3/config" ]
-		then
-			rm -rf ~/.i3
-			mkdir ~/.i3
-			mv config ~/.i3/config
-		else
-			mkdir ~/.i3
-			mv config ~/.i3/config
-	fi
+		if [ "$DoYouEven" == 2 -o "$DemChoice" == 2 ] 
+			then
+			printf " \n Setting Up i3 config in ~/.i3/config \n "
+			wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/config
+			if [ -f "$HOME/.i3/config" ]
+				then
+					rm -rf ~/.i3
+					mkdir ~/.i3
+					mv config ~/.i3/config
+				else
+					mkdir ~/.i3
+					mv config ~/.i3/config
+			fi
+		fi
 }
 
 i3fin() {
@@ -139,13 +139,9 @@ main() {
 	greetz
 	guestbro
 	makeitbro
-	if [ "$DemChoice" == 1 -o "$DoYouEven" == 1 ]
-		then
-			xseti3
-			i3fin
-		else
-			printf " \n EXTRA TIP :: In the future you will need to Run ' startx :: \n "
-	fi
+	xseti3
+	i3fin
+	printf " \n EXTRA TIP :: In the future you will need to Run ' startx :: \n "
 }
 
 main
