@@ -108,12 +108,14 @@ xseti3() {
 }
 
 i3fin() {
-	printf " \n Setting up .Xresources, .vimrc and .xinitrc \n "
-
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.xinitrc
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.zshrc
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.vimrc
+	if [ "$DoYouEven" == 2 ]
+		then
+			printf " \n Setting up .Xresources, .vimrc and .xinitrc \n "
+			wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
+			wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.xinitrc
+			wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.zshrc
+			wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.vimrc
+	fi
 }
 
 guestbro() {
@@ -125,7 +127,9 @@ guestbro() {
 		then
 			pacman -S virtualbox-guest-utils --noconfirm
 			modprobe -a vboxguest vboxsf vboxvideo
-			echo -n "vboxguest\nvboxsf\nvboxvideo" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
+			echo "vboxguest" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
+			echo "vboxvideo" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
+			echo "vboxsf" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
 			printf "\n Done ! \n"
 	fi
 }
