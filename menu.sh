@@ -46,7 +46,7 @@ case $CHOICE in
 	2) echo -e "\033[1m ${yellow} " && cat chrootnset.sh|less ;;
 	3) echo -e "\033[1m ${white}  " && cat ReadMe.md |less ;;
 	4) echo -e "\033[1m ${white}  LETS DO IT " && calculate ;;
-	5) echo -e "\033[1m ${yellow} HOPE YOU ENJOY \033[0m" && mv i3-option.sh Environment.sh && rm *.sh *Installer*.gz issue ReadMe* ;; # Exit and Cleanup
+	5) echo -e "\033[1m ${yellow} HOPE YOU ENJOY \033[0m" && rm *ller.sh *nu.sh *set.sh *Installer*.gz issue ReadMe* ;; # Exit and Cleanup
 	*) echo -e "\033[1m ${yellow} invalid option ${red} try again\033[0m"
 esac
 
