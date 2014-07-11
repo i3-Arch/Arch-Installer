@@ -53,7 +53,7 @@ makeitbro() {
 						read DemChoice
 						if [ "$DemChoice" == 1 ]
 							then
-								pacman -Syy zsh wget xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+								pacman -Syy zsh xfce4 xfce4-goodies wget xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 							else
 					pacman -Syy zsh wget xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 					printf " \n You will need to create a user and move these dotfiles \n"
@@ -71,7 +71,7 @@ makeitbro() {
 					printf "\n\n Enter Password for root ( installing packages ) \n\n"
 					printf "\n Enter Pass: "
 					su root
-					pacman -Syy base-devel zsh xorg-server wget xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+					pacman -Syy base-devel zsh xfce4 xfce4-goodies xorg-server wget xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 				else
 		printf " \n \n Enter Password for root ( installing packages ) \n"
 		printf "\n Enter Pass: "
