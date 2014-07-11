@@ -160,12 +160,12 @@ main() {
 	disk 				## PARTITION WITH CFDISK or FDISK
     CALLpart 	 		## CALL PARTITIONING IF STATEMENT
 	pkgmntchroot 	 	## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
-	cp issue /mnt/etc/issue
-	umount -R /mnt
-	printf " \n COMPLETE !  \n "
-	printf " \n SHUT DOWN SYSTEM AND THEN \n"
-	printf " \n REMOVE LIVE IMAGE \n "
-	printf " \n AND REBOOT SYSTEM ! \n"
+	cp issue /mnt/etc/issue   # TTY ART 
+	umount -R /mnt			  # UNMOUNT 
+	printf "\033[1m \n ${green} COMPLETE !  \n \033[0m"
+	printf "\033[1m \n ${yellow} SHUT DOWN SYSTEM AND THEN \n \033[0m"
+	printf "\033[1m \n ${yellow} REMOVE LIVE IMAGE \n \033[0m"
+	printf "\033[1m \n ${red} THEN REBOOT SYSTEM ! \n \033[0m"
 }
 
 main
