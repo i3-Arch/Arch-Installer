@@ -51,16 +51,15 @@
 		
 		{ OPTIONAL: download and run i3-option.sh }
 		
-			1. wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/i3-option.sh
-		
-			2. source i3-option.sh
+			1. wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/Post-Install.sh
+			
+			2. source Post-Install.sh
 
 			* This is made to install archlinux with base base/devel
 			
-				* And then optionally setup i3 afterwards........
+				* And then optionally setup i3 or XFCE afterwards........
 			
 					i. Eventually other WM/DE's will be added
-
 
 		
 
