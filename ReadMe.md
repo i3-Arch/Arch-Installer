@@ -54,7 +54,6 @@
 		
 		1b. pacman -S wget
 
-	{ OPTIONAL: download and run i3-option.sh }
 		
 			1. wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/Post-Install.sh
 			
