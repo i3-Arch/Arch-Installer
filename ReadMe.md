@@ -48,8 +48,13 @@
                         source menu.sh
 
 
+# POST INSTALL
 		
-		{ OPTIONAL: download and run i3-option.sh }
+		1a. run dhcpcd and/or systemctl enable dhcpcd@device
+		
+		1b. pacman -S wget
+
+	{ OPTIONAL: download and run i3-option.sh }
 		
 			1. wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/Post-Install.sh
 			
