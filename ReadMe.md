@@ -72,8 +72,8 @@
 
 
 # CURRENT OBJECTIVES
-	~~Mistaken text.~~
-	~~Make a menu that makes things easier~~
+	
+	1. Make a menu that makes things easier  --COMPLETE--
 
 	2. Add More Options In General
 
