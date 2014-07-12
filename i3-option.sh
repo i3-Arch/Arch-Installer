@@ -5,6 +5,13 @@
 #  Author: i3-Arch
 #
 ###############################################
+
+# COLORS
+red=$(tput setaf 1)
+white=$(tput setaf 7)
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
+
 banner() {
 cat <<"EOT"
      _____________________________
@@ -34,47 +41,47 @@ sleep 3
 
 greetz() {
 	cd "$HOME"
-	printf " \n \n   :: Lets Do This ::  \n \n   "
-	printf " \n \n 		#SWAG	      \n \n  "
+	printf "\033[1m \n\n ${green}  :: Lets Do This ::  \n\n \033[0m"
+	printf "\033[1m \n\n ${yellow}	#SWAG	      \n\n \033[0m"
 }
 
 makeitbro() {
 	if [ $(id -u) -eq 0 ]
 		then
-			printf "\n Did you use our Arch-Installer ?\n\n"
-			printf "\n\n [Y/N]"
-			printf "\n Answer: "
+			printf "\033[1m \n ${green} Did you use our Arch-Installer ?\n\n \033[0m"
+			printf "\033[1m \n\n ${white} [${green}Y${white}/${red}N${white}] \n \033[0m"
+			printf "\033[1m \n ${red} Answer${yellow}: ${white}\033[0m"
 			read wutUdoBro
 				if	[ "$wutUdoBro" == Y -o "$wutUdoBro" == y ]
 					then
-						printf "\n\n Option 1: Install default xfce setup \n"
-						printf "\n\n Option 2: Install our CUSTOM i3 setup\n\n"
-						printf "\n Choose 1 or 2: "
+						printf "\033[1m \n\n ${green}Option 1: ${yellow}Install default xfce setup \n \033[0m"
+						printf "\033[1m \n\n ${green}Option 2: ${yellow}Install our CUSTOM i3 setup\n\n \033[0m"
+						printf "\033[1m\n ${green}Choose ${red}1 ${white}or ${red}2${white}: \033[0m"
 						read DemChoice
 						if [ "$DemChoice" == 1 ]
 							then
 								pacman -Syy zsh xfce4 xfce4-goodies wget xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 							else
 					pacman -Syy zsh wget xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-					printf " \n You will need to create a user and move these dotfiles \n"
-					printf " to your user's home dir \n"
-					printf " \n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n"
+					printf "\033[1m ${yellow}\n You will need to create a user and move these dotfiles \n \033[0m"
+					printf "\033[1m ${yellow}to your user's home dir \n \033[0m"
+					printf "\033[1m ${red}\n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n \033[0m"
 						fi
 			fi
 		else
-		printf "\n\n Option 1: Install Default XFCE Setup \n\n"
-		printf "\n\n Option 2: Install CUSTOM i3 Setup \n\n"
-		printf "\n Choose 1 or 2: "
+		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default XFCE Setup \n\n \033[0m"
+		printf "\n\n ${green}Option 2: ${yellow}Install CUSTOM i3 Setup \n\n"
+		printf "\n ${green}Choose ${red}1 ${white}or ${red}2${white}: "
 		read DoYouEven
 			if [ "$DoYouEven" == 1 ]
 				then
-					printf "\n\n Enter Password for root ( installing packages ) \n\n"
-					printf "\n Enter Pass: "
+					printf "\033[1m \n\n ${red}Enter Password for root ( installing packages ) \n\n \033[0m"
+					printf "\033[1m\n ${green}Enter Pass: ${white}\033[0m"
 					su root
 					pacman -Syy base-devel zsh xfce4 xfce4-goodies xorg-server wget xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 				else
-		printf " \n \n Enter Password for root ( installing packages ) \n"
-		printf "\n Enter Pass: "
+		printf "\033[1m \n\n ${green}Enter Password for root ( installing packages ) \n \033[0m"
+		printf "\033[1m \n ${green}Enter Pass: ${white}\033[0m"
 		su root
 		pacman -Syy base-devel zsh xorg-server wget xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
 		exit
@@ -89,11 +96,11 @@ xseti3() {
 			cp "$HOME/xorg.conf.new" "$HOME/xorg.conf"
 			rm "$HOME/xorg.conf.new"
 		else
-			printf " \n Where is xorg.conf.new ? -- skipping \n"
+			printf "\033[1m \n ${red}Where is xorg.conf.new ? -- skipping \n \033[0m"
 	fi
 		if [ "$DoYouEven" == 2 -o "$DemChoice" == 2 ] 
 			then
-			printf " \n Setting Up i3 config in ~/.i3/config \n "
+			printf "\033[1m \n ${yellow}Setting Up i3 config in ~/.i3/config \n \033[0m"
 			wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/config
 			if [ -f "$HOME/.i3/config" ]
 				then
@@ -110,7 +117,7 @@ xseti3() {
 i3fin() {
 	if [ "$DoYouEven" == 2 -o "$DoYouEven" == 2 ]
 		then
-			printf " \n Setting up .Xresources, .vimrc and .xinitrc \n "
+			printf "\033[1m \n ${green}Setting up ${red} .Xresources, .vimrc and .xinitrc \n \033[0m"
 			wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
 			wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.xinitrc
 			wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.zshrc
@@ -119,9 +126,9 @@ i3fin() {
 }
 
 guestbro() {
-	printf "\n Are you using virtualbox ? \n\n"
-	printf " \n [Y/N] \n"
-	printf " \n Answer: "
+	printf "\033[1m \n ${green}Are you using virtualbox ? \n\n \033[0m"
+	printf "\033[1m \n ${white}[${green}Y${white}/${red}N${white}] \n \033[0m"
+	printf "\033[1m \n ${green}Answer: ${white}\033[0m"
 	read wutUsay
 	if [ "$wutUsay" == Y -o "$wutUsay" == y ]
 		then
@@ -141,7 +148,7 @@ main() {
 	makeitbro
 	xseti3
 	i3fin
-	printf " \n EXTRA TIP :: In the future you will need to Run ' startx :: \n "
+	printf "\033[1m \n ${yellow}EXTRA TIP ${green}:: ${red}In the future you will need to Run  ${yellow}startx ${green}:: \n \033[0m"
 }
 
 main
