@@ -103,7 +103,6 @@ thankyoubro() {
 					wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/i3-option.sh
 			fi
 	else
-			then
 				if [ ! -f /usr/bin/wget ]
 					then
 						printf "\033[1m \n\n ${green} Enter Password for root ( Installing Packages ) \n\n \033[0m"
