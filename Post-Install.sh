@@ -73,22 +73,15 @@ usersetup() {  ## CALLED BY needpass
 
 uwantme() {
 	printf "\033[1m \n ${green} Do you want to install a WM/DE now ? \n \033[0m"
-	printf "\033[1m \n\n ${red} Current Choices Are \n\n \033[0m"
-	printf "\033[1m \n ${yellow} (1) Custom i3 Setup \n \033[0m"
-	printf "\033[1m \n ${yellow} (2) Default XFCE Setup \n \033[0m"
-	printf "\033[1m \n ${yellow} (3) NULL \n \033[0m"
-	printf "\033[1m \n\n Please Enter Your Choice:${white} \033[0m"
+	printf "\033[1m \n\n ${yellow} [Y/N] \n\n \033[0m"
+	printf "\033[1m \n\n ${red} Choice:${white} \033[0m"
 	read wutdebro
-	if [ "$wutdebro" -eq 1 ]
+	if [ "$wutdebro" == Y -o "$wutdebro" == y -o "$wutdebro" == YES -o "$wutdebro" == yes ]
 		then
 			source i3-option.sh
 		
-		elif [ "$wutdebro" -eq 2 ]
-			then
-				source i3-option.sh
-		
 		else
-			printf "\033[1m \n\n  ${red} Sorry Thats The Choices So Far \n\n \033[0m"
+			printf "\033[1m \n\n  ${red} Understood \n\n \033[0m"
 	fi
 }
 
