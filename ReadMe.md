@@ -3,6 +3,11 @@
 	       	+-------- Current Version:  1.2-BETA --------+
 	       	==============================================
 	       	
+	       * This is made to install archlinux with base base/devel
+			
+			* And then optionally setup i3 or XFCE afterwards........ 
+			
+	       	
 	       
 				[ NOTICE ]
 					- CURRENTLY UNDER DEVELOPMENT
@@ -59,16 +64,10 @@
 			
 			2. source Post-Install.sh
 
-			* This is made to install archlinux with base base/devel
-			
-				* And then optionally setup i3 or XFCE afterwards........
-			
+
 					i. Eventually other WM/DE's will be added
 
 		
-
-
-
 
 
 # CURRENT OBJECTIVES
