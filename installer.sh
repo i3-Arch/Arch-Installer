@@ -124,14 +124,13 @@ FULLpart() {
 
 pkgmntchroot() {
 	printf " \033[1m ${green} Setting up install... ${white} \n \033[0m "
-	pacman -S rsync grub os-prober --noconfirm
 	mount $rewtpart /mnt
 	mkdir /mnt/home
 	mkdir /mnt/boot
 	mkdir -pv /mnt/var/lib/pacman
 	mount $bootpart /mnt/boot
 	mount $homepart /mnt/home
-	pacstrap /mnt base base-devel grub os-prober rsync
+	pacstrap /mnt base base-devel grub os-prober rsync wget
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
 	genfstab -p -U /mnt >> /mnt/etc/fstab
 	cp chrootnset.sh config.sh /mnt
