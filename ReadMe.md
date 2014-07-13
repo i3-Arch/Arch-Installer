@@ -55,9 +55,8 @@
 
 # POST INSTALL
 		
-		1a. run dhcpcd and/or systemctl enable dhcpcd@device
-		
-		1b. pacman -S wget
+		1a. run dhcpcd
+			then systemctl enable dhcpcd@device ( to enable dhcpcd at boot )
 
 		
 			1. wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/Post-Install.sh
