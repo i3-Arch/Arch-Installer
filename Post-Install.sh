@@ -109,10 +109,11 @@ thankyoubro() {
 						wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/i3-option.sh
 				fi
 	fi
+	clear
 	printf "\033[1m \n ${green} Thanks for being lazy and using our script ! \n \033[0m"
 	printf "\033[1m \n ${yellow} If you have any problems afterwards \n \033[0m"
 	printf "\033[1m \n ${red} Search The ARCHWIKI \n \n \033[0m"
-	
+	sleep 3
 }
 
 main() {
