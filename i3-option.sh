@@ -63,8 +63,8 @@ makeitbro() {
 								pacman -Syy zsh xfce4 xfce4-goodies wget xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 							else
 					pacman -Syy zsh wget xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-					printf "\033[1m ${yellow}\n You will need to create a user and move these dotfiles \n \033[0m"
-					printf "\033[1m ${yellow}to your user's home dir \n \033[0m"
+					printf "\033[1m ${yellow}\n You will need to move these dotfiles \n \033[0m"
+					printf "\033[1m ${yellow}to your user's home directory \n \033[0m"
 					printf "\033[1m ${red}\n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n \033[0m"
 						fi
 			fi
