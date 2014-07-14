@@ -99,7 +99,7 @@ uwantme() {
 	read wutdebro
 	if [ "$wutdebro" == Y -o "$wutdebro" == y -o "$wutdebro" == YES -o "$wutdebro" == yes ]
 		then
-			source i3-option.sh
+			source de-wm.sh
 		
 		else
 			printf "\033[1m \n\n  ${red} Understood \n\n \033[0m"
@@ -112,9 +112,9 @@ thankyoubro() {
 			if [ ! -f /usr/bin/wget ]
 				then
 					pacman -S wget
-					wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/i3-option.sh
+					wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/de-wm.sh
 				else
-					wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/i3-option.sh
+					wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/de-wm.sh
 			fi
 	else
 				if [ ! -f /usr/bin/wget ]
@@ -123,9 +123,9 @@ thankyoubro() {
 						printf "\033[1m ${yellow} Pass:  \033[0m"
 						su root
 						pacman -S wget
-						wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/i3-option.sh
+						wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/de-wm.sh
 					else
-						wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/i3-option.sh
+						wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/de-wm.sh
 				fi
 	fi
 	clear
