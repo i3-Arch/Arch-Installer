@@ -50,6 +50,7 @@ needpass() { ## CALLED BY lemmeknow
 usersetup() {  ## CALLED BY needpass
 	if [ $(id -u) -eq 0 ]
 		then
+			clear
 			printf "\033[1m \n ${green} Would you like to setup a USER now ? \n\n \033[0m"
 			printf "\033[1m \n ${yellow} [Y|N] \n \033[0m"
 			printf "\033[1m \n\n Answer:${white} \033[0m"
@@ -72,6 +73,7 @@ usersetup() {  ## CALLED BY needpass
 }
 
 uwantme() {
+	clear
 	printf "\033[1m \n ${green} Do you want to install a WM/DE now ? \n \033[0m"
 	printf "\033[1m \n\n ${yellow} [Y/N] \n\n \033[0m"
 	printf "\033[1m \n\n ${red} Choice:${white} \033[0m"
