@@ -54,13 +54,19 @@ makeitbro() {
 				read DemChoice
 					if [ "$DemChoice" == 1 ]
 						then
-							pacman -Syy zsh xfce4 xfce4-goodies wget xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+							pacman -Syy zsh xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 					elif [ "$DemChoice" == 2 ]
 						then
-							pacman -Syy zsh wget xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+							pacman -Syy vim xcompmgr xscreensaver zsh xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 							printf "\033[1m ${yellow}\n You will need to move these dotfiles \n \033[0m"
 							printf "\033[1m ${yellow}to your user's home directory \n \033[0m"
 							printf "\033[1m ${red}\n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n \033[0m"
+					elif [ "$DemChoice" == 3 ]
+						then
+							pacman -Syy zsh cinnamon xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+					else
+						printf "\033[1m Choice not understood\033[0m"
+						sleep 2
 					fi
 		else
 		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default XFCE Setup \n\n \033[0m"
@@ -73,12 +79,13 @@ makeitbro() {
 					printf "\033[1m\n ${green}Enter Pass: ${white}\033[0m"
 					su root
 					pacman -Syy base-devel zsh xfce4 xfce4-goodies xorg-server wget xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+					exit
 			elif [ "$DoYouEven" == 2 ]
 				then
 					printf "\033[1m \n\n ${green}Enter Password for root ( installing packages ) \n \033[0m"
 					printf "\033[1m \n ${green}Enter Pass: ${white}\033[0m"
 					su root
-					pacman -Syy base-devel zsh xorg-server wget xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
+					pacman -Syy xscreensaver vim xcompmgr base-devel zsh xorg-server wget xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
 					exit
 		    	else
 					printf "\033[1m ${red}lolwut${white}.... ${yellow}NOT UNDERSTOOD \033[0m"
@@ -136,7 +143,47 @@ guestbro() {
 			echo "vboxguest" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
 			echo "vboxvideo" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
 			echo "vboxsf" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
-			printf "\n Done ! \n"
+	fi
+}
+
+EnvSet() {
+	if [ $(id -u) -eq 0 ]
+		then
+			printf "\033[1m \n\n ${yellow}Did you create a user ? \n\n \033[0m"
+			printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n \033[0m"
+			read DikWeed
+			if [ "$DikWeed" == Y -o "$DikWeed" == y -o "$DikWeed" == YES -o "$DikWeed" == yes ]
+					then
+					printf "\033[1m \n\n ${green}Enter that username please \n\n \033[0m"
+					read yourINput
+					cp /etc/skel/.xinitrc /home/"$yourINput"/
+					if [ "$DemChoice" == 1 -o "$DoYouEven" == 1 ]
+						then
+							if [ -f /home/"$yourINput"/.xinitrc ]
+								then
+								echo "exec startxfce4" >> /home/"$yourINput"/.xinitrc
+							fi
+					elif [ "$DemChoice" == 2 -o "$DoYouEven" == 2 ]
+						then
+							if [ -f /home/"$yourINput"/.xinitrc ]
+								then
+								rm /home/"$yourINput"/.xinitrc
+								cp .Xresources .zshrc .xinitrc .vimrc /home/"$yourINput"/
+								cp -r .i3 /home/"$yourINput"/
+							fi
+					elif [ "$DemChoice" == 3 -o "$DoYouEven" == 3 ]
+						then
+							if [ -f /home/"$yourINput"/.xinitrc ]
+								then
+								echo "exec cinnamon-session" >> /home/"$yourINput"/.xinitrc
+							fi
+					fi
+			else
+				printf "\033[1m ${green}Should have used the ${red}POST-INSTALL.sh ${green}script to setup user for ENVIRONMENT \033[0m"
+				sleep 2
+					
+			fi
+
 	fi
 }
 
@@ -147,6 +194,7 @@ main() {
 	makeitbro
 	xseti3
 	i3fin
+	EnvSet
 	printf "\033[1m \n ${yellow}EXTRA TIP ${green}:: ${red}In the future you will need to Run  ${yellow}startx ${green}:: \n \033[0m"
 }
 
