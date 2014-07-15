@@ -79,9 +79,9 @@ makeitbro() {
 					printf "\033[1m \n ${green}Enter Pass: ${white}\033[0m"
 					su root
 					pacman -Syy base-devel zsh xorg-server wget xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
-		exit
+					exit
 		    	else
-					printf "\033[1m ${red}lolwut.... ${yellow}NOT UNDERSTOOD \033[0m"
+					printf "\033[1m ${red}lolwut${white}.... ${yellow}NOT UNDERSTOOD \033[0m"
 			fi
 	fi
 }
@@ -112,7 +112,7 @@ xseti3() {
 }
 
 i3fin() {
-	if [ "$DoYouEven" == 2 -o "$DoYouEven" == 2 ]
+	if [ "$DoYouEven" == 2 -o "$DemChoice" == 2 ]
 		then
 			printf "\033[1m \n ${green}Setting up ${red} .Xresources, .vimrc and .xinitrc \n \033[0m"
 			wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources

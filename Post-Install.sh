@@ -20,6 +20,7 @@ updateUpgrade() {
 				printf "\033[1m ${green} \n\nEnter Pass For Root ${yellow}( For Update/Upgrade ) \033[0m"
 				su root
 				pacman -Syyu --noconfirm
+				exit
 		fi
 }
 
@@ -30,7 +31,7 @@ mirrorSelect() {
 				then
 					cp /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
 			fi
-	nano /etc/pacman.d/mirrorlist
+		nano /etc/pacman.d/mirrorlist
 }
 
 lemmeknow() {  ##CALLED BY     main
@@ -124,6 +125,7 @@ thankyoubro() {
 						su root
 						pacman -S wget
 						wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/de-wm.sh
+						exit
 					else
 						wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/de-wm.sh
 				fi
