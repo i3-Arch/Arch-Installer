@@ -48,29 +48,23 @@ greetz() {
 makeitbro() {
 	if [ $(id -u) -eq 0 ]
 		then
-			printf "\033[1m \n ${green} Did you use our Arch-Installer ?\n\n \033[0m"
-			printf "\033[1m \n\n ${white} [${green}Y${white}/${red}N${white}] \n \033[0m"
-			printf "\033[1m \n ${red} Answer${yellow}: ${white}\033[0m"
-			read wutUdoBro
-				if	[ "$wutUdoBro" == Y -o "$wutUdoBro" == y ]
-					then
-						printf "\033[1m \n\n ${green}Option 1: ${yellow}Install default xfce setup \n \033[0m"
-						printf "\033[1m \n\n ${green}Option 2: ${yellow}Install our CUSTOM i3 setup\n\n \033[0m"
-						printf "\033[1m\n ${green}Choose ${red}1 ${white}or ${red}2${white}: \033[0m"
-						read DemChoice
-						if [ "$DemChoice" == 1 ]
+			printf "\033[1m \n\n ${green}Option 1: ${yellow}Install default xfce setup \n \033[0m"
+			printf "\033[1m \n\n ${green}Option 2: ${yellow}Install our CUSTOM i3 setup\n\n \033[0m"
+			printf "\033[1m\n ${green}Choose ${red}1 ${white}or ${red}2${white}: \033[0m"
+				read DemChoice
+					if [ "$DemChoice" == 1 ]
+						then
+							pacman -Syy zsh xfce4 xfce4-goodies wget xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+						elif [ "$DemChoice" == 2 ]
 							then
-								pacman -Syy zsh xfce4 xfce4-goodies wget xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-							else
-					pacman -Syy zsh wget xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-					printf "\033[1m ${yellow}\n You will need to move these dotfiles \n \033[0m"
-					printf "\033[1m ${yellow}to your user's home directory \n \033[0m"
-					printf "\033[1m ${red}\n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n \033[0m"
-						fi
-				fi
+								pacman -Syy zsh wget xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+								printf "\033[1m ${yellow}\n You will need to move these dotfiles \n \033[0m"
+								printf "\033[1m ${yellow}to your user's home directory \n \033[0m"
+								printf "\033[1m ${red}\n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n \033[0m"
+					fi
 		else
 		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default XFCE Setup \n\n \033[0m"
-		printf "\n\n ${green}Option 2: ${yellow}Install CUSTOM i3 Setup \n\n"
+		printf "\033[1m \n\n ${green}Option 2: ${yellow}Install CUSTOM i3 Setup \n\n \033[0m"
 		printf "\n ${green}Choose ${red}1 ${white}or ${red}2${white}: "
 		read DoYouEven
 			if [ "$DoYouEven" == 1 ]
@@ -85,7 +79,7 @@ makeitbro() {
 		su root
 		pacman -Syy base-devel zsh xorg-server wget xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
 		exit
-		  	fi
+		   fi
 	fi
 }
 
