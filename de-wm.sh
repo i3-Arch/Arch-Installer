@@ -55,12 +55,12 @@ makeitbro() {
 					if [ "$DemChoice" == 1 ]
 						then
 							pacman -Syy zsh xfce4 xfce4-goodies wget xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-						elif [ "$DemChoice" == 2 ]
-							then
-								pacman -Syy zsh wget xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-								printf "\033[1m ${yellow}\n You will need to move these dotfiles \n \033[0m"
-								printf "\033[1m ${yellow}to your user's home directory \n \033[0m"
-								printf "\033[1m ${red}\n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n \033[0m"
+					elif [ "$DemChoice" == 2 ]
+						then
+							pacman -Syy zsh wget xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+							printf "\033[1m ${yellow}\n You will need to move these dotfiles \n \033[0m"
+							printf "\033[1m ${yellow}to your user's home directory \n \033[0m"
+							printf "\033[1m ${red}\n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n \033[0m"
 					fi
 		else
 		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default XFCE Setup \n\n \033[0m"
@@ -73,13 +73,16 @@ makeitbro() {
 					printf "\033[1m\n ${green}Enter Pass: ${white}\033[0m"
 					su root
 					pacman -Syy base-devel zsh xfce4 xfce4-goodies xorg-server wget xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-				else
-		printf "\033[1m \n\n ${green}Enter Password for root ( installing packages ) \n \033[0m"
-		printf "\033[1m \n ${green}Enter Pass: ${white}\033[0m"
-		su root
-		pacman -Syy base-devel zsh xorg-server wget xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
+			elif [ "$DoYouEven" == 2 ]
+				then
+					printf "\033[1m \n\n ${green}Enter Password for root ( installing packages ) \n \033[0m"
+					printf "\033[1m \n ${green}Enter Pass: ${white}\033[0m"
+					su root
+					pacman -Syy base-devel zsh xorg-server wget xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
 		exit
-		   fi
+		    	else
+					printf "\033[1m ${red}lolwut.... ${yellow}NOT UNDERSTOOD \033[0m"
+			fi
 	fi
 }
 
