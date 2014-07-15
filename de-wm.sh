@@ -48,9 +48,10 @@ greetz() {
 makeitbro() {
 	if [ $(id -u) -eq 0 ]
 		then
-			printf "\033[1m \n\n ${green}Option 1: ${yellow}Install default xfce setup \n \033[0m"
-			printf "\033[1m \n\n ${green}Option 2: ${yellow}Install our CUSTOM i3 setup\n\n \033[0m"
-			printf "\033[1m\n ${green}Choose ${red}1 ${white}or ${red}2${white}: \033[0m"
+			printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default Xfce Setup \n \033[0m"
+			printf "\033[1m \n\n ${green}Option 2: ${yellow}Install Our CUSTOM i3 Setup\n \033[0m"
+			printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n\n \033[0m" 
+			printf "\033[1m\n ${green}Choose ${red}1 ${white}or ${red}2${white}or ${red}3 ${white}: \033[0m"
 				read DemChoice
 					if [ "$DemChoice" == 1 ]
 						then
