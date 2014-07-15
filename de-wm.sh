@@ -67,7 +67,7 @@ makeitbro() {
 					printf "\033[1m ${yellow}to your user's home directory \n \033[0m"
 					printf "\033[1m ${red}\n .Xresources \n .xinitrc \n .zshrc \n .vimrc \n \033[0m"
 						fi
-			fi
+				fi
 		else
 		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default XFCE Setup \n\n \033[0m"
 		printf "\n\n ${green}Option 2: ${yellow}Install CUSTOM i3 Setup \n\n"
