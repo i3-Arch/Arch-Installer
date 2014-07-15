@@ -51,7 +51,7 @@ makeitbro() {
 			printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default Xfce Setup \n \033[0m"
 			printf "\033[1m \n\n ${green}Option 2: ${yellow}Install Our CUSTOM i3 Setup\n \033[0m"
 			printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n\n \033[0m" 
-			printf "\033[1m\n ${green}Choose ${red}1 ${white}or ${red}2${white}or ${red}3 ${white}: \033[0m"
+			printf "\033[1m\n ${green}Choose ${red}1 ${white}or ${red}2 ${white}or ${red}3 ${white}: \033[0m"
 				read DemChoice
 					if [ "$DemChoice" == 1 ]
 						then
@@ -152,10 +152,12 @@ EnvSet() {
 		then
 			printf "\033[1m \n\n ${yellow}Did you create a user ? \n\n \033[0m"
 			printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n \033[0m"
+			printf "\033[1m \n\n ${green}Answer: ${white}\033[0m"
 			read DikWeed
 			if [ "$DikWeed" == Y -o "$DikWeed" == y -o "$DikWeed" == YES -o "$DikWeed" == yes ]
 					then
 					printf "\033[1m \n\n ${green}Enter that username please \n\n \033[0m"
+					printf "\033[1m ${red}Username: ${white}\033[0m"
 					read yourINput
 					cp /etc/skel/.xinitrc /home/"$yourINput"/
 					if [ "$DemChoice" == 1 -o "$DoYouEven" == 1 ]
