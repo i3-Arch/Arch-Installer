@@ -82,6 +82,7 @@ makeitbro() {
 					exit
 		    	else
 					printf "\033[1m ${red}lolwut${white}.... ${yellow}NOT UNDERSTOOD \033[0m"
+					sleep 2
 			fi
 	fi
 }
@@ -93,7 +94,8 @@ xseti3() {
 			cp "$HOME/xorg.conf.new" "$HOME/xorg.conf"
 			rm "$HOME/xorg.conf.new"
 		else
-			printf "\033[1m \n ${red}Where is xorg.conf.new ? -- skipping \n \033[0m"
+			
+			printf "\033[1m \n ${red} Did you make the right choice ? \n\n ${yellow}Where is xorg.conf.new ? -- skipping \n \033[0m"
 	fi
 		if [ "$DoYouEven" == 2 -o "$DemChoice" == 2 ] 
 			then
