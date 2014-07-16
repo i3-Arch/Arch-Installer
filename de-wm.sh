@@ -135,9 +135,9 @@ i3fin() {
 guestbro() {
 	if [ $(id -u) -eq 0 ]
 		then
-			printf "\033[1m \n ${green}Are you using virtualbox ? \n\n \033[0m"
-			printf "\033[1m \n ${white}[${green}Y${white}/${green}N${white}] \n \033[0m"
-			printf "\033[1m \n ${green}Answer: ${white}\033[0m"
+			printf "\033[1m \n\n ${green}Are you using Virtualbox ? \n\n \033[0m"
+			printf "\033[1m \n\n ${white}[${green}Y${white}|${green}N${white}] \n \033[0m"
+			printf "\033[1m \n\n ${green}Answer: ${white}\033[0m"
 			read wutUsay
 			if [ "$wutUsay" == Y -o "$wutUsay" == y ]
 				then
@@ -148,9 +148,9 @@ guestbro() {
 					echo "vboxsf" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
 			elif [ "$wutUsay" == N -o "$wutUsay" == n ]
 				then 
-					printf "\033[1m ${green}Are you using vmware ? \033[0m"
-					printf "\033[1m ${white}[${green}Y${white}|${green}N${white}] \033[0m"
-					printf "\033[1m ${green}Answer: ${white}\033[0m"
+					printf "\033[1m \n\n ${green}Are you using VMWARE ? \033[0m"
+					printf "\033[1m \n\n ${white}[${green}Y${white}|${green}N${white}] \033[0m"
+					printf "\033[1m \n\n ${green}Answer: ${white}\033[0m"
 					read VMwut
 					if [ "$VMwut" == Y -o "$VMwut" == y ]
 						then
@@ -161,7 +161,37 @@ guestbro() {
 				sleep 2
 			fi
 	else
-		printf "\033[1m ${red }Run this function as root.. cause im being lazy ${green}right now \033[0m"
+		printf "\033[1m	\n\n ${green}Are you using Virtualbox ?\033[0m"
+		printf "\033[1m \n\n ${white}[${green}Y${white}|${green}N${white}] \n\033[0m"
+		printf "\033[1m \n\n ${green}Answer: ${white} \033[0m"
+		read userfag
+		if [ "$userfag" == Y -o "$userfag" == y ]
+			then
+				printf "\033[1m \n\n ${red}Enter Pass for ROOT \n\n \033[0m"
+				su root
+				pacman -S virtualbox-guest-utils --noconfirm
+				modprobe -a vboxguest vboxsf vboxvideo
+				echo "vboxguest" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
+				echo "vboxvideo" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
+				echo "vboxsf" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
+				exit
+			elif [ "$userfag" == N -o "$userfag" == n ]
+				then
+					printf "\033[1m \n\n ${green}Are you using VMWARE ? \033[0m"
+					printf "\033[1m \n\n ${white}[${green}Y${white}|${green}N${white}] \n\n\033[0m"
+					printf "\033[1m \n\n ${green}Answer: ${white}\033[0m"
+					read csvm
+					if [ "$csvm" == Y -o "$csvm" == y ]
+						then
+							printf "\033[1m \n\n ${red}Enter Pass for ROOT \033[0m"
+							su root
+							pacman -S svga-dri xf86-input-vmmouse xf86-video-vmware		
+							exit
+					fi
+			else
+				printf "\033[1m ${red}Not Understood ${white}|${green}Moving on\033[0m"
+				sleep 2
+		fi
 	fi
 }
 
@@ -200,7 +230,7 @@ EnvSet() {
 							fi
 					fi
 			else
-				printf "\033[1m ${green}Should have used the ${red}POST-INSTALL.sh ${green}script to setup user for ENVIRONMENT \033[0m"
+				printf "\033[1m ${green}Should have used the ${red}POST-INSTALL.sh ${green}script to setup user for a WM/ENVIRONMENT \033[0m"
 				sleep 2
 					
 			fi
