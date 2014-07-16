@@ -75,7 +75,7 @@
 
 			** WM/DE's to ADD **
 		    	  * Not in order *
-		  	 ___________________
+		        	 ___________________
 		        |                   |
 		        |    Herbstluftwm   |
 		        |      Spectrwm     |
