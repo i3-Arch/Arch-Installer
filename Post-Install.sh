@@ -34,7 +34,7 @@ mirrorselect() {
 		nano /etc/pacman.d/mirrorlist
 }
 
-lemmeknow() {  ##CALLED BY     main
+lemmeknow() {
 	if [ $(id -u) -eq 0 ]
 		then
     		needpass
@@ -144,6 +144,7 @@ main() {
 	mirrorselect
 	uwantme
 }
+
 main
 
 #EOF
