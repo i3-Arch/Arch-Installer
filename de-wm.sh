@@ -249,11 +249,7 @@ envset() {
 					echo "exec dwm" >> /home/"$yourINput"/.xinitrc
 					abs community/dwm
 					cp -r /var/abs/community/dwm /home/"$yourINput"/dwm
-					printf "\033[1m ${green}Enter "$yourINput" Password to set up dwm \033[0m"
-					su "$yourINput"
-					cd ~/dwm
-					makepkg -i
-					exit
+					su "$yourINput" -c "cd ~/dwm && makepkg -i && exit"
 				fi
 		fi
 			else
