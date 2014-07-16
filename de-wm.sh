@@ -254,7 +254,10 @@ envset() {
 					chown "$yourINput":"$yourINput" /home/"$yourINput"/.xinitrc
 					echo "exec dwm" >> /home/"$yourINput"/.xinitrc
 					abs community/dwm
-					su "$yourINput" -c "cp -r /var/abs/community/dwm "$HOME/dwm" && cd ~/dwm && makepkg -i && exit"
+					cp -r /var/abs/community/dwm /home/"$yourINput"/dwm
+					chown "$yourINput":"$yourINput" /home/"$yourINput"/dwm
+					chown "$youINput":"$yourINput" /home/"$yourINput"/dwm/*
+					su "$yourINput" -c "cd /home/"$yourINput"/dwm && makepkg -i && exit"
 				fi
 		fi
 			else
