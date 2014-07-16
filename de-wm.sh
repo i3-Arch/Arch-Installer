@@ -246,7 +246,7 @@ envset() {
 slimforyou() {
 	printf "\033[1m \n\n ${green}Would you like to enable slim ? \n\n \033[0m"
 	printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n \033[0m"
-	printf "\033[1m \n ${green}Answer: ${white}	\033[0m"
+	printf "\033[1m \n ${green}Answer: ${white}\033[0m"
 	read slimok
 	if [ "$slimok" == Y -o "$slimok" == y ]
 		then
