@@ -59,8 +59,16 @@
 			then systemctl enable dhcpcd@device ( to enable dhcpcd at boot )
 
 		
-			1. wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/Post-Install.sh
+			1. 
+				wget https://goo.gl/YQ0Sxa -O Post-Install.sh
+
+
+				** If Shortened URL is 404 **
+				
+				** Run This **
+				wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/Post-Install.sh
 			
+
 			2. source Post-Install.sh
 
 
