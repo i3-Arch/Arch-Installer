@@ -133,17 +133,35 @@ i3fin() {
 }
 
 guestbro() {
-	printf "\033[1m \n ${green}Are you using virtualbox ? \n\n \033[0m"
-	printf "\033[1m \n ${white}[${green}Y${white}/${red}N${white}] \n \033[0m"
-	printf "\033[1m \n ${green}Answer: ${white}\033[0m"
-	read wutUsay
-	if [ "$wutUsay" == Y -o "$wutUsay" == y ]
+	if [ $(id -u) -eq 0 ]
 		then
-			pacman -S virtualbox-guest-utils --noconfirm
-			modprobe -a vboxguest vboxsf vboxvideo
-			echo "vboxguest" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
-			echo "vboxvideo" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
-			echo "vboxsf" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
+			printf "\033[1m \n ${green}Are you using virtualbox ? \n\n \033[0m"
+			printf "\033[1m \n ${white}[${green}Y${white}/${green}N${white}] \n \033[0m"
+			printf "\033[1m \n ${green}Answer: ${white}\033[0m"
+			read wutUsay
+			if [ "$wutUsay" == Y -o "$wutUsay" == y ]
+				then
+					pacman -S virtualbox-guest-utils --noconfirm
+					modprobe -a vboxguest vboxsf vboxvideo
+					echo "vboxguest" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
+					echo "vboxvideo" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
+					echo "vboxsf" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
+			elif [ "$wutUsay" == N -o "$wutUsay" == n ]
+				then 
+					printf "\033[1m ${green}Are you using vmware ? \033[0m"
+					printf "\033[1m ${white}[${green}Y${white}|${green}N${white}] \033[0m"
+					printf "\033[1m ${green}Answer: ${white}\033[0m"
+					read VMwut
+					if [ "$VMwut" == Y -o "$VMwut" == y ]
+						then
+							pacman -S svga-dri xf86-input-vmmouse xf86-video-vmware
+					fi
+			else
+				printf "\033[1m \n\n${red}Did you type a ${yellow}'y' ${white}or a ${yellow}'n'${red} ? \033[0m"
+				sleep 2
+			fi
+	else
+		printf "\033[1m ${red }Run this function as root.. cause im being lazy ${green}right now \033[0m"
 	fi
 }
 
