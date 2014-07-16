@@ -5,7 +5,7 @@
 	       	
 	       * This is made to install archlinux with base base/devel
 			
-			* And then optionally setup i3 or XFCE afterwards........ 
+			* And then optionally setup a WM/Environment afterwards 
 			
 	       	
 	       
