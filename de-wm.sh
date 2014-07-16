@@ -257,7 +257,10 @@ envset() {
 					cp -r /var/abs/community/dwm /home/"$yourINput"/dwm
 					chown "$yourINput":"$yourINput" /home/"$yourINput"/dwm
 					chown "$youINput":"$yourINput" /home/"$yourINput"/dwm/*
-					su "$yourINput" -c "cd /home/"$yourINput"/dwm && makepkg -i && exit"
+					su "$yourINput" 
+					cd /home/"$yourINput"/dwm
+					makepkg -i
+					exit
 				fi
 		fi
 			else
