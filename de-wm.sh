@@ -51,7 +51,8 @@ makeitbro() {
 		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default Xfce Setup \n \033[0m"
 		printf "\033[1m \n\n ${green}Option 2: ${yellow}Install Our CUSTOM i3 Setup\n \033[0m"
 		printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n\n \033[0m" 
-		printf "\033[1m\n ${green}Choose ${red}1 ${white}${red}2 ${white}or ${red}3 ${white}: \033[0m"
+		printf "\033[1m \n\n ${green}Option 4: ${yellow}Install Default Dwm Setup \n\n \033[0m"
+		printf "\033[1m\n ${green}Choose ${red}1${white},${red}2${white},${red}3${white} or 4${white}: \033[0m"
 		read DemChoice
 		if [ "$DemChoice" == 1 ]
 			then
@@ -62,41 +63,49 @@ makeitbro() {
 		elif [ "$DemChoice" == 3 ]
 			then
 				pacman -Syy zsh cinnamon xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+		elif [ "$DemChoice" == 4 ]
+			then
+			pacman -Syy zsh xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu rxvt-unicode urxvt-perls --noconfirm
 		else
 			printf "\033[1m Choice not understood\033[0m"
 			sleep 2
 		fi
+	else
+		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default XFCE Setup \n\n \033[0m"
+		printf "\033[1m \n\n ${green}Option 2: ${yellow}Install CUSTOM i3 Setup \n\n \033[0m"
+		printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n\n \033[0m"
+		printf "\033[1m \n\n ${green}Option 4: ${yellow}Install Default Dwm Setup	\n\n \033[0m"
+		printf "\033[1m\n ${green}Choose ${red}1,${white}${red}2,${red}3, ${white}or ${red}4 ${white} \n\n\033[0m"
+		printf "\n\n ${yellow}Choice: ${white}"
+		read DoYouEven
+		if [ "$DoYouEven" == 1 ]
+			then
+			printf "\033[1m \n\n ${red}Enter Password for root ( installing packages ) \n\n \033[0m"
+			printf "\033[1m\n ${green}Enter Pass: ${white}\033[0m"
+			su root
+			pacman -Syy base-devel zsh xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			exit
+		elif [ "$DoYouEven" == 2 ]
+			then
+			printf "\033[1m \n\n ${green}Enter Password for root ${red}( installing packages ) \n \033[0m"
+			printf "\033[1m \n ${green}Enter Pass: ${white}\033[0m"
+			su root
+			pacman -Syy xscreensaver vim xcompmgr base-devel zsh xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
+			exit
+		elif [ "$DoYouEven" == 3 ]
+			then
+			printf "\033[1m ${green}Enter Password for root ${red}( installing packages ) \n \033[0m"	
+			printf "\033[1m ${green}Enter Pass: ${white}\033[0m"
+			su root
+			pacman -Syy cinnamon zsh base-devel xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics xterm firefox rxvt-unicode urxvt-perls --noconfirm
+			exit
+		elif [ "$DoYouEven" == 4 ]
+			then
+			pacman -Syy zsh base-devel xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics xterm firefox rxvt-unicode urxvt-perls --noconfirm
 		else
-			printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default XFCE Setup \n\n \033[0m"
-			printf "\033[1m \n\n ${green}Option 2: ${yellow}Install CUSTOM i3 Setup \n\n \033[0m"
-			printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n\n \033[0m"
-			printf "\n ${green}Choose ${red}1 ${white}${red}2 ${white}or ${red}3 ${white}: "
-			read DoYouEven
-			if [ "$DoYouEven" == 1 ]
-				then
-				printf "\033[1m \n\n ${red}Enter Password for root ( installing packages ) \n\n \033[0m"
-				printf "\033[1m\n ${green}Enter Pass: ${white}\033[0m"
-				su root
-				pacman -Syy base-devel zsh xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-				exit
-			elif [ "$DoYouEven" == 2 ]
-				then
-				printf "\033[1m \n\n ${green}Enter Password for root ${red}( installing packages ) \n \033[0m"
-				printf "\033[1m \n ${green}Enter Pass: ${white}\033[0m"
-				su root
-				pacman -Syy xscreensaver vim xcompmgr base-devel zsh xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
-				exit
-		    elif [ "$DoYouEven" == 3 ]
-				then
-				printf "\033[1m ${green}Enter Password for root ${red}( installing packages ) \n \033[0m"	
-				printf "\033[1m ${green}Enter Pass: ${white}\033[0m"
-				su root
-				pacman -Syy cinnamon zsh base-devel xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics xorg-xinit xterm firefox rxvt-unicode urxvt-perls --noconfirm
-				exit
-			else
-				printf "\033[1m ${red}lolwut${white}.... ${yellow}NOT UNDERSTOOD \033[0m"
-				sleep 2
-			fi
+			printf "\033[1m ${red}lolwut${white}.... ${yellow}NOT UNDERSTOOD \033[0m"
+			sleep 2
+        fi
 	fi
 }
 
@@ -231,6 +240,19 @@ envset() {
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
 					echo "exec cinnamon-session" >> /home/"$yourINput"/.xinitrc
+				fi
+			elif [ "$DemChoice" == 4 -o "$DoYouEven" == 4 ]
+				then
+				if [ -f /home/"$yourINput"/.xinitrc ]
+					then
+					echo "exec dwm" >> /home/"$yourINput"/.xinitrc
+					abs community/dwm
+					cp -r /var/abs/community/dwm /home/"$yourINput"/dwm
+					printf "\033[1m ${green}Enter "$yourINput" Password to set up dwm \033[0m"
+					su "$yourINput"
+					cd ~/dwm
+					makepkg -i
+					exit
 				fi
 		fi
 			else
