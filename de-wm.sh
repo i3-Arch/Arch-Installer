@@ -158,7 +158,7 @@ guestbro() {
 					read VMwut
 					if [ "$VMwut" == Y -o "$VMwut" == y ]
 						then
-							pacman -S svga-dri xf86-input-vmmouse xf86-video-vmware --noconfirm
+							pacman -S svga-dri xf86-input-vmmouse xf86-video-vmware open-vm-tools --noconfirm
 					fi
 			else
 				printf "\033[1m \n\n${red}Did you type a ${yellow}'y' ${white}or a ${yellow}'n'${red} ? \033[0m"
@@ -189,7 +189,7 @@ guestbro() {
 						then
 							printf "\033[1m \n\n ${red}Enter Pass for ROOT \033[0m"
 							su root
-							pacman -S svga-dri xf86-input-vmmouse xf86-video-vmware --noconfirm
+							pacman -S svga-dri xf86-input-vmmouse xf86-video-vmware open-vm-tools --noconfirm
 							exit
 					fi
 			else
