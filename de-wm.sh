@@ -226,6 +226,7 @@ envset() {
 				then
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
+					chown "$yourINput":"$yourINput" /home/"$yourINput"/.xinitrc
 					echo "exec startxfce4" >> /home/"$yourINput"/.xinitrc
 				fi
 			elif [ "$DemChoice" == 2 -o "$DoYouEven" == 2 ]
@@ -235,19 +236,25 @@ envset() {
 					rm /home/"$yourINput"/.xinitrc
 					cp .Xresources .zshrc .xinitrc .vimrc /home/"$yourINput"/
 					cp -r .i3 /home/"$yourINput"/
+					#chown "$yourINput":"$yourINput" /home/"$yourINput"/.i3
+					#chown "$yourINput":"$yourINput" /home/"$yourINput"/.i3/config  ## Comment until tested
+					chown "$yourINput":"$yourINput" /home/"$yourINput"/*
 				fi
 			elif [ "$DemChoice" == 3 -o "$DoYouEven" == 3 ]
 				then
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
+					chown "$yourINput":"$yourINput" /home/"$yourINput"/.xinitrc
 					echo "exec cinnamon-session" >> /home/"$yourINput"/.xinitrc
 				fi
 			elif [ "$DemChoice" == 4 -o "$DoYouEven" == 4 ]
 				then
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
+					chown "$yourINput":"$yourINput" /home/"$yourINput"/.xinitrc
 					echo "exec dwm" >> /home/"$yourINput"/.xinitrc
-					su "$yourINput" -c "abs community/dwm && cp -r /var/abs/community/dwm "$HOME/dwm" && cd ~/dwm && makepkg -i && exit"
+					abs community/dwm
+					su "$yourINput" -c "cp -r /var/abs/community/dwm "$HOME/dwm" && cd ~/dwm && makepkg -i && exit"
 				fi
 		fi
 			else
