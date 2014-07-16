@@ -72,10 +72,19 @@
 			2. source Post-Install.sh
 
 
-					i. Eventually other WM/DE's will be added
 
-		
-
+			** WM/DE's to ADD **
+		    	  * Not in order *
+		       	 ___________________
+		        |                   |
+		        |    Herbstluftwm   |
+		        |      Spectrwm     |
+		        |      Awesome      |
+		        |      Openbox      |
+		        |       Gnome       |
+		        |        Dwm        |
+		        |        Kde        |
+		        |___________________|
 
 # CURRENT OBJECTIVES
 	
