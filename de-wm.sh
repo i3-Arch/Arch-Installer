@@ -50,7 +50,7 @@ makeitbro() {
 		then
 		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default Xfce Setup \n \033[0m"
 		printf "\033[1m \n\n ${green}Option 2: ${yellow}Install Our CUSTOM i3 Setup\n \033[0m"
-		printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n\n \033[0m" 
+		printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n \033[0m" 
 		printf "\033[1m \n\n ${green}Option 4: ${yellow}Install Default Dwm Setup \n\n \033[0m"
 		printf "\033[1m\n${green}Choose ${red}1${white},${red}2${white},${red}3${white} or ${red}4 \033[0m"
 		printf "\033[1m \n\n ${yellow}Choice${white}: ${white}\033[0m"
@@ -247,9 +247,7 @@ envset() {
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
 					echo "exec dwm" >> /home/"$yourINput"/.xinitrc
-					abs community/dwm
-					cp -r /var/abs/community/dwm /home/"$yourINput"/dwm
-					su "$yourINput" -c "cd ~/dwm && makepkg -i && exit"
+					su "$yourINput" -c "abs community/dwm && cp -r /var/abs/community/dwm "$HOME/dwm" && cd ~/dwm && makepkg -i && exit"
 				fi
 		fi
 			else
