@@ -199,7 +199,7 @@ guestbro() {
 	fi
 }
 
-EnvSet() {
+envset() {
 	if [ $(id -u) -eq 0 ]
 		then
 			printf "\033[1m \n\n ${yellow}Did you create a user ? \n\n \033[0m"
@@ -243,6 +243,29 @@ EnvSet() {
 	fi
 }
 
+slimforyou() {
+	printf "\033[1m \n\n ${green}Would you like to enable slim ? \n\n \033[0m"
+	printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n \033[0m"
+	printf "\033[1m \n ${green}Answer: ${white}	\033[0m"
+	read slimok
+	if [ "$slimok" == Y -o "$slimok" == y ]
+		then
+			if [ $(id -u) -eq 0 ]
+				then
+					pacman -S slim --noconfirm
+					systemctl enable slim.service
+			else
+				printf "\033[1m \n ${green}Enter pass for root \n\n \033[0m"
+				su root
+				pacman -S slim --noconfirm
+				systemctl enable slim.service
+				exit
+			fi
+	else
+				printf "\033[1m \n ${yellow}EXTRA TIP ${green}:: ${red}In the future you will need to Run  ${yellow}startx ${green}:: \n \033[0m"
+	fi	
+}
+
 main() {
 	banner
 	greetz
@@ -250,27 +273,8 @@ main() {
 	makeitbro
 	xseti3
 	i3fin
-	EnvSet
-		printf "\033[1m \n\n ${green}Would you like to enable slim ? \n\n \033[0m"
-		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n \033[0m"
-		printf "\033[1m \n ${green}Answer: ${white}	\033[0m"
-		read slimok
-			if [ "$slimok" == Y -o "$slimok" == y ]
-				then
-					if [ $(id -u) -eq 0 ]
-						then
-							pacman -S slim --noconfirm
-							systemctl enable slim.service
-					else
-						printf "\033[1m \n ${green}Enter pass for root \n\n \033[0m"
-						su root
-						pacman -S slim --noconfirm
-						systemctl enable slim.service
-						exit
-					fi
-			else
-				printf "\033[1m \n ${yellow}EXTRA TIP ${green}:: ${red}In the future you will need to Run  ${yellow}startx ${green}:: \n \033[0m"
-		   fi
+	envset
+	slimforyou	
 }
 
 main
