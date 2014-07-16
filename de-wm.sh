@@ -48,24 +48,24 @@ greetz() {
 makeitbro() {
 	if [ $(id -u) -eq 0 ]
 		then
-			printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default Xfce Setup \n \033[0m"
-			printf "\033[1m \n\n ${green}Option 2: ${yellow}Install Our CUSTOM i3 Setup\n \033[0m"
-			printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n\n \033[0m" 
-			printf "\033[1m\n ${green}Choose ${red}1 ${white}${red}2 ${white}or ${red}3 ${white}: \033[0m"
-			read DemChoice
-			if [ "$DemChoice" == 1 ]
-				then
-				pacman -Syy zsh xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-			elif [ "$DemChoice" == 2 ]
-				then
-				pacman -Syy vim xcompmgr xscreensaver zsh xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-			elif [ "$DemChoice" == 3 ]
-				then
+		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default Xfce Setup \n \033[0m"
+		printf "\033[1m \n\n ${green}Option 2: ${yellow}Install Our CUSTOM i3 Setup\n \033[0m"
+		printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n\n \033[0m" 
+		printf "\033[1m\n ${green}Choose ${red}1 ${white}${red}2 ${white}or ${red}3 ${white}: \033[0m"
+		read DemChoice
+		if [ "$DemChoice" == 1 ]
+			then
+			pacman -Syy zsh xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+		elif [ "$DemChoice" == 2 ]
+			then
+			pacman -Syy vim xcompmgr xscreensaver zsh xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+		elif [ "$DemChoice" == 3 ]
+			then
 				pacman -Syy zsh cinnamon xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-			else
-				printf "\033[1m Choice not understood\033[0m"
-				sleep 2
-			fi
+		else
+			printf "\033[1m Choice not understood\033[0m"
+			sleep 2
+		fi
 		else
 			printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default XFCE Setup \n\n \033[0m"
 			printf "\033[1m \n\n ${green}Option 2: ${yellow}Install CUSTOM i3 Setup \n\n \033[0m"
