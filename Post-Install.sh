@@ -15,29 +15,29 @@ yellow=$(tput setaf 3)
 updateupgrade() {
 		if [ $(id -u) -eq 0 ]
 			then
-				pacman -Syyu --noconfirm
+			pacman -Syyu --noconfirm
 			else
-				printf "\033[1m ${green} \n\nEnter Pass For Root ${yellow}( For Update/Upgrade ) \033[0m"
-				su root
-				pacman -Syyu --noconfirm
-				exit
+			printf "\033[1m ${green} \n\nEnter Pass For Root ${yellow}( For Update/Upgrade ) \033[0m"
+			su root
+			pacman -Syyu --noconfirm
+			exit
 		fi
 }
 
 mirrorselect() {
 		printf "\033[1m ${green} \n\n Select Your Mirrors \n\n \033[0m"
 		sleep 2
-			if [ -f /etc/pacman.d/mirrorlist.pacnew ]
-				then
-					cp /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
-			fi
+		if [ -f /etc/pacman.d/mirrorlist.pacnew ]
+			then
+			cp /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
+		fi
 		nano /etc/pacman.d/mirrorlist
 }
 
 lemmeknow() {
 	if [ $(id -u) -eq 0 ]
 		then
-    		needpass
+    	needpass
 		else
 		printf "\033[1m \n ${red} Moving on since you already have a user account \n \033[0m"
 	fi
@@ -100,10 +100,9 @@ uwantme() {
 	read wutdebro
 	if [ "$wutdebro" == Y -o "$wutdebro" == y -o "$wutdebro" == YES -o "$wutdebro" == yes ]
 		then
-			source de-wm.sh
-		
+		source de-wm.sh
 		else
-			printf "\033[1m \n\n  ${red} Understood \n\n \033[0m"
+		printf "\033[1m \n\n  ${red} Understood \n\n \033[0m"
 	fi
 }
 
@@ -112,23 +111,23 @@ thankyoubro() {
 		then
 			if [ ! -f /usr/bin/wget ]
 				then
-					pacman -S wget
-					wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/de-wm.sh
-				else
-					wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/de-wm.sh
+				pacman -S wget
+				wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/de-wm.sh
+			else
+				wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/de-wm.sh
 			fi
 	else
-				if [ ! -f /usr/bin/wget ]
-					then
-						printf "\033[1m \n\n ${green} Enter Password for root ( Installing Packages ) \n\n \033[0m"
-						printf "\033[1m ${yellow} Pass:  \033[0m"
-						su root
-						pacman -S wget
-						wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/de-wm.sh
-						exit
-					else
-						wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/de-wm.sh
-				fi
+		if [ ! -f /usr/bin/wget ]
+			then
+				printf "\033[1m \n\n ${green} Enter Password for root ( Installing Packages ) \n\n \033[0m"
+				printf "\033[1m ${yellow} Pass:  \033[0m"
+				su root
+				pacman -S wget
+				wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/de-wm.sh
+				exit
+		else
+			wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/de-wm.sh
+		fi
 	fi
 	clear
 	printf "\033[1m \n ${green} Thanks for being lazy and using our script ! \n \033[0m"
