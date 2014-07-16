@@ -12,7 +12,7 @@ white=$(tput setaf 7)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
 
-updateUpgrade() {
+updateupgrade() {
 		if [ $(id -u) -eq 0 ]
 			then
 				pacman -Syyu --noconfirm
@@ -24,7 +24,7 @@ updateUpgrade() {
 		fi
 }
 
-mirrorSelect() {
+mirrorselect() {
 		printf "\033[1m ${green} \n\n Select Your Mirrors \n\n \033[0m"
 		sleep 2
 			if [ -f /etc/pacman.d/mirrorlist.pacnew ]
@@ -46,7 +46,7 @@ lemmeknow() {  ##CALLED BY     main
 needpass() { ## CALLED BY lemmeknow
 	clear
 	printf "\033[1m \n ${yellow} Would you like to set a root password ?\n \n \033[0m"
-	printf "\033[1m ${green} [Y|N] \n \033[0m"
+	printf "\033[1m ${white}[${green}Y${white}|${red}N${white}] \n \033[0m"
 	printf "\033[1m \n\n ${red} Answer:${white} \033[0m"
 	read wutdawg
 	if [ "$wutdawg" = Y -o "$wutdawg" = y ]
@@ -64,7 +64,7 @@ usersetup() {  ## CALLED BY needpass
 		then
 			clear
 			printf "\033[1m \n ${green} Would you like to setup a USER now ? \n\n \033[0m"
-			printf "\033[1m \n ${yellow} [Y|N] \n \033[0m"
+			printf "\033[1m \n ${white}[${green}Y${white}|${red}N${white}] \n \033[0m"
 			printf "\033[1m \n\n Answer:${white} \033[0m"
 			read usernowbro
 			if	[ "$usernowbro" = Y -o "$usernowbro" = y ]
@@ -95,7 +95,7 @@ usersetup() {  ## CALLED BY needpass
 uwantme() {
 	clear
 	printf "\033[1m \n ${green} Do you want to install a WM/DE now ? \n \033[0m"
-	printf "\033[1m \n\n ${yellow} [Y|N] \n\n \033[0m"
+	printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n \033[0m"
 	printf "\033[1m \n\n ${red} Choice:${white} \033[0m"
 	read wutdebro
 	if [ "$wutdebro" == Y -o "$wutdebro" == y -o "$wutdebro" == YES -o "$wutdebro" == yes ]
@@ -138,10 +138,12 @@ thankyoubro() {
 }
 
 main() {
-	updateUpgrade
+	updateupgrade
 	thankyoubro
 	lemmeknow
-	mirrorSelect
+	mirrorselect
 	uwantme
 }
 main
+
+#EOF
