@@ -53,7 +53,7 @@ makeitbro() {
 		printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n \033[0m" 
 		printf "\033[1m \n\n ${green}Option 4: ${yellow}Install Default Dwm Setup \n \033[0m"
 		printf "\033[1m \n\n ${green}Option 5: ${yellow}Install Default Awesome Setup \n\n \033[0m"
-		printf "\033[1m\n${green}Choose ${red}1${white},${red}2${white},${red}3${white} or ${red}4 \033[0m"
+		printf "\033[1m\n${green}Choose ${red}1${white},${red}2${white},${red}3${white},${red}4 ${white}or ${red}5 \033[0m"
 		printf "\033[1m \n\n ${yellow}Choice${white}: ${white}\033[0m"
 		read DemChoice
 		if [ "$DemChoice" == 1 ]
@@ -80,7 +80,7 @@ makeitbro() {
 		printf "\033[1m \n\n ${green}Option 2: ${yellow}Install CUSTOM i3 Setup \n\n \033[0m"
 		printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n\n \033[0m"
 		printf "\033[1m \n\n ${green}Option 4: ${yellow}Install Default Dwm Setup	\n\n \033[0m"
-		printf "\033[1m\n ${green}Choose ${red}1,${white}${red}2,${red}3, ${white}or ${red}4 ${white} \n\n\033[0m"
+		printf "\033[1m\n ${green}Choose ${red}1,${white}${red}2,${red}3,${white},${red}4 ${white}or ${red}5 \n\n\033[0m"
 		printf "\n\n ${yellow}Choice: ${white}"
 		read DoYouEven
 		if [ "$DoYouEven" == 1 ]
