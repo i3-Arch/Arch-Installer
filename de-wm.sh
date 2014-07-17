@@ -257,10 +257,8 @@ envset() {
 					cp -r /var/abs/community/dwm /home/"$yourINput"/dwm
 					chown "$yourINput":"$yourINput" /home/"$yourINput"/dwm
 					chown "$youINput":"$yourINput" /home/"$yourINput"/dwm/*
-					su "$yourINput" 
-					cd /home/"$yourINput"/dwm
-					makepkg -i
-					exit
+					su "$yourINput" -c "cd /home/"$yourINput"/dwm && makepkg"
+					pacman -U /home/"$yourINput"/dwm/*.tar.xz
 				fi
 		fi
 			else
