@@ -71,18 +71,24 @@
 
 			2. source Post-Install.sh
 
+			
+
+			:: Current WM/Environment Choices ::
+					1. Custom i3 Setup  ( Screenshots in my i3config repo (( i3-Arch )) )
+					2. Default Xfce Setup
+					3. Default Dwm Setup
+					4. Default Cinnamon Setup
+					5. Default Awesome
 
 
-			** WM/DE's to ADD **
+				** WM/DE's to ADD **
 		    	  * Not in order *
 		       	 ___________________
 		        |                   |
 		        |    Herbstluftwm   |
 		        |      Spectrwm     |
-		        |      Awesome      |
 		        |      Openbox      |
 		        |       Gnome       |
-		        |        Dwm        |
 		        |        Kde        |
 		        |___________________|
 
