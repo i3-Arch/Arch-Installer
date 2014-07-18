@@ -39,6 +39,8 @@ mirrorselect() {
 			then
 			cp /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
 		fi
+		printf "\033[1m ${red}ctrl+x to exit nano \033[0m"
+		sleep 2
 		nano /etc/pacman.d/mirrorlist
 }
 
