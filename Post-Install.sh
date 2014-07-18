@@ -12,9 +12,23 @@ white=$(tput setaf 7)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
 
+checkroot() {
+	if [ "$(id -u)" -eq 0 ]
+		then
+		printf "\033[1m ${green}Read to start ! \033[0m"
+	else
+		printf "\033[1m ${yellow}You need to be ${green}root ${yellow}to run this script \033[0m"
+		printf "\033[1m ${red}EXITING NOW \033[0m"
+		sleep 2
+		exit
+	fi
+}
+
+
 updateupgrade() {
 		pacman -Syyu --noconfirm
 }
+
 
 mirrorselect() {
 		printf "\033[1m ${green} \n\n Select Your Mirrors \n\n \033[0m"
@@ -32,6 +46,7 @@ needpass() {
 	printf "\033[1m \n ${yellow} Set a root password \n\n \033[0m"
 		passwd
 }
+
 
 usersetup() {
 		clear
@@ -53,6 +68,7 @@ usersetup() {
 		fi
 }
 
+
 uwantme() {
 	clear
 	printf "\033[1m \n ${green} Do you want to install a WM/DE now ? \n \033[0m"
@@ -67,6 +83,7 @@ uwantme() {
 	fi
 }
 
+
 thankyoubro() {
 	clear
 	printf "\033[1m \n ${green} Thanks for being lazy and using our script ! \n \033[0m"
@@ -75,17 +92,6 @@ thankyoubro() {
 	sleep 3
 }
 
-main() {
-	checkroot
-	updateupgrade
-	thankyoubro
-	needpass
-	usersetup
-	mirrorselect
-	uwantme
-}
-
-main
 
 banner() {
 cat <<"EOT"
@@ -114,11 +120,13 @@ EOT
 sleep 3
 }
 
+
 greetz() {
 	cd "$HOME"
 	printf "\033[1m \n\n ${green}  :: Lets Do This ::  \n\n \033[0m"
 	printf "\033[1m \n\n ${yellow}	#SWAG	      \n\n \033[0m"
 }
+
 
 makeitbro() {
 		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default Xfce Setup \n \033[0m"
@@ -155,6 +163,7 @@ makeitbro() {
 		fi
 }
 
+
 xseti3() {
 	X -configure 2> /dev/null
 	if [ -f "$HOME/xorg.conf.new" ]
@@ -180,6 +189,7 @@ xseti3() {
 	fi
 }
 
+
 i3fin() {
 	if [ "$DemChoice" == 2 ]
 		then
@@ -190,6 +200,7 @@ i3fin() {
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.vimrc
 	fi
 }
+
 
 guestbro() {
 		printf "\033[1m \n\n ${green}Are you using Virtualbox ? \n\n \033[0m"
@@ -218,6 +229,7 @@ guestbro() {
 			sleep 2
 		fi
 }
+
 
 envset() {
 		cp /etc/skel/.xinitrc /home/"$namebro"/
@@ -271,6 +283,7 @@ envset() {
 		fi
 }
 
+
 slimforyou() {
 	printf "\033[1m \n\n ${green}Would you like to enable slim ? \n\n \033[0m"
 	printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n \033[0m"
@@ -298,16 +311,17 @@ main2() {
 	rm Post-Install.sh de-wm.sh
 }
 
-checkroot() {
-	if [ "$(id -u)" -eq 0 ]
-		then
-		printf "\033[1m ${green}Read to start ! \033[0m"
-	else
-		printf "\033[1m ${yellow}You need to be ${green}root ${yellow}to run this script \033[0m"
-		printf "\033[1m ${red}EXITING NOW \033[0m"
-		sleep 2
-		exit
-	fi
+
+main() {
+	checkroot
+	updateupgrade
+	thankyoubro
+	needpass
+	usersetup
+	mirrorselect
+	uwantme
 }
+
+main
 
 #EOF
