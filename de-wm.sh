@@ -12,6 +12,19 @@ white=$(tput setaf 7)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
 
+checkroot() {
+	if [ "$(id -u)" -eq 0 ]
+		then
+		main
+	else
+		printf "\033[1m ${yellow}You need to be ${green}root ${yellow}to run this script \033[0m"
+		printf "\033[1m ${red}EXITING NOW \033[0m"
+		sleep 2
+		exit
+	fi
+}
+
+
 banner() {
 cat <<"EOT"
      _____________________________
@@ -24,7 +37,7 @@ cat <<"EOT"
     !!                           !! !
     !! lulz@arch~> hue	         !! !
     !! zsh:command not found:hue !! /
-    !! 			         !!/
+    !! 					         !!/
     !!___________________________!!
     !/________________________\!/
        __\_________________/__/!_
@@ -46,8 +59,6 @@ greetz() {
 }
 
 makeitbro() {
-	if [ $(id -u) -eq 0 ]
-		then
 		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default Xfce Setup \n \033[0m"
 		printf "\033[1m \n\n ${green}Option 2: ${yellow}Install Our CUSTOM i3 Setup\n \033[0m"
 		printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n \033[0m" 
@@ -80,57 +91,6 @@ makeitbro() {
 			sleep 2
 			exit
 		fi
-	else
-		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default XFCE Setup \n \033[0m"
-		printf "\033[1m \n\n ${green}Option 2: ${yellow}Install CUSTOM i3 Setup \n \033[0m"
-		printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n \033[0m"
-		printf "\033[1m \n\n ${green}Option 4: ${yellow}Install Default Dwm Setup \n \033[0m"
-		printf "\033[1m \n\n ${green}Option 5: ${yellow}Install Default Awesome Setup \n \033[0m"
-		printf "\033[1m \n\n ${green}Option 6: ${yellow}Install Default Gnome Setup \n\n \033[0m"
-		printf "\033[1m\n ${green}Choose a number  ${red}1${white}-${red}6 \n\n\033[0m"
-		printf "\n\n ${yellow}Choice: ${white}"
-		read DoYouEven
-		if [ "$DoYouEven" == 1 ]
-			then
-			printf "\033[1m \n\n ${red}Enter Password for root ( installing packages ) \n\n \033[0m"
-			printf "\033[1m\n ${green}Enter Pass: ${white}\033[0m"
-			su root
-			pacman -Syy base-devel zsh xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-			exit
-		elif [ "$DoYouEven" == 2 ]
-			then
-			printf "\033[1m \n\n ${green}Enter Password for root ${red}( installing packages ) \n \033[0m"
-			printf "\033[1m \n ${green}Enter Pass: ${white}\033[0m"
-			su root
-			pacman -Syy xscreensaver vim xcompmgr base-devel zsh xorg-server xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm	
-			exit
-		elif [ "$DoYouEven" == 3 ]
-			then
-			printf "\033[1m ${green}Enter Password for root ${red}( installing packages ) \n \033[0m"	
-			printf "\033[1m ${green}Enter Pass: ${white}\033[0m"
-			su root
-			pacman -Syy cinnamon zsh base-devel xorg-server xorg-server-utils xorg-font-util xorg-xinit ttf-dejavu xf86-video-vesa xf86-input-synaptics xterm firefox rxvt-unicode urxvt-perls --noconfirm
-			exit
-		elif [ "$DoYouEven" == 4 ]
-			then
-			su root
-			pacman -Syy zsh base-devel xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-			exit
-		elif [ "$DoYouEven" == 5 ]
-			then
-			su root
-			pacman -Syy awesome zsh base-devel xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-			exit
-		elif [ "$DoYouEven" == 6 ]
-			then
-			su root
-			pacman -Syy gnome gnome-extra zsh base-devel xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-			exit
-		else
-			printf "\033[1m ${red}lolwut${white}.... ${yellow}NOT UNDERSTOOD \033[0m"
-			sleep 2
-        fi
-	fi
 }
 
 xseti3() {
@@ -142,7 +102,7 @@ xseti3() {
 	else
 		printf "\033[1m \n ${red} Did you make the right choice ? \n\n ${yellow}Where is xorg.conf.new ? -- skipping \n \033[0m"
 	fi
-	if [ "$DoYouEven" == 2 -o "$DemChoice" == 2 ] 
+	if [ "$DemChoice" == 2 ] 
 		then
 		printf "\033[1m \n ${yellow}Setting Up i3 config in ~/.i3/config \n \033[0m"
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/config
@@ -159,7 +119,7 @@ xseti3() {
 }
 
 i3fin() {
-	if [ "$DoYouEven" == 2 -o "$DemChoice" == 2 ]
+	if [ "$DemChoice" == 2 ]
 		then
 		printf "\033[1m \n ${green}Setting up ${red} .Xresources, .vimrc and .xinitrc \n \033[0m"
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
@@ -170,8 +130,6 @@ i3fin() {
 }
 
 guestbro() {
-	if [ $(id -u) -eq 0 ]
-		then
 		printf "\033[1m \n\n ${green}Are you using Virtualbox ? \n\n \033[0m"
 		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n \033[0m"
 		printf "\033[1m \n\n ${green}Answer: ${white}\033[0m"
@@ -197,44 +155,9 @@ guestbro() {
 			printf "\033[1m \n\n${red}Did you type a ${yellow}'y' ${white}or a ${yellow}'n'${red} ? \033[0m"
 			sleep 2
 		fi
-	else
-		printf "\033[1m	\n\n ${green}Are you using Virtualbox ?\033[0m"
-		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\033[0m"
-		printf "\033[1m \n\n ${green}Answer: ${white} \033[0m"
-		read userfag
-		if [ "$userfag" == Y -o "$userfag" == y ]
-			then
-			printf "\033[1m \n\n ${red}Enter Pass for ROOT \n\n \033[0m"
-			su root
-			pacman -S virtualbox-guest-utils --noconfirm
-			modprobe -a vboxguest vboxsf vboxvideo
-			echo "vboxguest" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
-			echo "vboxvideo" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
-			echo "vboxsf" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
-			exit
-		elif [ "$userfag" == N -o "$userfag" == n ]
-			then
-			printf "\033[1m \n\n ${green}Are you using VMWARE ? \033[0m"
-			printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n\033[0m"
-			printf "\033[1m \n\n ${green}Answer: ${white}\033[0m"
-			read csvm
-			if [ "$csvm" == Y -o "$csvm" == y ]
-				then
-				printf "\033[1m \n\n ${red}Enter Pass for ROOT \033[0m"
-				su root
-				pacman -S svga-dri xf86-input-vmmouse xf86-video-vmware open-vm-tools --noconfirm
-				exit
-			fi
-		else
-			printf "\033[1m ${red}Not Understood ${white}|${green}Moving on\033[0m"
-			sleep 2
-		fi
-	fi
 }
 
 envset() {
-	if [ $(id -u) -eq 0 ]
-		then
 		printf "\033[1m \n\n ${yellow}Did you create a user ? \n\n \033[0m"
 		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n \033[0m"
 		printf "\033[1m \n\n ${green}Answer: ${white}\033[0m"
@@ -246,13 +169,13 @@ envset() {
 			read yourINput
 			cp /etc/skel/.xinitrc /home/"$yourINput"/
 			chown "$yourINput":"$yourINput" /home/"$yourINput"/.xinitrc
-			if [ "$DemChoice" == 1 -o "$DoYouEven" == 1 ]
+			if [ "$DemChoice" == 1 ]
 				then
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
 					echo "exec startxfce4" >> /home/"$yourINput"/.xinitrc
 				fi
-			elif [ "$DemChoice" == 2 -o "$DoYouEven" == 2 ]
+			elif [ "$DemChoice" == 2 ]
 				then
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
@@ -262,13 +185,13 @@ envset() {
 					chown "$yourINput":"$yourINput" /home/"$yourINput"/.i3/*
 					chown "$yourINput":"$yourINput" /home/"$yourINput"/*
 				fi
-			elif [ "$DemChoice" == 3 -o "$DoYouEven" == 3 ]
+			elif [ "$DemChoice" == 3 ]
 				then
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
 					echo "exec cinnamon-session" >> /home/"$yourINput"/.xinitrc
 				fi
-			elif [ "$DemChoice" == 4 -o "$DoYouEven" == 4 ]
+			elif [ "$DemChoice" == 4 ]
 				then
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
@@ -280,26 +203,25 @@ envset() {
 					su "$yourINput" -c "cd /home/"$yourINput"/dwm && makepkg"
 					pacman -U /home/"$yourINput"/dwm/*.tar.xz
 				fi
-			elif [ "$DemChoice" == 5 -o "$DoYouEven" == 5 ]
+			elif [ "$DemChoice" == 5 ]
 				then
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
 					echo "exec awesome" >> /home/"$yourINput"/.xinitrc
 				fi
-			elif [ "$DemChoice" == 6 -o "$DoYouEven" == 6 ]
+			elif [ "$DemChoice" == 6 ]
 				then
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
 					echo "exec gnome-session" >> /home/"$yourINput"/.xinitrc
 				fi
-		fi
 			else
 				printf "\033[1m ${green}  \n\nShould have used the ${red}POST-INSTALL.sh ${green}script to setup user for a WM/ENVIRONMENT \033[0m"
 				printf "\033[1m ${yellow} \n\n Now you will have to cp /etc/skel/.xinitrc to your users home dir and edit it \n\n \033[0m"
 				sleep 3
 					
 			fi
-	fi
+		fi
 }
 
 slimforyou() {
@@ -309,17 +231,8 @@ slimforyou() {
 	read slimok
 	if [ "$slimok" == Y -o "$slimok" == y ]
 		then
-		if [ $(id -u) -eq 0 ]
-			then
 			pacman -S slim --noconfirm
 			systemctl enable slim.service
-		else
-			printf "\033[1m \n ${green}Enter pass for root \n\n \033[0m"
-			su root
-			pacman -S slim --noconfirm
-			systemctl enable slim.service
-			exit
-		fi
 	else
 		printf "\033[1m \n ${yellow}EXTRA TIP ${green}:: ${red}In the future you will need to Run  ${yellow}startx ${green}:: \n \033[0m"
 	fi	
@@ -337,7 +250,5 @@ main() {
 	slimforyou
 	rm Post-Install.sh de-wm.sh
 }
-
-main
 
 #EOF
