@@ -74,11 +74,12 @@
 			
 
 			:: Current WM/Environment Choices ::
-					1. Custom i3 Setup  ( Screenshots in my i3config repo (( i3-Arch )) )
+					1. Custom i3 Setup  		( Screenshots in my i3config repo (( i3-Arch )) )
 					2. Default Xfce Setup
-					3. Default Dwm Setup
+					3. Default Dwm Setup 		( Arch Way - ABS )
 					4. Default Cinnamon Setup
-					5. Default Awesome
+					5. Default Awesome Setup
+					6. Default Gnome Setup 		( gnome + gnome-extra )
 
 
 				** WM/DE's to ADD **
@@ -88,7 +89,6 @@
 		        |    Herbstluftwm   |
 		        |      Spectrwm     |
 		        |      Openbox      |
-		        |       Gnome       |
 		        |        Kde        |
 		        |___________________|
 

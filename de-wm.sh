@@ -52,8 +52,9 @@ makeitbro() {
 		printf "\033[1m \n\n ${green}Option 2: ${yellow}Install Our CUSTOM i3 Setup\n \033[0m"
 		printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n \033[0m" 
 		printf "\033[1m \n\n ${green}Option 4: ${yellow}Install Default Dwm Setup \n \033[0m"
-		printf "\033[1m \n\n ${green}Option 5: ${yellow}Install Default Awesome Setup \n\n \033[0m"
-		printf "\033[1m\n${green}Choose ${red}1${white},${red}2${white},${red}3${white},${red}4 ${white}or ${red}5 \033[0m"
+		printf "\033[1m \n\n ${green}Option 5: ${yellow}Install Default Awesome Setup \n \033[0m"
+		printf "\033[1m \n\n ${green}Option 6: ${yellow}Install Default Gnome Setup \n \033[0m"
+		printf "\033[1m\n${green}Choose a number  ${red}1${white}-${red}6\033[0m"
 		printf "\033[1m \n\n ${yellow}Choice${white}: ${white}\033[0m"
 		read DemChoice
 		if [ "$DemChoice" == 1 ]
@@ -71,16 +72,22 @@ makeitbro() {
 		elif [ "$DemChoice" == 5 ]
 			then
 			pacman -Syy awesome zsh xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+		elif [ "$DemChoice" == 6 ]
+			then
+			pacman -Syy gnome gnome-extra zsh xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 		else
-			printf "\033[1m Choice not understood\033[0m"
+			printf "\033[1m ${yellow}Choice not understood... ${red}Exiting \033[0m"
 			sleep 2
+			exit
 		fi
 	else
-		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default XFCE Setup \n\n \033[0m"
-		printf "\033[1m \n\n ${green}Option 2: ${yellow}Install CUSTOM i3 Setup \n\n \033[0m"
-		printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n\n \033[0m"
-		printf "\033[1m \n\n ${green}Option 4: ${yellow}Install Default Dwm Setup	\n\n \033[0m"
-		printf "\033[1m\n ${green}Choose ${red}1,${white}${red}2,${red}3,${white},${red}4 ${white}or ${red}5 \n\n\033[0m"
+		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default XFCE Setup \n \033[0m"
+		printf "\033[1m \n\n ${green}Option 2: ${yellow}Install CUSTOM i3 Setup \n \033[0m"
+		printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n \033[0m"
+		printf "\033[1m \n\n ${green}Option 4: ${yellow}Install Default Dwm Setup \n \033[0m"
+		printf "\033[1m \n\n ${green}Option 5: ${yellow}Install Default Awesome Setup \n \033[0m"
+		printf "\033[1m \n\n ${green}Option 6: ${yellow}Install Default Gnome Setup \n\n \033[0m"
+		printf "\033[1m\n ${green}Choose a number  ${red}1${white}-${red}6 \n\n\033[0m"
 		printf "\n\n ${yellow}Choice: ${white}"
 		read DoYouEven
 		if [ "$DoYouEven" == 1 ]
@@ -112,7 +119,12 @@ makeitbro() {
 		elif [ "$DoYouEven" == 5 ]
 			then
 			su root
-			pacman -Syy zsh base-devel xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			pacman -Syy awesome zsh base-devel xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			exit
+		elif [ "$DoYouEven" == 6 ]
+			then
+			su root
+			pacman -Syy gnome gnome-extra zsh base-devel xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 			exit
 		else
 			printf "\033[1m ${red}lolwut${white}.... ${yellow}NOT UNDERSTOOD \033[0m"
@@ -233,11 +245,11 @@ envset() {
 			printf "\033[1m ${red}Username: ${white}\033[0m"
 			read yourINput
 			cp /etc/skel/.xinitrc /home/"$yourINput"/
+			chown "$yourINput":"$yourINput" /home/"$yourINput"/.xinitrc
 			if [ "$DemChoice" == 1 -o "$DoYouEven" == 1 ]
 				then
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
-					chown "$yourINput":"$yourINput" /home/"$yourINput"/.xinitrc
 					echo "exec startxfce4" >> /home/"$yourINput"/.xinitrc
 				fi
 			elif [ "$DemChoice" == 2 -o "$DoYouEven" == 2 ]
@@ -247,22 +259,19 @@ envset() {
 					rm /home/"$yourINput"/.xinitrc
 					cp .Xresources .zshrc .xinitrc .vimrc /home/"$yourINput"/
 					cp -r .i3 /home/"$yourINput"/
-					#chown "$yourINput":"$yourINput" /home/"$yourINput"/.i3
-					#chown "$yourINput":"$yourINput" /home/"$yourINput"/.i3/config  ## Comment until tested
+					chown "$yourINput":"$yourINput" /home/"$yourINput"/.i3/*
 					chown "$yourINput":"$yourINput" /home/"$yourINput"/*
 				fi
 			elif [ "$DemChoice" == 3 -o "$DoYouEven" == 3 ]
 				then
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
-					chown "$yourINput":"$yourINput" /home/"$yourINput"/.xinitrc
 					echo "exec cinnamon-session" >> /home/"$yourINput"/.xinitrc
 				fi
 			elif [ "$DemChoice" == 4 -o "$DoYouEven" == 4 ]
 				then
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
-					chown "$yourINput":"$yourINput" /home/"$yourINput"/.xinitrc
 					echo "exec dwm" >> /home/"$yourINput"/.xinitrc
 					abs community/dwm
 					cp -r /var/abs/community/dwm /home/"$yourINput"/dwm
@@ -271,13 +280,17 @@ envset() {
 					su "$yourINput" -c "cd /home/"$yourINput"/dwm && makepkg"
 					pacman -U /home/"$yourINput"/dwm/*.tar.xz
 				fi
-		
 			elif [ "$DemChoice" == 5 -o "$DoYouEven" == 5 ]
 				then
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
-					chown "$yourINput":"$yourINput" /home/"$yourINput"/.xinitrc
 					echo "exec awesome" >> /home/"$yourINput"/.xinitrc
+				fi
+			elif [ "$DemChoice" == 6 -o "$DoYouEven" == 6 ]
+				then
+				if [ -f /home/"$yourINput"/.xinitrc ]
+					then
+					echo "exec gnome-session" >> /home/"$youINput"/.xinitrc
 				fi
 		fi
 			else
