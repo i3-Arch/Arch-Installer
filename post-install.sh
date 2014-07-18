@@ -147,7 +147,7 @@ makeitbro() {
 		
 		elif [ "$DemChoice" == 2 ]
 			then
-			pacman -S vim xcompmgr xscreensaver zsh xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			pacman -S vim xcompmgr transset-df xscreensaver zsh xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 		
 		elif [ "$DemChoice" == 3 ]
 			then
