@@ -17,14 +17,6 @@
 # Which are: yourdrive, rewtpart, swappart, homepart, bootpart, thechoiceman
 source config.sh
 
-# IF statement for swap | if it exists
-#check4swap() {
-#if [ $FULLpart -eq 696 ]
-#	then
-#		echo -n "13371337-0000-4000-0000-133700133700"   "none"   "swap"   "defaults"   "0"   "0" >> /etc/fstab
-#fi
-#}
-
 # COLORS
 red=$(tput setaf 1)
 white=$(tput setaf 7)
@@ -97,11 +89,11 @@ BOOTload() {
 	if [ "$bootloadchoice" -eq 1 ]
 		then
 			grubinst
-		elif [ "$bootloadchoice" -eq 2 ]
+	elif [ "$bootloadchoice" -eq 2 ]
 		then
 			syslinuxinst
-		else
-			grubinst
+	else
+		grubinst
 	fi
 }	
 
