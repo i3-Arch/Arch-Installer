@@ -170,12 +170,9 @@ xseti3() {
 		then
 		cp "$HOME/xorg.conf.new" "$HOME/xorg.conf"
 		rm "$HOME/xorg.conf.new"
-	else
-		printf "\033[1m \n ${red} Did you make the right choice ? \n\n ${yellow}Where is xorg.conf.new ? -- skipping \n \033[0m"
 	fi
 	if [ "$DemChoice" == 2 ] 
 		then
-		printf "\033[1m \n ${yellow}Setting Up i3 config in ~/.i3/config \n \033[0m"
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/config
 		if [ -f "$HOME/.i3/config" ]
 			then
@@ -193,7 +190,6 @@ xseti3() {
 i3fin() {
 	if [ "$DemChoice" == 2 ]
 		then
-		printf "\033[1m \n ${green}Setting up ${red} .Xresources, .vimrc and .xinitrc \n \033[0m"
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.xinitrc
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.zshrc
@@ -247,8 +243,12 @@ envset() {
 				rm /home/"$namebro"/.xinitrc
 				cp .Xresources .zshrc .xinitrc .vimrc /home/"$namebro"/
 				cp -r .i3 /home/"$namebro"/
-				chown "$namebro":"$namebro" /home/"$namebro"/.i3/*
-				chown "$namebro":"$namebro" /home/"$namebro"/*
+				chown "$namebro":"$namebro" /home/"$namebro"/.i3
+				chown "$namebro":"$namebro" /home/"$namebro"/.i3/config
+				chown "$namebro":"$namebro" /home/"$namebro"/.Xresources
+				chown "$namebro":"$namebro" /home/"$namebro"/.vimrc
+				chown "$namebro":"$namebro" /home/"$namebro"/.zshrc
+				chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" == 3 ]
 			then
@@ -308,7 +308,7 @@ main2() {
 	i3fin
 	envset
 	slimforyou
-	rm Post-Install.sh de-wm.sh
+	rm Post-Install.sh
 }
 
 
