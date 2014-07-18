@@ -290,7 +290,7 @@ envset() {
 				then
 				if [ -f /home/"$yourINput"/.xinitrc ]
 					then
-					echo "exec gnome-session" >> /home/"$youINput"/.xinitrc
+					echo "exec gnome-session" >> /home/"$yourINput"/.xinitrc
 				fi
 		fi
 			else
