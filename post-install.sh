@@ -317,7 +317,7 @@ main2() {
 	i3fin
 	envset
 	slimforyou
-	rm Post-Install.sh
+	rm post-install.sh
 }
 
 
