@@ -58,10 +58,10 @@ usersetup() {
 		printf "\033[1m \n\n ${yellow} Enter username you want to create \n \033[0m"
 		printf "\033[1m \n Username:${white} \033[0m"
 		read namebro
-		$(useradd -m -G adm,disk,audio,network,video $namebro)
+		$(useradd -m -G adm,disk,audio,network,video "$namebro")
 		printf "\033[1m \n\n ${yellow} Set a Password for this USER now \n\n \033[0m"
 		printf "\033[1m \n ${red} If you dont you will not be able to use it .\n\n \033[0m"
-		passwd $namebro
+		passwd "$namebro"
 		printf "\033[1m \n\n ${yellow}Would you like to add user to sudoers? ( user ALL=(ALL) ALL ) \033[0m"
 		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \033[0m"
 		printf "\033[1m\n\n ${red}Answer: ${white}\033[0m"
