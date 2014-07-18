@@ -15,7 +15,7 @@ yellow=$(tput setaf 3)
 checkroot() {
 	if [ "$(id -u)" -eq 0 ]
 		then
-		printf "\033[1m ${green}Read to start ! \033[0m"
+		printf "\033[1m ${green}Ready to start ! \033[0m"
 	else
 		printf "\033[1m ${yellow}You need to be ${green}root ${yellow}to run this script \033[0m"
 		printf "\033[1m ${red}EXITING NOW \033[0m"
