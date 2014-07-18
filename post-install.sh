@@ -138,7 +138,7 @@ makeitbro() {
 		printf "\033[1m \n\n ${green}Option 4: ${yellow}Install Default Dwm Setup \n \033[0m"
 		printf "\033[1m \n\n ${green}Option 5: ${yellow}Install Default Awesome Setup \n \033[0m"
 		printf "\033[1m \n\n ${green}Option 6: ${yellow}Install Default Gnome Setup \n \033[0m"
-		printf "\033[1m\n${green}Choose a number  ${red}1${white}-${red}6\033[0m"
+		printf "\033[1m\n${white}Choose a number  ${red}1${white}-${red}6\033[0m"
 		printf "\033[1m \n\n ${yellow}Choice${white}: ${white}\033[0m"
 		read DemChoice
 		if [ "$DemChoice" == 1 ]
@@ -214,7 +214,7 @@ guestbro() {
 		read wutUsay
 		if [ "$wutUsay" == Y -o "$wutUsay" == y ]
 			then
-			pacman -S virtualbox-guest-utils --noconfirm
+			pacman -S virtualbox-guest-modules virtualbox-guest-dkms virtualbox-guest-utils --noconfirm
 			modprobe -a vboxguest vboxsf vboxvideo
 			echo "vboxguest" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
 			echo "vboxvideo" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
