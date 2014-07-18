@@ -15,10 +15,12 @@ yellow=$(tput setaf 3)
 checkroot() {
 	if [ "$(id -u)" -eq 0 ]
 		then
+		clear
 		printf "\033[1m \n\n ${green}Ready to start ! \n\n \033[0m"
 	else
-		printf "\033[1m ${yellow}You need to be ${green}root ${yellow}to run this script \033[0m"
-		printf "\033[1m ${red}EXITING NOW \033[0m"
+		clear
+		printf "\033[1m \n\n ${yellow}You need to be ${green}root ${yellow}to run this script \n\n \033[0m"
+		printf "\033[1m ${red}EXITING NOW /n/n \033[0m"
 		sleep 2
 		exit
 	fi
@@ -140,22 +142,28 @@ makeitbro() {
 		read DemChoice
 		if [ "$DemChoice" == 1 ]
 			then
-			pacman -Syy zsh xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			pacman -S zsh xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+		
 		elif [ "$DemChoice" == 2 ]
 			then
-			pacman -Syy vim xcompmgr xscreensaver zsh xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			pacman -S vim xcompmgr xscreensaver zsh xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+		
 		elif [ "$DemChoice" == 3 ]
 			then
-				pacman -Syy zsh cinnamon xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			pacman -S zsh cinnamon xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+		
 		elif [ "$DemChoice" == 4 ]
 			then
-			pacman -Syy zsh xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu rxvt-unicode urxvt-perls --noconfirm
+			pacman -S zsh xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu rxvt-unicode urxvt-perls --noconfirm
+		
 		elif [ "$DemChoice" == 5 ]
 			then
-			pacman -Syy awesome zsh xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			pacman -S awesome zsh xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+		
 		elif [ "$DemChoice" == 6 ]
 			then
-			pacman -Syy gnome gnome-extra zsh xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			pacman -S gnome gnome-extra zsh xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+		
 		else
 			printf "\033[1m ${yellow}Choice not understood... ${red}Exiting \033[0m"
 			sleep 2
