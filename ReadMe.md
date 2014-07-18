@@ -60,16 +60,16 @@
 
 		
 			1. 
-				wget https://goo.gl/YQ0Sxa -O Post-Install.sh
+				wget https://goo.gl/vUy5oh -O post-install.sh
 
 
 				** If Shortened URL is 404 **
 				
 				** Run This **
-				wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/Post-Install.sh
+				wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/post-install.sh
 			
 
-			2. source Post-Install.sh
+			2. source post-install.sh
 
 			
 
