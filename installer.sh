@@ -44,8 +44,8 @@ disk() {
 	if [ "$toolchoice" == cfdisk -o "$toolchoice" == CFDISK ]
 		then
 			cfdisk $yourdrive
-		else
-			fdisk $yourdrive
+	else
+		fdisk $yourdrive
 	fi
 }
 
@@ -67,13 +67,13 @@ ASKme() {
 
 SMALLpart() {
 	printf " \033[1m ${white}\n Enter your Boot Partition: ${red}i.e. ${green}/dev/sda1 \n \033[0m"
-    printf " \033[1m \n ${yellow}Boot Partition: ${white}\033[0m"    
-		read bootpart
+    	printf " \033[1m \n ${yellow}Boot Partition: ${white}\033[0m"    
+	read bootpart
         echo "bootpart=$bootpart" >> config.sh
         mkfs.ext4 "$bootpart" -L bootfs
 	printf " \033[1m ${white}\n Enter your Root Partition:${red} i.e. ${green}/dev/sda2 \n \033[0m"
-    printf " \033[1m ${yellow}\n Root Partition: ${white}\033[0m"
-		read rewtpart
+    	printf " \033[1m ${yellow}\n Root Partition: ${white}\033[0m"
+	read rewtpart
         echo "rewtpart=$rewtpart" >> config.sh
         mkfs.ext4 "$rewtpart" -L rootfs
 }
@@ -81,17 +81,17 @@ SMALLpart() {
 HALFpart() {
         printf " \033[1m \n${white} Enter your Boot Partition: ${red}i.e. /dev/sda1 \n \033[0m"
         printf " \033[1m \n ${yellow}Boot Partition: ${white} \033[0m"
-		read bootpart
+	read bootpart
         echo "bootpart=$bootpart" >> config.sh
         mkfs.ext4 "$bootpart" -L bootfs
         printf " \033[1m \n ${white}Enter your Root Partition: ${red}i.e. /dev/sda2 \n \033[0m"
         printf " \033[1m \n  ${yellow}Root Partition: ${white} \033[0m"
-		read rewtpart
+	read rewtpart
         echo "rewtpart=$rewtpart" >> config.sh
         mkfs.ext4 "$rewtpart" -L rootfs
 	printf " \033[1m \n ${white}Enter your Home Partition: ${red}i.e. /dev/sda3 \n \033[0m"
-    printf " \033[1m \n ${yellow}Home Partition: ${white} \033[0m"
-		read homepart
+    	printf " \033[1m \n ${yellow}Home Partition: ${white} \033[0m"
+	read homepart
         echo "homepart=$homepart" >> config.sh
         mkfs.ext4 "$homepart"
 }
@@ -141,14 +141,14 @@ CALLpart() {
 	if [ "$thechoiceman" -eq 3 ]
     		then
     		    FULLpart
-		elif [ "$thechoiceman" -eq 2 ]
+	elif [ "$thechoiceman" -eq 2 ]
 		then
 		    HALFpart
-		elif [ "$thechoiceman" -eq 1 ]
+	elif [ "$thechoiceman" -eq 1 ]
 		then
 		    SMALLpart
-		else
-		    SMALLpart
+	else
+	    SMALLpart
 	fi
 }
 
@@ -157,7 +157,7 @@ main() {
 	touch config.sh 	## Create file to store bootpart, rewtpart, homepart, swappart for chroot
 	ASKme				## ASK NUMBER OF PARTITIONS
 	disk 				## PARTITION WITH CFDISK or FDISK
-    CALLpart 	 		## CALL PARTITIONING IF STATEMENT
+    	CALLpart 	 		## CALL PARTITIONING IF STATEMENT
 	pkgmntchroot 	 	## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
 	cp issue /mnt/etc/issue   # TTY ART 
 	umount -R /mnt			  # UNMOUNT 
