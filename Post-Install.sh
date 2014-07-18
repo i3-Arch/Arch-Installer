@@ -13,7 +13,7 @@ green=$(tput setaf 2)
 yellow=$(tput setaf 3)
 
 updateupgrade() {
-	pacman -Syyu --noconfirm
+		pacman -Syyu --noconfirm
 }
 
 mirrorselect() {
@@ -29,45 +29,27 @@ mirrorselect() {
 
 needpass() { 
 	clear
-	printf "\033[1m \n ${yellow} Would you like to set a root password ?\n \n \033[0m"
-	printf "\033[1m ${white}[${green}Y${white}|${red}N${white}] \n \033[0m"
-	printf "\033[1m \n\n ${red} Answer:${white} \033[0m"
-	read wutdawg
-	if [ "$wutdawg" = Y -o "$wutdawg" = y ]
-		then
+	printf "\033[1m \n ${yellow} Set a root password \n\n \033[0m"
 		passwd
-		usersetup
-	else
-		printf "\033[1m \n ${red} Ok, Moving on then.... \n \033[0m"
-		usersetup
-	fi
 }
 
-usersetup() {  ## CALLED BY needpass
+usersetup() {
 		clear
-		printf "\033[1m \n ${green} Would you like to setup a USER now ? \n\n \033[0m"
-		printf "\033[1m \n ${white}[${green}Y${white}|${red}N${white}] \n \033[0m"
-		printf "\033[1m \n\n Answer:${white} \033[0m"
-		read usernowbro
-		if	[ "$usernowbro" = Y -o "$usernowbro" = y ]
+		printf "\033[1m \n\n ${green} Lets create a user ! \n \033[0m"
+		printf "\033[1m \n\n ${yellow} Enter username you want to create \033[0m"
+		printf "\033[1m \n Username:${white} \033[0m"
+		read namebro
+		$(useradd -m -G adm,disk,audio,network,video $namebro)
+		printf "\033[1m \n\n ${yellow} Set a Password for this USER now \n\n \033[0m"
+		printf "\033[1m \n ${red} If you dont you will not be able to use it .\n \033[0m"
+		passwd $namebro
+		printf "\033[1m \n\n ${yellow}Would you like to add user to sudoers? ( user ALL=(ALL) ALL ) \033[0m"
+		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \033[0m"
+		printf "\033[1m\n\n ${red}Answer: ${white}\033[0m"
+		read anot
+		if [ "$anot" == Y -o "$anot" == y -o "$anot" == yes -o "$anot" == YES ]
 			then
-			printf "\033[1m \n\n ${green} Enter The Username to Create ! \n \033[0m"
-			printf "\033[1m \n Username:${white} \033[0m"
-			read thenameuneed
-			$(useradd -m -G adm,disk,audio,network,video $thenameuneed)
-			printf "\033[1m \n\n ${yellow} Set a Password for this USER now \n\n \033[0m"
-			printf "\033[1m \n ${red} If you dont you will not be able to use it .\n \033[0m"
-			passwd $thenameuneed
-			printf "\033[1m \n\n ${yellow}Would you like to add user to sudoers? ( user ALL=(ALL) ALL ) \033[0m"
-			printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \033[0m"
-			printf "\033[1m\n\n ${red}Answer: ${white}\033[0m"
-			read anot
-			if [ "$anot" == Y -o "$anot" == y -o "$anot" == yes -o "$anot" == YES ]
-				then
-				echo -n "$thenameuneed" "ALL=(ALL)" "ALL" >> /etc/sudoers
-			fi
-		else
-			printf "\033[1m \n ${green} Moving on \n \033[0m"
+			echo -n "$namebro" "ALL=(ALL)" "ALL" >> /etc/sudoers
 		fi
 }
 
@@ -98,6 +80,7 @@ main() {
 	updateupgrade
 	thankyoubro
 	needpass
+	usersetup
 	mirrorselect
 	uwantme
 }
@@ -237,69 +220,54 @@ guestbro() {
 }
 
 envset() {
-		printf "\033[1m \n\n ${yellow}Did you create a user ? \n\n \033[0m"
-		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n \033[0m"
-		printf "\033[1m \n\n ${green}Answer: ${white}\033[0m"
-		read DikWeed
-		if [ "$DikWeed" == Y -o "$DikWeed" == y -o "$DikWeed" == YES -o "$DikWeed" == yes ]
+		cp /etc/skel/.xinitrc /home/"$namebro"/
+		chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc
+		if [ "$DemChoice" == 1 ]
 			then
-			printf "\033[1m \n\n ${green}Enter that username please \n\n \033[0m"
-			printf "\033[1m ${red}Username: ${white}\033[0m"
-			read yourINput
-			cp /etc/skel/.xinitrc /home/"$yourINput"/
-			chown "$yourINput":"$yourINput" /home/"$yourINput"/.xinitrc
-			if [ "$DemChoice" == 1 ]
+			if [ -f /home/"$namebro"/.xinitrc ]
 				then
-				if [ -f /home/"$yourINput"/.xinitrc ]
-					then
-					echo "exec startxfce4" >> /home/"$yourINput"/.xinitrc
-				fi
-			elif [ "$DemChoice" == 2 ]
-				then
-				if [ -f /home/"$yourINput"/.xinitrc ]
-					then
-					rm /home/"$yourINput"/.xinitrc
-					cp .Xresources .zshrc .xinitrc .vimrc /home/"$yourINput"/
-					cp -r .i3 /home/"$yourINput"/
-					chown "$yourINput":"$yourINput" /home/"$yourINput"/.i3/*
-					chown "$yourINput":"$yourINput" /home/"$yourINput"/*
-				fi
-			elif [ "$DemChoice" == 3 ]
-				then
-				if [ -f /home/"$yourINput"/.xinitrc ]
-					then
-					echo "exec cinnamon-session" >> /home/"$yourINput"/.xinitrc
-				fi
-			elif [ "$DemChoice" == 4 ]
-				then
-				if [ -f /home/"$yourINput"/.xinitrc ]
-					then
-					echo "exec dwm" >> /home/"$yourINput"/.xinitrc
-					abs community/dwm
-					cp -r /var/abs/community/dwm /home/"$yourINput"/dwm
-					chown "$yourINput":"$yourINput" /home/"$yourINput"/dwm
-					chown "$youINput":"$yourINput" /home/"$yourINput"/dwm/*
-					su "$yourINput" -c "cd /home/"$yourINput"/dwm && makepkg"
-					pacman -U /home/"$yourINput"/dwm/*.tar.xz
-				fi
-			elif [ "$DemChoice" == 5 ]
-				then
-				if [ -f /home/"$yourINput"/.xinitrc ]
-					then
-					echo "exec awesome" >> /home/"$yourINput"/.xinitrc
-				fi
-			elif [ "$DemChoice" == 6 ]
-				then
-				if [ -f /home/"$yourINput"/.xinitrc ]
-					then
-					echo "exec gnome-session" >> /home/"$yourINput"/.xinitrc
-				fi
-			else
-				printf "\033[1m ${green}  \n\nShould have used the ${red}POST-INSTALL.sh ${green}script to setup user for a WM/ENVIRONMENT \033[0m"
-				printf "\033[1m ${yellow} \n\n Now you will have to cp /etc/skel/.xinitrc to your users home dir and edit it \n\n \033[0m"
-				sleep 3
-					
+				echo "exec startxfce4" >> /home/"$namebro"/.xinitrc
 			fi
+		elif [ "$DemChoice" == 2 ]
+			then
+			if [ -f /home/"$namebro"/.xinitrc ]
+				then
+				rm /home/"$namebro"/.xinitrc
+				cp .Xresources .zshrc .xinitrc .vimrc /home/"$namebro"/
+				cp -r .i3 /home/"$namebro"/
+				chown "$namebro":"$namebro" /home/"$namebro"/.i3/*
+				chown "$namebro":"$namebro" /home/"$namebro"/*
+			fi
+		elif [ "$DemChoice" == 3 ]
+			then
+			if [ -f /home/"$namebro"/.xinitrc ]
+				then
+				echo "exec cinnamon-session" >> /home/"$namebro"/.xinitrc
+			fi
+		elif [ "$DemChoice" == 4 ]
+			then
+			if [ -f /home/"$namebro"/.xinitrc ]
+				then
+				echo "exec dwm" >> /home/"$namebro"/.xinitrc
+				abs community/dwm
+				cp -r /var/abs/community/dwm /home/"$namebro"/dwm
+				chown "$namebro":"$namebro" /home/"$namebro"/dwm
+				chown "$namebro":"$namebro" /home/"$namebro"/dwm/*
+				su "$namebro" -c "cd /home/"$namebro"/dwm && makepkg"
+				pacman -U /home/"$namebro"/dwm/*.tar.xz
+			fi
+		elif [ "$DemChoice" == 5 ]
+			then
+			if [ -f /home/"$namebro"/.xinitrc ]
+				then
+				echo "exec awesome" >> /home/"$namebro"/.xinitrc
+			fi
+		elif [ "$DemChoice" == 6 ]
+			then
+			if [ -f /home/"$namebro"/.xinitrc ]
+				then
+				echo "exec gnome-session" >> /home/"$namebro"/.xinitrc
+			fi	
 		fi
 }
 
