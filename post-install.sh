@@ -39,7 +39,7 @@ mirrorselect() {
 			then
 			cp /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
 		fi
-		printf "\033[1m ${red}ctrl+x to exit nano \033[0m"
+		printf "\033[1m ${red}ctrl+x to exit nano \n\n\033[0m"
 		sleep 2
 		nano /etc/pacman.d/mirrorlist
 }
@@ -134,38 +134,41 @@ greetz() {
 
 makeitbro() {
 		clear
-		printf "\033[1m \n\n ${green}Option 1: ${yellow}Install Default Xfce Setup \n \033[0m"
-		printf "\033[1m \n\n ${green}Option 2: ${yellow}Install Our CUSTOM i3 Setup\n \033[0m"
-		printf "\033[1m \n\n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n \033[0m" 
-		printf "\033[1m \n\n ${green}Option 4: ${yellow}Install Default Dwm Setup \n \033[0m"
-		printf "\033[1m \n\n ${green}Option 5: ${yellow}Install Default Awesome Setup \n \033[0m"
-		printf "\033[1m \n\n ${green}Option 6: ${yellow}Install Default Gnome Setup \n \033[0m"
-		printf "\033[1m\n${white}Choose a number  ${red}1${white}-${red}6\033[0m"
+		printf "\033[1m \n ${green}Option 1: ${yellow}Install Default Xfce Setup \n \033[0m"
+		printf "\033[1m \n ${green}Option 2: ${yellow}Install Our CUSTOM i3 Setup\n \033[0m"
+		printf "\033[1m \n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n \033[0m" 
+		printf "\033[1m \n ${green}Option 4: ${yellow}Install Default Dwm Setup \n \033[0m"
+		printf "\033[1m \n ${green}Option 5: ${yellow}Install Default Awesome Setup \n \033[0m"
+		printf "\033[1m \n ${green}Option 6: ${yellow}Install Default Gnome Setup \n \033[0m"
+		printf "\033[1m \n ${green}Option 7: ${yellow}Install Default Kde Setup \n\n \033[0m"
+		printf "\033[1m\n${white}Choose a number  ${red}1${white}-${red}7\033[0m"
 		printf "\033[1m \n\n ${yellow}Choice${white}: ${white}\033[0m"
 		read DemChoice
 		if [ "$DemChoice" == 1 ]
 			then
-			pacman -S zsh xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
-		
+			pacman -S xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
 		elif [ "$DemChoice" == 2 ]
 			then
 			pacman -S vim xcompmgr transset-df xscreensaver zsh xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 		
 		elif [ "$DemChoice" == 3 ]
 			then
-			pacman -S zsh cinnamon xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			pacman -S cinnamon xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
 		
 		elif [ "$DemChoice" == 4 ]
 			then
-			pacman -S zsh xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu rxvt-unicode urxvt-perls --noconfirm
+			pacman -S xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu --noconfirm
 		
 		elif [ "$DemChoice" == 5 ]
 			then
-			pacman -S awesome zsh xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			pacman -S awesome xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm
 		
 		elif [ "$DemChoice" == 6 ]
 			then
-			pacman -S gnome gnome-extra zsh xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			pacman -S gnome gnome-extra xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm
+		elif [ "$DemChoice" == 7 ]
+			then
+			pacman -S kde xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
 		
 		else
 			printf "\033[1m ${yellow}Choice not understood... ${red}Exiting \033[0m"
@@ -291,22 +294,56 @@ envset() {
 				then
 				echo "exec gnome-session" >> /home/"$namebro"/.xinitrc
 			fi	
+		elif [ "$DemChoice" == 7 ]
+			then
+			if [ -f /home/"$namebro"/.xinitrc ]
+				then
+				echo "exec startkde" >> /home/"$namebro"/.xinitrc
+			fi
+		
 		fi
 }
 
 
-slimforyou() {
-	printf "\033[1m \n\n ${green}Would you like to enable slim ? \n\n \033[0m"
-	printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n \033[0m"
-	printf "\033[1m \n ${green}Answer: ${white}\033[0m"
-	read slimok
-	if [ "$slimok" == Y -o "$slimok" == y ]
+loginmanage() {
+	if [ "$DemChoice" -eq "1" -o "$DemChoice" -eq "2" -o "$DemChoice" -eq "3" -o "$DemChoice" -eq "4" -o "$DemChoice" -eq "5" ]
 		then
+		clear
+		printf "\033[1m \n\n ${green}Would you like to enable slim ? \n\n \033[0m"
+		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n \033[0m"
+		printf "\033[1m \n ${green}Answer: ${white}\033[0m"
+		read slimok
+		if [ "$slimok" == Y -o "$slimok" == y ]
+			then
 			pacman -S slim --noconfirm
 			systemctl enable slim.service
-	else
-		printf "\033[1m \n ${yellow}EXTRA TIP ${green}:: ${red}In the future you will need to Run  ${yellow}startx ${green}:: \n \033[0m"
-	fi	
+		else
+			printf "\033[1m \n ${yellow}EXTRA TIP ${green}:: ${red}In the future you will need to Run  ${yellow}startx ${green}:: \n \033[0m"
+		fi	
+	elif [ "$DemChoice" -eq "6" ]
+		then
+		clear
+		printf "\033[1m \n\n ${green}Would you like to enable Gdm ? \n\n\033[0m"
+		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n\033[0m"
+		printf "\033[1m \n ${green}Answer: ${white}\033[0m"
+		read gdmok
+		if [ "$gdmok" == Y -o "$gdmok" == y ]
+			then
+			systemctl enable gdm.service
+		fi
+	elif [ "$DemChoice" -eq "7" ]
+		then
+		clear
+		printf "\033[1m \n\n ${green} Would you like to enable Kdm ?\n\n\033[0m"
+		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n\033[0m"
+		printf "\033[1m \n ${green}Answer: ${white}\033[0m"
+		read kdmok
+		if [ "$kdmok" == Y -o "$kdmok" == y ]
+			then
+			systemctl enable kdm.service
+		fi	
+	fi
+
 }
 
 
@@ -318,7 +355,7 @@ main2() {
 	xseti3
 	i3fin
 	envset
-	slimforyou
+	loginmanage
 	rm post-install.sh
 }
 
