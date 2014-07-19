@@ -219,7 +219,8 @@ guestbro() {
 		read wutUsay
 		if [ "$wutUsay" == Y -o "$wutUsay" == y ]
 			then
-			pacman -S virtualbox-guest-modules virtualbox-guest-dkms virtualbox-guest-utils --noconfirm
+			pacman -Syy virtualbox-guest-utils --noconfirm
+			pacman -Syy linux --noconfirm
 			modprobe -a vboxguest vboxsf vboxvideo
 			echo "vboxguest" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
 			echo "vboxvideo" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
@@ -232,7 +233,10 @@ guestbro() {
 			read VMwut
 			if [ "$VMwut" == Y -o "$VMwut" == y ]
 				then
-				pacman -S svga-dri xf86-input-vmmouse xf86-video-vmware open-vm-tools --noconfirm
+				pacman -Syy svga-dri xf86-input-vmmouse xf86-video-vmware open-vm-tools --noconfirm
+				cat /proc/version > /etc/arch-release
+				systemctl start vmtoolsd
+				systemctl enable vmtoolsd
 			fi
 		else
 			printf "\033[1m \n\n${red}Did you type a ${yellow}'y' ${white}or a ${yellow}'n'${red} ? \033[0m"
