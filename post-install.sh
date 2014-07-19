@@ -146,29 +146,29 @@ makeitbro() {
 		read DemChoice
 		if [ "$DemChoice" == 1 ]
 			then
-			pacman -S xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
+			pacman -Syy xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
 		elif [ "$DemChoice" == 2 ]
 			then
-			pacman -S vim xcompmgr transset-df xscreensaver zsh xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			pacman -Syy xcompmgr transset-df xscreensaver zsh xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 		
 		elif [ "$DemChoice" == 3 ]
 			then
-			pacman -S cinnamon xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
+			pacman -Syy cinnamon xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
 		
 		elif [ "$DemChoice" == 4 ]
 			then
-			pacman -S xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu --noconfirm
+			pacman -Syy xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu --noconfirm
 		
 		elif [ "$DemChoice" == 5 ]
 			then
-			pacman -S awesome xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm
+			pacman -Syy awesome xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm
 		
 		elif [ "$DemChoice" == 6 ]
 			then
-			pacman -S gnome gnome-extra xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm
+			pacman -Syy gnome gnome-extra xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm
 		elif [ "$DemChoice" == 7 ]
 			then
-			pacman -S kde xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
+			pacman -Syy kde xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
 		
 		else
 			printf "\033[1m ${yellow}Choice not understood... ${red}Exiting \033[0m"
@@ -220,11 +220,12 @@ guestbro() {
 		if [ "$wutUsay" == Y -o "$wutUsay" == y ]
 			then
 			pacman -Syy virtualbox-guest-utils --noconfirm
-			pacman -Syy linux --noconfirm
+			depmod
 			modprobe -a vboxguest vboxsf vboxvideo
 			echo "vboxguest" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
 			echo "vboxvideo" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
 			echo "vboxsf" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
+			
 		elif [ "$wutUsay" == N -o "$wutUsay" == n ]
 			then 
 			printf "\033[1m \n\n ${green}Are you using VMWARE ? \033[0m"
