@@ -144,29 +144,29 @@ makeitbro() {
 		printf "\033[1m\n${white}Choose a number  ${red}1${white}-${red}7\033[0m"
 		printf "\033[1m \n\n ${yellow}Choice${white}: ${white}\033[0m"
 		read DemChoice
-		if [ "$DemChoice" == 1 ]
+		if [ "$DemChoice" -eq "1" ]
 			then
 			pacman -Syy xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
-		elif [ "$DemChoice" == 2 ]
+		elif [ "$DemChoice" -eq "2" ]
 			then
 			pacman -Syy xcompmgr transset-df xscreensaver zsh xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 		
-		elif [ "$DemChoice" == 3 ]
+		elif [ "$DemChoice" -eq "3" ]
 			then
 			pacman -Syy cinnamon xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
 		
-		elif [ "$DemChoice" == 4 ]
+		elif [ "$DemChoice" -eq "4" ]
 			then
 			pacman -Syy xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu --noconfirm
 		
-		elif [ "$DemChoice" == 5 ]
+		elif [ "$DemChoice" -eq "5" ]
 			then
 			pacman -Syy awesome xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm
 		
-		elif [ "$DemChoice" == 6 ]
+		elif [ "$DemChoice" -eq "6" ]
 			then
 			pacman -Syy gnome gnome-extra xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm
-		elif [ "$DemChoice" == 7 ]
+		elif [ "$DemChoice" -eq "7" ]
 			then
 			pacman -Syy kde xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
 		
@@ -185,7 +185,7 @@ xseti3() {
 		cp "$HOME/xorg.conf.new" "$HOME/xorg.conf"
 		rm "$HOME/xorg.conf.new"
 	fi
-	if [ "$DemChoice" == 2 ] 
+	if [ "$DemChoice" -eq "2" ] 
 		then
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/config
 		if [ -f "$HOME/.i3/config" ]
@@ -202,7 +202,7 @@ xseti3() {
 
 
 i3fin() {
-	if [ "$DemChoice" == 2 ]
+	if [ "$DemChoice" -eq "2" ]
 		then
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.xinitrc
@@ -225,7 +225,7 @@ guestbro() {
 			echo "vboxguest" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
 			echo "vboxvideo" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
 			echo "vboxsf" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
-			
+			vboxyolo="999"
 		elif [ "$wutUsay" == N -o "$wutUsay" == n ]
 			then 
 			printf "\033[1m \n\n ${green}Are you using VMWARE ? \033[0m"
@@ -238,6 +238,7 @@ guestbro() {
 				cat /proc/version > /etc/arch-release
 				systemctl start vmtoolsd
 				systemctl enable vmtoolsd
+				vmwareyolo="999"
 			fi
 		else
 			printf "\033[1m \n\n${red}Did you type a ${yellow}'y' ${white}or a ${yellow}'n'${red} ? \033[0m"
@@ -249,13 +250,13 @@ guestbro() {
 envset() {
 		cp /etc/skel/.xinitrc /home/"$namebro"/
 		chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc
-		if [ "$DemChoice" == 1 ]
+		if [ "$DemChoice" -eq "1" ]
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
 				echo "exec startxfce4" >> /home/"$namebro"/.xinitrc
 			fi
-		elif [ "$DemChoice" == 2 ]
+		elif [ "$DemChoice" -eq "2" ]
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
@@ -269,13 +270,13 @@ envset() {
 				chown "$namebro":"$namebro" /home/"$namebro"/.zshrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc
 			fi
-		elif [ "$DemChoice" == 3 ]
+		elif [ "$DemChoice" -eq "3" ]
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
 				echo "exec cinnamon-session" >> /home/"$namebro"/.xinitrc
 			fi
-		elif [ "$DemChoice" == 4 ]
+		elif [ "$DemChoice" -eq "4" ]
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
@@ -287,19 +288,19 @@ envset() {
 				su "$namebro" -c "cd /home/"$namebro"/dwm && makepkg"
 				pacman -U /home/"$namebro"/dwm/*.tar.xz
 			fi
-		elif [ "$DemChoice" == 5 ]
+		elif [ "$DemChoice" -eq "5" ]
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
 				echo "exec awesome" >> /home/"$namebro"/.xinitrc
 			fi
-		elif [ "$DemChoice" == 6 ]
+		elif [ "$DemChoice" -eq "6" ]
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
 				echo "exec gnome-session" >> /home/"$namebro"/.xinitrc
 			fi	
-		elif [ "$DemChoice" == 7 ]
+		elif [ "$DemChoice" -eq "7" ]
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
@@ -361,6 +362,11 @@ main2() {
 	i3fin
 	envset
 	loginmanage
+	if [ "$vboxyolo" -eq "999" -o "$vmwareyolo" -eq "999" ]
+		then
+		printf "\033[1m \n\nYou will need to reboot for guest additions to work ( fullscreen etc.. ) \n\n\033[0m"
+		sleep 2
+	fi
 	rm post-install.sh
 }
 
