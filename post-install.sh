@@ -267,7 +267,7 @@ envset() {
 				chown "$namebro":"$namebro" /home/"$namebro"/.vimrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.zshrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc
-				su -c "$namebro" chsh -s $(which zsh)
+				su -c "$namebro" "chsh -s $(which zsh)"
 				printf "\033[1m \n\nEnter User Password ( changing shell )\n\n\033[0m"
 			fi
 		elif [ "$DemChoice" -eq "3" ]
