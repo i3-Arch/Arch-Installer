@@ -319,8 +319,10 @@ loginmanage() {
 		read slimok
 		if [ "$slimok" == Y -o "$slimok" == y ]
 			then
-			pacman -S slim --noconfirm
+			pacman -Syy slim --noconfirm
 			systemctl enable slim.service
+			printf "\033[1m ${red}\nReboot to take effect \n\n\033[0m"
+			sleep 1
 		else
 			printf "\033[1m \n ${yellow}EXTRA TIP ${green}:: ${red}In the future you will need to Run  ${yellow}startx ${green}:: \n \033[0m"
 		fi	
@@ -334,6 +336,8 @@ loginmanage() {
 		if [ "$gdmok" == Y -o "$gdmok" == y ]
 			then
 			systemctl enable gdm.service
+			printf "\033[1m ${red}\n Reboot to take effect \n\n\033[0m"
+			sleep 1
 		fi
 	elif [ "$DemChoice" -eq "7" ]
 		then
@@ -345,6 +349,8 @@ loginmanage() {
 		if [ "$kdmok" == Y -o "$kdmok" == y ]
 			then
 			systemctl enable kdm.service
+			printf "\033[1m ${red}\nReboot to take effect \033[0m" 
+			sleep 1
 		fi	
 	fi
 
@@ -361,8 +367,10 @@ main2() {
 	envset
 	loginmanage
 	rm post-install.sh
-	printf "\033[1m \n ${green} If you chose yes for Virtualbox or Vmware \n\n\033[0m"
-	printf "\033[1m \n ${yellow} Then you should reboot \n\n\033[0m"
+	if [ -f /etc/modules-load.d/virtualbox.conf ]
+		then
+		printf "\033[1m \n\n ${green}Reboot for Virtualbox guest additions to take effect \n\n\033[0m"
+	fi
 }
 
 main() {
