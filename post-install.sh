@@ -284,7 +284,7 @@ envset() {
 				chown "$namebro":"$namebro" /home/"$namebro"/dwm
 				chown "$namebro":"$namebro" /home/"$namebro"/dwm/*
 				su "$namebro" -c "cd /home/"$namebro"/dwm && makepkg"
-				pacman -U /home/"$namebro"/dwm/*.tar.xz
+				pacman -U /home/"$namebro"/dwm/*.tar.xz --noconfirm
 			fi
 		elif [ "$DemChoice" -eq "5" ]
 			then
