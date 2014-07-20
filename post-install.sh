@@ -267,8 +267,6 @@ envset() {
 				chown "$namebro":"$namebro" /home/"$namebro"/.vimrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.zshrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc
-				printf "\033[1m \n\n${red}Enter User Pass Please \n\n\033[0m"
-				su -c "$namebro" "chsh -s $(which zsh)"
 			fi
 		elif [ "$DemChoice" -eq "3" ]
 			then
@@ -371,7 +369,7 @@ main2() {
 	rm post-install.sh
 	printf "\033[1m ${yellow}Rebooting now \n\n\033[0m"
 	sleep 2
-	printf "\033[1m\n${red}3${white}...\n\033[0m"
+	printf "\033[1m\n ${red}3${white}...\n\033[0m"
 	sleep 1
 	printf "\033[1m ${red}2${white}..\n\033[0m"
 	sleep 1
