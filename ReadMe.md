@@ -50,7 +50,7 @@
                
                 2. :RUN: 
 
-                        bash menu.sh
+                        source menu.sh
 
 
 # POST INSTALL
@@ -69,7 +69,7 @@
 				wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/post-install.sh
 			
 
-			2. bash post-install.sh
+			2. source post-install.sh
 
 			
 
@@ -80,7 +80,7 @@
 					4. Default Cinnamon Setup
 					5. Default Awesome Setup
 					6. Default Gnome Setup 		( gnome + gnome-extra )
-
+					7. Default Kde Setup
 
 				** WM/DE's to ADD **
 		    	  * Not in order *
