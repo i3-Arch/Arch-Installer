@@ -157,7 +157,7 @@ makeitbro() {
 		
 		elif [ "$DemChoice" -eq "4" ]
 			then
-			pacman -Syy xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu --noconfirm
+			pacman -Syy xorg-server feh xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu --noconfirm
 		
 		elif [ "$DemChoice" -eq "5" ]
 			then
@@ -267,8 +267,8 @@ envset() {
 				chown "$namebro":"$namebro" /home/"$namebro"/.vimrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.zshrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc
+				printf "\033[1m \n\n${red}Enter User Pass Please \n\n\033[0m"
 				su -c "$namebro" "chsh -s $(which zsh)"
-				printf "\033[1m \n\nEnter User Password ( changing shell )\n\n\033[0m"
 			fi
 		elif [ "$DemChoice" -eq "3" ]
 			then
@@ -369,10 +369,14 @@ main2() {
 	envset
 	loginmanage
 	rm post-install.sh
-	if [ -f /etc/modules-load.d/virtualbox.conf ]
-		then
-		printf "\033[1m \n\n ${green}Reboot for Virtualbox guest additions to take effect \n\n\033[0m"
-	fi
+	printf "\033[1m ${yellow}Rebooting now \n\n\033[0m"
+	sleep 2
+	printf "\033[1m\n${red}3${white}...\n\033[0m"
+	sleep 1
+	printf "\033[1m ${red}2${white}..\n\033[0m"
+	sleep 1
+	printf "\033[1m ${red}1${white}.\n\033[0m"
+	$(reboot)
 }
 
 main() {
