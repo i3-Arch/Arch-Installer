@@ -361,9 +361,8 @@ main2() {
 	envset
 	loginmanage
 	rm post-install.sh
-	printf "\033[1m ${green} Rebooting Now \033[0m"
-	sleep 1
-	$(reboot)
+	printf "\033[1m \n ${green} If you chose yes for Virtualbox or Vmware \n\n\033[0m"
+	printf "\033[1m \n ${yellow} Then you should reboot \n\n\033[0m"
 }
 
 main() {
