@@ -89,7 +89,6 @@
 		        |    Herbstluftwm   |
 		        |      Spectrwm     |
 		        |      Openbox      |
-		        |        Kde        |
 		        |___________________|
 
 # CURRENT OBJECTIVES
