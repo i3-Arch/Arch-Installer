@@ -50,7 +50,7 @@
                
                 2. :RUN: 
 
-                        source menu.sh
+                        bash menu.sh
 
 
 # POST INSTALL
@@ -69,7 +69,7 @@
 				wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/post-install.sh
 			
 
-			2. source post-install.sh
+			2. bash post-install.sh
 
 			
 
