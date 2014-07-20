@@ -225,7 +225,7 @@ guestbro() {
 			echo "vboxguest" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
 			echo "vboxvideo" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
 			echo "vboxsf" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
-			vboxyolo="999"
+			vboxyolo="99"
 		elif [ "$wutUsay" == N -o "$wutUsay" == n ]
 			then 
 			printf "\033[1m \n\n ${green}Are you using VMWARE ? \033[0m"
@@ -238,7 +238,7 @@ guestbro() {
 				cat /proc/version > /etc/arch-release
 				systemctl start vmtoolsd
 				systemctl enable vmtoolsd
-				vmwareyolo="999"
+				vmwareyolo="89"
 			fi
 		else
 			printf "\033[1m \n\n${red}Did you type a ${yellow}'y' ${white}or a ${yellow}'n'${red} ? \033[0m"
@@ -362,7 +362,7 @@ main2() {
 	i3fin
 	envset
 	loginmanage
-	if [ "$vboxyolo" -eq "999" -o "$vmwareyolo" -eq "999" ]
+	if [ "$vboxyolo" -eq "99" -o "$vmwareyolo" -eq "89" ]
 		then
 		printf "\033[1m \n\nYou will need to reboot for guest additions to work ( fullscreen etc.. ) \n\n\033[0m"
 		sleep 2
