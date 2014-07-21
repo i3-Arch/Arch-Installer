@@ -391,6 +391,7 @@ urxvtstuff() {
 		then
 		printf "\n\n${green}Setting up urxvt for custom i3 setup\n"
 		printf "\n ${yellow}And changing shell to zsh for your user\n"
+		pacman -Syy git
 		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-tabbedex/urxvt-tabbedex.tar.gz && tar xzvf urxvt-tabbedex.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-tabbedex && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-tabbedex/*.xz --noconfirm
