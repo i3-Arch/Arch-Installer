@@ -72,6 +72,7 @@ grubinst() {
 
 # Install Syslinux
 syslinuxinst() {
+	pacman -Syy syslinux --noconfirm
 	syslinux-install_update -i -a -m
 	printf " \033[1m ${red} Edit APPEND root=/dev/sda3 to point to your / partition. ${white} \n \033[0m"
 	echo -e "\033[1m ${green} Press Enter to Continue\033[0m"
