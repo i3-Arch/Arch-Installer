@@ -12,6 +12,7 @@ white=$(tput setaf 7)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
 
+
 checkroot() {
 	if [ "$(id -u)" -eq 0 ]
 		then
@@ -357,6 +358,58 @@ loginmanage() {
 }
 
 
+bobthebuilder() {  
+	clear
+	printf "\n\n Would you like to setup pacaur ? \n"
+	printf "\n\n Aur helper with cower backend \n\n"
+	printf "\n\n [Y|N] \n\n"
+	printf "\n\n Answer: "
+	read thatquestion
+	if [ "$thatquestion" == Y -o "$thatquestion" == y ]
+		then
+		printf "\n\n Setting up pacaur for future use \n\n"
+		pacman -Syy expac --noconfirm
+		su "$namebro" -c "mkdir /home/"$namebro"/build-dir"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/co/cower/cower.tar.gz && tar xzvf cower.tar.gz"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir/cower && makepkg -s"
+		pacman -U /home/"$namebro"/build-dir/cower/*.xz --noconfirm
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/pa/pacaur/pacaur.tar.gz && tar xzvf pacaur.tar.gz"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir/pacaur && makepkg -s"
+		pacman -U /home/"$namebro"/build-dir/pacaur/*.xz --noconfirm
+	else
+		printf "\n\n You entered no\n"
+		printf "\n\n Or an unexpected character \n"
+		printf "\n Moving on... \n"
+		sleep 2
+	fi
+}
+	
+	
+urxvtstuff() {
+	clear
+	if [ "$DemChoice" -eq 2 ]
+		then
+		printf "\n\n${green}Setting up urxvt for custom i3 setup\n"
+		printf "\n ${yellow}And changing shell to zsh for your user\n"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-tabbedex/urxvt-tabbedex.tar.gz && tar xzvf urxvt-tabbedex.tar.gz"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-tabbedex && makepkg -s"
+		pacman -U /home/"$namebro"/build-dir/urxvt-tabbedex/*.xz --noconfirm
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/oh/oh-my-zsh-git/oh-my-zsh-git.tar.gz && tar xzvf oh-my-zsh-git.tar.gz"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir/oh-my-zsh-git && makepkg -s"
+		pacman -U /home/"$namebro"/build-dir/oh-my-zsh-git/*.xz --noconfirm
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-vtwheel/urxvt-vtwheel.tar.gz && tar xzvf urxvt-vtwheel.tar.gz"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-vtwheel && makepkg -s"
+		pacman -U /home/"$namebro"/build-dir/urxvt-vtwheel/*.xz --noconfirm
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-font-size-git/urxvt-font-size-git.tar.gz && tar urxvt-font-size-git.tar.gz"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-font-size-git && makepkg -s"
+		pacman -U /home/"$namebro"/build-dir/urxvt-font-size-git/*.xz --noconfirm
+		su "$namebro" -c "chsh -s $(which zsh)"
+	else
+		printf "\n Moving on \n"
+	fi
+}
+
+
 main2() {
 	banner
 	greetz
@@ -366,6 +419,8 @@ main2() {
 	i3fin
 	envset
 	loginmanage
+	bobthebuilder
+	urxvtstuff
 	rm post-install.sh
 	printf "\033[1m ${yellow}Rebooting now \n\n\033[0m"
 	sleep 2
@@ -376,6 +431,7 @@ main2() {
 	printf "\033[1m ${red}1${white}.\n\033[0m"
 	$(reboot)
 }
+
 
 main() {
 	checkroot
