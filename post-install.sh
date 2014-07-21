@@ -360,14 +360,14 @@ loginmanage() {
 
 bobthebuilder() {  
 	clear
-	printf "\n\n Would you like to setup pacaur ? \n"
-	printf "\n\n Aur helper with cower backend \n\n"
-	printf "\n\n [Y|N] \n\n"
-	printf "\n\n Answer: "
+	printf "\033[1m\n\n ${green}Would you like to setup pacaur ? \n\033[0m"
+	printf "\033[1m\n\n ${white}It's an ${red}AUR ${white}helper with cower backend \n\n\033[0m"
+	printf "\033[1m\n\n${white}[${green}Y${white}|${red}N${white}]\n\n\033[0m"
+	printf "\033[1m\n\n${red}Answer: ${white}\033[0m"
 	read thatquestion
 	if [ "$thatquestion" == Y -o "$thatquestion" == y ]
 		then
-		printf "\n\n Setting up pacaur for future use \n\n"
+		printf "\033[1m\n\n ${green}Setting up pacaur for future use \n\n\033[0m"
 		pacman -Syy expac --noconfirm
 		su "$namebro" -c "mkdir /home/"$namebro"/build-dir"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/co/cower/cower.tar.gz && tar xzvf cower.tar.gz"
@@ -377,9 +377,9 @@ bobthebuilder() {
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/pacaur && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/pacaur/*.xz --noconfirm
 	else
-		printf "\n\n You entered no\n"
-		printf "\n\n Or an unexpected character \n"
-		printf "\n Moving on... \n"
+		printf "\033[1m\n\n ${yellow}You entered no\n\033[0m"
+		printf "\033[1m ${yellow}or an unexpected character \n\033[0m"
+		printf "\033[1m\n ${red}Moving on... \n\033[0m"
 		sleep 2
 	fi
 }
@@ -389,9 +389,9 @@ urxvtstuff() {
 	clear
 	if [ "$DemChoice" -eq 2 ]
 		then
-		printf "\n\n${green}Setting up urxvt for custom i3 setup\n"
-		printf "\n ${yellow}And changing shell to zsh for your user\n"
-		pacman -Syy git
+		printf "\033[1m\n\n${green}Setting up urxvt for custom i3 setup\n\033[0m"
+		printf "\033[1m\n ${yellow}And changing shell to zsh for your user\n\033[0m"
+		pacman -Syy git --noconfirm
 		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-tabbedex/urxvt-tabbedex.tar.gz && tar xzvf urxvt-tabbedex.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-tabbedex && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-tabbedex/*.xz --noconfirm
@@ -401,12 +401,13 @@ urxvtstuff() {
 		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-vtwheel/urxvt-vtwheel.tar.gz && tar xzvf urxvt-vtwheel.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-vtwheel && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-vtwheel/*.xz --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-font-size-git/urxvt-font-size-git.tar.gz && tar urxvt-font-size-git.tar.gz"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-font-size-git/urxvt-font-size-git.tar.gz && tar xzvf urxvt-font-size-git.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-font-size-git && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-font-size-git/*.xz --noconfirm
+		clear
+		printf "\033[1m\n${green}Enter your ${red}USER PASSWORD${yellow} ( Changing Shell to ZSH )\n\033[0m"
 		su "$namebro" -c "chsh -s $(which zsh)"
-	else
-		printf "\n Moving on \n"
+		rm -rf /home/"$namebro"/build-dir
 	fi
 }
 
