@@ -40,7 +40,7 @@ mirrorselect() {
 			then
 			cp /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
 		fi
-		printf "\033[1m ${red}ctrl+x to exit nano \n\n\033[0m"
+		printf "\033[1m${red}ctrl+x to exit nano \n\n\033[0m"
 		sleep 2
 		nano /etc/pacman.d/mirrorlist
 }
@@ -410,13 +410,18 @@ urxvtstuff() {
 		pacman -U /home/"$namebro"/build-dir/urxvt-font-size-git/*.xz --noconfirm
 		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/pa/pa-applet-git/pa-applet-git.tar.gz && tar xzvf pa-applet-git.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/pa-applet-git && makepkg -s"
+		pacman -U /home/"$namebro"/build-dir/pa-applet-git/*.xz --noconfirm
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/pr/prezto-git/prezto-git.tar.gz && tar xzvf prezto-git.tar.gz"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir/prezto-git && makepkg -s"
+		pacman -U /home/"$namebro"/build-dir/prezto-git/*.xz --noconfirm
 		clear
 		printf "\033[1m\n${green}Enter your ${red}USER PASSWORD${yellow} ( Changing Shell to ZSH )\n\033[0m"
 		su "$namebro" -c "chsh -s $(which zsh)"
 		rm -rf /home/"$namebro"/build-dir
-		printf "\n\n ${green}Setting up wallpaper in ${red} /home/"$namebro"/.wallpapers"
+		printf "\033[1m \n\n ${green}Setting up wallpaper in ${red} /home/"$namebro"/.wallpapers \033[0m"
 		su "$namebro" -c "mkdir /home/"$namebro"/.wallpapers && cd /home/"$namebro"/.wallpapers && wget https://raw.githubusercontent.com/i3-Arch/i3config/master/wallpaper.png"
-		su "$namebro" -c "feh --bg-scale /home/"$namebro"/.wallpapers/wallpaper.png"
+		su "$namebro" -c "cd /home/"$namebro" && startx && feh --bg-scale /home/"$namebro"/.wallpapers/wallpaper.png"
+		pkill X
 	fi
 }
 
