@@ -1,6 +1,6 @@
 # ABOUT
 	       	==============================================
-	       	+-------- Current Version:  1.2-BETA --------+
+	       	+-------- Current Version:  1.3-BETA --------+
 	       	==============================================
 	       	
 	       * This is made to install archlinux with base base/devel
@@ -13,8 +13,6 @@
 					- CURRENTLY UNDER DEVELOPMENT
 					- RUN AT YOUR OWN RISK
 		
-
-		---------- Grub Working    as of   6-10-2014   ------------
 
 	___________________________________________________________________
 	===================================================================
@@ -30,7 +28,7 @@
 		-----------THIS IS A WORK IN PROGRESS -----------
 
              i. ** FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE **
-	 	i. ** BOOT INTO LIVE ARCH IMAGE **
+			 	i. ** BOOT INTO LIVE ARCH IMAGE **
 			  
 			  
 	1. :DOWNLOAD: 
@@ -60,7 +58,6 @@
 			run dhcpcd
 			then systemctl enable dhcpcd@device ( to enable dhcpcd at boot )
 			( else consult the arch wiki for wireless connections )
-			https://wiki.archlinux.org/index.php/Wireless_network_configuration
 		
 			1. 
 				wget https://goo.gl/vUy5oh -O post-install.sh
