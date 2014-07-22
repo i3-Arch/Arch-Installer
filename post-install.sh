@@ -391,7 +391,11 @@ urxvtstuff() {
 		then
 		printf "\033[1m\n\n${green}Setting up urxvt for custom i3 setup\n\033[0m"
 		printf "\033[1m\n ${yellow}And changing shell to zsh for your user\n\033[0m"
-		pacman -Syy git xorg-xlsfonts --noconfirm
+		if [ ! -d /home/"$namebro"/build-dir ]
+			then
+			su "$namebro" -c "mkdir /home/"$namebro"/build-dir"
+		fi
+		pacman -Syy git xorg-xlsfonts flac  gtk3 json-c libasyncns libnotify libogg libpulse libsndfile libvorbis --noconfirm
 		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-tabbedex/urxvt-tabbedex.tar.gz && tar xzvf urxvt-tabbedex.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-tabbedex && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-tabbedex/*.xz --noconfirm
@@ -404,10 +408,15 @@ urxvtstuff() {
 		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-font-size-git/urxvt-font-size-git.tar.gz && tar xzvf urxvt-font-size-git.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-font-size-git && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-font-size-git/*.xz --noconfirm
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/pa/pa-applet-git/pa-applet-git.tar.gz && tar xzvf pa-applet-git.tar.gz"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir/pa-applet-git && makepkg -s"
 		clear
 		printf "\033[1m\n${green}Enter your ${red}USER PASSWORD${yellow} ( Changing Shell to ZSH )\n\033[0m"
 		su "$namebro" -c "chsh -s $(which zsh)"
 		rm -rf /home/"$namebro"/build-dir
+		printf "\n\n ${green}Setting up wallpaper in ${red} /home/"$namebro"/.wallpapers"
+		su "$namebro" -c "mkdir /home/"$namebro"/.wallpapers && cd /home/"$namebro"/.wallpapers && wget https://raw.githubusercontent.com/i3-Arch/i3config/master/wallpaper.png"
+		su "$namebro" -c "feh --bg-scale /home/"$namebro"/.wallpapers/wallpaper.png"
 	fi
 }
 
