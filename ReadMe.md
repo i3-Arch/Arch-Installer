@@ -55,9 +55,12 @@
 
 # POST INSTALL
 		
-		1a. run dhcpcd
+		1a. 
+			( if VM or Wired Connection )
+			run dhcpcd
 			then systemctl enable dhcpcd@device ( to enable dhcpcd at boot )
-
+			( else consult the arch wiki for wireless connections )
+			https://wiki.archlinux.org/index.php/Wireless_network_configuration
 		
 			1. 
 				wget https://goo.gl/vUy5oh -O post-install.sh
