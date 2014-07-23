@@ -28,6 +28,17 @@ checkroot() {
 	fi
 }
 
+intelinside() {
+	printf "\033[1m \n\n${green}Are you using intel ?? \033[0m"	
+	printf "\033[1m \n ${white}[${green}Y${white}|${red}N${white}] \033[0m"
+	printf "\033[1m \n\n${yellow}Answer: ${white}\033[0m"
+	read intelstuff
+	if [ "$intelstuff" == Y -o "$intelstuff" == y ]
+		then
+		pacman -Syy intel-dri xf86-video-intel
+	fi
+}
+
 
 mirrorselect() {
 		printf "\033[1m ${green} \n\n Select Your Mirrors ?\n\n \033[0m"
@@ -437,6 +448,7 @@ main2() {
 	loginmanage
 	bobthebuilder
 	urxvtstuff
+	intelinside
 	rm post-install.sh
 	printf "\033[1m ${yellow}Rebooting now \n\n\033[0m"
 	sleep 2
