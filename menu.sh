@@ -6,19 +6,19 @@
 #   trewchainz 
 ##############################
 setfont Lat2-Terminus16
-scriptdir=""$HOME"/Arch-Installer"
-red="$(tput setaf 1)"
-white="$(tput setaf 7)"
-green="$(tput setaf 2)"
-yellow="$(tput setaf 3)"
+scriptdir=$HOME/Arch-Installer
+red=$(tput setaf 1)
+white=$(tput setaf 7)
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
 
 # SETTING THINGS UP FIRST 
 printf " \033[1m ${red} \n Setting Things Up First \n \033[0m "
 cd "$HOME"
 pacman -Syy git --noconfirm
 git clone https://github.com/i3-Arch/Arch-Installer.git
-cp "$scriptdir"/* "$HOME"/
-rm -rf "$scriptdir"
+cp $scriptdir/* $HOME/
+rm -rf $scriptdir
 
 calculate() {
 	source installer.sh
