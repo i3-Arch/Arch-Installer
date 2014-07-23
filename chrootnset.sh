@@ -30,11 +30,11 @@ hostname() {
 # Set Time Zone
 timelocale() {
 	clear
-	printf "\033[1m \n ${yellow}Enter your Time Zone: ${white}\n \033[0m"
+	printf "\033[1m \n ${yellow}     Enter your Time Zone ${white}\n \033[0m"
 	printf "\033[1m \n ${red}CHOICES ARE: ${white}New York ${green}or ${white}Athens \n \033[0m"
 	printf "\033[1m \n ${yellow}Sorry I didnt do all timezones yet\n \n \033[0m"
 	printf "\033[1m \n ${white}ENTER ${green}(1)${red}for New York \n \033[0m"
-	printf "\033[1m    ${white}ENTER ${green}(2)${red}for Athens \n \033[0m"
+	printf "\033[1m ${white}ENTER ${green}(2)${red}for Athens \n \033[0m"
 	printf "\033[1m \n ${white} Choice: \033[0m"
 	read timezoneresponse
 	if [ "$timezoneresponse" == NewYork -o "$timezoneresponse" == 1 ]
@@ -47,9 +47,9 @@ timelocale() {
 		printf "\033[1m ${red}Not Understood | do it yourself |  with 'ln -s'\n\033[0m"
 	fi
 	clear
-	printf "\033[1m ${white}YOU NOW NEED TO UNCOMMENT A LOCALE\n \033[0m"
-	printf "\033[1m ${green}Would you like to use default locale or choose your own? \n \033[0m"
-	printf "\033[1m ${white}Default locale is ${red}en_US.UTF-8 UTF-8 \n \033[0m"
+	printf "\033[1m \n\n${white}YOU NOW NEED TO UNCOMMENT A LOCALE\n \033[0m"
+	printf "\033[1m \n${green}Would you like to use default locale or choose your own? \n\n \033[0m"
+	printf "\033[1m ${white}Default locale is ${red}en_US.UTF-8 UTF-8 \n\n \033[0m"
 	printf "\033[1m \n${yellow}(Y)${green} for default locale \n${yellow}(N) ${green}for choose your own \n \033[0m"
 	printf "\033[1m \n ${white}Choice: \033[0m"
 	read inputscuzlocale
