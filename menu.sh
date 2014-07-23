@@ -13,6 +13,7 @@ green="$(tput setaf 2)"
 yellow="$(tput setaf 3)"
 
 # SETTING THINGS UP FIRST 
+clear
 printf " \033[1m ${red} \n Setting Things Up First \n \033[0m "
 cd "$HOME"
 pacman -Syy git --noconfirm
