@@ -35,8 +35,9 @@ EOT
 disk() {
 	clear
 	printf " \033[1m ${red} * REMINDER * ${white}\n\n IF PLANNING TO USE SYSLINUX \n \033[0m"
-	printf " \033[1m ${white}MAKE SURE BOOT PARTITION IS ${green}/dev/sda1 \n \033[0m"
-	lsblk |grep -v "loop*"
+	printf " \033[1m ${white}MAKE SURE BOOT PARTITION IS ${green}/dev/sda1 \n\n\n \033[0m"
+	printf " \033[1m ${red} Listing Block Devices \n\n \033[0m"
+	lsblk |grep -v "loop*" |grep -v "arch_root*"
 	printf " \033[1m \n ${white} Which drive would you like to install to?:${red} i.e. ${white}/dev/sda \n \033[0m "
 	printf " \033[1m ${red} WARNING:${green} /dev/sda ${white}may not be empty on your system\n \033[0m "
 	printf " \033[1m \n ${yellow} Drive: ${white}\033[0m "
