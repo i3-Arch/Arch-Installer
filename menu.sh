@@ -28,7 +28,7 @@ CHOICE=4
 until [ $CHOICE -eq 5 ]
 do
 	clear
-	echo -e "\033[1m ${red} /n/nTAKE YOUR PICK \n\033[0m"
+	echo -e "\033[1m ${red} \n\n   TAKE YOUR PICK \n\033[0m"
 	echo -e "${white}"
 	echo -e " \033[1m ${red}1)${white}\033[1m VIEW installer.sh ( HALF OF INSTALL SCRIPT ) \033[0m"
 	echo -e " \033[1m ${red}2)${white}\033[1m VIEW chrootnset.sh ( OTHER HALF OF SCRIPT )  \033[0m"
