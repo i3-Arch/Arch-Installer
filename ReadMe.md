@@ -58,8 +58,8 @@
 			
 		1. :RUN:
 			
-			'dhcpcd'
-			'systemctl enable dhcpcd.service'   ( This is to enable dhcpcd at boot )
+			dhcpcd
+			systemctl enable dhcpcd.service   ( This is to enable dhcpcd at boot )
 			
 		
 			
@@ -87,10 +87,10 @@
 	2. [ ] Add More Options In General ( LUKS )
 
 	3. [ ] Misc -- 
-		
-			** WM/DE's to ADD **
-		    	  * Not in order *
-		       	 ___________________
+			 ___________________
+			|                   |
+			|   WM/DE's to ADD  |
+		       	|===================|
 		        |                   |
 		        |    Herbstluftwm   |
 		        |      Spectrwm     |
