@@ -375,6 +375,7 @@ bobthebuilder() {
 		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/pa/pacaur/pacaur.tar.gz && tar xzvf pacaur.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/pacaur && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/pacaur/*.xz --noconfirm
+		rm -rf /home/"$namebro"/build-dir
 	else
 		printf "\033[1m\n\n ${yellow}You entered no\n\033[0m"
 		printf "\033[1m ${yellow}or an unexpected character \n\033[0m"
