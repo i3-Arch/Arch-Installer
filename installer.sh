@@ -57,9 +57,9 @@ disk() {
 ASKme() {
 	clear
 	printf " \033[1m  ${red}(1)${white}boot and root partitions \n \033[0m"
-	printf " \033[1m  ${red}(2)${white}boot, root, home partitions \n \033[0m "
-	printf " \033[1m  ${red}(3)${white}boot, root, home, swap partitions \n \n \033[0m"
-	printf " \033[1m ${white}\n SELECT ${green}1 ${yellow}2 ${white}or${red} 3 \n \033[0m"
+	printf " \033[1m ${red}(2)${white}boot, root, home partitions \n \033[0m "
+	printf " \033[1m ${red}(3)${white}boot, root, home, swap partitions \n \n \033[0m"
+	printf " \033[1m ${white}\n SELECT \n\n${red}1 ${red}2 ${white}or${red} 3 \n\n \033[0m"
 	printf " \033[1m ${yellow}Your Selection: ${white}\033[0m"
 	read thechoiceman
 	echo "thechoiceman=$thechoiceman" >> config.sh
