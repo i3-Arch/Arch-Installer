@@ -87,9 +87,9 @@
 	2. [ ] Add More Options In General ( LUKS )
 
 	3. [ ] Misc -- 
-			 ___________________
-			|                   |
-			|   WM/DE's to ADD  |
+				 ___________________
+				|                   |
+				|   WM/DE's to ADD  |
 		       	|===================|
 		        |                   |
 		        |    Herbstluftwm   |
