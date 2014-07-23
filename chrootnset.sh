@@ -104,6 +104,7 @@ main() {
 	timelocale
 	BOOTload
 	rm chrootnset.sh config.sh #cleanup
+	wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/post-install.sh
 	exit
 }
 
