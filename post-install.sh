@@ -18,6 +18,7 @@ checkroot() {
 		then
 		clear
 		printf "\033[1m \n\n ${green}Ready to start ! \n\n \033[0m"
+		pacman -Syyu --noconfirm
 	else
 		clear
 		printf "\033[1m \n\n ${yellow}You need to be ${green}root ${yellow}to run this script \n\n \033[0m"
@@ -28,27 +29,31 @@ checkroot() {
 }
 
 
-updateupgrade() {
-		pacman -Syyu --noconfirm
-}
-
-
 mirrorselect() {
-		printf "\033[1m ${green} \n\n Select Your Mirrors \n\n \033[0m"
+		printf "\033[1m ${green} \n\n Select Your Mirrors ?\n\n \033[0m"
 		sleep 2
-		if [ -f /etc/pacman.d/mirrorlist.pacnew ]
+		printf "\033[1m ${white}[${green}Y${white}|${red}N${white}]\033[0m"
+		printf "\033[1m \n\n${yellow}Choice: ${white}\033[0m"
+		read mirrorsyo
+		if [ "$mirrorsyo" == Y -o "$mirrorsyo" == y ]
 			then
-			cp /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
+			if [ -f /etc/pacman.d/mirrorlist.pacnew ]
+				then
+				cp /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
+			fi
+			printf "\033[1m${red}ctrl+x to exit nano \n\n\033[0m"
+			sleep 3
+			nano /etc/pacman.d/mirrorlist
+		else
+			printf "\033[1m ${green} Ok... Skipping \033[0m"
+			sleep 1
 		fi
-		printf "\033[1m${red}ctrl+x to exit nano \n\n\033[0m"
-		sleep 2
-		nano /etc/pacman.d/mirrorlist
 }
 
 
 needpass() { 
 	clear
-	printf "\033[1m \n ${yellow} Set a root password \n\n \033[0m"
+	printf "\033[1m \n ${yellow} Set a ROOT password \n\n \033[0m"
 	passwd
 }
 
@@ -61,9 +66,8 @@ usersetup() {
 		read namebro
 		$(useradd -m -G adm,disk,audio,network,video "$namebro")
 		printf "\033[1m \n\n ${yellow} Set a Password for this USER now \n\n \033[0m"
-		printf "\033[1m \n ${red} If you dont you will not be able to use it .\n\n \033[0m"
 		passwd "$namebro"
-		printf "\033[1m \n\n ${yellow}Would you like to add user to sudoers? ( user ALL=(ALL) ALL ) \033[0m"
+		printf "\033[1m \n\n ${yellow}Would you like to add this user to sudoers? ( user ALL=(ALL) ALL ) \033[0m"
 		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \033[0m"
 		printf "\033[1m\n\n ${red}Answer: ${white}\033[0m"
 		read anot
@@ -84,7 +88,7 @@ uwantme() {
 		then
 		main2
 	else
-		printf "\033[1m \n\n  ${red} Understood \n\n \033[0m"
+		printf "\033[1m \n\n  ${red} Understood... Have fun with ARCH ! \n\n \033[0m"
 	fi
 }
 
@@ -104,8 +108,8 @@ cat <<"EOT"
     !\___________________________/\
     !!                           !!\
     !!                           !! \
-    !!   ARCHLINUX   IS          !! !
-    !!                           !! !
+    !!        ARCHLINUX          !! !
+    !!         IS DAT            !! !
     !!       MASTER RACE         !! !
     !!                           !! !
     !! lulz@arch~> hue	         !! !
@@ -128,8 +132,8 @@ sleep 3
 
 greetz() {
 	cd "$HOME"
-	printf "\033[1m \n\n ${green}  :: Lets Do This ::  \n\n \033[0m"
-	printf "\033[1m \n\n ${yellow}	#SWAG	      \n\n \033[0m"
+	printf "\033[1m \n\n ${green}  :: Lets Do This ::  \n\n\033[0m"
+	printf "\033[1m \n\n ${yellow}	#ARCHLINUX-SWAG	      \n\n\033[0m"
 }
 
 
@@ -173,7 +177,7 @@ makeitbro() {
 		
 		else
 			printf "\033[1m ${yellow}Choice not understood... ${red}Exiting \033[0m"
-			sleep 2
+			sleep 5
 			exit
 		fi
 }
@@ -450,7 +454,6 @@ main2() {
 
 main() {
 	checkroot
-	updateupgrade
 	thankyoubro
 	needpass
 	usersetup
