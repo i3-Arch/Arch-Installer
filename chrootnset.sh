@@ -1,16 +1,12 @@
 #!/bin/bash
 #
 #
-# 	Authors  ::->>     i3-Arch,  trewchainz, t60r    <<-::
+# 	Authors  ::->>  i3-Arch,  trewchainz, t60r  <<-::
 #
 #		Made to install archlinux
 #
-#		VERSION 1.2-BETA
+#		VERSION 1.3-BETA
 #
-#	WARNING : THIS SCRIPT IS CURRENTLY BEING DEVELOPED
-#			RUN AT YOUR OWN RISK
-#
-#	Reminder  -  Add option for LUKS
 ############################################
 
 # Grab var values
@@ -25,6 +21,7 @@ yellow=$(tput setaf 3)
 
 # Set Your Hostname
 hostname() {
+	clear
 	printf "\033[1m \n ${yellow}Choose your hostname: ${white} \033[0m"
 	read hostresponse
 	echo "$hostresponse" > /etc/hostname
@@ -32,6 +29,7 @@ hostname() {
 
 # Set Time Zone
 timelocale() {
+	clear
 	printf "\033[1m \n ${yellow}Enter your Time Zone: ${white}\n \033[0m"
 	printf "\033[1m \n ${red}CHOICES ARE: ${white}New York ${green}or ${white}Athens \n \033[0m"
 	printf "\033[1m \n ${yellow}Sorry I didnt do all timezones yet\n \n \033[0m"
@@ -46,8 +44,9 @@ timelocale() {
 		then
 			$( ln -s /usr/share/zoneinfo/Europe/Athens /etc/localtime) ;
 	else
-		printf " Not Understood | skipped | do it yourself |  with 'ln -s'\n"
+		printf "\033[1m ${red}Not Understood | do it yourself |  with 'ln -s'\n\033[0m"
 	fi
+	clear
 	printf "\033[1m ${white}YOU NOW NEED TO UNCOMMENT A LOCALE\n \033[0m"
 	printf "\033[1m ${green}Would you like to use default locale or choose your own? \n \033[0m"
 	printf "\033[1m ${white}Default locale is ${red}en_US.UTF-8 UTF-8 \n \033[0m"
@@ -60,7 +59,7 @@ timelocale() {
 	else
 		nano /etc/locale.gen
 	fi
-	printf "\033[1m NOW GENERATING LOCALES...\n \033[0m"
+	printf "\033[1m ${green}NOW GENERATING LOCALES...\n \033[0m"
 	locale-gen
 }
 
@@ -94,13 +93,13 @@ BOOTload() {
 		then
 			syslinuxinst
 	else
+		printf "\033[1m ${red}Not Understood ${white}|${red} Setting up grub by default \033[0m"
 		grubinst
 	fi
 }	
 
 # Main Function
 main() {
-	#check4swap
 	hostname
 	timelocale
 	BOOTload
@@ -109,3 +108,5 @@ main() {
 }
 
 main
+
+#EOF
