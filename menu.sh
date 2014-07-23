@@ -6,29 +6,24 @@
 #   trewchainz 
 ##############################
 setfont Lat2-Terminus16
-scriptdir=$HOME/Arch-Installer
-red=$(tput setaf 1)
-white=$(tput setaf 7)
-green=$(tput setaf 2)
-yellow=$(tput setaf 3)
+scriptdir=""$HOME"/Arch-Installer"
+red="$(tput setaf 1)"
+white="$(tput setaf 7)"
+green="$(tput setaf 2)"
+yellow="$(tput setaf 3)"
 
 # SETTING THINGS UP FIRST 
 printf " \033[1m ${red} \n Setting Things Up First \n \033[0m "
-cd $HOME
+cd "$HOME"
 pacman -Syy git --noconfirm
 git clone https://github.com/i3-Arch/Arch-Installer.git
-printf "\033[1m \n \n Copying Files and Removing Clone Dir \n \033[0m"
-cp $scriptdir/* $HOME/
-rm -rf $scriptdir
+cp "$scriptdir"/* "$HOME"/
+rm -rf "$scriptdir"
 
 calculate() {
-	if [ $CHOICE -eq 4 ]
-		then
-		   sleep 2 && source installer.sh
-	fi
+	source installer.sh
 }	
 
-CHOICE=4
 until [ $CHOICE -eq 5 ]
 do
 	clear
@@ -50,6 +45,6 @@ case $CHOICE in
 	*) echo -e "\033[1m ${yellow} invalid option ${red} try again\033[0m"
 esac
 
-echo -e "\033[1m ${green} Press Enter to Continue\033[0m"
+echo -e "\033[1m ${green}\n\nPress Enter to Continue\033[0m"
 read Enter
 done
