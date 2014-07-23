@@ -52,24 +52,21 @@
 
 
 # POST INSTALL
+				     *May Make Easier Later*
+			( This below will work if VM or Wired Connection )
+			( Consult the ARCH WIKI for wireless connections )
+			
+		1. :RUN:
+			
+			'dhcpcd'
+			'systemctl enable dhcpcd@device'   ( This is to enable dhcpcd at boot )
+			
 		
-		1a. 
-			( if VM or Wired Connection )
-			run dhcpcd
-			then systemctl enable dhcpcd@device ( to enable dhcpcd at boot )
-			( else consult the arch wiki for wireless connections )
-		
-			1. 
-				wget https://goo.gl/vUy5oh -O post-install.sh
-
-
-				** If Shortened URL is 404 **
-				
-				** Run This **
-				wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/post-install.sh
 			
 
-			2. source post-install.sh
+		2. :RUN:
+			
+			source post-install.sh
 
 			
 
@@ -82,7 +79,16 @@
 					6. Default Gnome Setup 		( gnome + gnome-extra )
 					7. Default Kde Setup
 
-				** WM/DE's to ADD **
+
+# CURRENT OBJECTIVES
+	
+	1. [X] Make a menu that makes things easier
+
+	2. [ ] Add More Options In General ( LUKS )
+
+	3. [ ] Misc -- 
+		
+			** WM/DE's to ADD **
 		    	  * Not in order *
 		       	 ___________________
 		        |                   |
@@ -91,18 +97,9 @@
 		        |      Openbox      |
 		        |___________________|
 
-# CURRENT OBJECTIVES
-	
-	1. Make a menu that makes things easier  --COMPLETE--
+	4. [ ] Cleanup
 
-	2. Add More Options In General
-
-	3. Misc
-		i. LUKS
-
-	4. Cleanup
-
-	5. Release
+	5. [ ] Release
 
 	       
 	.... .........    .       . .. .....  .I.......  ..      .                     
