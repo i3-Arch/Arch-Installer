@@ -206,18 +206,8 @@ xseti3() {
 }
 
 
-i3fin() {
-	if [ "$DemChoice" -eq "2" ]
-		then
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.xinitrc
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.zshrc
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.vimrc
-	fi
-}
-
-
 guestbro() {
+		clear
 		printf "\033[1m \n\n ${green}Are you using Virtualbox ? \n\n \033[0m"
 		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n \033[0m"
 		printf "\033[1m \n\n ${green}Answer: ${white}\033[0m"
@@ -245,6 +235,7 @@ guestbro() {
 			fi
 		else
 			printf "\033[1m \n\n${red}Did you type a ${yellow}'y' ${white}or a ${yellow}'n'${red} ? \033[0m"
+			printf "\033[1m \n ${red}Moving on....\033[0m"
 			sleep 2
 		fi
 }
@@ -264,6 +255,10 @@ envset() {
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
 				rm /home/"$namebro"/.xinitrc
+				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
+				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.xinitrc
+				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.zshrc
+				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.vimrc
 				cp .Xresources .zshrc .xinitrc .vimrc /home/"$namebro"/
 				cp -r .i3 /home/"$namebro"/
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3
@@ -393,8 +388,10 @@ urxvtstuff() {
 	clear
 	if [ "$DemChoice" -eq 2 ]
 		then
+		clear
 		printf "\033[1m\n\n${green}Setting up urxvt for custom i3 setup\n\033[0m"
 		printf "\033[1m\n ${yellow}And changing shell to zsh for your user\n\033[0m"
+		sleep 2
 		if [ ! -d /home/"$namebro"/build-dir ]
 			then
 			su "$namebro" -c "mkdir /home/"$namebro"/build-dir"
@@ -435,7 +432,6 @@ main2() {
 	guestbro
 	makeitbro
 	xseti3
-	i3fin
 	envset
 	loginmanage
 	bobthebuilder
