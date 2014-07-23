@@ -33,14 +33,14 @@
 			  
 	1. :DOWNLOAD: 
 		       
-		       wget https://goo.gl/4v5IyX -O menu.sh
+		       wget goo.gl/4v5IyX -O menu.sh
 		       		
 		       		-or-
 	
-		       	wget is.gd/iTNqig -O menu.sh
+		       	wget is.gd/iTNqig -O menu.sh   
 		       		
 		       
-		       ** If Shortened URL is 404 **
+		       ** If Shortened URLS are 404 **
 		       
 		       ** Run This ** 
                        wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh
@@ -59,7 +59,7 @@
 		1. :RUN:
 			
 			'dhcpcd'
-			'systemctl enable dhcpcd@device'   ( This is to enable dhcpcd at boot )
+			'systemctl enable dhcpcd.service'   ( This is to enable dhcpcd at boot )
 			
 		
 			
