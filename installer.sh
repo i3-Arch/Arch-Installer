@@ -19,7 +19,7 @@ yellow=$(tput setaf 3)
 
 # BANNER
 banner() {
-	printf " \033[1m \n ${white} WELCOME TO ${red} ARCHLINUX ${white} INSTALL SCRIPT \033[0m \n"
+	clear
 cat <<"EOT"
     #                                                          ###
    # #   #####   ####  #    # #      # #    # #    # #    #    ###
@@ -33,6 +33,10 @@ EOT
 }
 
 disk() {
+	clear
+	printf " \033[1m ${red} * REMINDER * ${white}\n\n IF PLANNING TO USE SYSLINUX \n \033[0m"
+	printf " \033[1m ${white}MAKE SURE BOOT PARTITION IS ${green}/dev/sda1 \n \033[0m"
+	lsblk |grep -v "loop*"
 	printf " \033[1m \n ${white} Which drive would you like to install to?:${red} i.e. ${white}/dev/sda \n \033[0m "
 	printf " \033[1m ${red} WARNING:${green} /dev/sda ${white}may not be empty on your system\n \033[0m "
 	printf " \033[1m \n ${yellow} Drive: ${white}\033[0m "
@@ -51,15 +55,11 @@ disk() {
 
 # If you don't know how to partition properly, you don't need this OS.
 ASKme() {
-	printf "\033[1m \n ${white} Running lsblk to list block devices\n \033[0m"
-	lsblk |grep -v "loop*"
-	printf " \033[1m \n ${white} ENTER YOUR CHOICE OF ${green}[1]${yellow}[2]${red}[3] \n \033[0m"
+	clear
 	printf " \033[1m  ${red}(1)${white}boot and root partitions \n \033[0m"
 	printf " \033[1m  ${red}(2)${white}boot, root, home partitions \n \033[0m "
 	printf " \033[1m  ${red}(3)${white}boot, root, home, swap partitions \n \n \033[0m"
-	printf " \033[1m ${red} * REMINDER * ${white}\n\n IF PLANNING TO USE SYSLINUX \n \033[0m"
-	printf " \033[1m ${white}MAKE SURE BOOT PARTITION IS ${green}/dev/sda1 \n \033[0m"
-	printf " \033[1m ${white}\n SELECT ${green}[1] ${yellow}[2] ${white}or${red} [3] \n \033[0m"
+	printf " \033[1m ${white}\n SELECT ${green}1 ${yellow}2 ${white}or${red} 3 \n \033[0m"
 	printf " \033[1m ${yellow}Your Selection: ${white}\033[0m"
 	read thechoiceman
 	echo "thechoiceman=$thechoiceman" >> config.sh
@@ -97,7 +97,6 @@ HALFpart() {
 }
 
 FULLpart() {
-
 	printf "\033[1m \n ${white}Enter your Boot Partition: ${red}i.e. /dev/sda1 \n \033[0m"
 	printf "\033[1m \n ${yellow}Boot Partition: ${white}\033[0m"
 	read bootpart
@@ -123,6 +122,7 @@ FULLpart() {
 }
 
 pkgmntchroot() {
+	clear
 	printf " \033[1m ${green} Setting up install... ${white} \n \033[0m "
 	mount $rewtpart /mnt
 	mkdir /mnt/home
@@ -148,23 +148,27 @@ CALLpart() {
 		then
 		    SMALLpart
 	else
+	    printf "\033[1m ${red}Unkown Selection\n\n\033[0m"
+	    printf "\033[1m ${white}Only Setting up ${yellow}BOOT ${white}and ${yellow}ROOT ${white}now...\033[0m"
+	    sleep 3
 	    SMALLpart
 	fi
 }
 
 main() {
 	banner
-	touch config.sh 	## Create file to store bootpart, rewtpart, homepart, swappart for chroot
+	touch config.sh 		## Create file to store bootpart, rewtpart, homepart, swappart for chroot
 	ASKme				## ASK NUMBER OF PARTITIONS
 	disk 				## PARTITION WITH CFDISK or FDISK
     	CALLpart 	 		## CALL PARTITIONING IF STATEMENT
-	pkgmntchroot 	 	## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
-	cp issue /mnt/etc/issue   # TTY ART 
-	umount -R /mnt			  # UNMOUNT 
+	pkgmntchroot 	 		## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
+	cp issue /mnt/etc/issue   	## TTY ART 
+	umount -R /mnt			## UNMOUNT 
+	clear
 	printf "\033[1m \n ${green} COMPLETE !  \n \033[0m"
 	printf "\033[1m \n ${yellow} SHUT DOWN SYSTEM AND THEN \n \033[0m"
 	printf "\033[1m \n ${yellow} REMOVE LIVE IMAGE \n \033[0m"
-	printf "\033[1m \n ${red} THEN REBOOT SYSTEM ! \n \033[0m"
+	printf "\033[1m \n ${red} THEN BOOT SYSTEM ! \n \033[0m"
 }
 
 main
