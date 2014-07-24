@@ -21,6 +21,7 @@ checkdat() {
 	if [ "$(id -u)" -eq 0 ]	
 		then
 		printf "\033[1m ${green}Good... You're root \033[0m"
+		sleep 2
 	else
 		printf "\033[1m ${red} You Need To Be ROOT \n\033[0m"
 		printf "\033[1m ${yellow} You really need to look at the ReadMe on github \033[0m"
