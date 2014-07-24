@@ -30,7 +30,7 @@ checkroot() {
 			wget -q --tries=5 --timeout=20 https://google.com
 			if [[ "$?" -eq 0 ]]
 				then
-				printf "\033[1m ${green} \n\nCool... Lets do this \033[0m"
+				printf "\033[1m ${green} \n\nCool... Lets do this \n\n\033[0m"
 				rm index.html
 				pacman -Syyu --noconfirm
 			else
@@ -64,7 +64,6 @@ intelinside() {
 
 mirrorselect() {
 		printf "\033[1m ${green} \n\n Select Your Mirrors ?\n\n \033[0m"
-		sleep 2
 		printf "\033[1m ${white}[${green}Y${white}|${red}N${white}]\033[0m"
 		printf "\033[1m \n\n${yellow}Choice: ${white}\033[0m"
 		read mirrorsyo
