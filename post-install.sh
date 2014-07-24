@@ -35,11 +35,9 @@ checkroot() {
 				printf "\033[1m ${red}EXITING \033[0m"
 				sleep 5
 				exit
+			fi
+	
 		fi
-	
-	fi
-	
-	
 	else
 		clear
 		printf "\033[1m \n\n ${yellow}You need to be ${green}root ${yellow}to run this script \n\n \033[0m"
