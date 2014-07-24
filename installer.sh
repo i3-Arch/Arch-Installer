@@ -20,7 +20,7 @@ yellow=$(tput setaf 3)
 checkdat() {
 	if [ "$(id -u)" -eq 0 ]	
 		then
-		printf "\033[1m ${green}Good... You're root \033[0m"
+		printf "\033[1m ${green} \n#Archlinux-Swag\n\033[0m"
 		sleep 2
 	else
 		printf "\033[1m ${red} You Need To Be ROOT \n\033[0m"
@@ -46,7 +46,7 @@ EOT
 
 disk() {
 	clear
-	printf " \033[1m ${red} * REMINDER * ${white}\n\n IF PLANNING TO USE SYSLINUX \n \033[0m"
+	printf " \033[1m ${red}\n  * REMINDER * ${white}\n\n IF PLANNING TO USE SYSLINUX \n \033[0m"
 	printf " \033[1m ${white}MAKE SURE BOOT PARTITION IS ${green}/dev/sda1 \n\n\n \033[0m"
 	printf " \033[1m ${red} Listing Block Devices \n\n \033[0m"
 	lsblk |grep -v "loop*" |grep -v "arch_root*"
