@@ -17,16 +17,17 @@ checkroot() {
 	if [ "$(id -u)" -eq 0 ]
 		then
 		clear
-		printf "\033[1m \n\n ${green}Ready to start ! \n\n \033[0m"
-		wget -q --tries=10 --timeout=20 http://google.com
-		if [[ $? -eq 0 ]]
+		printf "\033[1m \n\n ${green}Almost Ready to start ! \n\n \033[0m"
+		wget -q --tries=10 --timeout=20 https://google.com
+		if [[ "$?" -eq 0 ]]
 			then   
 			printf "\033[1m ${green}\n\nOnline... ${yellow}Lets do this...\033[0m"
 			pacman -Syyu --noconfirm
 		else
-			printf "\033[1m \n\n${red}Offline ${white}- ${yellow}wait 5 seconds...\033[0m"
+			printf "\033[1m \n\n${red}Offline ${white}- ${yellow}wait 5 seconds...\n\033[0m"
 			sleep 5
-			if [[ $? -eq 0 ]]
+			wget -q --tries=5 --timeout=20 https://google.com
+			if [[ "$?" -eq 0 ]]
 				then
 				printf "\033[1m ${green} \n\nCool... Lets do this \033[0m"
 			else
@@ -35,8 +36,7 @@ checkroot() {
 				printf "\033[1m ${red}EXITING \033[0m"
 				sleep 5
 				exit
-			fi
-	
+			fi	
 		fi
 	else
 		clear
