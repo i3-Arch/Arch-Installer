@@ -21,13 +21,13 @@ yellow=$(tput setaf 3)
 banner() {
 	clear
 cat <<"EOT"
-    #                                                          ###
-   # #   #####   ####  #    # #      # #    # #    # #    #    ###
-  #   #  #    # #    # #    # #      # ##   # #    #  #  #     ###
- #     # #    # #      ###### #      # # #  # #    #   ##      ###
- ####### #####  #      #    # #      # #  # # #    #   ##
- #     # #   #  #    # #    # #      # #   ## #    #  #  #     ###
- #     # #    #  ####  #    # ###### # #    #  ####  #    #    ###
+			#                                                          ###
+		   # #   #####   ####  #    # #      # #    # #    # #    #    ###
+		  #   #  #    # #    # #    # #      # ##   # #    #  #  #     ###
+		 #     # #    # #      ###### #      # # #  # #    #   ##      ###
+		 ####### #####  #      #    # #      # #  # # #    #   ##
+		 #     # #   #  #    # #    # #      # #   ## #    #  #  #     ###
+		 #     # #    #  ####  #    # ###### # #    #  ####  #    #    ###
 EOT
 	sleep 3
 }
@@ -151,7 +151,7 @@ CALLpart() {
 		    SMALLpart
 	else
 	    printf "\033[1m ${red}Unkown Selection\n\n\033[0m"
-	    printf "\033[1m ${white}Only Setting up ${yellow}BOOT ${white}and ${yellow}ROOT ${white}now...\033[0m"
+	    printf "\033[1m ${white}Only Setting up ${yellow}BOOT ${white}and ${yellow}ROOT\033[0m"
 	    sleep 3
 	    SMALLpart
 	fi
