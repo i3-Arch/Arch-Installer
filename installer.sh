@@ -20,7 +20,7 @@ yellow=$(tput setaf 3)
 checkdat() {
 	if [ "$(id -u)" -eq 0 ]	
 		then
-		printf "\033[1m ${green} \n#Archlinux-Swag\n\033[0m"
+		printf "\033[1m\n      ${white}#${green}Archlinux${white}-${green}Swag\n\033[0m"
 		sleep 2
 	else
 		printf "\033[1m ${red} You Need To Be ROOT \n\033[0m"
