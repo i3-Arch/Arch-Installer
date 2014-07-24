@@ -157,6 +157,18 @@ CALLpart() {
 	fi
 }
 
+
+postsetup() {
+	if [ -f post-install.sh	]
+		then
+		cp post-install.sh /mnt/root
+	else
+		wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/post-install.sh
+		cp post-install.sh /mnt/root
+	fi
+}
+
+
 main() {
 	banner
 	touch config.sh 		## Create file to store bootpart, rewtpart, homepart, swappart for chroot
@@ -165,8 +177,7 @@ main() {
     	CALLpart 	 		## CALL PARTITIONING IF STATEMENT
 	pkgmntchroot 	 		## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
 	cp issue /mnt/etc/issue   	## TTY ART 
-	wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/post-install.sh  # Wget post-install script
-	cp post-install.sh /mnt/root		## POST-INSTALL script ready for user after first boot
+	postsetup			## POST INSTALL SCRIPT READY FOR AFTER INSTALL
 	umount -R /mnt			## UNMOUNT 
 	clear
 	printf "\033[1m \n ${green} COMPLETE !  \n \033[0m"
