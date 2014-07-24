@@ -22,6 +22,7 @@ checkroot() {
 		if [[ "$?" -eq 0 ]]
 			then   
 			printf "\033[1m ${green}\n\nOnline... ${yellow}Lets do this...\033[0m"
+			rm index.html
 			pacman -Syyu --noconfirm
 		else
 			printf "\033[1m \n\n${red}Offline ${white}- ${yellow}wait 5 seconds...\n\033[0m"
@@ -30,6 +31,7 @@ checkroot() {
 			if [[ "$?" -eq 0 ]]
 				then
 				printf "\033[1m ${green} \n\nCool... Lets do this \033[0m"
+				rm index.html
 				pacman -Syyu --noconfirm
 			else
 				printf "\033[1m ${red} \n\nDID YOU RUN DHCPCD ??? \033[0m"
