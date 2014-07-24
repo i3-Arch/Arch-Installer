@@ -18,7 +18,26 @@ checkroot() {
 		then
 		clear
 		printf "\033[1m \n\n ${green}Ready to start ! \n\n \033[0m"
-		pacman -Syyu --noconfirm
+		wget -q --tries=10 --timeout=20 http://google.com
+		if [[ $? -eq 0 ]]
+			then   
+			printf "\033[1m ${green}\n\nOnline... ${yellow}Lets do this...\033[0m"
+			pacman -Syyu --noconfirm
+		else
+			printf "\033[1m \n\n${red}Offline ${white}- ${yellow}wait 5 seconds...\033[0m"
+			sleep 5
+			if [[ $? -eq 0 ]]
+				then
+				printf "\033[1m ${green} \n\nCool... Lets do this \033[0m"
+			else
+				printf "\033[1m ${red} \n\nDID YOU RUN DHCPCD ??? \033[0m"
+				printf "\033[1m \n\n${green} Connect to internet.. Then try again \n\n\033[0m"
+				printf "\033[1m ${red}EXITING \033[0m"
+		fi
+	
+	fi
+	
+	
 	else
 		clear
 		printf "\033[1m \n\n ${yellow}You need to be ${green}root ${yellow}to run this script \n\n \033[0m"
