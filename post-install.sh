@@ -30,6 +30,7 @@ checkroot() {
 			if [[ "$?" -eq 0 ]]
 				then
 				printf "\033[1m ${green} \n\nCool... Lets do this \033[0m"
+				pacman -Syyu --noconfirm
 			else
 				printf "\033[1m ${red} \n\nDID YOU RUN DHCPCD ??? \033[0m"
 				printf "\033[1m \n\n${green} Connect to internet.. Then try again \n\n\033[0m"
