@@ -17,7 +17,18 @@ white=$(tput setaf 7)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
 
-# BANNER
+checkdat() {
+	if [ "$(id -u)" -eq 0 ]	
+		then
+		printf "\033[1m ${green}Good... You're root \033[0m"
+	else
+		printf "\033[1m ${red} You Need To Be ROOT \n\033[0m"
+		printf "\033[1m ${yellow} You really need to look at the ReadMe on github \033[0m"
+		exit
+	fi
+}
+
+
 banner() {
 	clear
 cat <<"EOT"
@@ -170,6 +181,7 @@ postsetup() {
 
 
 main() {
+	checkdat
 	banner
 	touch config.sh 		## Create file to store bootpart, rewtpart, homepart, swappart for chroot
 	ASKme				## ASK NUMBER OF PARTITIONS
@@ -187,3 +199,5 @@ main() {
 }
 
 main
+
+# EOF
