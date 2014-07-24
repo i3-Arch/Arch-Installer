@@ -181,6 +181,14 @@ postsetup() {
 }
 
 
+sixfour() {
+	if [ "$(uname -m)" = x86_64 ]
+		then
+		sed -i'' '92,93 s/^#//' /mnt/etc/pacman.conf
+	fi
+}
+
+
 main() {
 	checkdat
 	banner
@@ -189,6 +197,7 @@ main() {
 	disk 				## PARTITION WITH CFDISK or FDISK
     	CALLpart 	 		## CALL PARTITIONING IF STATEMENT
 	pkgmntchroot 	 		## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
+	sixfour
 	cp issue /mnt/etc/issue   	## TTY ART 
 	postsetup			## POST INSTALL SCRIPT READY FOR AFTER INSTALL
 	umount -R /mnt			## UNMOUNT 
