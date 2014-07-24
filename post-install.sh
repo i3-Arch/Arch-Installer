@@ -159,13 +159,9 @@ cat <<"EOT"
 
 EOT
 sleep 3
-}
-
-
-greetz() {
-	cd "$HOME"
-	printf "\033[1m \n\n ${green}  :: Lets Do This ::  \n\n\033[0m"
-	printf "\033[1m \n\n ${yellow}	#ARCHLINUX-SWAG	      \n\n\033[0m"
+cd "$HOME"
+printf "\033[1m \n\n ${green}  :: Lets Do This ::  \n\n\033[0m"
+printf "\033[1m \n\n ${yellow}	#ARCHLINUX-SWAG	      \n\n\033[0m"
 }
 
 
@@ -461,7 +457,6 @@ urxvtstuff() {
 
 main2() {
 	banner
-	greetz
 	guestbro
 	makeitbro
 	xseti3
