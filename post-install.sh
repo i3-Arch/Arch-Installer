@@ -444,6 +444,14 @@ urxvtstuff() {
 		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/pr/prezto-git/prezto-git.tar.gz && tar xzvf prezto-git.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/prezto-git && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/prezto-git/*.xz --noconfirm
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/xc/xcursor-ecliz-arch/xcursor-ecliz-arch.tar.gz && tar xzvf xcursor-ecliz-arch.tar.gz"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir/xcursor-ecliz-arch && makepkg -s"
+		if [ $(uname -m) = x86_64 ]
+			then
+			pacman -U /home/"$namebro"/build-dir/xcursor-ecliz-arch/*x86_64*.xz
+		else
+			pacman -U /home/"$namebro"/build-dir/xcursor-ecliz-arch/*i686*.xz
+		fi
 		clear
 		printf "\033[1m\n${green}Enter your ${red}USER PASSWORD${yellow} ( Changing Shell to ZSH )\n\033[0m"
 		su "$namebro" -c "chsh -s $(which zsh)"
