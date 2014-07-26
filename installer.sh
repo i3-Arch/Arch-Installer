@@ -162,8 +162,8 @@ CALLpart() {
 		then
 		    SMALLpart
 	else
-	    printf "\033[1m ${red}Unkown Selection\n\n\033[0m"
-	    printf "\033[1m ${white}Only Setting up ${yellow}BOOT ${white}and ${yellow}ROOT\033[0m"
+	    printf "\033[1m ${red}\n\nUnkown Selection\n\n\033[0m"
+	    printf "\033[1m ${white}\n\Only Setting up ${yellow}BOOT ${white}and ${yellow}ROOT\n\033[0m"
 	    sleep 3
 	    SMALLpart
 	fi
@@ -200,7 +200,7 @@ main() {
 	sixfour
 	cp issue /mnt/etc/issue   	## TTY ART 
 	postsetup			## POST INSTALL SCRIPT READY FOR AFTER INSTALL
-	umount -R /mnt			## UNMOUNT 
+	umount -R /mnt	2> /dev/null		## UNMOUNT 
 	clear
 	printf "\033[1m \n ${green} COMPLETE !  \n \033[0m"
 	printf "\033[1m \n ${yellow} SHUT DOWN SYSTEM AND THEN \n \033[0m"

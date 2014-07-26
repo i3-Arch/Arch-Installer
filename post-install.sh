@@ -17,11 +17,11 @@ checkroot() {
 	if [ "$(id -u)" -eq 0 ]
 		then
 		clear
-		printf "\033[1m \n\n ${green}Almost Ready to start ! \n\n \033[0m"
+		printf "\033[1m \n\n ${green}  Almost Ready to start ! \n\n \033[0m"
 		wget -q --tries=10 --timeout=20 https://google.com
 		if [[ "$?" -eq 0 ]]
 			then   
-			printf "\033[1m ${green}\n\nOnline... ${yellow}Lets do this...\033[0m"
+			printf "\033[1m ${green}\n\n Online... ${yellow}Lets do this...\033[0m"
 			rm index.html
 			pacman -Syyu --noconfirm
 		else
@@ -30,13 +30,13 @@ checkroot() {
 			wget -q --tries=5 --timeout=20 https://google.com
 			if [[ "$?" -eq 0 ]]
 				then
-				printf "\033[1m ${green} \n\nCool... Lets do this \n\n\033[0m"
+				printf "\033[1m ${green} \n\n  Cool... Lets do this \n\n\033[0m"
 				rm index.html
 				pacman -Syyu --noconfirm
 			else
-				printf "\033[1m ${red} \n\nDID YOU RUN DHCPCD ??? \033[0m"
-				printf "\033[1m \n\n${green} Connect to internet.. Then try again \n\n\033[0m"
-				printf "\033[1m ${red}EXITING \033[0m"
+				printf "\033[1m ${red} \n\n  DID YOU RUN DHCPCD ??? \033[0m"
+				printf "\033[1m \n\n${green}  Connect to internet.. Then try again \n\n\033[0m"
+				printf "\033[1m ${red} EXITING \033[0m"
 				sleep 5
 				exit
 			fi	
@@ -73,7 +73,7 @@ mirrorselect() {
 				then
 				cp /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
 			fi
-			printf "\033[1m${red}ctrl+x to exit nano \n\n\033[0m"
+			printf "\033[1m${red}\n ctrl+x to exit nano \n\n\033[0m"
 			sleep 3
 			nano /etc/pacman.d/mirrorlist
 		else
