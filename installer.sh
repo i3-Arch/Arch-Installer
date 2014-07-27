@@ -178,6 +178,20 @@ postsetup() {
 		wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/post-install.sh
 		cp post-install.sh /mnt/root
 	fi
+	if [ -f post-menu.sh ]
+		then
+		cp post-menu.sh /mnt/root
+	else
+		wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/post-menu.sh
+		cp post-menu.sh /mnt/root
+	fi
+	if [ -f another.sh ]
+		then
+		cp another.sh /mnt/root
+	else
+		https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/another.sh
+		cp another.sh /mnt/root
+	fi
 }
 
 
