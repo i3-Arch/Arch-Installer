@@ -143,7 +143,7 @@ envset() {
 				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
 				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.zshrc
 				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.vimrc
-				cp .Xresources .zshrc .xinitrc .vimrc /home/"$namebro"/
+				cp .Xresources .zshrc .vimrc /home/"$namebro"/
 				cp -r .i3 /home/"$namebro"/
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3/config
