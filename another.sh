@@ -127,7 +127,6 @@ xseti3() {
 
 
 envset() {
-		cp /etc/skel/.xinitrc /home/"$namebro"/
 		chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc
 		if [ "$DemChoice" -eq "1" ]
 			then
@@ -151,7 +150,6 @@ envset() {
 				chown "$namebro":"$namebro" /home/"$namebro"/.Xresources
 				chown "$namebro":"$namebro" /home/"$namebro"/.vimrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.zshrc
-				chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc
 				printf "\033[1m \n\n ${yellow}Commenting Out Stuff for i3-Setup in .xinitrc \n\033[0m"
 				sleep 4
 				sed -i '13i #UNCOMMENT pa-applet ; xscreensaver ; xcompmgr ; xrdb ; exec i3 ; if planning to use i3' /home/"$namebro"/.xinitrc
