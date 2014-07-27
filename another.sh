@@ -133,15 +133,15 @@ envset() {
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
-				echo "exec startxfce4" >> /home/"$namebro"/.xinitrc
+				printf "\033[1m \n\n ${yellow}Commenting Out Stuff for 2nd WM/DE in .xinitrc \n\033[0m"
+				sleep 4
+				sed -i '13i #exec startxfce4' /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" -eq "2" ]
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
-				rm /home/"$namebro"/.xinitrc
 				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
-				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.xinitrc
 				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.zshrc
 				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.vimrc
 				cp .Xresources .zshrc .xinitrc .vimrc /home/"$namebro"/
@@ -152,18 +152,30 @@ envset() {
 				chown "$namebro":"$namebro" /home/"$namebro"/.vimrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.zshrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc
+				printf "\033[1m \n\n ${yellow}Commenting Out Stuff for i3-Setup in .xinitrc \n\033[0m"
+				sleep 4
+				sed -i '13i #UNCOMMENT pa-applet ; xscreensaver ; xcompmgr ; xrdb ; exec i3 ; if planning to use i3' /home/"$namebro"/.xinitrc
+				sed -i '14i #exec pa-applet &' /home/"$namebro"/.xinitrc
+				sed -i '15i #exec xscreensaver &' /home/"$namebro"/.xinitrc
+				sed -i '16i #xcompmgr -c -f -r 28 D 10 &' /home/"$namebro"/.xinitrc
+				sed -i '17i #xrdb merge ./.Xresources' /home/"$namebro"/.xinitrc
+				sed -i '18i #exec i3' /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" -eq "3" ]
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
-				echo "exec cinnamon-session" >> /home/"$namebro"/.xinitrc
+				printf "\033[1m\n\n ${yellow} Commenting Out 2nd WM/DE in .xinitrc \n\033]0m"
+				sleep 4
+				sed -i '13i #exec cinnamon-session' /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" -eq "4" ]
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
-				echo "exec dwm" >> /home/"$namebro"/.xinitrc
+				printf "\033[1m \n\n ${yellow} Commenting Out 2nd WM/DE in .xinitrc \n\033[0m"
+				sleep 4
+				sed -i '13i #exec dwm' /home/"$namebro"/.xinitrc
 				abs community/dwm
 				cp -r /var/abs/community/dwm /home/"$namebro"/dwm
 				chown "$namebro":"$namebro" /home/"$namebro"/dwm
@@ -175,19 +187,25 @@ envset() {
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
-				echo "exec awesome" >> /home/"$namebro"/.xinitrc
+				printf "\033[1m \n\n ${yellow}Commenting Out 2nd WM/DE in .xinitrc \n\033[0m"
+				sleep 4
+				sed -i '13i #exec awesome' /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" -eq "6" ]
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
-				echo "exec gnome-session" >> /home/"$namebro"/.xinitrc
+				printf "\033[1m \n\n ${yellow}Commenting Out 2nd WM/DE in .xinitrc \n\033[0m"
+				sleep 4
+				sed -i '13i #exec gnome-session' /home/"$namebro"/.xinitrc
 			fi	
 		elif [ "$DemChoice" -eq "7" ]
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
-				echo "exec startkde" >> /home/"$namebro"/.xinitrc
+				printf "\033[1m \n\n ${yellow}Commenting Out 2nd WM/DE in .xinitrc \n\033[0m"
+				sleep 4
+				sed -i '13i #exec startkde' /home/"$namebro"/.xinitrc
 			fi
 		
 		fi
