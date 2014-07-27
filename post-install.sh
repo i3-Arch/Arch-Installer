@@ -25,8 +25,8 @@ checkroot() {
 			rm index.html
 			pacman -Syyu --noconfirm
 		else
-			printf "\033[1m \n\n${red}Offline ${white}- ${yellow}wait 5 seconds...\n\033[0m"
-			sleep 5
+			printf "\033[1m \n\n${red}Offline ${white}- ${yellow}wait 8 seconds...\n\033[0m"
+			sleep 8
 			wget -q --tries=5 --timeout=20 https://google.com
 			if [[ "$?" -eq 0 ]]
 				then
