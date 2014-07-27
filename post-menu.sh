@@ -32,7 +32,7 @@ case "$DATCHOICE" in
 	1) echo -e "\033[1m ${yellow} #${white}Paranoid\033[0m" && cat post-install.sh|less ;;
 	2) echo -e "\033[1m ${yellow} #${white}Swag\033[0m" && source post-install.sh ;;
 	3) echo -e "\033[1m ${yellow} #${white}Paranoid\033[0m" && cat another.sh|less ;;
-	4) echo -e "\033[1m ${yello2} #${white}StillSwaggin\033[0m" && source another.sh;;
+	4) echo -e "\033[1m ${yello2} #${white}StillSwaggin\033[0m" && source another.sh ;;
 	5) echo -e "\033[1m ${yellow} HOPE YOU ENJOY... Rebooting Now\033[0m" && rm post-install.sh another.sh && $(reboot) ;;
 	*) echo -e "\033[1m ${yellow} invalid option ${red} try again\033[0m"
 esac

@@ -473,7 +473,6 @@ main2() {
 	bobthebuilder
 	urxvtstuff
 	intelinside
-	rm post-install.sh
 	printf "\033[1m ${red} You Most Likely Need To Reboot For Changes To Take Effect\n\033[0m"
 }
 

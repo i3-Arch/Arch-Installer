@@ -268,7 +268,6 @@ main() {
 	xseti3
 	envset
 	urxvtstuff
-	rm another.sh
 	printf "\033[1m ${yellow}You Most Likely Need To Reboot \n\n\033[0m"
 	sleep 3
 }
