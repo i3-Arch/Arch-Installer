@@ -50,115 +50,7 @@ checkroot() {
 	fi
 }
 
-intelinside() {
-	printf "\033[1m \n\n${green}Are you using intel ?? \033[0m"	
-	printf "\033[1m \n ${white}[${green}Y${white}|${red}N${white}] \033[0m"
-	printf "\033[1m \n\n${yellow}Answer: ${white}\033[0m"
-	read intelstuff
-	if [ "$intelstuff" == Y -o "$intelstuff" == y ]
-		then
-		pacman -Syy intel-dri xf86-video-intel --noconfirm
-	fi
-}
-
-
-mirrorselect() {
-		printf "\033[1m ${green} \n\n Select Your Mirrors ?\n\n \033[0m"
-		printf "\033[1m ${white}[${green}Y${white}|${red}N${white}]\033[0m"
-		printf "\033[1m \n\n${yellow}Choice: ${white}\033[0m"
-		read mirrorsyo
-		if [ "$mirrorsyo" == Y -o "$mirrorsyo" == y ]
-			then
-			if [ -f /etc/pacman.d/mirrorlist.pacnew ]
-				then
-				cp /etc/pacman.d/mirrorlist.pacnew /etc/pacman.d/mirrorlist
-			fi
-			printf "\033[1m${red}\n ctrl+x to exit nano \n\n\033[0m"
-			sleep 3
-			nano /etc/pacman.d/mirrorlist
-		else
-			printf "\033[1m ${green} Ok... Skipping \033[0m"
-			sleep 1
-		fi
-}
-
-
-needpass() { 
-	clear
-	printf "\033[1m \n ${yellow} Set a ROOT password \n\n \033[0m"
-	passwd
-}
-
-
-usersetup() {
-		clear
-		printf "\033[1m \n\n ${green} Lets create a user ! \n \033[0m"
-		printf "\033[1m \n\n ${yellow} Enter username you want to create \n \033[0m"
-		printf "\033[1m \n Username:${white} \033[0m"
-		read namebro
-		$(useradd -m -G adm,disk,audio,network,video "$namebro")
-		printf "\033[1m \n\n ${yellow} Set a Password for this USER now \n\n \033[0m"
-		passwd "$namebro"
-		printf "\033[1m \n\n ${yellow}Would you like to add this user to sudoers? ( user ALL=(ALL) ALL ) \033[0m"
-		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \033[0m"
-		printf "\033[1m\n\n ${red}Answer: ${white}\033[0m"
-		read anot
-		if [ "$anot" == Y -o "$anot" == y -o "$anot" == yes -o "$anot" == YES ]
-			then
-			echo -n "$namebro" "ALL=(ALL)" "ALL" >> /etc/sudoers
-		fi
-}
-
-
-uwantme() {
-	clear
-	printf "\033[1m \n ${green} Do you want to install a WM/DE now ? \n \033[0m"
-	printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n \033[0m"
-	printf "\033[1m \n\n ${red} Choice:${white} \033[0m"
-	read wutdebro
-	if [ "$wutdebro" == Y -o "$wutdebro" == y -o "$wutdebro" == YES -o "$wutdebro" == yes ]
-		then
-		main2
-	else
-		printf "\033[1m \n\n  ${red} Understood... Have fun with ARCH ! \n\n \033[0m"
-	fi
-}
-
-
-thankyoubro() {
-	clear
-	printf "\033[1m \n ${green} Thanks for being lazy and using our script ! \n \033[0m"
-	printf "\033[1m \n ${yellow} If you have any problems afterwards \n \033[0m"
-	printf "\033[1m \n ${red} Search The ARCHWIKI \n \n \033[0m"
-	sleep 3
-}
-
-
 banner() {
-cat <<"EOT"
-     _____________________________
-    !\___________________________/\
-    !!                           !!\
-    !!                           !! \
-    !!        ARCHLINUX          !! !
-    !!         IS DAT            !! !
-    !!       MASTER RACE         !! !
-    !!                           !! !
-    !! lulz@arch~> hue	         !! !
-    !! zsh:command not found:hue !! /
-    !! 				 !!/
-    !!___________________________!!
-    !/________________________\!/
-       __\_________________/__/!_
-      !_______________________!/ )
-    ________________________    (__
-   /oooo  oooo  oooo  oooo /!   _  )_
-  /ooooooooooooooooooooooo/ /  (_)_(_)
- /ooooooooooooooooooooooo/ /    (o o)
-/C=_____________________/_/    ==\o/==
-
-EOT
-sleep 3
 cd "$HOME"
 printf "\033[1m \n\n ${green}  :: Lets Do This ::  \n\n\033[0m"
 printf "\033[1m \n\n ${yellow}	#ARCHLINUX-SWAG	      \n\n\033[0m"
@@ -234,41 +126,6 @@ xseti3() {
 }
 
 
-guestbro() {
-		clear
-		printf "\033[1m \n\n ${green}Are you using Virtualbox ? \n\n \033[0m"
-		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n \033[0m"
-		printf "\033[1m \n\n ${green}Answer: ${white}\033[0m"
-		read wutUsay
-		if [ "$wutUsay" == Y -o "$wutUsay" == y ]
-			then
-			pacman -Syy virtualbox-guest-utils --noconfirm
-			depmod
-			modprobe -a vboxguest vboxsf vboxvideo
-			echo "vboxguest" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
-			echo "vboxvideo" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
-			echo "vboxsf" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
-		elif [ "$wutUsay" == N -o "$wutUsay" == n ]
-			then 
-			printf "\033[1m \n\n ${green}Are you using VMWARE ? \033[0m"
-			printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \033[0m"
-			printf "\033[1m \n\n ${green}Answer: ${white}\033[0m"
-			read VMwut
-			if [ "$VMwut" == Y -o "$VMwut" == y ]
-				then
-				pacman -Syy svga-dri xf86-input-vmmouse xf86-video-vmware open-vm-tools --noconfirm
-				cat /proc/version > /etc/arch-release
-				systemctl start vmtoolsd
-				systemctl enable vmtoolsd
-			fi
-		else
-			printf "\033[1m \n\n${red}Did you type a ${yellow}'y' ${white}or a ${yellow}'n'${red} ? \033[0m"
-			printf "\033[1m \n ${red}Moving on....\033[0m"
-			sleep 2
-		fi
-}
-
-
 envset() {
 		cp /etc/skel/.xinitrc /home/"$namebro"/
 		chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc
@@ -337,82 +194,7 @@ envset() {
 }
 
 
-loginmanage() {
-	if [ "$DemChoice" -eq "1" -o "$DemChoice" -eq "2" -o "$DemChoice" -eq "3" -o "$DemChoice" -eq "4" -o "$DemChoice" -eq "5" ]
-		then
-		clear
-		printf "\033[1m \n\n ${green}Would you like to enable slim ? \n\n \033[0m"
-		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n \033[0m"
-		printf "\033[1m \n ${green}Answer: ${white}\033[0m"
-		read slimok
-		if [ "$slimok" == Y -o "$slimok" == y ]
-			then
-			pacman -Syy slim --noconfirm
-			systemctl enable slim.service
-			printf "\033[1m ${red}\nReboot to take effect \n\n\033[0m"
-			sleep 1
-		else
-			printf "\033[1m \n ${yellow}EXTRA TIP ${green}:: ${red}In the future you will need to Run  ${yellow}startx ${green}:: \n \033[0m"
-		fi	
-	elif [ "$DemChoice" -eq "6" ]
-		then
-		clear
-		printf "\033[1m \n\n ${green}Would you like to enable Gdm ? \n\n\033[0m"
-		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n\033[0m"
-		printf "\033[1m \n ${green}Answer: ${white}\033[0m"
-		read gdmok
-		if [ "$gdmok" == Y -o "$gdmok" == y ]
-			then
-			systemctl enable gdm.service
-			printf "\033[1m ${red}\n Reboot to take effect \n\n\033[0m"
-			sleep 1
-		fi
-	elif [ "$DemChoice" -eq "7" ]
-		then
-		clear
-		printf "\033[1m \n\n ${green} Would you like to enable Kdm ?\n\n\033[0m"
-		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n\033[0m"
-		printf "\033[1m \n ${green}Answer: ${white}\033[0m"
-		read kdmok
-		if [ "$kdmok" == Y -o "$kdmok" == y ]
-			then
-			systemctl enable kdm.service
-			printf "\033[1m ${red}\nReboot to take effect \033[0m" 
-			sleep 1
-		fi	
-	fi
 
-}
-
-
-bobthebuilder() {  
-	clear
-	printf "\033[1m\n\n ${green}Would you like to setup pacaur ? \n\033[0m"
-	printf "\033[1m\n\n ${white}It's an ${red}AUR ${white}helper with cower backend \n\n\033[0m"
-	printf "\033[1m\n\n${white}[${green}Y${white}|${red}N${white}]\n\n\033[0m"
-	printf "\033[1m\n\n${red}Answer: ${white}\033[0m"
-	read thatquestion
-	if [ "$thatquestion" == Y -o "$thatquestion" == y ]
-		then
-		printf "\033[1m\n\n ${green}Setting up pacaur for future use \n\n\033[0m"
-		pacman -Syy expac yajl --noconfirm
-		su "$namebro" -c "mkdir /home/"$namebro"/build-dir"
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/co/cower/cower.tar.gz && tar xzvf cower.tar.gz"
-		su "$namebro" -c "cd /home/"$namebro"/build-dir/cower && makepkg -s"
-		pacman -U /home/"$namebro"/build-dir/cower/*.xz --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/pa/pacaur/pacaur.tar.gz && tar xzvf pacaur.tar.gz"
-		su "$namebro" -c "cd /home/"$namebro"/build-dir/pacaur && makepkg -s"
-		pacman -U /home/"$namebro"/build-dir/pacaur/*.xz --noconfirm
-		rm -rf /home/"$namebro"/build-dir
-	else
-		printf "\033[1m\n\n ${yellow}You entered no\n\033[0m"
-		printf "\033[1m ${yellow}or an unexpected character \n\033[0m"
-		printf "\033[1m\n ${red}Moving on... \n\033[0m"
-		sleep 2
-	fi
-}
-	
-	
 urxvtstuff() {
 	clear
 	if [ "$DemChoice" -eq 2 ]
@@ -463,17 +245,14 @@ urxvtstuff() {
 }
 
 
-main2() {
+main() {
+	checkroot
 	banner
-	guestbro
 	makeitbro
 	xseti3
 	envset
-	loginmanage
-	bobthebuilder
 	urxvtstuff
-	intelinside
-	rm post-install.sh
+	rm another.sh
 	printf "\033[1m ${yellow}Rebooting now \n\n\033[0m"
 	sleep 2
 	printf "\033[1m\n ${red}3${white}...\n\033[0m"
@@ -484,16 +263,6 @@ main2() {
 	$(reboot)
 }
 
-
-main() {
-	checkroot
-	thankyoubro
-	needpass
-	usersetup
-	mirrorselect
-	uwantme
-	sed -i '13i namebro="$namebro"' another.sh
-}
 
 main
 
