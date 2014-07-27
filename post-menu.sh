@@ -22,8 +22,8 @@ do
 	echo -e "\033[1m ${red} \n\n TAKE YOUR PICK \n\033[0m"
 	echo -e " \033[1m ${red}1)${white}\033[1m VIEW Post-Install Script \033[0m"
 	echo -e " \033[1m ${red}2)${white}\033[1m RUN Post-Install script \033[0m"
-	echo -e " \033[1m ${red}3)${white}\033[1m Install ANOTHER WM/DE \033[0m"
-	echo -e " \033[1m ${red}4)${white}\033[1m View Another.sh \033[0m"
+	echo -e " \033[1m ${red}3)${white}\033[1m VIEW another.sh \033[0m"
+	echo -e " \033[1m ${red}4)${white}\033[1m Install Another WM/DE \033[0m"
 	echo -e " \033[1m ${red}5)${white}\033[1m Exit\033[0m"
 	read DATCHOICE
 
