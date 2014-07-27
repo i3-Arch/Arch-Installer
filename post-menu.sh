@@ -15,8 +15,8 @@ yellow="$(tput setaf 3)"
 clear
 cd "$HOME"
 
-DATCHOICE=3
-until [ "$DATCHOICE" -eq 4 ]
+DATCHOICE=4
+until [ "$DATCHOICE" -eq 5 ]
 do
 	clear
 	echo -e "\033[1m ${red} \n\n TAKE YOUR PICK \n\033[0m"
