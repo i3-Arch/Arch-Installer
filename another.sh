@@ -271,14 +271,8 @@ main() {
 	envset
 	urxvtstuff
 	rm another.sh
-	printf "\033[1m ${yellow}Rebooting now \n\n\033[0m"
-	sleep 2
-	printf "\033[1m\n ${red}3${white}...\n\033[0m"
-	sleep 1
-	printf "\033[1m ${red}2${white}..\n\033[0m"
-	sleep 1
-	printf "\033[1m ${red}1${white}.\n\033[0m"
-	$(reboot)
+	printf "\033[1m ${yellow}You Most Likely Need To Reboot \n\n\033[0m"
+	sleep 3
 }
 
 
