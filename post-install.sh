@@ -57,7 +57,7 @@ intelinside() {
 	read intelstuff
 	if [ "$intelstuff" == Y -o "$intelstuff" == y ]
 		then
-		pacman -Syy intel-dri xf86-video-intel
+		pacman -Syy intel-dri xf86-video-intel --noconfirm
 	fi
 }
 
@@ -448,9 +448,9 @@ urxvtstuff() {
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/xcursor-ecliz-arch && makepkg -s"
 		if [ $(uname -m) = x86_64 ]
 			then
-			pacman -U /home/"$namebro"/build-dir/xcursor-ecliz-arch/*x86_64*.xz
+			pacman -U /home/"$namebro"/build-dir/xcursor-ecliz-arch/*x86_64*.xz --noconfirm
 		else
-			pacman -U /home/"$namebro"/build-dir/xcursor-ecliz-arch/*i686*.xz
+			pacman -U /home/"$namebro"/build-dir/xcursor-ecliz-arch/*i686*.xz --noconfirm
 		fi
 		clear
 		printf "\033[1m\n${green}Enter your ${red}USER PASSWORD${yellow} ( Changing Shell to ZSH )\n\033[0m"
