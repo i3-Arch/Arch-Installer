@@ -469,19 +469,12 @@ main2() {
 	makeitbro
 	xseti3
 	envset
-	loginmanage
+	loginmanage 
 	bobthebuilder
 	urxvtstuff
 	intelinside
 	rm post-install.sh
-	printf "\033[1m ${yellow}Rebooting now \n\n\033[0m"
-	sleep 2
-	printf "\033[1m\n ${red}3${white}...\n\033[0m"
-	sleep 1
-	printf "\033[1m ${red}2${white}..\n\033[0m"
-	sleep 1
-	printf "\033[1m ${red}1${white}.\n\033[0m"
-	$(reboot)
+	printf "\033[1m ${red} You Most Likely Need To Reboot For Changes To Take Effect\n\033[0m"
 }
 
 
