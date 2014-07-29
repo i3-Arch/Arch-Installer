@@ -64,9 +64,14 @@
 		
 			
 
-		2. :RUN:
+		2. After You Have REMOVED LIVE IMAGE and boot into newly installed OS
+		
+				** MAKE SURE YOU CHOOSE OPTION 2 BEFORE CHOOSING OPTION 4 **
+
+
+		:RUN:
 			
-			source post-install.sh
+			source post-menu.sh
 
 			
 
