@@ -134,6 +134,7 @@ envset() {
 				then
 				printf "\033[1m \n\n ${yellow}Commenting Out Stuff for 2nd WM/DE in .xinitrc \n\033[0m"
 				sleep 4
+				sed -i '13i\ ' /home/"$namebro".xinitrc
 				sed -i '13i #exec startxfce4' /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" -eq "2" ]
@@ -152,6 +153,7 @@ envset() {
 				chown "$namebro":"$namebro" /home/"$namebro"/.zshrc
 				printf "\033[1m \n\n ${yellow}Commenting Out Stuff for i3-Setup in .xinitrc \n\033[0m"
 				sleep 4
+				sed -i '13i\ ' /home/"$namebro"/.xinitrc
 				sed -i '13i #UNCOMMENT pa-applet ; xscreensaver ; xcompmgr ; xrdb ; exec i3 ; if planning to use i3' /home/"$namebro"/.xinitrc
 				sed -i '14i #exec pa-applet &' /home/"$namebro"/.xinitrc
 				sed -i '15i #exec xscreensaver &' /home/"$namebro"/.xinitrc
@@ -165,6 +167,7 @@ envset() {
 				then
 				printf "\033[1m\n\n ${yellow} Commenting Out 2nd WM/DE in .xinitrc \n\033]0m"
 				sleep 4
+				sed -i '13i\ ' /home/"$namebro"/.xinitrc
 				sed -i '13i #exec cinnamon-session' /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" -eq "4" ]
@@ -173,6 +176,7 @@ envset() {
 				then
 				printf "\033[1m \n\n ${yellow} Commenting Out 2nd WM/DE in .xinitrc \n\033[0m"
 				sleep 4
+				sed -i '13i\ ' /home/"$namebro"/.xinitrc
 				sed -i '13i #exec dwm' /home/"$namebro"/.xinitrc
 				abs community/dwm
 				cp -r /var/abs/community/dwm /home/"$namebro"/dwm
@@ -187,6 +191,7 @@ envset() {
 				then
 				printf "\033[1m \n\n ${yellow}Commenting Out 2nd WM/DE in .xinitrc \n\033[0m"
 				sleep 4
+				sed -i '13i\ ' /home/"$namebro"/.xinitrc
 				sed -i '13i #exec awesome' /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" -eq "6" ]
@@ -195,6 +200,7 @@ envset() {
 				then
 				printf "\033[1m \n\n ${yellow}Commenting Out 2nd WM/DE in .xinitrc \n\033[0m"
 				sleep 4
+				sed -i '13i\ ' /home/"$namebro"/.xinitrc
 				sed -i '13i #exec gnome-session' /home/"$namebro"/.xinitrc
 			fi	
 		elif [ "$DemChoice" -eq "7" ]
@@ -203,6 +209,7 @@ envset() {
 				then
 				printf "\033[1m \n\n ${yellow}Commenting Out 2nd WM/DE in .xinitrc \n\033[0m"
 				sleep 4
+				sed -i '13i\ ' /home/"$namebro"/.xinitrc
 				sed -i '13i #exec startkde' /home/"$namebro"/.xinitrc
 			fi
 		
