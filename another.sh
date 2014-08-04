@@ -22,7 +22,7 @@ checkroot() {
 		if [[ "$?" -eq 0 ]]
 			then   
 			printf "\033[1m ${green}\n\n Online... ${yellow}Lets do this...\033[0m"
-			rm index.html
+			rm -f index.html
 			pacman -Syyu --noconfirm
 		else
 			printf "\033[1m \n\n${red}Offline ${white}- ${yellow}wait 8 seconds...\n\033[0m"
@@ -31,7 +31,7 @@ checkroot() {
 			if [[ "$?" -eq 0 ]]
 				then
 				printf "\033[1m ${green} \n\n  Cool... Lets do this \n\n\033[0m"
-				rm index.html
+				rm -f index.html
 				pacman -Syyu --noconfirm
 			else
 				printf "\033[1m ${red} \n\n  DID YOU RUN DHCPCD ??? \033[0m"
@@ -71,29 +71,29 @@ makeitbro() {
 		read DemChoice
 		if [ "$DemChoice" -eq "1" ]
 			then
-			pacman -Syy xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
+			pacman -Syy xfce4 xfce4-goodies --noconfirm
 		elif [ "$DemChoice" -eq "2" ]
 			then
-			pacman -Syy zsh zsh-syntax-highlighting xcompmgr transset-df xscreensaver xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			pacman -Syy zsh zsh-syntax-highlighting xcompmgr transset-df xscreensaver vim feh i3-wm i3status dmenu rxvt-unicode urxvt-perls --noconfirm
 		
 		elif [ "$DemChoice" -eq "3" ]
 			then
-			pacman -Syy cinnamon xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
+			pacman -Syy cinnamon --noconfirm
 		
 		elif [ "$DemChoice" -eq "4" ]
 			then
-			pacman -Syy xorg-server feh xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu --noconfirm
+			pacman -Syy feh abs dmenu --noconfirm
 		
 		elif [ "$DemChoice" -eq "5" ]
 			then
-			pacman -Syy awesome xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm
+			pacman -Syy awesome --noconfirm
 		
 		elif [ "$DemChoice" -eq "6" ]
 			then
-			pacman -Syy gnome gnome-extra xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm
+			pacman -Syy gnome gnome-extra --noconfirm
 		elif [ "$DemChoice" -eq "7" ]
 			then
-			pacman -Syy kde xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
+			pacman -Syy kde --noconfirm
 		
 		else
 			printf "\033[1m ${yellow}Choice not understood... ${red}Exiting \033[0m"
@@ -135,7 +135,7 @@ envset() {
 				printf "\033[1m \n\n ${yellow}Commenting Out Stuff for 2nd WM/DE in .xinitrc \n\033[0m"
 				sleep 4
 				sed -i '13i\ ' /home/"$namebro".xinitrc
-				sed -i '13i #exec startxfce4' /home/"$namebro"/.xinitrc
+				sed -i '14i #exec startxfce4' /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" -eq "2" ]
 			then
@@ -154,12 +154,12 @@ envset() {
 				printf "\033[1m \n\n ${yellow}Commenting Out Stuff for i3-Setup in .xinitrc \n\033[0m"
 				sleep 4
 				sed -i '13i\ ' /home/"$namebro"/.xinitrc
-				sed -i '13i #UNCOMMENT pa-applet ; xscreensaver ; xcompmgr ; xrdb ; exec i3 ; if planning to use i3' /home/"$namebro"/.xinitrc
-				sed -i '14i #exec pa-applet &' /home/"$namebro"/.xinitrc
-				sed -i '15i #exec xscreensaver &' /home/"$namebro"/.xinitrc
-				sed -i '16i #xcompmgr -c -f -r 28 D 10 &' /home/"$namebro"/.xinitrc
-				sed -i '17i #xrdb merge ./.Xresources' /home/"$namebro"/.xinitrc
-				sed -i '18i #exec i3' /home/"$namebro"/.xinitrc
+				sed -i '14i #UNCOMMENT pa-applet ; xscreensaver ; xcompmgr ; xrdb ; exec i3 ; if planning to use i3' /home/"$namebro"/.xinitrc
+				sed -i '15i #exec pa-applet &' /home/"$namebro"/.xinitrc
+				sed -i '16i #exec xscreensaver &' /home/"$namebro"/.xinitrc
+				sed -i '17i #xcompmgr -c -f -r 28 D 10 &' /home/"$namebro"/.xinitrc
+				sed -i '18i #xrdb merge ./.Xresources' /home/"$namebro"/.xinitrc
+				sed -i '19i #exec i3' /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" -eq "3" ]
 			then
@@ -168,7 +168,7 @@ envset() {
 				printf "\033[1m\n\n ${yellow} Commenting Out 2nd WM/DE in .xinitrc \n\033]0m"
 				sleep 4
 				sed -i '13i\ ' /home/"$namebro"/.xinitrc
-				sed -i '13i #exec cinnamon-session' /home/"$namebro"/.xinitrc
+				sed -i '14i #exec cinnamon-session' /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" -eq "4" ]
 			then
@@ -177,7 +177,7 @@ envset() {
 				printf "\033[1m \n\n ${yellow} Commenting Out 2nd WM/DE in .xinitrc \n\033[0m"
 				sleep 4
 				sed -i '13i\ ' /home/"$namebro"/.xinitrc
-				sed -i '13i #exec dwm' /home/"$namebro"/.xinitrc
+				sed -i '14i #exec dwm' /home/"$namebro"/.xinitrc
 				abs community/dwm
 				cp -r /var/abs/community/dwm /home/"$namebro"/dwm
 				chown "$namebro":"$namebro" /home/"$namebro"/dwm
@@ -192,7 +192,7 @@ envset() {
 				printf "\033[1m \n\n ${yellow}Commenting Out 2nd WM/DE in .xinitrc \n\033[0m"
 				sleep 4
 				sed -i '13i\ ' /home/"$namebro"/.xinitrc
-				sed -i '13i #exec awesome' /home/"$namebro"/.xinitrc
+				sed -i '14i #exec awesome' /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" -eq "6" ]
 			then
@@ -201,7 +201,7 @@ envset() {
 				printf "\033[1m \n\n ${yellow}Commenting Out 2nd WM/DE in .xinitrc \n\033[0m"
 				sleep 4
 				sed -i '13i\ ' /home/"$namebro"/.xinitrc
-				sed -i '13i #exec gnome-session' /home/"$namebro"/.xinitrc
+				sed -i '14i #exec gnome-session' /home/"$namebro"/.xinitrc
 			fi	
 		elif [ "$DemChoice" -eq "7" ]
 			then
@@ -210,7 +210,7 @@ envset() {
 				printf "\033[1m \n\n ${yellow}Commenting Out 2nd WM/DE in .xinitrc \n\033[0m"
 				sleep 4
 				sed -i '13i\ ' /home/"$namebro"/.xinitrc
-				sed -i '13i #exec startkde' /home/"$namebro"/.xinitrc
+				sed -i '14i #exec startkde' /home/"$namebro"/.xinitrc
 			fi
 		
 		fi
