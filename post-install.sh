@@ -277,6 +277,7 @@ envset() {
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
 				echo "exec startxfce4" >> /home/"$namebro"/.xinitrc
+			
 			fi
 		elif [ "$DemChoice" -eq "2" ]
 			then
@@ -307,10 +308,13 @@ envset() {
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
 				echo "exec dwm" >> /home/"$namebro"/.xinitrc
+				echo "xrdb merge .Xresources" >> /home/"$namebro"/.xinitrc
+				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
 				abs community/dwm
 				cp -r /var/abs/community/dwm /home/"$namebro"/dwm
 				chown "$namebro":"$namebro" /home/"$namebro"/dwm
 				chown "$namebro":"$namebro" /home/"$namebro"/dwm/*
+				chown "$namebro":"$namebro" /home/"$namebro"/.Xresources
 				su "$namebro" -c "cd /home/"$namebro"/dwm && makepkg"
 				pacman -U /home/"$namebro"/dwm/*.tar.xz --noconfirm
 			fi

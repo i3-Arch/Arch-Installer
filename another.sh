@@ -158,7 +158,7 @@ envset() {
 				sed -i '15i #exec pa-applet &' /home/"$namebro"/.xinitrc
 				sed -i '16i #exec xscreensaver &' /home/"$namebro"/.xinitrc
 				sed -i '17i #xcompmgr -c -f -r 28 D 10 &' /home/"$namebro"/.xinitrc
-				sed -i '18i #xrdb merge ./.Xresources' /home/"$namebro"/.xinitrc
+				sed -i '18i #xrdb merge .Xresources' /home/"$namebro"/.xinitrc
 				sed -i '19i #exec i3' /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" -eq "3" ]
@@ -178,6 +178,9 @@ envset() {
 				sleep 4
 				sed -i '13i\ ' /home/"$namebro"/.xinitrc
 				sed -i '14i #exec dwm' /home/"$namebro"/.xinitrc
+				sed -i '15i #xrdb merge .Xresources' /home/"$namebro"/.xinitrc
+				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
+				chown "$namebro":"$namebro" /home/"$namebro"/.Xresources
 				abs community/dwm
 				cp -r /var/abs/community/dwm /home/"$namebro"/dwm
 				chown "$namebro":"$namebro" /home/"$namebro"/dwm
