@@ -310,6 +310,7 @@ envset() {
 				echo "exec dwm" >> /home/"$namebro"/.xinitrc
 				echo "xrdb merge .Xresources" >> /home/"$namebro"/.xinitrc
 				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
+				mv ~/.Xresources /home/"$namebro"/
 				abs community/dwm
 				cp -r /var/abs/community/dwm /home/"$namebro"/dwm
 				chown "$namebro":"$namebro" /home/"$namebro"/dwm

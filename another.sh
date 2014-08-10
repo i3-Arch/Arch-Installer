@@ -180,6 +180,7 @@ envset() {
 				sed -i '14i #exec dwm' /home/"$namebro"/.xinitrc
 				sed -i '15i #xrdb merge .Xresources' /home/"$namebro"/.xinitrc
 				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
+				mv ~/.Xresources /home/"$namebro"/
 				chown "$namebro":"$namebro" /home/"$namebro"/.Xresources
 				abs community/dwm
 				cp -r /var/abs/community/dwm /home/"$namebro"/dwm
