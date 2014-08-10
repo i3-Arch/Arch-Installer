@@ -36,7 +36,7 @@ do
 	echo -e " \033[1m ${red}3)${white}\033[1m VIEW README  \033[0m"
 	echo -e " \033[1m ${red}4)${white}\033[1m INSTALL ARCHLINUX ! \033[0m"
 	echo -e " \033[1m ${red}5)${white}\033[1m Exit\033[0m"
-	echo -n "\033[1m \n\n${yellow}Choice: ${white}\033[0m"
+	echo -en "\033[1m \n\n${yellow}Choice: ${white}\033[0m"
 	read CHOICE
 
 case $CHOICE in
