@@ -20,9 +20,9 @@ do
 	echo -e "\033[1m ${red} \n\n TAKE YOUR PICK \n\033[0m"
 	echo -e "\033[1m ${green}\n\n  Make Sure You ${red}RUN ${yellow}Post-Install ${red}Before Installing ${yellow}'${green}ANOTHER${yellow}' ${green}WM${white}/${green}DE\n\n\033[0m"
 	echo -e " \033[1m ${red}1)${white}\033[1m VIEW Post-Install Script \n\033[0m"
-	echo -e " \033[1m ${red}2)${white}\033[1m RUN Post-Install script \n\033[0m"
+	echo -e " \033[1m ${red}2)${white}\033[1m RUN ${yellow}Post-Install${white} script \n\033[0m"
 	echo -e " \033[1m ${red}3)${white}\033[1m VIEW another.sh \n\033[0m"
-	echo -e " \033[1m ${red}4)${white}\033[1m Install Another WM/DE \n\033[0m"
+	echo -e " \033[1m ${red}4)${white}\033[1m Install ${green}Another${white} WM/DE \n\033[0m"
 	echo -e " \033[1m ${red}5)${white}\033[1m Exit \033[0m"
 	echo -en "\033[1m \n\n${yellow}Choice: ${white}\033[0m"
 	read DATCHOICE
