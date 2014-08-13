@@ -74,7 +74,7 @@ makeitbro() {
 			pacman -Syy xfce4 xfce4-goodies --noconfirm
 		elif [ "$DemChoice" -eq "2" ]
 			then
-			pacman -Syy zsh zsh-syntax-highlighting xcompmgr transset-df xscreensaver vim feh i3-wm i3status dmenu rxvt-unicode urxvt-perls --noconfirm
+			pacman -Syy conky zsh zsh-syntax-highlighting xcompmgr transset-df xscreensaver vim feh i3-wm i3status dmenu rxvt-unicode urxvt-perls --noconfirm
 		
 		elif [ "$DemChoice" -eq "3" ]
 			then
