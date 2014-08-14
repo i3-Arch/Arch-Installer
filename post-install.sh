@@ -465,9 +465,6 @@ urxvtstuff() {
 		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-font-size-git/urxvt-font-size-git.tar.gz && tar xzvf urxvt-font-size-git.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-font-size-git && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-font-size-git/*.xz --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/pa/pa-applet-git/pa-applet-git.tar.gz && tar xzvf pa-applet-git.tar.gz"
-		su "$namebro" -c "cd /home/"$namebro"/build-dir/pa-applet-git && makepkg -s"
-		pacman -U /home/"$namebro"/build-dir/pa-applet-git/*.xz --noconfirm
 		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/pr/prezto-git/prezto-git.tar.gz && tar xzvf prezto-git.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/prezto-git && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/prezto-git/*.xz --noconfirm
