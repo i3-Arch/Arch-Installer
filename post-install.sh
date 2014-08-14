@@ -225,14 +225,20 @@ xseti3() {
 	if [ "$DemChoice" -eq "2" ] 
 		then
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/config
+		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/conky/conky-i3bar
+		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/conky/.conkyrc
 		if [ -f "$HOME/.i3/config" ]
 			then
 			rm -rf ~/.i3
-			mkdir ~/.i3
-			mv config ~/.i3/config
+			mkdir -pv ~/.i3/conky
+			mv config ~/.i3/
+			mv .conkyrc ~/.i3/conky/
+			mv conky-i3bar ~/.i3/conky/
 		else
-			mkdir ~/.i3
-			mv config ~/.i3/config
+			mkdir -pv ~/.i3/conky
+			mv config ~/.i3/
+			mv .conkyrc ~/.i3/conky/
+			mv conky-i3bar ~/.i3/conky/
 		fi
 	fi
 }
@@ -296,6 +302,9 @@ envset() {
 				cp -r .i3 /home/"$namebro"/
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3/config
+				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky
+				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky/.conkyrc
+				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky/conky-i3bar
 				chown "$namebro":"$namebro" /home/"$namebro"/.Xresources
 				chown "$namebro":"$namebro" /home/"$namebro"/.vimrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.zshrc
