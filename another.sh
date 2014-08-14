@@ -74,7 +74,7 @@ makeitbro() {
 			pacman -Syy xfce4 xfce4-goodies --noconfirm
 		elif [ "$DemChoice" -eq "2" ]
 			then
-			pacman -Syy conky zsh zsh-syntax-highlighting xcompmgr transset-df xscreensaver vim feh i3-wm i3status dmenu rxvt-unicode urxvt-perls --noconfirm
+			pacman -Syy conky vimpager zsh zsh-syntax-highlighting xcompmgr transset-df xscreensaver vim feh i3-wm i3status dmenu rxvt-unicode urxvt-perls --noconfirm
 		
 		elif [ "$DemChoice" -eq "3" ]
 			then
@@ -113,13 +113,19 @@ xseti3() {
 	if [ "$DemChoice" -eq "2" ] 
 		then
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/config
+		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/conky-i3bar
+		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/.conkyrc
 		if [ -f "$HOME/.i3/config" ]
 			then
 			rm -rf ~/.i3
-			mkdir ~/.i3
+			mkdir -pv ~/.i3/conky
 			mv config ~/.i3/config
+			mv .conkyrc ~/.i3/conky/
+			mv conky-i3bar ~/.i3/conky/
 		else
-			mkdir ~/.i3
+			mkdir -pv ~/.i3/conky
+			mv .conkyrc ~/.i3/conky/
+			mv conky-i3bar ~/.i3/conky/
 			mv config ~/.i3/config
 		fi
 	fi
@@ -146,6 +152,11 @@ envset() {
 				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.vimrc
 				cp .Xresources .zshrc .vimrc /home/"$namebro"/
 				cp -r .i3 /home/"$namebro"/
+				chmod +x /home/"$namebro"/.i3/conky-i3bar
+				chmod +x /home/"$namebro"/.i3/.conkyrc
+				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky
+				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky/conky-i3bar
+				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky/.conkyrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3/config
 				chown "$namebro":"$namebro" /home/"$namebro"/.Xresources
@@ -154,7 +165,7 @@ envset() {
 				printf "\033[1m \n\n ${yellow}Commenting Out Stuff for i3-Setup in .xinitrc \n\033[0m"
 				sleep 4
 				sed -i '13i\ ' /home/"$namebro"/.xinitrc
-				sed -i '14i #UNCOMMENT pa-applet ; xscreensaver ; xcompmgr ; xrdb ; exec i3 ; if planning to use i3' /home/"$namebro"/.xinitrc
+				sed -i '14i #UNCOMMENT pa-applet ; xscreensaver ; xcompmgr ; xrdb ; if planning to use i3' /home/"$namebro"/.xinitrc
 				sed -i '15i #exec pa-applet &' /home/"$namebro"/.xinitrc
 				sed -i '16i #exec xscreensaver &' /home/"$namebro"/.xinitrc
 				sed -i '17i #xcompmgr -c -f -r 28 D 10 &' /home/"$namebro"/.xinitrc

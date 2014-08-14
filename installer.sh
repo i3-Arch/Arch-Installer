@@ -202,6 +202,9 @@ sixfour() {
 	fi
 }
 
+cleangrub() {
+	sed -i '112,147d' /mnt/boot/grub/grub.cfg   # this removes redundant menuentry in grub
+}
 
 main() {
 	checkdat
@@ -212,6 +215,7 @@ main() {
     	CALLpart 	 		## CALL PARTITIONING IF STATEMENT
 	pkgmntchroot 	 		## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
 	sixfour
+	cleangrub
 	cp issue /mnt/etc/issue   	## TTY ART 
 	postsetup			## POST INSTALL SCRIPT READY FOR AFTER INSTALL
 	umount -R /mnt	2> /dev/null		## UNMOUNT 

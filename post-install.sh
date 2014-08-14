@@ -193,7 +193,7 @@ makeitbro() {
 			pacman -Syy xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
 		elif [ "$DemChoice" -eq "2" ]
 			then
-			pacman -Syy zsh conky zsh-syntax-highlighting xcompmgr transset-df xscreensaver xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			pacman -Syy zsh vimpager conky zsh-syntax-highlighting xcompmgr transset-df xscreensaver xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
 		
 		elif [ "$DemChoice" -eq "3" ]
 			then
@@ -307,6 +307,8 @@ envset() {
 				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.vimrc
 				cp .Xresources .zshrc .xinitrc .vimrc /home/"$namebro"/
 				cp -r .i3 /home/"$namebro"/
+				chmod +x /home/"$namebro"/.i3/conky/conky-i3bar
+				chmod +x /home/"$namebro"/.i3/conky/conky-i3bar
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3/config
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky
