@@ -60,7 +60,14 @@ intelinside() {
 		pacman -S intel-dri xf86-video-intel --noconfirm
 	
 	else
-		pacman -S ati-dri xf86-video-ati
+		printf "\033[1m \n\n ${green}Are you using AMD ? \n033[0m"
+		printf "\033[1m \n ${white}[${green}Y${white}|${red}N${white}] \033[0m"
+		printf "\033[1m \n ${yellow}Answer: ${white}\033[0m"
+		read amdstuff
+		if [ "$amdstuff" == Y -o "$amdstuff" == y ]
+			then
+			pacman -S ati-dri xf86-video-ati
+		fi
 	fi
 }
 
