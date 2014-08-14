@@ -57,7 +57,10 @@ intelinside() {
 	read intelstuff
 	if [ "$intelstuff" == Y -o "$intelstuff" == y ]
 		then
-		pacman -Syy intel-dri xf86-video-intel --noconfirm
+		pacman -S intel-dri xf86-video-intel --noconfirm
+	
+	else
+		pacman -S ati-dri xf86-video-ati
 	fi
 }
 
