@@ -137,7 +137,7 @@ FULLpart() {
 
 pkgmntchroot() {
 	clear
-	printf " \033[1m ${green} Setting up install... ${white} \n \033[0m "
+	printf " \033[1m ${green} Setting up install... ${white}\n\033[0m "
 	mount $rewtpart /mnt
 	mkdir /mnt/home
 	mkdir /mnt/boot
