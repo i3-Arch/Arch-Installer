@@ -260,7 +260,7 @@ guestbro() {
 		if [ "$wutUsay" == Y -o "$wutUsay" == y ]
 			then
 			pacman -Syy virtualbox-guest-utils --noconfirm
-			depmod
+			su "$namebro" -c "depmod" 2> /dev/null
 			modprobe -a vboxguest vboxsf vboxvideo
 			echo "vboxguest" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
 			echo "vboxvideo" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
