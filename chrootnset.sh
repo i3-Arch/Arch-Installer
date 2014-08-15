@@ -67,13 +67,15 @@ timelocale() {
 grubinst() {										
 	grub-install --target=i386-pc $yourdrive
 	grub-mkconfig -o /boot/grub/grub.cfg
+	sed -i '112,147d' /boot/grub/grub.cfg
 }
 
 # Install Syslinux
 syslinuxinst() {
 	pacman -Syy syslinux --noconfirm
 	syslinux-install_update -i -a -m
-	sed -i '54s@.*@APPEND root='"$rewtpart"' rw @' /boot/syslinux/syslinux.cfg
+	sed -i '54s@.*@    APPEND root='"$rewtpart"' rw @' /boot/syslinux/syslinux.cfg
+	sed -i '57,61d' /boot/syslinux/syslinux.cfg
 }
 
 # Choose Your Bootloader
