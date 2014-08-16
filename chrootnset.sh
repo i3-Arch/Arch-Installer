@@ -33,16 +33,20 @@ timelocale() {
 	printf "\033[1m \n ${yellow}     Enter your Time Zone ${white}\n \033[0m"
 	printf "\033[1m \n ${red}CHOICES ARE: ${white}New York ${green}or ${white}Athens \n \033[0m"
 	printf "\033[1m \n ${yellow}Sorry I didnt do all timezones yet\n \n \033[0m"
-	printf "\033[1m \n ${white}ENTER ${green}(1)${red}for New York \n \033[0m"
-	printf "\033[1m${white}ENTER ${green}(2)${red}for Athens \n \033[0m"
+	printf "\033[1m \n ${white}ENTER ${green}(1)${red}for Eastern \n \033[0m"
+	printf "\033[1m${white}ENTER ${green}(2)${red}for Central \n \033[0m"
+	printf "\033[1m${white}ENTER ${green}(3)${red}for Pacific\n \033[0m"
 	printf "\033[1m \n ${white} Choice: \033[0m"
 	read timezoneresponse
-	if [ "$timezoneresponse" == NewYork -o "$timezoneresponse" == 1 ]
+	if [  "$timezoneresponse" -eq 1 ]
 		then
-			$(ln -s /usr/share/zoneinfo/America/New_York /etc/localtime) ;
-	elif	[ "$timezoneresponse" == Athens -o "$timezoneresponse" == 2 ]
+			$(ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime) ;
+	elif [ "$timezoneresponse" -eq 2 ]
 		then
-			$( ln -s /usr/share/zoneinfo/Europe/Athens /etc/localtime) ;
+			$(ln -s /usr/share/zoneinfo/US/Central /etc/localtime) ;
+	elif	[ "$timezoneresponse" -eq 3 ]
+		then
+			$( ln -s /usr/share/zoneinfo/US/Pacific /etc/localtime) ;
 	else
 		printf "\033[1m ${red}Not Understood | do it yourself |  with 'ln -s'\n\033[0m"
 	fi
