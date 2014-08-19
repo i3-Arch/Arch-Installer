@@ -66,7 +66,7 @@ intelinside() {
 		read amdstuff
 		if [ "$amdstuff" == Y -o "$amdstuff" == y ]
 			then
-			pacman -S ati-dri xf86-video-ati
+			pacman -S ati-dri xf86-video-ati --noconfirm
 		fi
 	fi
 }
