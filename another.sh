@@ -147,7 +147,10 @@ envset() {
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
-				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
+				if [ ! -f /home/"$namebro"/.Xresources ]
+					then
+					wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
+				fi
 				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.zshrc
 				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.vimrc
 				cp .Xresources .zshrc .vimrc /home/"$namebro"/
@@ -165,12 +168,11 @@ envset() {
 				printf "\033[1m \n\n ${yellow}Commenting Out Stuff for i3-Setup in .xinitrc \n\033[0m"
 				sleep 4
 				sed -i '13i\ ' /home/"$namebro"/.xinitrc
-				sed -i '14i #UNCOMMENT pa-applet ; xscreensaver ; xcompmgr ; xrdb ; if planning to use i3' /home/"$namebro"/.xinitrc
-				sed -i '15i #exec pa-applet &' /home/"$namebro"/.xinitrc
-				sed -i '16i #exec xscreensaver &' /home/"$namebro"/.xinitrc
-				sed -i '17i #xcompmgr -c -f -r 28 D 10 &' /home/"$namebro"/.xinitrc
-				sed -i '18i #xrdb merge .Xresources' /home/"$namebro"/.xinitrc
-				sed -i '19i #exec i3' /home/"$namebro"/.xinitrc
+				sed -i '14i #UNCOMMENT -> xscreensaver ; xcompmgr ; xrdb ; if planning to use i3' /home/"$namebro"/.xinitrc
+				sed -i '15i #exec xscreensaver &' /home/"$namebro"/.xinitrc
+				sed -i '16i #xcompmgr -c -f -r 28 D 10 &' /home/"$namebro"/.xinitrc
+				sed -i '17i #xrdb -merge .Xresources' /home/"$namebro"/.xinitrc
+				sed -i '18i #exec i3' /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" -eq "3" ]
 			then
@@ -189,8 +191,11 @@ envset() {
 				sleep 4
 				sed -i '13i\ ' /home/"$namebro"/.xinitrc
 				sed -i '14i #exec dwm' /home/"$namebro"/.xinitrc
-				sed -i '15i #xrdb merge .Xresources' /home/"$namebro"/.xinitrc
-				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
+				sed -i '15i #xrdb -merge .Xresources' /home/"$namebro"/.xinitrc
+				if [ ! -f /home/"$namebro"/.Xresources ] 
+					then
+					wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.Xresources
+				fi
 				mv ~/.Xresources /home/"$namebro"/
 				chown "$namebro":"$namebro" /home/"$namebro"/.Xresources
 				abs community/dwm
