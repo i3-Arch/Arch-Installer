@@ -101,11 +101,19 @@ BOOTload() {
 	fi
 }	
 
+setTHATshi() {  # SET LOCALE SYSTEMWIDE with whatever is unc-commented inside of locale.gen
+cat > /etc/locale.conf <<EOF
+#!/bin/sh
+export LANG=$(grep -v '^ *#' /etc/locale.gen)
+EOF
+}
+
 # Main Function
 main() {
 	hostname
 	timelocale
 	BOOTload
+	setTHATshi
 	rm chrootnset.sh config.sh #cleanup
 	exit
 }
