@@ -89,8 +89,12 @@
 	
 	1. [X] Make a menu that makes things easier
 
-	2. [ ] Add More Options In General ( LUKS )
-
+	2. [ ] Add More Options In General
+			* LUKS
+			* More Filesystem Options ( btrfs )
+			* Kernel Options
+			* Even More Minimal Install option
+	
 	3. [ ] Misc -- 
 				 ___________________
 				|                   |
