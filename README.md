@@ -39,9 +39,11 @@
 	
  	 			wget goo.gl/4v5IyX -O menu.sh
 -Or
- 		 		wget is.gd/iTNqig -O menu.sh   
+
+				wget is.gd/iTNqig -O menu.sh
 
 - If Shortened URLS are 404 then run this
+				
 				wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh
 
             
