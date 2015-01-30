@@ -37,7 +37,7 @@
 **1.** 
 *DOWNLOAD MENU SCRIPT TO SET THINGS UP*
 	
- 	 			wget goo.gl/4v5IyX -O menu.sh
+	wget goo.gl/4v5IyX -O menu.sh
 -Or
 
 				wget is.gd/iTNqig -O menu.sh
