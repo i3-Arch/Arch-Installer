@@ -40,6 +40,7 @@ https://www.archlinux.org/download/
 	wget goo.gl/4v5IyX -O menu.sh
 		       		
 - or
+
 	wget is.gd/iTNqig -O menu.sh   
 
 - If Shortened URLS are 404 then run this
@@ -97,7 +98,9 @@ https://www.archlinux.org/download/
 - Kernel Options
 - Even More Minimal Install option
 	
-**3.** [ ] Misc -- 
+**3.** 
+
+[ ] Misc -- 
 				 ___________________
 				|                   |
 				|   WM/DE's to ADD  |
