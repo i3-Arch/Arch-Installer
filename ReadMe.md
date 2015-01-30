@@ -39,29 +39,26 @@
 	
 		       	wget is.gd/iTNqig -O menu.sh   
 		       		
-		       
 		       ** If Shortened URLS are 404 **
 		       
 		       ** Run This ** 
                        wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh
            
                
-                2. :RUN: 
+	2. :RUN: 
 
-                        source menu.sh
+                     source menu.sh
 
 
 # POST INSTALL
-				     *May Make Easier Later*
-			( This below will work if VM or Wired Connection )
-			( Consult the ARCH WIKI for wireless connections )
 			
 		1. :RUN:
-			
+			** Wired Connection **
 			dhcpcd
 			systemctl enable dhcpcd.service   ( This is to enable dhcpcd at boot )
 			
-		
+			** Wireless Connection **
+			wifi-menu
 			
 
 		2. After You Have REMOVED LIVE IMAGE and boot into newly installed OS
@@ -76,9 +73,9 @@
 			
 
 			:: Current WM/Environment Choices ::
-					1. Custom i3 Setup  		( Screenshots in my i3config repo (( i3-Arch )) )
+					1. Custom i3 Setup  	( Screenshots in my i3config repo (( i3-Arch )) )
 					2. Default Xfce Setup
-					3. Default Dwm Setup 		( Arch Way - ABS )
+					3. Default Dwm Setup 		( Arch Way ==> ABS )
 					4. Default Cinnamon Setup
 					5. Default Awesome Setup
 					6. Default Gnome Setup 		( gnome + gnome-extra )
