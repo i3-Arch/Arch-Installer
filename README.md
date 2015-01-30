@@ -1,8 +1,7 @@
 # ABOUT
-
-
-		 	 *Current Version: 2.0-BETA*
-			=============================
+                     #################################
+		     ##	 Current Version: 2.0-BETA  ##
+		     #################################
 
 
   :: Authors ::
@@ -71,16 +70,17 @@ https://www.archlinux.org/download/
 *:RUN:*
 	source post-menu.sh
 
-		
+	
 
-			:: Current WM/Environment Choices ::
-					1. Custom i3 Setup  	( Screenshots in my i3config repo (( i3-Arch )) )
-					2. Default Xfce Setup
-					3. Default Dwm Setup 		( Arch Way ==> ABS )
-					4. Default Cinnamon Setup
-					5. Default Awesome Setup
-					6. Default Gnome Setup 		( gnome + gnome-extra )
-					7. Default Kde Setup
+:: Current WM/Environment Choices ::
+------------------------------------
+- 1. Custom i3 Setup  	( Screenshots in my i3config repo (( i3-Arch )) )
+- 2. Default Xfce Setup
+- 3. Default Dwm Setup 		( Arch Way ==> ABS )
+- 4. Default Cinnamon Setup
+- 5. Default Awesome Setup
+- 6. Default Gnome Setup 		( gnome + gnome-extra )
+- 7. Default Kde Setup
 
 
 # CURRENT OBJECTIVES
