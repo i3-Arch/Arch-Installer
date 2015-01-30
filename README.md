@@ -1,7 +1,7 @@
 # ABOUT
-*==============================================*
-*+-------- Current Version:  1.3-BETA --------+*
-*==============================================*
+==============================================
++-------- Current Version:  1.3-BETA --------+
+==============================================
 	       	
 **This is made to install archlinux with base base/devel**
 
@@ -15,7 +15,7 @@
 - RUN AT YOUR OWN RISK
 		
 
-*__________________________________________________________________________________________________________________*
+*_____________________________________________________________________________________________________________*
 
 
 **:: Authors ::**
@@ -24,9 +24,9 @@
 - trewchainz
 - t60r
 			
-*#####################################################*			
-*##-----------THIS IS A WORK IN PROGRESS -----------##*
-*#####################################################*
+#####################################################			
+##-----------THIS IS A WORK IN PROGRESS -----------##
+#####################################################
 
 ** FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE **
 https://www.archlinux.org/download/
@@ -39,13 +39,12 @@ https://www.archlinux.org/download/
 		       
 		       wget goo.gl/4v5IyX -O menu.sh
 		       		
-		       		-or-
+- or
 	
 		       	wget is.gd/iTNqig -O menu.sh   
-		       		
-		       ** If Shortened URLS are 404 **
+
+- If Shortened URLS are 404 then run this
 		       
-		       ** Run This ** 
                        wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh
            
                
