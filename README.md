@@ -1,13 +1,13 @@
 # ABOUT
 
-**:: Authors ::**
+*:: Authors ::*
 -----------------			
 - i3-Arch
 - trewchainz
 - t60r
 
 **Current Version: 2.0-BETA**
-=============================
+-----------------------------
 	       	
 **This is made to install archlinux with base base/devel**
 
@@ -21,19 +21,14 @@
 - RUN AT YOUR OWN RISK
 		
 
-*____________________________________________________________________________________________________________*
+*___________________________________________________________________________________________________________*
 
 
 
-			
-#####################################################			
-##-----------THIS IS A WORK IN PROGRESS -----------##
-#####################################################
-
-** FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE **
+**FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE**
 https://www.archlinux.org/download/
 			 
-** THEN BOOT INTO LIVE ARCH IMAGE **
+*THEN BOOT INTO LIVE ARCH IMAGE*
 			  
 			  
 **1.** 
