@@ -1,40 +1,41 @@
 # ABOUT
-	       	==============================================
-	       	+-------- Current Version:  1.3-BETA --------+
-	       	==============================================
+**==============================================**
+**+-------- Current Version:  1.3-BETA --------+**
+**==============================================**
 	       	
 *This is made to install archlinux with base base/devel*
-			*May make a more minimal install option*
+-	Will make a more minimal install option*
 			
-		* Then optionally setup a WM/Environment afterwards 
-			
+* Then optionally setup a WM/Environment afterwards*
 	       	
 	       
-				[ NOTICE ]
-					- CURRENTLY UNDER DEVELOPMENT
-					- RUN AT YOUR OWN RISK
+**[ NOTICE ]**
+- CURRENTLY UNDER DEVELOPMENT
+- RUN AT YOUR OWN RISK
 		
 
-	___________________________________________________________________
-	===================================================================
+*__________________________________________________________________________________________________________________*
+*==================================================================================================================*
 
 
-		              :: Authors ::
+**:: Authors ::**
 			
-			 	*  i3-Arch
-			  	* trewchainz
-			  	*  t60r
+*i3-Arch*
+*trewchainz*
+*t60r*
 			
-			
-		-----------THIS IS A WORK IN PROGRESS -----------
+*#####################################################*			
+*##-----------THIS IS A WORK IN PROGRESS -----------##*
+*#####################################################*
 
-             ia. ** FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE **
-			 https://www.archlinux.org/download/
+** FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE **
+https://www.archlinux.org/download/
 			 
-	     ib. ** THEN BOOT INTO LIVE ARCH IMAGE **
+** THEN BOOT INTO LIVE ARCH IMAGE **
 			  
 			  
-	1. :DOWNLOAD: 
+**1.** 
+*DOWNLOAD:*
 		       
 		       wget goo.gl/4v5IyX -O menu.sh
 		       		
