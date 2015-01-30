@@ -1,12 +1,13 @@
 # ABOUT
-**==============================================**
-**+-------- Current Version:  1.3-BETA --------+**
-**==============================================**
+*==============================================*
+*+-------- Current Version:  1.3-BETA --------+*
+*==============================================*
 	       	
-*This is made to install archlinux with base base/devel*
--	Will make a more minimal install option*
+**This is made to install archlinux with base base/devel**
+
+-Will make a more minimal install option
 			
-* Then optionally setup a WM/Environment afterwards*
+**Then optionally setup a WM/Environment afterwards**
 	       	
 	       
 **[ NOTICE ]**
@@ -15,14 +16,13 @@
 		
 
 *__________________________________________________________________________________________________________________*
-*==================================================================================================================*
 
 
 **:: Authors ::**
 			
-*i3-Arch*
-*trewchainz*
-*t60r*
+- i3-Arch*
+- trewchainz
+- t60r
 			
 *#####################################################*			
 *##-----------THIS IS A WORK IN PROGRESS -----------##*
