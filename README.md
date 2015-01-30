@@ -2,7 +2,7 @@
 
 **:: Authors ::**
 -----------------			
-- i3-Arch*
+- i3-Arch
 - trewchainz
 - t60r
 - Current Version:  2.0-BETA
