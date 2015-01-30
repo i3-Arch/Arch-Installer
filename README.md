@@ -1,11 +1,11 @@
 # ABOUT
 
 
-**Current Version: 2.0-BETA**
+*Current Version: 2.0-BETA*
 =============================
 
 
-*:: Authors ::*
+  :: Authors ::
 -----------------			
 - i3-Arch
 - trewchainz
