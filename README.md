@@ -100,16 +100,17 @@ https://www.archlinux.org/download/
 	
 **3.** 
 
-[ ] Misc -- 
-				 ___________________
-				|                   |
-				|   WM/DE's to ADD  |
-		       	|===================|
-		        |                   |
-		        |    Herbstluftwm   |
-		        |      Spectrwm     |
-		        |      Openbox      |
-		        |___________________|
+[ ] Misc
+	
+		 ___________________
+		|                   |
+		|   WM/DE's to ADD  |
+	       	|===================|
+	        |                   |
+	        |    Herbstluftwm   |
+	        |      Spectrwm     |
+	        |      Openbox      |
+	        |___________________|
 
 **4.** [ ] Cleanup
 
