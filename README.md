@@ -1,11 +1,16 @@
 # ABOUT
-==============================================
-+-------- Current Version:  1.3-BETA --------+
-==============================================
+
+**:: Authors ::**
+-----------------			
+- i3-Arch*
+- trewchainz
+- t60r
+- Current Version:  2.0-BETA
+
 	       	
 **This is made to install archlinux with base base/devel**
 
--Will make a more minimal install option
+- Will make a more minimal install option soon !
 			
 **Then optionally setup a WM/Environment afterwards**
 	       	
@@ -15,14 +20,10 @@
 - RUN AT YOUR OWN RISK
 		
 
-*_____________________________________________________________________________________________________________*
+*____________________________________________________________________________________________________________*
 
 
-**:: Authors ::**
-			
-- i3-Arch*
-- trewchainz
-- t60r
+
 			
 #####################################################			
 ##-----------THIS IS A WORK IN PROGRESS -----------##
@@ -35,45 +36,42 @@ https://www.archlinux.org/download/
 			  
 			  
 **1.** 
-*DOWNLOAD:*
+*DOWNLOAD MENU SCRIPT TO SET THINGS UP*
 		       
-		       wget goo.gl/4v5IyX -O menu.sh
+	       wget goo.gl/4v5IyX -O menu.sh
 		       		
 - or
-	
-		       	wget is.gd/iTNqig -O menu.sh   
+  	       wget is.gd/iTNqig -O menu.sh   
 
 - If Shortened URLS are 404 then run this
-		       
-                       wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh
+	
+	wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh
            
                
-	2. :RUN: 
-
-                     source menu.sh
+**2.**
+*RUN:*
+	source menu.sh
 
 
 # POST INSTALL
 			
-		1. :RUN:
-			** Wired Connection **
+**1.**
+** For Wired Connection Run**
 			dhcpcd
 			systemctl enable dhcpcd.service   ( This is to enable dhcpcd at boot )
 			
-			** Wireless Connection **
+** For Wireless Connection Run**
 			wifi-menu
 			
 
-		2. After You Have REMOVED LIVE IMAGE and boot into newly installed OS
+**2.**
+*After You Have REMOVED LIVE IMAGE and boot into newly installed OS*
+- MAKE SURE YOU CHOOSE OPTION 2 BEFORE CHOOSING OPTION 4
+
+*:RUN:*
+	source post-menu.sh
+
 		
-				** MAKE SURE YOU CHOOSE OPTION 2 BEFORE CHOOSING OPTION 4 **
-
-
-		:RUN:
-			
-			source post-menu.sh
-
-			
 
 			:: Current WM/Environment Choices ::
 					1. Custom i3 Setup  	( Screenshots in my i3config repo (( i3-Arch )) )
@@ -87,15 +85,15 @@ https://www.archlinux.org/download/
 
 # CURRENT OBJECTIVES
 	
-	1. [X] Make a menu that makes things easier
+**1.** [X] Make a menu that makes things easier
 
-	2. [ ] Add More Options In General
-			* LUKS
-			* More Filesystem Options ( btrfs )
-			* Kernel Options
-			* Even More Minimal Install option
+**2.** [ ] Add More Options In General
+- LUKS
+- More Filesystem Options ( btrfs )
+- Kernel Options
+- Even More Minimal Install option
 	
-	3. [ ] Misc -- 
+**3.** [ ] Misc -- 
 				 ___________________
 				|                   |
 				|   WM/DE's to ADD  |
@@ -106,9 +104,9 @@ https://www.archlinux.org/download/
 		        |      Openbox      |
 		        |___________________|
 
-	4. [ ] Cleanup
+**4.** [ ] Cleanup
 
-	5. [ ] Release
+**5.** [ ] Release
 
 	       
 	.... .........    .       . .. .....  .I.......  ..      .                     
