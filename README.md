@@ -3,7 +3,7 @@
 	       	+-------- Current Version:  1.3-BETA --------+
 	       	==============================================
 	       	
-	       * This is made to install archlinux with base base/devel
+*This is made to install archlinux with base base/devel*
 			*May make a more minimal install option*
 			
 		* Then optionally setup a WM/Environment afterwards 
