@@ -4,8 +4,9 @@
 	       	==============================================
 	       	
 	       * This is made to install archlinux with base base/devel
+			*May make a more minimal install option*
 			
-			* And then optionally setup a WM/Environment afterwards 
+		* Then optionally setup a WM/Environment afterwards 
 			
 	       	
 	       
@@ -27,8 +28,10 @@
 			
 		-----------THIS IS A WORK IN PROGRESS -----------
 
-             i. ** FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE **
-			 	i. ** BOOT INTO LIVE ARCH IMAGE **
+             ia. ** FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE **
+			 https://www.archlinux.org/download/
+			 
+	     ib. ** THEN BOOT INTO LIVE ARCH IMAGE **
 			  
 			  
 	1. :DOWNLOAD: 
