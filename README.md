@@ -37,20 +37,14 @@ https://www.archlinux.org/download/
 **1.** 
 *DOWNLOAD MENU SCRIPT TO SET THINGS UP*
 	
-		       
-     wget goo.gl/4v5IyX -O menu.sh
-		       		
+	wget goo.gl/4v5IyX -O menu.sh
 - or
-
-
-      wget is.gd/iTNqig -O menu.sh   
+	wget is.gd/iTNqig -O menu.sh   
 
 - If Shortened URLS are 404 then run this
-	
-	
-      wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh
-           
-               
+	wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh
+
+            
 **2.**
 *RUN:*
 	source menu.sh
@@ -101,13 +95,11 @@ https://www.archlinux.org/download/
 - Kernel Options
 - Even More Minimal Install option
 	
-**3.** 
+**3.** [ ] Misc
 
-[ ] Misc
-	
-	 ___________________
-	|                   |
-	|   WM/DE's to ADD  |
+		 ___________________
+		|                   |
+		|   WM/DE's to ADD  |
 	       	|===================|
 	        |                   |
 	        |    Herbstluftwm   |
