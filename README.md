@@ -1,8 +1,7 @@
 # ABOUT
-                     #################################
-		     ##	 Current Version: 2.0-BETA  ##
-		     #################################
-
+	#################################
+	##  Current Version: 2.0-BETA  ##
+	#################################
 
   :: Authors ::
 -----------------			
@@ -29,6 +28,7 @@
 
 
 **FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE**
+
 https://www.archlinux.org/download/
 			 
 *THEN BOOT INTO LIVE ARCH IMAGE*
@@ -56,18 +56,22 @@ https://www.archlinux.org/download/
 			
 **1.**
 ** For Wired Connection Run**
-			dhcpcd
-			systemctl enable dhcpcd.service   ( This is to enable dhcpcd at boot )
+	
+	dhcpcd
+	systemctl enable dhcpcd.service   ( This is to enable dhcpcd at boot )
 			
 ** For Wireless Connection Run**
-			wifi-menu
+	
+	wifi-menu
 			
 
 **2.**
 *After You Have REMOVED LIVE IMAGE and boot into newly installed OS*
+
 - MAKE SURE YOU CHOOSE OPTION 2 BEFORE CHOOSING OPTION 4
 
 *:RUN:*
+
 	source post-menu.sh
 
 	
