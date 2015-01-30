@@ -1,13 +1,17 @@
 # ABOUT
 
+
+**Current Version: 2.0-BETA**
+=============================
+
+
 *:: Authors ::*
 -----------------			
 - i3-Arch
 - trewchainz
 - t60r
 
-**Current Version: 2.0-BETA**
------------------------------
+
 	       	
 **This is made to install archlinux with base base/devel**
 
