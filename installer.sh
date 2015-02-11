@@ -9,8 +9,7 @@
 ############################################
 
 #Version
-
-ProgramVersion="2.0"
+Version="2.0"
 
 # FONT
 setfont Lat2-Terminus16
@@ -45,9 +44,8 @@ cat <<"EOT"
 	 #     # #   #  #    # #    # #      # #   ## #    #  #  #     ###
 	 #     # #    #  ####  #    # ###### # #    #  ####  #    #    ###
 EOT
-	
 	printf "		########################################\n"
-	printf "		##	Version: "$ProgramVersion"    ##\n"
+	printf "		##	  Version: "$Version"         ##\n"
 	printf "		########################################\n\n"
 	sleep 3
 }
