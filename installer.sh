@@ -3,9 +3,6 @@
 # 	Authors ::->>	 i3-Arch, trewchainz, t60r  <<-::
 #
 #		Made to install archlinux
-#
-#		VERSION 1.3-BETA
-#
 ############################################
 
 #Version
