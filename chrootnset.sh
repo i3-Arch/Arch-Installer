@@ -5,7 +5,6 @@
 #
 #		Made to install archlinux
 #
-#		VERSION 1.3-BETA
 #
 ############################################
 
