@@ -6,7 +6,7 @@
 ############################################
 
 #Version
-Version="2.0"
+Version="2.0-BETA"
 
 # FONT
 setfont Lat2-Terminus16
@@ -42,7 +42,7 @@ cat <<"EOT"
 	 #     # #    #  ####  #    # ###### # #    #  ####  #    #    ###
 EOT
 	printf "		########################################\n"
-	printf "		##	  Version: "$Version"         ##\n"
+	printf "		##   Installer Version:  "$Version"   ##\n"
 	printf "		########################################\n\n"
 	sleep 3
 }
