@@ -13,8 +13,8 @@ yellow="$(tput setaf 3)"
 # SETTING THINGS UP FIRST
 cd "$HOME"
 clear
-DATCHOICE=5
-until [ "$DATCHOICE" -eq 6 ]
+DATCHOICE=6
+until [ "$DATCHOICE" -eq 7 ]
 do
 	clear
 	echo -e "\033[1m ${red} \n\n TAKE YOUR PICK \n\033[0m"
@@ -24,7 +24,8 @@ do
 	echo -e " \033[1m ${red}3)${white}\033[1m VIEW another.sh \n\033[0m"
 	echo -e " \033[1m ${red}4)${white}\033[1m Install ${green}Another${white} WM/DE \n\033[0m"
 	echo -e " \033[1m ${red}5)${white}\033[1m Setup Wireless connection \n\033[0m"
-	echo -e " \033[1m ${red}6)${white}\033[1m Exit \033[0m"
+	echo -e " \033[1m ${red}6)${white}\033[1m Setup Wired connection \n\033[0m"
+	echo -e " \033[1m ${red}7)${white}\033[1m Exit \033[0m"
 	echo -en "\033[1m \n\n${yellow}Choice: ${white}\033[0m"
 	read DATCHOICE
 
@@ -33,8 +34,9 @@ case "$DATCHOICE" in
 	2) echo -e "\033[1m ${yellow} #${white}Swag\033[0m" && source post-install.sh ;;
 	3) echo -e "\033[1m ${yellow} #${white}Paranoid\033[0m" && cat another.sh|less ;;
 	4) echo -e "\033[1m ${yellow} #${white}StillSwaggin\033[0m" && source another.sh ;;
-	5) echo -e "\033[1m ${yellow} #${white}Let's do this\033[0m" && source wireless-setup.sh ;;
-	6) echo -e "\033[1m ${yellow} HOPE YOU ENJOY... Rebooting Now\033[0m" && sleep 3 && rm post-install.sh another.sh post-menu.sh && $(reboot) ;;
+	5) echo -e "\033[1m ${yellow} #${white}Let's do it\033[0m" && source wireless-setup.sh ;;
+	6) echo -e "\033[1m ${yellow} #${white}Let's do it\033[0m" && source wired-setup.sh
+	7) echo -e "\033[1m ${yellow} HOPE YOU ENJOY... Rebooting Now\033[0m" && sleep 3 && rm wired-setup.sh post-install.sh another.sh post-menu.sh wireless-setup.sh && $(reboot) ;;
 	*) echo -e "\033[1m ${yellow} invalid option ${red} try again\033[0m"
 esac
 
