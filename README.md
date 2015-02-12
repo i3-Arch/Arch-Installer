@@ -55,21 +55,8 @@
 
 # POST INSTALL
 			
-**1.**
-** For Wired Connection Run**
-	
-	dhcpcd
-	systemctl enable dhcpcd.service   ( This is to enable dhcpcd at boot )
-			
-** For Wireless Connection Run**
-	
-	wifi-menu
-			
-
-**2.**
-*After You Have REMOVED LIVE IMAGE and boot into newly installed OS*
-
 - MAKE SURE YOU CHOOSE OPTION 2 BEFORE CHOOSING OPTION 4
+- MAKE SURE YOU CHOOSE OPTION 5 or 6 BEFORE CHOOSING OPTION 2
 
 *:RUN:*
 
