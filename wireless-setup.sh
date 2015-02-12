@@ -14,11 +14,11 @@ CheckIt() {
 
 
 Greet() {
-	printf "####################################################"
-	printf "##  Lets connect to your Wireless Access Point  \n##"
-	printf "##	    Choosing WPA/WPA2 by Default        \n##"
-	printf "##   	       * May Update Later * 	        \n##"
-	printf "####################################################"
+	printf "####################################################\n"
+	printf "##   Lets connect to your Wireless Access Point   ##\n"
+	printf "##	    Choosing WPA/WPA2 by Default          ##\n"
+	printf "##   	       * May Update Later * 	          ##\n"
+	printf "####################################################\n\n"
 }
 
 ProName(){
@@ -30,9 +30,9 @@ ProName(){
 
 IpType() {
 	printf "Would you like to use DHCP or STATIC Address?\n"
-	printf "			*Default is DHCP*\n"
+	printf "		  ==>  * Default is DHCP * <==\n"
 	printf "\nChoices:   [1] Static \n"
-	printf "			 [2] DHCP"
+	printf "	     [2] DHCP	( Choose if unsure ) \n" 
 	printf "\nAddress Type: "
 	read addressType
 		if [ "$addressType" -eq "1" ]
@@ -62,11 +62,10 @@ NetworkStuff() {
 	printf "\n\n	Enter your SSID: "
 	read yourSSID
 	printf "\n\n is your SSID hidden? \n"		
-	printf "Choices:    [1] Yes\n"
-	printf "			[2] No \n"
+	printf "Choices:  [Y/N]\n"
 	printf "\nChoice: "
 	read datch
-		if [ "$datch" -eq "1" ] 
+		if [ "$datch" == Y -o "$datch" == y ] 
 			then
 			echo "Hidden=yes" >> /etc/netctl/"$profileName"
 		fi
@@ -78,15 +77,16 @@ NetworkStuff() {
 	printf "Key: "
 	read -s yourKey
 	echo "Key='"$yourKey"'" >> /etc/netctl/"$profileName"
-
+	printf "\n\n * ==> NOTICE <== * \n\n"
+	printf "\n\n Key stored in /etc/netctl/"$profileName" in plain-text"
 }
 
 AutoStart() {
 	printf "\nWould you like to autostart this network at boot? \n"
-	printf "Choices:	[1] Yes\n"
-	printf "			[2] No\n"
+	printf "\n 	[Y/N] \n\n"
+	printf "\n Choice: "
 	read yourChoi
-		if [ "$yourChoi" -eq "1" ]
+		if [ "$yourChoi" == Y -o "$yourChoi" == y ]
 			then
 			netctl start "$profileName"
 			netctl enable "$profileName"
