@@ -19,7 +19,7 @@ do
 	clear
 	echo -e "\033[1m ${red} \n\n TAKE YOUR PICK \n\033[0m"
 	echo -e "\033[1m ${green}\n\n  Make Sure You ${red}RUN ${green}Post-Install ${red}Before choosing ${yellow}'${green}ANOTHER${yellow}' ${green}WM${white}/${green}DE${white} Option\n\n\033[0m"
-	echo -e "\033[1m ${red} 5 ${white}or ${red}6 ${green}[ SHOULD BE YOUR FIRTST CHOICE ]  ${red}And ${white}2 ${red}should be second. \033[0m\n\n"
+	echo -e "\033[1m ${red} -[5]- ${white}or ${red}-[6]- ${green}<=[ SHOULD BE YOUR FIRTST CHOICE ]  ${red}And ${white}2 ${red}should be second. \033[0m\n\n"
 	echo -e " \033[1m ${red}1)${white}\033[1m VIEW Post-Install Script \n\033[0m"
 	echo -e " \033[1m ${red}2)${white}\033[1m RUN ${yellow}Post-Install${white} script \n\033[0m"
 	echo -e " \033[1m ${red}3)${white}\033[1m VIEW another.sh \n\033[0m"
