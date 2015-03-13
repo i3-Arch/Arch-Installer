@@ -104,13 +104,13 @@ usersetup() {
 		clear
 		printf "\033[1m \n\n ${green} Lets create a user ! \n \033[0m"
 		printf "\033[1m \n\n ${yellow} Enter username you want to create \n \033[0m"
-		printf "\033[1m \n\n ${red} Do not $(white)enter $(red)Test$(white) as a $(red)username.\n \033"
+		printf "\033[1m \n\n ${red} Do not ${white}enter ${red}Test${white} as a ${red}username.\n \033"
 		printf "\033[1m \n Username:${white} \033[0m"
 		read namebro
 		if [ "$namebro" == Test ]
 			then
-			printf "\033[1m \n$(red)ERROR, DONT ENTER $(white)TEST\n\033[0m"
-			printf "\033[1m \n$(white)TRY AGAIN: \033[0m"
+			printf "\033[1m \n ${red}ERROR, DONT ENTER: ${white}Test\n\033[0m"
+			printf "\033[1m \n ${white}TRY AGAIN: \033[0m"
 			read namebro
 		fi
 		$(useradd -m -G adm,disk,audio,network,video "$namebro")
