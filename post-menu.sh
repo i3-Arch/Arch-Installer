@@ -36,7 +36,7 @@ case "$DATCHOICE" in
 	3) echo -e "\033[1m ${yellow} #${white}Paranoid\033[0m" && cat another.sh|less ;;
 	4) echo -e "\033[1m ${yellow} #${white}StillSwaggin\033[0m" && source another.sh ;;
 	5) echo -e "\033[1m ${yellow} #${white}Let's do it\033[0m" && source wireless-setup.sh ;;
-	6) echo -e "\033[1m ${yellow} #${white}Let's do it\033[0m" && source wired-setup.sh
+	6) echo -e "\033[1m ${yellow} #${white}Let's do it\033[0m" && source wired-setup.sh ;;
 	7) echo -e "\033[1m ${yellow} HOPE YOU ENJOY... Rebooting Now\033[0m" && sleep 3 && rm wired-setup.sh post-install.sh another.sh post-menu.sh wireless-setup.sh && $(reboot) ;;
 	*) echo -e "\033[1m ${yellow} invalid option ${red} try again\033[0m"
 esac
