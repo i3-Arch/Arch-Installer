@@ -52,7 +52,11 @@
 	
 	 source menu.sh
 
+**3.**
+*REMOVE LIVE IMAGE:*
 
+	( Remove the live image and reboot )
+	
 # POST INSTALL
 			
 - MAKE SURE YOU CHOOSE OPTION 2 BEFORE CHOOSING OPTION 4
