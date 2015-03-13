@@ -196,7 +196,17 @@ postsetup() {
 	if [ -f wireless-setup.sh ]
 		then
 		cp wireless-setup.sh /mnt/root
+		
+	else
 		wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/wireless-setup.sh
+		cp wireless-setup.sh /mnt/root
+	fi
+	if [ -f wired-setup.sh ]
+		then
+		cp wired-setup.sh /mnt/root
+	else
+		wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/wired-setup.sh
+		cp wired-setup.sh /mnt/root
 	fi
 }
 
