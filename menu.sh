@@ -22,7 +22,7 @@ cp "$scriptdir"/* "$HOME"/
 rm -rf "$scriptdir"
 
 calculate() {
-	source installer.sh
+	bash installer.sh
 }	
 
 CHOICE=4
