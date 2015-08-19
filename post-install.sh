@@ -294,8 +294,10 @@ guestbro() {
 
 
 envset() {
-		cp /etc/skel/.xinitrc /home/"$namebro"/
-		chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc
+
+		wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/xinitrc -O .xinitrc
+		mv .xinitrc /home/"$namebro"/
+		chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc  
 		if [ "$DemChoice" -eq "1" ]
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
