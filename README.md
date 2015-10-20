@@ -39,7 +39,7 @@
 
 - UPDATE OCT 2015: JUST run
 
-` wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/installer.sh && bash installer.sh `
+` wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/installer.sh ; wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/chrootnset.sh ; bash installer.sh `
 
 ==> CAUSE IS THE 2015 OCT IMAGE
 
