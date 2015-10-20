@@ -35,16 +35,27 @@
 			  
 			  
 **1.** 
-*DOWNLOAD MENU SCRIPT TO SET THINGS UP*
+
+
+**UPDATE: JUST run 
+
+' wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/installer.sh && bash installer.sh '
+
+==> CAUSE IS THE 2015 OCT IMAGE
+
+
+
+( STRIKETHOUGH UNTIL MENU.SH WORKS ON LIVE IMAGE AGAIN )
+~~*DOWNLOAD MENU SCRIPT TO SET THINGS UP*~~
 	
-	wget goo.gl/4v5IyX -O menu.sh
--Or
+	~~wget goo.gl/4v5IyX -O menu.sh~~
+~~-Or~~
 
-				wget is.gd/iTNqig -O menu.sh
+				~~wget is.gd/iTNqig -O menu.sh~~
 
-- If Shortened URLS are 404 then run this
+~~- If Shortened URLS are 404 then run this~~
 				
-				wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh
+				~~wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/menu.sh~~
 
             
 **2.**
