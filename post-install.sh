@@ -431,10 +431,6 @@ bobthebuilder() {
 	if [ "$thatquestion" == Y -o "$thatquestion" == y ]
 		then
 		printf "\033[1m\n\n ${green}Setting up pacaur for future use \n\n\033[0m"
-		if [ "$(uname -m)" = x86_64 ]
-		then
-			sed -i'' '92,93 s/^#//' /etc/pacman.conf
-		fi
 		pacman -Syy expac yajl --noconfirm
 		su "$namebro" -c "mkdir /home/"$namebro"/build-dir"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz && tar xzvf cower.tar.gz"
