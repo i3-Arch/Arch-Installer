@@ -29,12 +29,16 @@
 
 **FIRST YOU WILL NEED THE OFFICIAL ARCHLINUX IMAGE**
 
+
+**1.** 
+*DOWNLOAD ARCH IMAGE:*
+
+
 => https://www.archlinux.org/download/
 			 
-*THEN BOOT INTO LIVE ARCH IMAGE*
+*THEN BOOT THE LIVE IMAGE*
+[ FYI: Virtualbox and VmWare are Supported ]			  
 			  
-			  
-**1.** 
 
 
 - No more Menu due to latest Arch image:  NOW JUST RUN
