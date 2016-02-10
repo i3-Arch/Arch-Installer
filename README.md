@@ -37,9 +37,10 @@
 => https://www.archlinux.org/download/
 			 
 *THEN BOOT THE LIVE IMAGE*
-[ FYI: Virtualbox and VmWare are Supported ]			  
-			  
 
+
+[ <i>Tested with both Virtualbox and VmWare Player/Workstation</i> ]			  
+			 
 
 - No more Menu due to latest Arch image:  NOW JUST RUN
 
