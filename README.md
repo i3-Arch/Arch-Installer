@@ -39,10 +39,12 @@
 *THEN BOOT THE LIVE IMAGE*
 
 
-[ <i>Tested with both Virtualbox and VmWare Player/Workstation</i> ]			  
-			 
 
-- No more Menu due to latest Arch image:  NOW JUST RUN
+
+[ <u><i>Tested with both Virtualbox and VmWare Player/Workstation</i></u>]			  
+			 
+**2.**
+- No more Menu due to latest Arch image:  ==> NOW JUST RUN
 
 ` wget https://goo.gl/oOS1ez -O installer.sh ; wget https://goo.gl/3VTwbN -O chrootnset.sh ; bash installer.sh `
 
