@@ -37,14 +37,12 @@
 **1.** 
 
 
-- UPDATE OCT 2015: JUST run
+- No more Menu due to latest Arch image:  NOW JUST RUN
 
-` wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/installer.sh ; wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/chrootnset.sh ; bash installer.sh `
-
-==> CAUSE IS THE 2015 OCT IMAGE
+` wget https://goo.gl/oOS1ez -O installer.sh ; wget https://goo.gl/3VTwbN -O chrootnset.sh ; bash installer.sh `
 
 
-            
+
 
 **3.**
 *REMOVE LIVE IMAGE:*
