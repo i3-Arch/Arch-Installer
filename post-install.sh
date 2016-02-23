@@ -432,14 +432,14 @@ bobthebuilder() {
 		then
 		printf "\033[1m\n\n ${green}Setting up pacaur for future use \n\n\033[0m"
 		pacman -Syy expac yajl --noconfirm
-		su "$namebro" -c "mkdir /home/"$namebro"/build-dir"
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz && tar xzvf cower.tar.gz"
-		su "$namebro" -c "cd /home/"$namebro"/build-dir/cower && makepkg -s --skippgpcheck"
+		su "$namebro" -c "mkdir /home/$namebro/build-dir"
+		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz && tar xzvf cower.tar.gz"
+		su "$namebro" -c "cd /home/$namebro/build-dir/cower && makepkg -s --skippgpcheck"
 		pacman -U /home/"$namebro"/build-dir/cower/*.xz --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz && tar xzvf pacaur.tar.gz"
-		su "$namebro" -c "cd /home/"$namebro"/build-dir/pacaur && makepkg -s"
-		pacman -U /home/"$namebro"/build-dir/pacaur/*.xz --noconfirm
-		rm -rf /home/"$namebro"/build-dir
+		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz && tar xzvf pacaur.tar.gz"
+		su "$namebro" -c "cd /home/$namebro/build-dir/pacaur && makepkg -s"
+		pacman -U /home/$namebro/build-dir/pacaur/*.xz --noconfirm
+		rm -rf /home/$namebro/build-dir
 	else
 		printf "\033[1m\n\n ${yellow}You entered no\n\033[0m"
 		printf "\033[1m ${yellow}or an unexpected character \n\033[0m"
