@@ -484,6 +484,13 @@ urxvtstuff() {
 		printf "\033[1m \n\n ${green}Setting up wallpaper in ${red} /home/"$namebro"/.wallpapers \033[0m"
 		su "$namebro" -c "mkdir /home/"$namebro"/.wallpapers && cd /home/"$namebro"/.wallpapers && wget https://raw.githubusercontent.com/i3-Arch/i3config/master/wallpaper.png"
 		su "$namebro" -c "cd /home/"$namebro" && echo "'feh --bg-scale ~/.wallpapers/wallpaper.png'" > .fehbg"
+		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/ecliz-arch.tar.gz
+		tar -xzvf ecliz-arch.tar.gz
+		rm ecliz-arch.tar.gz
+		mv /usr/share/icons/default /usr/share/icons/thedefault-backup
+		mv ecliz-arch default
+		mv default /usr/share/icons/
+
 	fi
 }
 
