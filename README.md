@@ -65,7 +65,6 @@
 
 	source post-menu.sh
 
-- NOTICE: Since the latest image does not allow you to use the install-menu anymore, if you would like to install 'another' wm/de then you will need to 'wget https://raw.githubsercontent.com/i3-Arch/Arch-Installer/master/another.sh' before running 'source post-menu.sh' a second time.
 
 :: Current WM/Environment Choices ::
 ------------------------------------
