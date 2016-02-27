@@ -190,7 +190,7 @@ postsetup() {
 		then
 		cp another.sh /mnt/root
 	else
-		https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/another.sh
+		wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/another.sh
 		cp another.sh /mnt/root
 	fi
 	if [ -f wireless-setup.sh ]
