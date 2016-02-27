@@ -431,14 +431,14 @@ bobthebuilder() {
 	if [ "$thatquestion" == Y -o "$thatquestion" == y ]
 		then
 		printf "\033[1m\n\n ${green}Setting up pacaur for future use \n\n\033[0m"
-		pacman -Syy expac yajl --noconfirm
+		pacman -Syy expac yajl git perl-error --noconfirm
 		su "$namebro" -c "mkdir /home/$namebro/build-dir"
 		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz && tar xzvf cower.tar.gz"
 		su "$namebro" -c "cd /home/$namebro/build-dir/cower && makepkg -s --skippgpcheck"
 		pacman -U /home/"$namebro"/build-dir/cower/*.xz --noconfirm
 		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz && tar xzvf pacaur.tar.gz"
 		su "$namebro" -c "cd /home/$namebro/build-dir/pacaur && makepkg -s"
-		pacman -U /home/$namebro/build-dir/pacaur/*.xz --noconfirm
+		pacman -U /home/"$namebro"/build-dir/pacaur/*.xz --noconfirm
 		rm -rf /home/$namebro/build-dir
 	else
 		printf "\033[1m\n\n ${yellow}You entered no\n\033[0m"
@@ -462,29 +462,21 @@ urxvtstuff() {
 			su "$namebro" -c "mkdir /home/"$namebro"/build-dir"
 		fi
 		pacman -Syy git xorg-xlsfonts flac  gtk3 json-c libasyncns libnotify libogg libpulse libsndfile libvorbis --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-tabbedex/urxvt-tabbedex.tar.gz && tar xzvf urxvt-tabbedex.tar.gz"
-		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-tabbedex && makepkg -s"
+		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-tabbedex.tar.gz && tar xzvf urxvt-tabbedex.tar.gz"
+		su "$namebro" -c "cd /home/$namebro/build-dir/urxvt-tabbedex && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-tabbedex/*.xz --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/oh/oh-my-zsh-git/oh-my-zsh-git.tar.gz && tar xzvf oh-my-zsh-git.tar.gz"
-		su "$namebro" -c "cd /home/"$namebro"/build-dir/oh-my-zsh-git && makepkg -s"
+		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/oh-my-zsh-git.tar.gz && tar xzvf oh-my-zsh-git.tar.gz"
+		su "$namebro" -c "cd /home/$namebro/build-dir/oh-my-zsh-git && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/oh-my-zsh-git/*.xz --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-vtwheel/urxvt-vtwheel.tar.gz && tar xzvf urxvt-vtwheel.tar.gz"
-		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-vtwheel && makepkg -s"
+		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-vtwheel.tar.gz && tar xzvf urxvt-vtwheel.tar.gz"
+		su "$namebro" -c "cd /home/$namebro/build-dir/urxvt-vtwheel && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-vtwheel/*.xz --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-font-size-git/urxvt-font-size-git.tar.gz && tar xzvf urxvt-font-size-git.tar.gz"
-		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-font-size-git && makepkg -s"
+		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-font-size-git.tar.gz && tar xzvf urxvt-font-size-git.tar.gz"
+		su "$namebro" -c "cd /home/$namebro/build-dir/urxvt-font-size-git && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-font-size-git/*.xz --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/pr/prezto-git/prezto-git.tar.gz && tar xzvf prezto-git.tar.gz"
-		su "$namebro" -c "cd /home/"$namebro"/build-dir/prezto-git && makepkg -s"
+		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/prezto-git.tar.gz && tar xzvf prezto-git.tar.gz"
+		su "$namebro" -c "cd /home/$namebro/build-dir/prezto-git && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/prezto-git/*.xz --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/xc/xcursor-ecliz-arch/xcursor-ecliz-arch.tar.gz && tar xzvf xcursor-ecliz-arch.tar.gz"
-		su "$namebro" -c "cd /home/"$namebro"/build-dir/xcursor-ecliz-arch && makepkg -s"
-		if [ $(uname -m) = x86_64 ]
-			then
-			pacman -U /home/"$namebro"/build-dir/xcursor-ecliz-arch/*x86_64*.xz --noconfirm
-		else
-			pacman -U /home/"$namebro"/build-dir/xcursor-ecliz-arch/*i686*.xz --noconfirm
-		fi
 		clear
 		printf "\033[1m\n${green}Enter your ${red}USER PASSWORD${yellow} ( Changing Shell to ZSH )\n\033[0m"
 		su "$namebro" -c "chsh -s $(which zsh)"
@@ -517,7 +509,7 @@ main() {
 	usersetup
 	mirrorselect
 	uwantme
-	sed -i '13i namebro="$namebro"' another.sh
+	#sed -i '13i namebro="$namebro"' another.sh
 }
 
 main
