@@ -268,6 +268,7 @@ guestbro() {
 			then
 			pacman -Syy virtualbox-guest-modules-arch virtualbox-guest-utils --noconfirm
 			su "$namebro" -c "depmod" 2> /dev/null
+			su "$namebro" -c "modprobe vboxvideo"
 			modprobe -a vboxguest vboxsf vboxvideo
 			echo "vboxguest" > /etc/modules-load.d/virtualbox.conf 2> /dev/null
 			echo "vboxvideo" >> /etc/modules-load.d/virtualbox.conf 2> /dev/null
