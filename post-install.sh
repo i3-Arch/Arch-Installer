@@ -57,7 +57,7 @@ intelinside() {
 	read intelstuff
 	if [ "$intelstuff" == Y -o "$intelstuff" == y ]
 		then
-		pacman -S intel-dri xf86-video-intel --noconfirm
+		pacman -S intel-dri xf86-video-intel --noconfirm --needed
 	
 	else
 		printf "\033[1m \n\n ${green}Are you using AMD ? \n\033[0m"
@@ -66,7 +66,7 @@ intelinside() {
 		read amdstuff
 		if [ "$amdstuff" == Y -o "$amdstuff" == y ]
 			then
-			pacman -S ati-dri xf86-video-ati --noconfirm
+			pacman -S ati-dri xf86-video-ati --noconfirm --needed
 		fi
 	fi
 }
@@ -197,29 +197,29 @@ makeitbro() {
 		read DemChoice
 		if [ "$DemChoice" -eq "1" ]
 			then
-			pacman -Syy xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
+			pacman -Syy xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
 		elif [ "$DemChoice" -eq "2" ]
 			then
-			pacman -Syy zsh vimpager conky zsh-syntax-highlighting xcompmgr transset-df xscreensaver xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm
+			pacman -Syy zsh vimpager conky zsh-syntax-highlighting xcompmgr transset-df xscreensaver xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "3" ]
 			then
-			pacman -Syy cinnamon xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
+			pacman -Syy cinnamon xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "4" ]
 			then
-			pacman -Syy xorg-server feh xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu --noconfirm
+			pacman -Syy xorg-server feh xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "5" ]
 			then
-			pacman -Syy awesome xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm
+			pacman -Syy awesome xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "6" ]
 			then
-			pacman -Syy gnome gnome-extra xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm
+			pacman -Syy gnome gnome-extra xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm --needed
 		elif [ "$DemChoice" -eq "7" ]
 			then
-			pacman -Syy kde xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm
+			pacman -Syy kde xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
 		
 		else
 			printf "\033[1m ${yellow}Choice not understood... ${red}Exiting \033[0m"
@@ -432,7 +432,7 @@ bobthebuilder() {
 	if [ "$thatquestion" == Y -o "$thatquestion" == y ]
 		then
 		printf "\033[1m\n\n ${green}Setting up pacaur for future use \n\n\033[0m"
-		pacman -Syy expac yajl git perl-error --noconfirm
+		pacman -Syy expac yajl git perl-error --noconfirm --needed
 		su "$namebro" -c "mkdir /home/$namebro/build-dir"
 		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz && tar xzvf cower.tar.gz"
 		su "$namebro" -c "cd /home/$namebro/build-dir/cower && makepkg -s --skippgpcheck"
@@ -462,7 +462,7 @@ urxvtstuff() {
 			then
 			su "$namebro" -c "mkdir /home/"$namebro"/build-dir"
 		fi
-		pacman -Syy git xorg-xlsfonts flac  gtk3 json-c libasyncns libnotify libogg libpulse libsndfile libvorbis --noconfirm
+		pacman -Syy git xorg-xlsfonts flac  gtk3 json-c libasyncns libnotify libogg libpulse libsndfile libvorbis --noconfirm --needed
 		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-tabbedex.tar.gz && tar xzvf urxvt-tabbedex.tar.gz"
 		su "$namebro" -c "cd /home/$namebro/build-dir/urxvt-tabbedex && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-tabbedex/*.xz --noconfirm
