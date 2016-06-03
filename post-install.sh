@@ -517,7 +517,7 @@ main() {
 	usersetup
 	mirrorselect
 	uwantme
-	#sed -i '13i namebro="$namebro"' another.sh
+	sed -i '13i namebro="$namebro"' another.sh
 }
 
 main
