@@ -84,13 +84,16 @@ SMALLpart() {
 	printf " \033[1m ${white}\n Enter your Boot Partition: ${red}i.e. ${green}/dev/sda1 \n \033[0m"
     	printf " \033[1m \n ${yellow}Boot Partition: ${white}\033[0m"    
 	read bootpart
-        echo "bootpart=$bootpart" >> config.sh
-        mkfs.ext4 "$bootpart" -L bootfs
+	echo "bootpart=$bootpart" >> config.sh
+    	mkfs.ext4 "$bootpart" -L bootfs
 	printf " \033[1m ${white}\n Enter your Root Partition:${red} i.e. ${green}/dev/sda2 \n \033[0m"
     	printf " \033[1m ${yellow}\n Root Partition: ${white}\033[0m"
 	read rewtpart
-        echo "rewtpart=$rewtpart" >> config.sh
-        mkfs.ext4 "$rewtpart" -L rootfs
+    	echo "rewtpart=$rewtpart" >> config.sh
+    	if [ "$encRyesno" == N -o "$encRyesno" == n ]
+		then
+		mkfs.ext4 "$rewtpart" -L rootfs
+	fi
 }
 
 HALFpart() {
@@ -103,12 +106,18 @@ HALFpart() {
         printf " \033[1m \n  ${yellow}Root Partition: ${white} \033[0m"
 	read rewtpart
         echo "rewtpart=$rewtpart" >> config.sh
-        mkfs.ext4 "$rewtpart" -L rootfs
+        if [ "$encRyesno" == N -o "$encRyesno" == n ]
+		then
+		mkfs.ext4 "$rewtpart" -L rootfs
+	fi
 	printf " \033[1m \n ${white}Enter your Home Partition: ${red}i.e. /dev/sda3 \n \033[0m"
     	printf " \033[1m \n ${yellow}Home Partition: ${white} \033[0m"
 	read homepart
         echo "homepart=$homepart" >> config.sh
-        mkfs.ext4 "$homepart"
+        if [ "$encHyesno" == N -o "$encHyesno" == n ]
+		then
+		mkfs.ext4 "$homepart"
+	fi
 }
 
 FULLpart() {
@@ -121,12 +130,18 @@ FULLpart() {
 	printf " \033[1m \n ${yellow}Root Partition: ${white}\033[0m"
 	read rewtpart
 	echo "rewtpart=$rewtpart" >> config.sh
-	mkfs.ext4 "$rewtpart" -L rootfs
+   	if [ "$encRyesno" == N -o "$encRyesno" == n ]
+		then
+		mkfs.ext4 "$rewtpart" -L rootfs
+	fi	
 	printf " \033[1m \n ${white}Enter your Home Partition: ${red}i.e. /dev/sda3 \n \033[0m"
 	printf "\033[1m \n ${yellow}Home Partition: ${white}\033[0m"
 	read homepart
 	echo "homepart=$homepart" >> config.sh
-	mkfs.ext4 "$homepart"
+   	if [ "$encHyesno" == N -o "$encHyesno" == n ]
+		then
+		mkfs.ext4 "$homepart"
+	fi	
 	printf "\033[1m \n ${white}Enter your Swap Partition: ${red}i.e. /dev/sda4 \n \033[0m"
 	printf "\033[0m \n ${yellow}Swap Partition: ${white}\033[0m"
 	read swappart
@@ -136,17 +151,79 @@ FULLpart() {
 	echo "FULLpart=696" >> config.sh
 }
 
+doiencrypt() {
+	clear
+	printf " \033[1m ${green} Encrypt Root? \n \033[0m"
+	printf " \033[1m ${yellow} [Y/N]: \033[0m"
+	read encRyesno
+	echo "encRyesno=$encRyesno" >> config.sh
+	if [ "$encRyesno" == Y -o "$encRyesno" == y ]
+		then
+		printf "\n\n Root will be encrypted! \n"
+	elif [ "$encRyesno" == N -o "$encRyesno" == n ]
+		then
+		printf "\n\n Ok, moving on \n"
+	else
+		printf "\n\n Not encrypting: Error \n\n"
+	fi
+
+	printf "\033[1m ${green} Encrypt Home? \n \033[0m"
+	printf "\033[1m ${yellow} [Y/N]: \033[0m"
+	read encHyesno
+	echo "encHyesno=$encHyesno" >> config.sh
+	if [ "$encHyesno" == Y -o "$encHyesno" == y ]
+		then
+		printf "\n\n Home will be encrypted! \n"
+	elif [ "$encHyesno" == N -o "$encHyesno" == n ]
+		then
+		printf "\n Ok, moving on\n"
+	else
+		printf "\n Not encrypting: Error \n\n"
+	fi
+
+}
+
+
+luksencrypt() {
+	if [ "$encRyesno" == Y -o "$encRyesno" == y ]
+		then
+		cryptsetup -y -v -s 512 luksFormat $rewtpart
+		cryptsetup open $rewtpart cryptrewt
+		mkfs -t ext4 /dev/mapper/cryptrewt
+	fi
+	if [ "$encHyesno" == Y -o "$encHyesno" == y ]
+		then
+		cryptsetup -y -v -s 512 luksFormat $homepart
+		cryptsetup open $homepart crypthome
+		mkfs -t ext4 /dev/mapper/crypthome
+	fi
+}
+
 pkgmntchroot() {
 	clear
 	printf " \033[1m ${green} Setting up install... ${white}\n\033[0m "
-	mount $rewtpart /mnt
+	if [ "$encRyesno" == Y -o "$encRyesno" == y ]
+		then
+		mount -t ext4 /dev/mapper/cryptrewt /mnt
+	else
+		mount $rewtpart /mnt
+	fi
 	mkdir /mnt/home
 	mkdir /mnt/boot
 	mkdir -pv /mnt/var/lib/pacman
 	mount $bootpart /mnt/boot
-	mount $homepart /mnt/home
+	if [ "$encHyesno" == Y -o "$encHyesno" == y ]
+		then
+		mount -t ext4 /dev/mapper/crypthome /mnt/home
+	else	
+		mount $homepart /mnt/home
+	fi
 	pacstrap /mnt base base-devel grub os-prober rsync wget wpa_supplicant
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
+	if [ "$encRyesno" == Y -o "$encRyesno" == y ]
+	   then
+	   sed -i 's/block filesystems/block keymap encrypt filesystems/g' /mnt/etc/mkinitcpio.conf
+	fi
 	genfstab -p -U /mnt >> /mnt/etc/fstab
 	cp chrootnset.sh config.sh /mnt
 	arch-chroot /mnt /bin/bash chrootnset.sh
@@ -154,8 +231,8 @@ pkgmntchroot() {
 
 CALLpart() {
 	if [ "$thechoiceman" -eq 3 ]
-    		then
-    		    FULLpart
+    	then
+    		FULLpart
 	elif [ "$thechoiceman" -eq 2 ]
 		then
 		    HALFpart
@@ -223,9 +300,11 @@ main() {
 	checkdat
 	banner
 	touch config.sh 		## Create file to store bootpart, rewtpart, homepart, swappart for chroot
+	doiencrypt
 	ASKme				## ASK NUMBER OF PARTITIONS
 	disk 				## PARTITION WITH CFDISK or FDISK
-    	CALLpart 	 		## CALL PARTITIONING IF STATEMENT
+    CALLpart 	 		## CALL PARTITIONING IF STATEMENT
+	luksencrypt
 	pkgmntchroot 	 		## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
 	sixfour
 	cp issue /mnt/etc/issue   	## TTY ART 

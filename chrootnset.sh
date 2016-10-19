@@ -9,7 +9,7 @@
 ############################################
 
 # Grab var values
-# Which are: yourdrive, rewtpart, swappart, homepart, bootpart, thechoiceman
+# Which are: yourdrive, rewtpart, swappart, homepart, bootpart, thechoiceman, encRyesno, encHyesno
 source config.sh
 
 # COLORS
@@ -66,16 +66,40 @@ timelocale() {
 	locale-gen
 }
 
+encrypthomeswap() {
+	if [ "$encHyesno" == Y -o "$encHyesno" == y ]
+		then
+		 echo "crypthome   ${homepart}" >> /etc/crypttab
+	fi
+	if [ "$FULLpart" -eq 696 ]
+		then
+		echo "swap	$swappart	/dev/urandom	swap,cipher=aes-xts-plain64,size=256" >> /etc/crypttab
+	fi
+
+}
+
 # Install Grub
 grubinst() {										
+	if  [ "$encRyesno" == Y -o "$encRyesno" == y ]
+		then
+		sed -i "s|quiet|cryptdevice=${rewtpart}:cryptrewt root=/dev/mapper/cryptrewt|" /etc/default/grub
+	    echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
+		mkinitcpio -p linux
+	fi
 	grub-install --target=i386-pc $yourdrive
+	sleep 5
 	grub-mkconfig -o /boot/grub/grub.cfg
-	sed -i '112,147d' /boot/grub/grub.cfg
+	#sed -i '112,147d' /boot/grub/grub.cfg
 }
 
 # Install Syslinux
 syslinuxinst() {
 	pacman -Syy syslinux --noconfirm
+	if [ "$encRyesno" == Y -o "$encRyesno" == y ]
+		then
+		sed -i "s|quiet|cryptdevice=${rewtpart}:cryptrewt root=/dev/mapper/cryptrewt|" /boot/syslinux/syslinux.cfg
+		mkinitcpio -p linux
+	fi
 	syslinux-install_update -i -a -m
 	sed -i '54s@.*@    APPEND root='"$rewtpart"' rw @' /boot/syslinux/syslinux.cfg
 	sed -i '57,61d' /boot/syslinux/syslinux.cfg
@@ -93,7 +117,7 @@ BOOTload() {
 			grubinst
 	elif [ "$bootloadchoice" -eq 2 ]
 		then
-			syslinuxinst
+		syslinuxinst
 	else
 		printf "\033[1m ${red}Not Understood ${white}|${red} Setting up grub by default \033[0m"
 		grubinst
@@ -108,6 +132,7 @@ localeStuff() {
 main() {
 	hostname
 	timelocale
+	encrypthomeswap
 	BOOTload
 	localeStuff
 	rm chrootnset.sh config.sh #cleanup

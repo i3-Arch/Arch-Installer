@@ -19,6 +19,7 @@
 	       	
 	       
 **[ NOTICE ]**
+- LUKS RECENTLY ADDED!
 - CURRENTLY UNDER DEVELOPMENT
 - RUN AT YOUR OWN RISK
 		
@@ -46,7 +47,7 @@
 **2.**
 - No more Menu due to latest Arch image:  ==> NOW JUST RUN
 
-` wget https://goo.gl/oOS1ez -O installer.sh ; wget https://goo.gl/3VTwbN -O chrootnset.sh ; bash installer.sh `
+` wget https://goo.gl/oOS1ez -O installer.sh ; wget https://goo.gl/3VTwbN -O chrootnset.sh ; chmod +x *.sh ; ./installer.sh `
 
 
 
@@ -82,7 +83,7 @@
 **1.** [X] Make a menu that makes things easier
 
 **2.** [ ] Add More Options In General
-- LUKS
+X LUKS	(DONE!)
 - More Filesystem Options ( btrfs )
 - Kernel Options
 - Even More Minimal Install option
