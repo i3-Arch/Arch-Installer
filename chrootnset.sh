@@ -74,6 +74,8 @@ encrypthomeswap() {
 	if [ "$FULLpart" -eq 696 ]
 		then
 		echo "swap	$swappart	/dev/urandom	swap,cipher=aes-xts-plain64,size=256" >> /etc/crypttab
+		sed -i '16,18d' /etc/fstab
+		echo "/dev/mapper/swap	none	swap	defaults	0 0" >> /etc/fstab
 	fi
 
 }
@@ -89,7 +91,7 @@ grubinst() {
 	grub-install --target=i386-pc $yourdrive
 	sleep 5
 	grub-mkconfig -o /boot/grub/grub.cfg
-	#sed -i '112,147d' /boot/grub/grub.cfg
+	sed -i '118,152d' /boot/grub/grub.cfg
 }
 
 # Install Syslinux
