@@ -19,7 +19,7 @@
 	       	
 	       
 **[ NOTICE ]**
-- LUKS RECENTLY ADDED!
+- LUKS RECENTLY ADDED
 - CURRENTLY UNDER DEVELOPMENT
 - RUN AT YOUR OWN RISK
 		
@@ -83,7 +83,7 @@
 **1.** [X] Make a menu that makes things easier
 
 **2.** [ ] Add More Options In General
-X LUKS	(DONE!)
+- [X] LUKS Option	(DONE!)
 - More Filesystem Options ( btrfs )
 - Kernel Options
 - Even More Minimal Install option
