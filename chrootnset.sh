@@ -39,13 +39,13 @@ timelocale() {
 	read timezoneresponse
 	if [  "$timezoneresponse" -eq 1 ]
 		then
-			$(ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime) ;
+		$(ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime) ;
 	elif [ "$timezoneresponse" -eq 2 ]
 		then
-			$(ln -s /usr/share/zoneinfo/US/Central /etc/localtime) ;
+		$(ln -s /usr/share/zoneinfo/US/Central /etc/localtime) ;
 	elif	[ "$timezoneresponse" -eq 3 ]
 		then
-			$( ln -s /usr/share/zoneinfo/US/Pacific /etc/localtime) ;
+		$( ln -s /usr/share/zoneinfo/US/Pacific /etc/localtime) ;
 	else
 		printf "\033[1m ${red}Not Understood | do it yourself |  with 'ln -s'\n\033[0m"
 	fi
@@ -58,7 +58,7 @@ timelocale() {
 	read inputscuzlocale
 	if [ "$inputscuzlocale" == y -o "$inputscuzlocale" == Y ]
 		then
-			echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+		echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 	else
 		nano /etc/locale.gen
 	fi
@@ -85,7 +85,7 @@ grubinst() {
 	if  [ "$encRyesno" == Y -o "$encRyesno" == y ]
 		then
 		sed -i "s|quiet|cryptdevice=${rewtpart}:cryptrewt root=/dev/mapper/cryptrewt|" /etc/default/grub
-	    echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
+	    	echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
 		mkinitcpio -p linux
 	fi
 	grub-install --target=i386-pc $yourdrive
@@ -116,7 +116,7 @@ BOOTload() {
 	read bootloadchoice
 	if [ "$bootloadchoice" -eq 1 ]
 		then
-			grubinst
+		grubinst
 	elif [ "$bootloadchoice" -eq 2 ]
 		then
 		syslinuxinst
