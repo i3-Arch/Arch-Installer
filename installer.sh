@@ -142,7 +142,7 @@ FULLpart() {
 		then
 		mkfs.ext4 "$homepart"
 	fi	
-	printf "\033[1m \n ${white}Enter your Swap Partition: ${red}i.e. /dev/sda4 \n \033[0m"
+	printf "\033[1m \n ${white}Enter your Swap Partition: ${red}i.e. /dev/sda5 \n \033[0m"
 	printf "\033[0m \n ${yellow}Swap Partition: ${white}\033[0m"
 	read swappart
 	echo "swappart=$swappart" >> config.sh
@@ -162,25 +162,42 @@ doiencrypt() {
 		printf "\n\n Root will be encrypted! \n"
 	elif [ "$encRyesno" == N -o "$encRyesno" == n ]
 		then
-		printf "\n\n Ok, moving on \n"
+		printf "\n\n Not Encrypting: Moving on \n"
 	else
-		printf "\n\n Not encrypting: Error \n\n"
+		printf "\n\n Not Encrypting: 'Y' or 'N' not entered \n\n"
 	fi
-
-	printf "\033[1m ${green} Encrypt Home? \n \033[0m"
-	printf "\033[1m ${yellow} [Y/N]: \033[0m"
-	read encHyesno
-	echo "encHyesno=$encHyesno" >> config.sh
-	if [ "$encHyesno" == Y -o "$encHyesno" == y ]
+	if	[ "$thechoiceman" -eq 2 -o "$thechoiceman" -eq 3 ]
 		then
-		printf "\n\n Home will be encrypted! \n"
-	elif [ "$encHyesno" == N -o "$encHyesno" == n ]
-		then
-		printf "\n Ok, moving on\n"
-	else
-		printf "\n Not encrypting: Error \n\n"
+		printf "\033[1m ${green} Encrypt Home? \n \033[0m"
+		printf "\033[1m ${yellow} [Y/N]: \033[0m"
+		read encHyesno
+		echo "encHyesno=$encHyesno" >> config.sh
+		if [ "$encHyesno" == Y -o "$encHyesno" == y ]
+			then
+			printf "\n\n Home will be encrypted! \n"
+		elif [ "$encHyesno" == N -o "$encHyesno" == n ]
+			then
+			printf "\n Not Encrypting: Moving on\n\n"
+		else
+			printf "\n Not encrypting: 'Y' or 'N' not entered \n\n"
+		fi
 	fi
-
+	if [ "$thechoiceman" -eq 3 ]
+		then
+		printf "\033[1m ${green} Encrypt Swap? \n \033[0m"
+		printf "\033[1m ${yellow} [Y/N]: \033[0m"
+		read encSyesno
+			if [ "$encSyesno" == Y -o "$encSyesno" == y ]
+				then
+				printf "\033[1m ${green} Swap will be encrypted! \n \033[0m"
+				echo "encSyesno=$encSyesno" >> config.sh
+			elif [ "$encSyesno" == N -o "$encSyesno" == n ]
+				then
+				printf "\n Not Encrypting: Moving on \n\n"
+			else
+				printf "\n Not Encrypting: 'Y' or 'N' not entered \n\n"
+			fi
+	fi
 }
 
 
@@ -297,16 +314,16 @@ sixfour() {
 
 
 main() {
-	checkdat
-	banner
+	checkdat			## Check if ROOT
+	banner				## Banner
 	touch config.sh 		## Create file to store bootpart, rewtpart, homepart, swappart for chroot
-	doiencrypt
 	ASKme				## ASK NUMBER OF PARTITIONS
+	doiencrypt			## Do I Encrypt?
 	disk 				## PARTITION WITH CFDISK or FDISK
     CALLpart 	 		## CALL PARTITIONING IF STATEMENT
-	luksencrypt
+	luksencrypt			## Setup LUKS
 	pkgmntchroot 	 		## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
-	sixfour
+	sixfour						## If 64bit uncomment multilib
 	cp issue /mnt/etc/issue   	## TTY ART 
 	postsetup			## POST INSTALL SCRIPT READY FOR AFTER INSTALL
 	umount -R /mnt	2> /dev/null		## UNMOUNT 

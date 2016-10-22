@@ -9,7 +9,7 @@
 ############################################
 
 # Grab var values
-# Which are: yourdrive, rewtpart, swappart, homepart, bootpart, thechoiceman, encRyesno, encHyesno
+# Which are: yourdrive, rewtpart, swappart, homepart, bootpart, thechoiceman, encRyesno, encHyesno, encSyesno
 source config.sh
 
 # COLORS
@@ -71,10 +71,10 @@ encrypthomeswap() {
 		then
 		 echo "crypthome   ${homepart}" >> /etc/crypttab
 	fi
-	if [ "$FULLpart" -eq 696 ]
+	if [ "$FULLpart" -eq 696 -a "$encSyesno" == Y -o "$encSyesno" == y ]
 		then
 		echo "swap	$swappart	/dev/urandom	swap,cipher=aes-xts-plain64,size=256" >> /etc/crypttab
-		sed -i '16,18d' /etc/fstab
+		sed -i '14,16d' /etc/fstab
 		echo "/dev/mapper/swap	none	swap	defaults	0 0" >> /etc/fstab
 	fi
 
