@@ -187,10 +187,10 @@ doiencrypt() {
 		printf "\033[1m ${green} Encrypt Swap? \n \033[0m"
 		printf "\033[1m ${yellow} [Y/N]: \033[0m"
 		read encSyesno
+		echo "encSyesno=$encSyesno" >> config.sh
 			if [ "$encSyesno" == Y -o "$encSyesno" == y ]
 				then
 				printf "\033[1m ${green} Swap will be encrypted! \n \033[0m"
-				echo "encSyesno=$encSyesno" >> config.sh
 			elif [ "$encSyesno" == N -o "$encSyesno" == n ]
 				then
 				printf "\n Not Encrypting: Moving on \n\n"
