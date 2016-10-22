@@ -61,7 +61,7 @@ disk() {
 	read toolchoice
 	if [ "$toolchoice" == cfdisk -o "$toolchoice" == CFDISK ]
 		then
-			cfdisk $yourdrive
+		cfdisk $yourdrive
 	else
 		fdisk $yourdrive
 	fi
@@ -188,15 +188,15 @@ doiencrypt() {
 		printf "\033[1m ${yellow} [Y/N]: \033[0m"
 		read encSyesno
 		echo "encSyesno=$encSyesno" >> config.sh
-			if [ "$encSyesno" == Y -o "$encSyesno" == y ]
-				then
-				printf "\033[1m ${green} Swap will be encrypted! \n \033[0m"
-			elif [ "$encSyesno" == N -o "$encSyesno" == n ]
-				then
-				printf "\n Not Encrypting: Moving on \n\n"
-			else
-				printf "\n Not Encrypting: 'Y' or 'N' not entered \n\n"
-			fi
+		if [ "$encSyesno" == Y -o "$encSyesno" == y ]
+			then
+			printf "\033[1m ${green} Swap will be encrypted! \n \033[0m"
+		elif [ "$encSyesno" == N -o "$encSyesno" == n ]
+			then
+			printf "\n Not Encrypting: Moving on \n\n"
+		else
+			printf "\n Not Encrypting: 'Y' or 'N' not entered \n\n"
+		fi
 	fi
 }
 
@@ -248,14 +248,14 @@ pkgmntchroot() {
 
 CALLpart() {
 	if [ "$thechoiceman" -eq 3 ]
-    	then
-    		FULLpart
+    	   then
+    	   FULLpart
 	elif [ "$thechoiceman" -eq 2 ]
-		then
-		    HALFpart
+	   then
+	   HALFpart
 	elif [ "$thechoiceman" -eq 1 ]
-		then
-		    SMALLpart
+	   then
+	   SMALLpart
 	else
 	    printf "\033[1m ${red}\n\nUnkown Selection\n\n\033[0m"
 	    printf "\033[1m ${white}\n\Only Setting up ${yellow}BOOT ${white}and ${yellow}ROOT\n\033[0m"
@@ -320,7 +320,7 @@ main() {
 	ASKme				## ASK NUMBER OF PARTITIONS
 	doiencrypt			## Do I Encrypt?
 	disk 				## PARTITION WITH CFDISK or FDISK
-    CALLpart 	 		## CALL PARTITIONING IF STATEMENT
+	CALLpart 	 		## CALL PARTITIONING IF STATEMENT
 	luksencrypt			## Setup LUKS
 	pkgmntchroot 	 		## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
 	sixfour						## If 64bit uncomment multilib
