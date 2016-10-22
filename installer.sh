@@ -166,7 +166,7 @@ doiencrypt() {
 	else
 		printf "\n\n Not Encrypting: 'Y' or 'N' not entered \n\n"
 	fi
-	if	[ "$thechoiceman" -eq 2 -o "$thechoiceman" -eq 3 ]
+	if [ "$thechoiceman" -eq 2 -o "$thechoiceman" -eq 3 ]
 		then
 		printf "\033[1m ${green} Encrypt Home? \n \033[0m"
 		printf "\033[1m ${yellow} [Y/N]: \033[0m"
