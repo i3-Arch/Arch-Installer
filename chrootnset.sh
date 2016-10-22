@@ -69,7 +69,7 @@ timelocale() {
 encrypthomeswap() {
 	if [ "$encHyesno" == Y -o "$encHyesno" == y ]
 		then
-		 echo "crypthome   ${homepart}" >> /etc/crypttab
+		echo "crypthome   ${homepart}" >> /etc/crypttab
 	fi
 	if [ "$FULLpart" -eq 696 -a "$encSyesno" == Y -o "$encSyesno" == y ]
 		then
@@ -99,12 +99,13 @@ syslinuxinst() {
 	pacman -Syy syslinux --noconfirm
 	if [ "$encRyesno" == Y -o "$encRyesno" == y ]
 		then
-		sed -i "s|quiet|cryptdevice=${rewtpart}:cryptrewt root=/dev/mapper/cryptrewt|" /boot/syslinux/syslinux.cfg
+		sed -i '54s@.*@		APPEND cryptdevice='"$rewtpart"':cryptrewt root=/dev/mapper/cryptrewt rw @' /boot/syslinux/syslinux.cfg	
 		mkinitcpio -p linux
+	else
+		sed -i '54s@.*@    APPEND root='"$rewtpart"' rw @' /boot/syslinux/syslinux.cfg
+		sed -i '57,61d' /boot/syslinux/syslinux.cfg
 	fi
 	syslinux-install_update -i -a -m
-	sed -i '54s@.*@    APPEND root='"$rewtpart"' rw @' /boot/syslinux/syslinux.cfg
-	sed -i '57,61d' /boot/syslinux/syslinux.cfg
 }
 
 # Choose Your Bootloader
