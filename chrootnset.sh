@@ -99,12 +99,12 @@ syslinuxinst() {
 	pacman -Syy syslinux --noconfirm
 	if [ "$encRyesno" == Y -o "$encRyesno" == y ]
 		then
-		sed -i '54s@.*@		APPEND cryptdevice='"$rewtpart"':cryptrewt root=/dev/mapper/cryptrewt rw @' /boot/syslinux/syslinux.cfg	
+		sed -i '54s@.*@	APPEND cryptdevice='"$rewtpart"':cryptrewt root=/dev/mapper/cryptrewt rw @' /boot/syslinux/syslinux.cfg	
 		mkinitcpio -p linux
 	else
-		sed -i '54s@.*@    APPEND root='"$rewtpart"' rw @' /boot/syslinux/syslinux.cfg
-		sed -i '57,61d' /boot/syslinux/syslinux.cfg
-	fi
+		sed -i '54s@.*@  APPEND root='"$rewtpart"' rw @' /boot/syslinux/syslinux.cfg
+	fi	
+	sed -i '57,61d' /boot/syslinux/syslinux.cfg
 	syslinux-install_update -i -a -m
 }
 
