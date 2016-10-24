@@ -74,7 +74,7 @@ makeitbro() {
 			pacman -Syy xfce4 xfce4-goodies --noconfirm
 		elif [ "$DemChoice" -eq "2" ]
 			then
-			pacman -Syy conky vimpager zsh zsh-syntax-highlighting xcompmgr transset-df xscreensaver vim feh i3-wm i3status dmenu rxvt-unicode urxvt-perls --noconfirm
+			pacman -Syy conky vimpager zsh zsh-syntax-highlighting xcompmgr transset-df xscreensaver vim feh dmenu rxvt-unicode urxvt-perls xcb-util-image xcb-util-renderutil libev libxkbcommon-x11 xcb-util-cursor cxb-util-keysyms xcb-util-wm xcb-util-xrm docbook-xml libxslt python2 asciidoc docbook-xsl --noconfirm
 		
 		elif [ "$DemChoice" -eq "3" ]
 			then
@@ -112,20 +112,17 @@ xseti3() {
 	fi
 	if [ "$DemChoice" -eq "2" ] 
 		then
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/config
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/conky-i3bar
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/.conkyrc
+		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/newi3config/.i3/config
+		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/newi3config/.i3/conkyrc
 		if [ -f "$HOME/.i3/config" ]
 			then
 			rm -rf ~/.i3
 			mkdir -pv ~/.i3/conky
 			mv config ~/.i3/config
-			mv .conkyrc ~/.i3/conky/
-			mv conky-i3bar ~/.i3/conky/
+			mv conkyrc ~/.i3/conky/
 		else
 			mkdir -pv ~/.i3/conky
-			mv .conkyrc ~/.i3/conky/
-			mv conky-i3bar ~/.i3/conky/
+			mv conkyrc ~/.i3/conky/
 			mv config ~/.i3/config
 		fi
 	fi
@@ -155,11 +152,9 @@ envset() {
 				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.vimrc
 				cp .Xresources .zshrc .vimrc /home/"$namebro"/
 				cp -r .i3 /home/"$namebro"/
-				chmod +x /home/"$namebro"/.i3/conky-i3bar
-				chmod +x /home/"$namebro"/.i3/.conkyrc
+				chmod +x /home/"$namebro"/.i3/conkyrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky
-				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky/conky-i3bar
-				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky/.conkyrc
+				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky/conkyrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3/config
 				chown "$namebro":"$namebro" /home/"$namebro"/.Xresources
@@ -250,37 +245,41 @@ urxvtstuff() {
 			then
 			su "$namebro" -c "mkdir /home/"$namebro"/build-dir"
 		fi
-		pacman -Syy git xorg-xlsfonts flac  gtk3 json-c libasyncns libnotify libogg libpulse libsndfile libvorbis --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-tabbedex/urxvt-tabbedex.tar.gz && tar xzvf urxvt-tabbedex.tar.gz"
+		pacman -Syy git xorg-xlsfonts flac  gtk3 json-c libasyncns libnotify libogg libpulse libsndfile libvorbisi yajl --noconfirm
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-tabbedex.tar.gz && tar xzvf urxvt-tabbedex.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-tabbedex && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-tabbedex/*.xz --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/oh/oh-my-zsh-git/oh-my-zsh-git.tar.gz && tar xzvf oh-my-zsh-git.tar.gz"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/oh-my-zsh-git.tar.gz && tar xzvf oh-my-zsh-git.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/oh-my-zsh-git && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/oh-my-zsh-git/*.xz --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-vtwheel/urxvt-vtwheel.tar.gz && tar xzvf urxvt-vtwheel.tar.gz"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-vtwheel.tar.gz && tar xzvf urxvt-vtwheel.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-vtwheel && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-vtwheel/*.xz --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/ur/urxvt-font-size-git/urxvt-font-size-git.tar.gz && tar xzvf urxvt-font-size-git.tar.gz"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-font-size-git.tar.gz && tar xzvf urxvt-font-size-git.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/urxvt-font-size-git && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-font-size-git/*.xz --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/pr/prezto-git/prezto-git.tar.gz && tar xzvf prezto-git.tar.gz"
+		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/prezto-git.tar.gz && tar xzvf prezto-git.tar.gz"
 		su "$namebro" -c "cd /home/"$namebro"/build-dir/prezto-git && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/prezto-git/*.xz --noconfirm
-		su "$namebro" -c "cd /home/"$namebro"/build-dir && wget https://aur.archlinux.org/packages/xc/xcursor-ecliz-arch/xcursor-ecliz-arch.tar.gz && tar xzvf xcursor-ecliz-arch.tar.gz"
-		su "$namebro" -c "cd /home/"$namebro"/build-dir/xcursor-ecliz-arch && makepkg -s"
-		if [ $(uname -m) = x86_64 ]
-			then
-			pacman -U /home/"$namebro"/build-dir/xcursor-ecliz-arch/*x86_64*.xz --noconfirm
-		else
-			pacman -U /home/"$namebro"/build-dir/xcursor-ecliz-arch/*i686*.xz --noconfirm
-		fi
+		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-font-awesome.tar.gz && tar xzvf ttf-font-awesome.tar.gz"
+		su "$namebro" -c "cd /home/$namebro/build-dir/ttf-font-awesome && makepkg -s"
+		pacman -U /home/"$namebro"/build-dir/ttf-font-awesome/*.xz --noconfirm
+		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/i3-gaps-next-git.tar.gz && tar xzvf i3-gaps-next-git.tar.gz"
+		su "$namebro" -c "cd /home/$namebro/build-dir/i3-gaps-next-git && makepkg -s --noconfirm"
+		pacman -U /home/"$namebro"/build-dir/i3-gaps-next-git/*.xz --noconfirm
 		clear
 		printf "\033[1m\n${green}Enter your ${red}USER PASSWORD${yellow} ( Changing Shell to ZSH )\n\033[0m"
 		su "$namebro" -c "chsh -s $(which zsh)"
 		rm -rf /home/"$namebro"/build-dir
 		printf "\033[1m \n\n ${green}Setting up wallpaper in ${red} /home/"$namebro"/.wallpapers \033[0m"
-		su "$namebro" -c "mkdir /home/"$namebro"/.wallpapers && cd /home/"$namebro"/.wallpapers && wget https://raw.githubusercontent.com/i3-Arch/i3config/master/wallpaper.png"
-		su "$namebro" -c "cd /home/"$namebro" && echo "'feh --bg-scale ~/.wallpapers/wallpaper.png'" > .fehbg"
+		su "$namebro" -c "mkdir /home/"$namebro"/.wallpapers && cd /home/"$namebro"/.wallpapers && wget https://raw.githubusercontent.com/i3-Arch/i3config/master/newi3config/background/bluey.jpg"
+		su "$namebro" -c "cd /home/"$namebro" && echo "'feh --bg-scale ~/.wallpapers/bluey.jpg'" > .fehbg"
+		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/ecliz-arch.tar.gz
+		tar xzvf ecliz-arch.tar.gz
+		rm ecliz-arch.tar.gz
+		mv /usr/share/icons/default /usr/share/icons/thedefault-backup
+		mv ecliz-arch default
+		mv default /usr/share/icons/
 	fi
 }
 

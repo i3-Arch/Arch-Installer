@@ -200,7 +200,7 @@ makeitbro() {
 			pacman -Syy xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
 		elif [ "$DemChoice" -eq "2" ]
 			then
-			pacman -Syy zsh vimpager conky zsh-syntax-highlighting xcompmgr transset-df xscreensaver xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm i3-wm i3status dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls --noconfirm --needed
+			pacman -Syy zsh vimpager conky zsh-syntax-highlighting xcompmgr transset-df xscreensaver xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls xcb-util-image xcb-util-renderutil libev libxkbcommon-x11 xcb-util-cursor xcb-util-keysyms xcb-util-wm xcb-util-xrm docbook-xml libxslt python2 asciidoc docbook-xsl --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "3" ]
 			then
@@ -238,21 +238,18 @@ xseti3() {
 	fi
 	if [ "$DemChoice" -eq "2" ] 
 		then
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/config
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/conky/conky-i3bar
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.i3/conky/.conkyrc
+		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/newi3config/.i3/config
+		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/newi3config/.i3/conky/conkyrc
 		if [ -f "$HOME/.i3/config" ]
 			then
 			rm -rf ~/.i3
 			mkdir -pv ~/.i3/conky
 			mv config ~/.i3/
-			mv .conkyrc ~/.i3/conky/
-			mv conky-i3bar ~/.i3/conky/
+			mv conkyrc ~/.i3/conky/
 		else
 			mkdir -pv ~/.i3/conky
 			mv config ~/.i3/
-			mv .conkyrc ~/.i3/conky/
-			mv conky-i3bar ~/.i3/conky/
+			mv conkyrc ~/.i3/conky/
 		fi
 	fi
 }
@@ -317,13 +314,11 @@ envset() {
 				wget https://raw.githubusercontent.com/i3-Arch/i3config/master/.vimrc
 				cp .Xresources .zshrc .xinitrc .vimrc /home/"$namebro"/
 				cp -r .i3 /home/"$namebro"/
-				chmod +x /home/"$namebro"/.i3/conky/conky-i3bar
-				chmod +x /home/"$namebro"/.i3/conky/conky-i3bar
+				chmod +x /home/"$namebro"/.i3/conky/conkyrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3/config
 				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky
-				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky/.conkyrc
-				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky/conky-i3bar
+				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky/conkyrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.Xresources
 				chown "$namebro":"$namebro" /home/"$namebro"/.vimrc
 				chown "$namebro":"$namebro" /home/"$namebro"/.zshrc
@@ -390,6 +385,7 @@ loginmanage() {
 			sleep 1
 		else
 			printf "\033[1m \n ${yellow}EXTRA TIP ${green}:: ${red}In the future you will need to Run  ${yellow}startx ${green}:: \n \033[0m"
+			sleep 3
 		fi	
 	elif [ "$DemChoice" -eq "6" ]
 		then
@@ -462,7 +458,7 @@ urxvtstuff() {
 			then
 			su "$namebro" -c "mkdir /home/"$namebro"/build-dir"
 		fi
-		pacman -Syy git xorg-xlsfonts flac  gtk3 json-c libasyncns libnotify libogg libpulse libsndfile libvorbis --noconfirm --needed
+		pacman -Syy git xorg-xlsfonts flac  gtk3 json-c libasyncns libnotify libogg libpulse libsndfile libvorbis yajl --noconfirm --needed
 		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-tabbedex.tar.gz && tar xzvf urxvt-tabbedex.tar.gz"
 		su "$namebro" -c "cd /home/$namebro/build-dir/urxvt-tabbedex && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/urxvt-tabbedex/*.xz --noconfirm
@@ -478,13 +474,19 @@ urxvtstuff() {
 		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/prezto-git.tar.gz && tar xzvf prezto-git.tar.gz"
 		su "$namebro" -c "cd /home/$namebro/build-dir/prezto-git && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/prezto-git/*.xz --noconfirm
+		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-font-awesome.tar.gz && tar xzvf ttf-font-awesome.tar.gz"
+		su "$namebro" -c "cd /home/$namebro/build-dir/ttf-font-awesome && makepkg -s"
+		pacman -U /home/"$namebro"/build-dir/ttf-font-awesome/*.xz --noconfirm
+		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/i3-gaps-next-git.tar.gz && tar xzvf i3-gaps-next-git.tar.gz"
+		su "$namebro" -c "cd /home/$namebro/build-dir/i3-gaps-next-git && makepkg -s --noconfirm"
+		pacman -U /home/"$namebro"/build-dir/i3-gaps-next-git/*.xz --noconfirm || { echo 'Ok, what went wrong' >&2;}
 		clear
 		printf "\033[1m\n${green}Enter your ${red}USER PASSWORD${yellow} ( Changing Shell to ZSH )\n\033[0m"
 		su "$namebro" -c "chsh -s $(which zsh)"
 		rm -rf /home/"$namebro"/build-dir
 		printf "\033[1m \n\n ${green}Setting up wallpaper in ${red} /home/"$namebro"/.wallpapers \033[0m"
-		su "$namebro" -c "mkdir /home/"$namebro"/.wallpapers && cd /home/"$namebro"/.wallpapers && wget https://raw.githubusercontent.com/i3-Arch/i3config/master/wallpaper.png"
-		su "$namebro" -c "cd /home/"$namebro" && echo "'feh --bg-scale ~/.wallpapers/wallpaper.png'" > .fehbg"
+		su "$namebro" -c "mkdir /home/"$namebro"/.wallpapers && cd /home/"$namebro"/.wallpapers && wget https://raw.githubusercontent.com/i3-Arch/i3config/master/newi3config/background/bluey.jpg"
+		su "$namebro" -c "cd /home/"$namebro" && echo "'feh --bg-scale ~/.wallpapers/bluey.jpg'" > .fehbg"
 		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/ecliz-arch.tar.gz
 		tar -xzvf ecliz-arch.tar.gz
 		rm ecliz-arch.tar.gz
