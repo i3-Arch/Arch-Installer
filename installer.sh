@@ -42,7 +42,7 @@ cat <<"EOT"
 	 #     # #    #  ####  #    # ###### # #    #  ####  #    #    ###
 EOT
 	printf "		########################################\n"
-	printf "		##   Installer Version:  "$Version"   ##\n"
+	printf "		##   Installer Version:  "$Version"     ##\n"
 	printf "		########################################\n\n"
 	sleep 3
 }
@@ -232,8 +232,13 @@ pkgmntchroot() {
 	if [ "$encHyesno" == Y -o "$encHyesno" == y ]
 		then
 		mount -t ext4 /dev/mapper/crypthome /mnt/home
-	else	
-		mount $homepart /mnt/home
+	fi
+	if [ "$thechoiceman" -eq 2 -o "$thechoiceman" -eq 3 ]
+		then
+		if [ "$encHyesno" != Y -o "$encHyesno" != y ]
+			then
+			mount $homepart /mnt/home
+		fi
 	fi
 	pacstrap /mnt base base-devel grub os-prober rsync wget wpa_supplicant
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
