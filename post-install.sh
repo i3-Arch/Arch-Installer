@@ -477,9 +477,9 @@ urxvtstuff() {
 		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-font-awesome.tar.gz && tar xzvf ttf-font-awesome.tar.gz"
 		su "$namebro" -c "cd /home/$namebro/build-dir/ttf-font-awesome && makepkg -s"
 		pacman -U /home/"$namebro"/build-dir/ttf-font-awesome/*.xz --noconfirm
-		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/i3-gaps-next-git.tar.gz && tar xzvf i3-gaps-next-git.tar.gz"
-		su "$namebro" -c "cd /home/$namebro/build-dir/i3-gaps-next-git && makepkg -s --noconfirm"
-		pacman -U /home/"$namebro"/build-dir/i3-gaps-next-git/*.xz --noconfirm || { echo 'Ok, what went wrong' >&2;}
+		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/i3-gaps.tar.gz && tar xzvf i3-gaps.tar.gz"
+		su "$namebro" -c "cd /home/$namebro/build-dir/i3-gaps && makepkg -s --noconfirm"
+		pacman -U /home/"$namebro"/build-dir/i3-gaps/*.xz --noconfirm
 		clear
 		printf "\033[1m\n${green}Enter your ${red}USER PASSWORD${yellow} ( Changing Shell to ZSH )\n\033[0m"
 		su "$namebro" -c "chsh -s $(which zsh)"
