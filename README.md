@@ -47,7 +47,7 @@
 **2.**
 - No more Menu due to latest Arch image:  ==> NOW JUST RUN
 
-` wget https://goo.gl/oOS1ez -O installer.sh ; wget https://goo.gl/3VTwbN -O chrootnset.sh ; chmod +x *.sh ; ./installer.sh `
+` wget https://goo.gl/oOS1ez -O installer.sh ; chmod +x *.sh ; ./installer.sh `
 
 
 
@@ -84,10 +84,11 @@
 
 **2.** [ ] Add More Options In General
 - [X] LUKS Option	(DONE!)
-- More Filesystem Options ( btrfs )
+- More Filesystem Options ( ie: btrfs )
 - Kernel Options
 - Even More Minimal Install option
-	
+- Add Error Checking/Handling	
+
 **3.** [ ] Misc
 
 			 ___________________

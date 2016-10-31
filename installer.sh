@@ -21,6 +21,7 @@ checkdat() {
 	if [ "$(id -u)" -eq 0 ]	
 		then
 		printf "\033[1m\n      ${white}#${green}Archlinux${white}-${green}Swag\n\033[0m"
+		sed -i '37iILoveCandy' /etc/pacman.conf
 		sleep 2
 	else
 		printf "\033[1m ${red} You Need To Be ROOT \n\033[0m"
@@ -247,6 +248,8 @@ pkgmntchroot() {
 	   sed -i 's/block filesystems/block keymap encrypt filesystems/g' /mnt/etc/mkinitcpio.conf
 	fi
 	genfstab -p -U /mnt >> /mnt/etc/fstab
+	wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/chrootnset.sh
+	chmod +x chrootnset.sh
 	cp chrootnset.sh config.sh /mnt
 	arch-chroot /mnt /bin/bash chrootnset.sh
 }
@@ -317,6 +320,19 @@ sixfour() {
 	fi
 }
 
+candy() { 
+	clear
+	printf "\n\n Would you like to see \n"
+	printf " pacman when updating/upgrading? \n"
+	printf " [----cC o  o ] instead of [########] \n\n"
+	printf " 	[Y/N] \n"
+	printf "\n\n\n Love Candy?:"
+	read lovecandy
+	if [ "$lovecandy" == Y -o "$lovecandy" == y ]
+		then
+		sed -i '37iILoveCandy' /mnt/etc/pacman.conf
+	fi
+}
 
 main() {
 	checkdat			## Check if ROOT
@@ -328,10 +344,11 @@ main() {
 	CALLpart 	 		## CALL PARTITIONING IF STATEMENT
 	luksencrypt			## Setup LUKS
 	pkgmntchroot 	 		## Setup packages and mounts, then chroot hook for additional setup w/ chrootnset.shh
-	sixfour						## If 64bit uncomment multilib
+	sixfour				## If 64bit uncomment multilib
 	cp issue /mnt/etc/issue   	## TTY ART 
+	candy				## Choose if you want pacman art when updating
 	postsetup			## POST INSTALL SCRIPT READY FOR AFTER INSTALL
-	umount -R /mnt	2> /dev/null		## UNMOUNT 
+	umount -R /mnt	2> /dev/null	## UNMOUNT 
 	clear
 	printf "\033[1m \n ${green} COMPLETE !  \n \033[0m"
 	printf "\033[1m \n ${yellow} SHUT DOWN SYSTEM AND THEN \n \033[0m"
