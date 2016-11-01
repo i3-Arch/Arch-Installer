@@ -322,11 +322,11 @@ sixfour() {
 
 candy() { 
 	clear
-	printf "\n\n Would you like to see \n"
-	printf " pacman when updating/upgrading? \n"
-	printf " [----cC o  o ] instead of [########] \n\n"
-	printf " 	[Y/N] \n"
-	printf "\n\n\n Love Candy?:"
+	printf "\033[1m \n\n ${green} Would you like to see \n\033[0m"
+	printf "\033[1m ${green}pacman when updating/upgrading? \n\033[0m"
+	printf "\033[1m ${yellow}[----cC o  o ]${green} instead of${yellow} [########] \n\n\033[0m"
+	printf "\033[1m ${white}	[Y/N] \n\033[0m"
+	printf "\033[1m \n\n\n ${red}L${white}o${red}v${white}e ${green}Candy${red}?${white}:\033[0m"
 	read lovecandy
 	if [ "$lovecandy" == Y -o "$lovecandy" == y ]
 		then
