@@ -219,7 +219,7 @@ makeitbro() {
 			pacman -Syy gnome gnome-extra xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm --needed
 		elif [ "$DemChoice" -eq "7" ]
 			then
-			pacman -Syy kde xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
+			pacman -Syy plasma sddm xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
 		
 		else
 			printf "\033[1m ${yellow}Choice not understood... ${red}Exiting \033[0m"
@@ -404,13 +404,13 @@ loginmanage() {
 	elif [ "$DemChoice" -eq "7" ]
 		then
 		clear
-		printf "\033[1m \n\n ${green} Would you like to enable Kdm ?\n\n\033[0m"
+		printf "\033[1m \n\n ${green} Would you like to enable SDDM ?\n\n\033[0m"
 		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \n\n\033[0m"
 		printf "\033[1m \n ${green}Answer: ${white}\033[0m"
-		read kdmok
-		if [ "$kdmok" == Y -o "$kdmok" == y ]
+		read sdmok
+		if [ "$sdmok" == Y -o "$sdmok" == y ]
 			then
-			systemctl enable kdm.service
+			systemctl enable sddm.service
 			printf "\033[1m ${red}\nReboot to take effect \033[0m" 
 			sleep 1
 		fi	

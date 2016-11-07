@@ -71,29 +71,29 @@ makeitbro() {
 		read DemChoice
 		if [ "$DemChoice" -eq "1" ]
 			then
-			pacman -Syy xfce4 xfce4-goodies --noconfirm
+			pacman -Syy xfce4 xfce4-goodies --noconfirm --needed
 		elif [ "$DemChoice" -eq "2" ]
 			then
-			pacman -Syy conky vimpager zsh zsh-syntax-highlighting xcompmgr transset-df xscreensaver vim feh dmenu rxvt-unicode urxvt-perls xcb-util-image xcb-util-renderutil libev libxkbcommon-x11 xcb-util-cursor cxb-util-keysyms xcb-util-wm xcb-util-xrm docbook-xml libxslt python2 asciidoc docbook-xsl --noconfirm
+			pacman -Syy conky vimpager zsh zsh-syntax-highlighting xcompmgr transset-df xscreensaver vim feh dmenu rxvt-unicode urxvt-perls xcb-util-image xcb-util-renderutil libev libxkbcommon-x11 xcb-util-cursor cxb-util-keysyms xcb-util-wm xcb-util-xrm docbook-xml libxslt python2 asciidoc docbook-xsl --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "3" ]
 			then
-			pacman -Syy cinnamon --noconfirm
+			pacman -Syy cinnamon --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "4" ]
 			then
-			pacman -Syy feh abs dmenu --noconfirm
+			pacman -Syy feh abs dmenu --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "5" ]
 			then
-			pacman -Syy awesome --noconfirm
+			pacman -Syy awesome --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "6" ]
 			then
-			pacman -Syy gnome gnome-extra --noconfirm
+			pacman -Syy gnome gnome-extra --noconfirm --needed
 		elif [ "$DemChoice" -eq "7" ]
 			then
-			pacman -Syy kde --noconfirm
+			pacman -Syy plasma sddm --noconfirm --needed
 		
 		else
 			printf "\033[1m ${yellow}Choice not understood... ${red}Exiting \033[0m"
