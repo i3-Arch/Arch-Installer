@@ -182,6 +182,7 @@ envset() {
 			then
 			if [ -f /home/"$namebro"/.xinitrc ]
 				then
+				pacman -Syy st --noconfirm
 				printf "\033[1m \n\n ${yellow} Commenting Out 2nd WM/DE in .xinitrc \n\033[0m"
 				sleep 4
 				sed -i '13i\ ' /home/"$namebro"/.xinitrc
@@ -274,7 +275,7 @@ urxvtstuff() {
 		printf "\033[1m \n\n ${green}Setting up wallpaper in ${red} /home/"$namebro"/.wallpapers \033[0m"
 		su "$namebro" -c "mkdir /home/"$namebro"/.wallpapers && cd /home/"$namebro"/.wallpapers && wget https://raw.githubusercontent.com/i3-Arch/i3config/master/newi3config/background/bluey.jpg"
 		su "$namebro" -c "cd /home/"$namebro" && echo "'feh --bg-scale ~/.wallpapers/bluey.jpg'" > .fehbg"
-		wget https://raw.githubusercontent.com/i3-Arch/i3config/master/ecliz-arch.tar.gz
+		wget https://raw.githubusercontent.com/i3-Arch/PKGBUILD/master/ecliz-arch/ecliz-arch.tar.gz
 		tar xzvf ecliz-arch.tar.gz
 		rm ecliz-arch.tar.gz
 		mv /usr/share/icons/default /usr/share/icons/thedefault-backup

@@ -71,11 +71,14 @@ encrypthomeswap() {
 		then
 		echo "crypthome   ${homepart}" >> /etc/crypttab
 	fi
-	if [ "$FULLpart" -eq 696 -a "$encSyesno" == Y -o "$encSyesno" == y ]
+	if [ "$FULLpart" -eq 696 ]
 		then
-		echo "swap	$swappart	/dev/urandom	swap,cipher=aes-xts-plain64,size=256" >> /etc/crypttab
-		sed -i '14,16d' /etc/fstab
-		echo "/dev/mapper/swap	none	swap	defaults	0 0" >> /etc/fstab
+		if [ "$encSyesno" == Y -o "$encSyesno" == y ]
+			then
+			echo "swap	$swappart	/dev/urandom	swap,cipher=aes-xts-plain64,size=256" >> /etc/crypttab
+			sed -i '14,16d' /etc/fstab
+			echo "/dev/mapper/swap	none	swap	defaults	0 0" >> /etc/fstab
+		fi
 	fi
 
 }
