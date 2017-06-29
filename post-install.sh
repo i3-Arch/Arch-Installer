@@ -122,7 +122,7 @@ usersetup() {
 		read anot
 		if [ "$anot" == Y -o "$anot" == y -o "$anot" == yes -o "$anot" == YES ]
 			then
-			echo -n "$namebro" "ALL=(ALL)" "ALL" >> /etc/sudoers
+			echo "$namebro ALL=(ALL) ALL" >> /etc/sudoers
 		fi
 }
 
@@ -197,29 +197,30 @@ makeitbro() {
 		read DemChoice
 		if [ "$DemChoice" -eq "1" ]
 			then
-			pacman -Syy xfce4 xfce4-goodies xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
+			pacman -Syy xfce4 xfce4-goodies xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
+		
 		elif [ "$DemChoice" -eq "2" ]
 			then
-			pacman -Syy zsh vimpager conky zsh-syntax-highlighting xcompmgr transset-df xscreensaver xorg-server vim xorg-server-utils feh xorg-font-util xorg-xinit xterm dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls xcb-util-image xcb-util-renderutil libev libxkbcommon-x11 xcb-util-cursor xcb-util-keysyms xcb-util-wm xcb-util-xrm docbook-xml libxslt python2 asciidoc docbook-xsl --noconfirm --needed
+			pacman -Syy zsh vimpager conky zsh-syntax-highlighting xcompmgr transset-df xscreensaver xorg-server vim feh xorg-font-util xorg-xinit xterm dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls xcb-util-image xcb-util-renderutil libev libxkbcommon-x11 xcb-util-cursor xcb-util-keysyms xcb-util-wm xcb-util-xrm docbook-xml libxslt python2 asciidoc docbook-xsl --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "3" ]
 			then
-			pacman -Syy cinnamon xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
+			pacman -Syy cinnamon xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "4" ]
 			then
-			pacman -Syy xorg-server feh xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu --noconfirm --needed
+			pacman -Syy xorg-server feh xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "5" ]
 			then
-			pacman -Syy awesome xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm --needed
+			pacman -Syy awesome xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "6" ]
 			then
-			pacman -Syy gnome gnome-extra xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm --needed
+			pacman -Syy gnome gnome-extra xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm --needed
 		elif [ "$DemChoice" -eq "7" ]
 			then
-			pacman -Syy plasma sddm xorg-server xorg-server-utils xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
+			pacman -Syy plasma sddm xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
 		
 		else
 			printf "\033[1m ${yellow}Choice not understood... ${red}Exiting \033[0m"
@@ -315,14 +316,14 @@ envset() {
 				cp .Xresources .zshrc .xinitrc .vimrc /home/"$namebro"/
 				cp -r .i3 /home/"$namebro"/
 				chmod +x /home/"$namebro"/.i3/conky/conkyrc
-				chown "$namebro":"$namebro" /home/"$namebro"/.i3
-				chown "$namebro":"$namebro" /home/"$namebro"/.i3/config
-				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky
-				chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky/conkyrc
-				chown "$namebro":"$namebro" /home/"$namebro"/.Xresources
-				chown "$namebro":"$namebro" /home/"$namebro"/.vimrc
-				chown "$namebro":"$namebro" /home/"$namebro"/.zshrc
-				chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc
+				chown -R "$namebro":"$namebro" /home/"$namebro"
+				#chown "$namebro":"$namebro" /home/"$namebro"/.i3/config
+				#chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky
+				#chown "$namebro":"$namebro" /home/"$namebro"/.i3/conky/conkyrc
+				#chown "$namebro":"$namebro" /home/"$namebro"/.Xresources
+				#chown "$namebro":"$namebro" /home/"$namebro"/.vimrc
+				#chown "$namebro":"$namebro" /home/"$namebro"/.zshrc
+				#chown "$namebro":"$namebro" /home/"$namebro"/.xinitrc
 			fi
 		elif [ "$DemChoice" -eq "3" ]
 			then
@@ -341,8 +342,7 @@ envset() {
 				mv ~/.Xresources /home/"$namebro"/
 				abs community/dwm
 				cp -r /var/abs/community/dwm /home/"$namebro"/dwm
-				chown "$namebro":"$namebro" /home/"$namebro"/dwm
-				chown "$namebro":"$namebro" /home/"$namebro"/dwm/*
+				chown -R "$namebro":"$namebro" /home/"$namebro"/dwm
 				chown "$namebro":"$namebro" /home/"$namebro"/.Xresources
 				su "$namebro" -c "cd /home/"$namebro"/dwm && makepkg"
 				pacman -U /home/"$namebro"/dwm/*.tar.xz --noconfirm
@@ -454,33 +454,39 @@ urxvtstuff() {
 		clear
 		printf "\033[1m\n\n${green}Setting up urxvt for custom i3 setup\n\033[0m"
 		printf "\033[1m\n ${yellow}And changing shell to zsh for your user\n\033[0m"
+		printf "\033[1m\n${green}creating user to build [ WILL BE REMOVED AFTER ]\n\033[0m"
 		sleep 2
-		if [ ! -d /home/"$namebro"/build-dir ]
+		$(useradd -m -G adm,wheel builder)
+		if [ ! -d /home/builder/build-dir ]
 			then
-			su "$namebro" -c "mkdir /home/"$namebro"/build-dir"
+			su builder -c "mkdir /home/builder/build-dir"
 		fi
+		printf "\n" >> /etc/sudoers
+		echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 		pacman -Syy git xorg-xlsfonts flac  gtk3 json-c libasyncns libnotify libogg libpulse libsndfile libvorbis yajl --noconfirm --needed
-		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-tabbedex.tar.gz && tar xzvf urxvt-tabbedex.tar.gz"
-		su "$namebro" -c "cd /home/$namebro/build-dir/urxvt-tabbedex && makepkg -s"
-		pacman -U /home/"$namebro"/build-dir/urxvt-tabbedex/*.xz --noconfirm
-		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/oh-my-zsh-git.tar.gz && tar xzvf oh-my-zsh-git.tar.gz"
-		su "$namebro" -c "cd /home/$namebro/build-dir/oh-my-zsh-git && makepkg -s"
-		pacman -U /home/"$namebro"/build-dir/oh-my-zsh-git/*.xz --noconfirm
-		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-vtwheel.tar.gz && tar xzvf urxvt-vtwheel.tar.gz"
-		su "$namebro" -c "cd /home/$namebro/build-dir/urxvt-vtwheel && makepkg -s"
-		pacman -U /home/"$namebro"/build-dir/urxvt-vtwheel/*.xz --noconfirm
-		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-font-size-git.tar.gz && tar xzvf urxvt-font-size-git.tar.gz"
-		su "$namebro" -c "cd /home/$namebro/build-dir/urxvt-font-size-git && makepkg -s"
-		pacman -U /home/"$namebro"/build-dir/urxvt-font-size-git/*.xz --noconfirm
-		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/prezto-git.tar.gz && tar xzvf prezto-git.tar.gz"
-		su "$namebro" -c "cd /home/$namebro/build-dir/prezto-git && makepkg -s"
-		pacman -U /home/"$namebro"/build-dir/prezto-git/*.xz --noconfirm
-		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-font-awesome.tar.gz && tar xzvf ttf-font-awesome.tar.gz"
-		su "$namebro" -c "cd /home/$namebro/build-dir/ttf-font-awesome && makepkg -s"
-		pacman -U /home/"$namebro"/build-dir/ttf-font-awesome/*.xz --noconfirm
-		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/i3-gaps.tar.gz && tar xzvf i3-gaps.tar.gz"
-		su "$namebro" -c "cd /home/$namebro/build-dir/i3-gaps && makepkg -s --noconfirm"
-		pacman -U /home/"$namebro"/build-dir/i3-gaps/*.xz --noconfirm
+		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-tabbedex.tar.gz && tar xzvf urxvt-tabbedex.tar.gz"
+		su builder -c "cd /home/builder/build-dir/urxvt-tabbedex && makepkg -s --noconfirm"
+		pacman -U /home/builder/build-dir/urxvt-tabbedex/*.xz --noconfirm
+		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/oh-my-zsh-git.tar.gz && tar xzvf oh-my-zsh-git.tar.gz"
+		su builder -c "cd /home/builder/build-dir/oh-my-zsh-git && makepkg -s --noconfirm"
+		pacman -U /home/builder/build-dir/oh-my-zsh-git/*.xz --noconfirm
+		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-vtwheel.tar.gz && tar xzvf urxvt-vtwheel.tar.gz"
+		su builder -c "cd /home/builder/build-dir/urxvt-vtwheel && makepkg -s --noconfirm"
+		pacman -U /home/builder/build-dir/urxvt-vtwheel/*.xz --noconfirm
+		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-font-size-git.tar.gz && tar xzvf urxvt-font-size-git.tar.gz"
+		su builder -c "cd /home/builder/build-dir/urxvt-font-size-git && makepkg -s --noconfirm"
+		pacman -U /home/builder/build-dir/urxvt-font-size-git/*.xz --noconfirm
+		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/prezto-git.tar.gz && tar xzvf prezto-git.tar.gz"
+		su builder -c "cd /home/builder/build-dir/prezto-git && makepkg -s --noconfirm"
+		pacman -U /home/builder/build-dir/prezto-git/*.xz --noconfirm
+		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-font-awesome.tar.gz && tar xzvf ttf-font-awesome.tar.gz"
+		su builder -c "cd /home/builder/build-dir/ttf-font-awesome && makepkg -s --noconfirm"
+		pacman -U /home/builder/build-dir/ttf-font-awesome/*.xz --noconfirm
+		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/i3-gaps.tar.gz && tar xzvf i3-gaps.tar.gz"
+		su builder -c "cd /home/builder/build-dir/i3-gaps && makepkg -s --noconfirm"
+		pacman -U /home/builder/build-dir/i3-gaps/*.xz --noconfirm
+		sed -i '/builder ALL=(ALL) NOPASSWD: ALL/d' /etc/sudoers
+		userdel -r builder
 		clear
 		printf "\033[1m\n${green}Enter your ${red}USER PASSWORD${yellow} ( Changing Shell to ZSH )\n\033[0m"
 		su "$namebro" -c "chsh -s $(which zsh)"
