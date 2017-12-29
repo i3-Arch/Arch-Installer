@@ -37,13 +37,13 @@ timelocale() {
 	printf "\033[1m${white}ENTER ${green}(3)${red}for Pacific\n \033[0m"
 	printf "\033[1m \n ${white} Choice: \033[0m"
 	read timezoneresponse
-	if [  "$timezoneresponse" -eq "1" ]
+	if [  "$timezoneresponse" -eq 1 ]
 		then
 		$(ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime) ;
-	elif [ "$timezoneresponse" -eq "2" ]
+	elif [ "$timezoneresponse" -eq 2 ]
 		then
 		$(ln -s /usr/share/zoneinfo/US/Central /etc/localtime) ;
-	elif	[ "$timezoneresponse" -eq "3" ]
+	elif	[ "$timezoneresponse" -eq 3 ]
 		then
 		$( ln -s /usr/share/zoneinfo/US/Pacific /etc/localtime) ;
 	else

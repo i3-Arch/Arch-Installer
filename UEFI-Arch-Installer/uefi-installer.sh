@@ -34,7 +34,7 @@ checkdat() {
 banner() {
 	clear
 cat <<"EOT"
-		        #                                                          ###
+		#                                                          ###
 	   # #   #####   ####  #    # #      # #    # #    # #    #    ###
 	  #   #  #    # #    # #    # #      # ##   # #    #  #  #     ###
 	 #     # #    # #      ###### #      # # #  # #    #   ##      ###
@@ -179,56 +179,52 @@ FULLpart() {
 }
 
 doiencrypt() {
-	clear
-	if [ "$uefiORbios" -eq "2" ]
+	clear	
+	printf "\n\n \033[1m ${red} LUKS for UEFI is still a work in progress. Choose no if using UEFI \n\n"
+	printf " \033[1m ${green} Encrypt Root? \n \033[0m"
+	printf " \033[1m ${yellow} [Y/N]: \033[0m"
+	read encRyesno
+	echo "encRyesno=$encRyesno" >> config.sh
+	if [ "$encRyesno" == Y -o "$encRyesno" == y ]
 		then
-		printf " \033[1m ${green} Encrypt Root? \n \033[0m"
-		printf " \033[1m ${yellow} [Y/N]: \033[0m"
-		read encRyesno
-		echo "encRyesno=$encRyesno" >> config.sh
-		if [ "$encRyesno" == Y -o "$encRyesno" == y ]
-			then
-			printf "\n\n Root will be encrypted! \n"
-		elif [ "$encRyesno" == N -o "$encRyesno" == n ]
-			then
-			printf "\n\n Not Encrypting: Moving on \n"
-		else
-			printf "\n\n Not Encrypting: 'Y' or 'N' not entered \n\n"
-		fi
-		if [ "$thechoiceman" -eq 2 -o "$thechoiceman" -eq 3 ]
-			then
-			printf "\033[1m ${green} Encrypt Home? \n \033[0m"
-			printf "\033[1m ${yellow} [Y/N]: \033[0m"
-			read encHyesno
-			echo "encHyesno=$encHyesno" >> config.sh
-			if [ "$encHyesno" == Y -o "$encHyesno" == y ]
-			then
-			printf "\n\n Home will be encrypted! \n"
-			elif [ "$encHyesno" == N -o "$encHyesno" == n ]
-				then
-				printf "\n Not Encrypting: Moving on\n\n"
-			else
-				printf "\n Not encrypting: 'Y' or 'N' not entered \n\n"
-			fi
-		fi
-		if [ "$thechoiceman" -eq 3 ]
-			then
-			printf "\033[1m ${green} Encrypt Swap? \n \033[0m"
-			printf "\033[1m ${yellow} [Y/N]: \033[0m"
-			read encSyesno
-			echo "encSyesno=$encSyesno" >> config.sh
-			if [ "$encSyesno" == Y -o "$encSyesno" == y ]
-				then
-				printf "\033[1m ${green} Swap will be encrypted! \n \033[0m"
-			elif [ "$encSyesno" == N -o "$encSyesno" == n ]
-				then
-				printf "\n Not Encrypting: Moving on \n\n"
-			else
-				printf "\n Not Encrypting: 'Y' or 'N' not entered \n\n"
-			fi
-		fi
+		printf "\n\n Root will be encrypted! \n"
+	elif [ "$encRyesno" == N -o "$encRyesno" == n ]
+		then
+		printf "\n\n Not Encrypting: Moving on \n"
 	else
-		printf "\n \033[1m ${green} LUKS for UEFI is currently on the list of things to do, moving on. \033[0m \n"
+		printf "\n\n Not Encrypting: 'Y' or 'N' not entered \n\n"
+	fi
+	if [ "$thechoiceman" -eq 2 -o "$thechoiceman" -eq 3 ]
+		then
+		printf "\033[1m ${green} Encrypt Home? \n \033[0m"
+		printf "\033[1m ${yellow} [Y/N]: \033[0m"
+		read encHyesno
+		echo "encHyesno=$encHyesno" >> config.sh
+		if [ "$encHyesno" == Y -o "$encHyesno" == y ]
+		then
+		printf "\n\n Home will be encrypted! \n"
+		elif [ "$encHyesno" == N -o "$encHyesno" == n ]
+			then
+			printf "\n Not Encrypting: Moving on\n\n"
+		else
+			printf "\n Not encrypting: 'Y' or 'N' not entered \n\n"
+		fi
+	fi
+	if [ "$thechoiceman" -eq 3 ]
+		then
+		printf "\033[1m ${green} Encrypt Swap? \n \033[0m"
+		printf "\033[1m ${yellow} [Y/N]: \033[0m"
+		read encSyesno
+		echo "encSyesno=$encSyesno" >> config.sh
+		if [ "$encSyesno" == Y -o "$encSyesno" == y ]
+			then
+			printf "\033[1m ${green} Swap will be encrypted! \n \033[0m"
+		elif [ "$encSyesno" == N -o "$encSyesno" == n ]
+			then
+			printf "\n Not Encrypting: Moving on \n\n"
+		else
+			printf "\n Not Encrypting: 'Y' or 'N' not entered \n\n"
+		fi
 	fi
 }
 
