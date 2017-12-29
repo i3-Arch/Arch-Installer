@@ -84,6 +84,7 @@
 
 **2.** [ ] Add More Options In General
 - [X] LUKS Option	(DONE!)
+- UEFI option	[ IN PROGRESS ]
 - More Filesystem Options ( ie: btrfs )
 - Kernel Options
 - Even More Minimal Install option
