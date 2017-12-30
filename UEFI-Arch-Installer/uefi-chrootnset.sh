@@ -140,7 +140,6 @@ BOOTload() {
 		printf "\033[1m \n ${white} CHOOSE YOUR BOOTLOADER \n \033[0m"
 		printf "\033[1m \n ${white}(1) ${red}For Grub \n \033[0m"
 		printf "\033[1m \n ${white}(2) ${red}For SysLinux \n \033[0m"
-		printf "\033[1m \n ${white}(3) ${red}For UEFI Grub \n \033[0m"
 		printf "\033[1m \n ${yellow}CHOICE: ${white}\033[0m"
 		read bootloadchoice
 		if [ "$bootloadchoice" -eq "1" ]
