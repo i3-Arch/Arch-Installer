@@ -253,7 +253,7 @@ pkgmntchroot() {
 		printf "\033[1m ${green} You selected AMD \033[0m"
 		pacstrap /mnt base base-devel grub os-prober rsync wget wpa_supplicant linux linux-firmware amd-ucode
 	else
-		printf "\033[1m ${green} Assuming you want AMD... proceeding \033[0m"
+		printf "\033[1m ${green} Assuming you want AMD... proceeding \033[0m \n"
 		pacstrap /mnt base base-devel grub os-prober rsync wget wpa_supplicant linux linux-firmware amd-ucode
 	fi
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
@@ -262,6 +262,8 @@ pkgmntchroot() {
 	   sed -i 's/block filesystems/block keymap encrypt filesystems/g' /mnt/etc/mkinitcpio.conf
 	fi
 	genfstab -p -U /mnt >> /mnt/etc/fstab
+	printf "\033[1m ${green} Enter root password \033[0m \n"
+	passwd
 	wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/chrootnset.sh
 	chmod +x chrootnset.sh
 	cp chrootnset.sh config.sh /mnt
