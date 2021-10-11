@@ -241,7 +241,21 @@ pkgmntchroot() {
 			mount $homepart /mnt/home
 		fi
 	fi
-	pacstrap /mnt base base-devel grub os-prober rsync wget wpa_supplicant
+	printf "\033[1m ${green} Intel or AMD CPU \n \033[0m"
+	printf "\033[1m ${yellow} Y for INTEL, N for AMD: \033[0m"
+	read intelamd
+	if [ "$intelamd" == Y -o "$intelamd" == y ]
+		then
+		printf "\033[1m ${green} You selected INTEL \033[0m"
+		pacstrap /mnt base base-devel grub os-prober rsync wget wpa_supplicant linux linux-firmware intel-ucode
+	elif [ "$intelamd" == N -o "$intelamd" == n ]
+		then
+		printf "\033[1m ${green} You selected AMD \033[0m"
+		pacstrap /mnt base base-devel grub os-prober rsync wget wpa_supplicant linux linux-firmware amd-ucode
+	else
+		printf "\033[1m ${green} Assuming you want AMD... proceeding \033[0m"
+		pacstrap /mnt base base-devel grub os-prober rsync wget wpa_supplicant linux linux-firmware amd-ucode
+	fi
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
 	if [ "$encRyesno" == Y -o "$encRyesno" == y ]
 	   then
