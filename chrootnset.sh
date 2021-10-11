@@ -141,6 +141,8 @@ main() {
 	encrypthomeswap
 	BOOTload
 	localeStuff
+	printf "\033[1m ${green} Set your root password \033[0m \n"
+	passwd
 	rm chrootnset.sh config.sh #cleanup
 	exit
 }
