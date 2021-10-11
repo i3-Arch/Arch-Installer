@@ -262,8 +262,6 @@ pkgmntchroot() {
 	   sed -i 's/block filesystems/block keymap encrypt filesystems/g' /mnt/etc/mkinitcpio.conf
 	fi
 	genfstab -p -U /mnt >> /mnt/etc/fstab
-	printf "\033[1m ${green} Enter root password \033[0m \n"
-	passwd
 	wget https://raw.githubusercontent.com/i3-Arch/Arch-Installer/master/chrootnset.sh
 	chmod +x chrootnset.sh
 	cp chrootnset.sh config.sh /mnt
