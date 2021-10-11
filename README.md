@@ -47,7 +47,7 @@
 **2.**
 - No more Menu due to latest Arch image:  ==> NOW JUST RUN
 
-` pacman -Syy wget ; wget https://goo.gl/oOS1ez -O installer.sh ; chmod +x *.sh ; ./installer.sh `
+` pacman -Syy wget --noconfirm ; wget https://goo.gl/oOS1ez -O installer.sh ; chmod +x *.sh ; ./installer.sh `
 
 
 
