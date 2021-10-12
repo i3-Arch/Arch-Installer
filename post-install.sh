@@ -93,13 +93,6 @@ mirrorselect() {
 }
 
 
-needpass() { 
-	clear
-	printf "\033[1m \n ${yellow} Set a ROOT password \n\n \033[0m"
-	passwd
-}
-
-
 usersetup() {
 		clear
 		printf "\033[1m \n\n ${green} Lets create a user ! \n \033[0m"
@@ -522,7 +515,6 @@ main2() {
 main() {
 	checkroot
 	thankyoubro
-	needpass
 	usersetup
 	mirrorselect
 	uwantme
