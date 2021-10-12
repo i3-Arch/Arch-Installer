@@ -247,14 +247,14 @@ pkgmntchroot() {
 	if [ "$intelamd" == Y -o "$intelamd" == y ]
 		then
 		printf "\033[1m ${green} You selected INTEL \033[0m"
-		pacstrap /mnt base base-devel grub os-prober rsync wget wpa_supplicant linux linux-firmware intel-ucode
+		pacstrap /mnt base base-devel grub os-prober rsync wget wpa_supplicant linux linux-firmware intel-ucode vim zsh-syntax-highlighting
 	elif [ "$intelamd" == N -o "$intelamd" == n ]
 		then
 		printf "\033[1m ${green} You selected AMD \033[0m"
-		pacstrap /mnt base base-devel grub os-prober rsync wget wpa_supplicant linux linux-firmware amd-ucode
+		pacstrap /mnt base base-devel grub os-prober rsync wget wpa_supplicant linux linux-firmware amd-ucode vim zsh-syntax-highlighting
 	else
 		printf "\033[1m ${green} Assuming you want AMD... proceeding \033[0m \n"
-		pacstrap /mnt base base-devel grub os-prober rsync wget wpa_supplicant linux linux-firmware amd-ucode
+		pacstrap /mnt base base-devel grub os-prober rsync wget wpa_supplicant linux linux-firmware amd-ucode vim zsh-syntax-highlighting
 	fi
 	rsync -rav /etc/pacman.d/gnupg/ /mnt/etc/pacman.d/gnupg/
 	if [ "$encRyesno" == Y -o "$encRyesno" == y ]
