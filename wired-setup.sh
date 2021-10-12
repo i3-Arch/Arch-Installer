@@ -12,6 +12,8 @@ echo "Name=$ifacename" >> /etc/systemd/network/20-wired.network
 echo "[Network]" >> /etc/systemd/network/20-wired.network
 echo "DHCP=yes" >> /etc/systemd/network/20-wired.network
 
+systemctl start systemd-resolved.service
+systemctl enable systemd-resolved.service
 systemctl start systemd-networkd.service
 systemctl enable systemd-networkd.service
 
