@@ -57,7 +57,7 @@ intelinside() {
 	read intelstuff
 	if [ "$intelstuff" == Y -o "$intelstuff" == y ]
 		then
-		pacman -S intel-dri xf86-video-intel --noconfirm --needed
+		pacman -S intel-dri xf86-video-intel lib32-mesa --noconfirm --needed
 	
 	else
 		printf "\033[1m \n\n ${green}Are you using AMD Graphics? \n\033[0m"
@@ -66,7 +66,7 @@ intelinside() {
 		read amdstuff
 		if [ "$amdstuff" == Y -o "$amdstuff" == y ]
 			then
-			pacman -S ati-dri xf86-video-ati --noconfirm --needed
+			pacman -S xf86-video-amdgpu xf86-video-ati lib32-mesa --noconfirm --needed
 		fi
 	fi
 }
