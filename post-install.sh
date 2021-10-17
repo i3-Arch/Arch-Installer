@@ -178,6 +178,8 @@ sleep 2
 
 makeitbro() {
 		clear
+		printf "\033[1m \n ${red} ** NOTICE ** \n \033[0m"
+		printf "\0331m \n ${red} Some may not work as of now, this code is old... will update sometime \n \033[0m"
 		printf "\033[1m \n ${green}Option 1: ${yellow}Install Default Xfce Setup \n \033[0m"
 		printf "\033[1m \n ${green}Option 2: ${yellow}Install Our CUSTOM i3 Setup\n \033[0m"
 		printf "\033[1m \n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n \033[0m" 
@@ -462,25 +464,25 @@ urxvtstuff() {
 		pacman -Syy git xorg-xlsfonts flac  gtk3 json-c libasyncns libnotify libogg libpulse libsndfile libvorbis yajl --noconfirm --needed
 		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-tabbedex.tar.gz && tar xzvf urxvt-tabbedex.tar.gz"
 		su builder -c "cd /home/builder/build-dir/urxvt-tabbedex && makepkg -s --noconfirm"
-		pacman -U /home/builder/build-dir/urxvt-tabbedex/*.xz --noconfirm
+		pacman -U /home/builder/build-dir/urxvt-tabbedex/*.zst --noconfirm
 		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/oh-my-zsh-git.tar.gz && tar xzvf oh-my-zsh-git.tar.gz"
 		su builder -c "cd /home/builder/build-dir/oh-my-zsh-git && makepkg -s --noconfirm"
-		pacman -U /home/builder/build-dir/oh-my-zsh-git/*.xz --noconfirm
+		pacman -U /home/builder/build-dir/oh-my-zsh-git/*.zst --noconfirm
 		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-vtwheel.tar.gz && tar xzvf urxvt-vtwheel.tar.gz"
 		su builder -c "cd /home/builder/build-dir/urxvt-vtwheel && makepkg -s --noconfirm"
-		pacman -U /home/builder/build-dir/urxvt-vtwheel/*.xz --noconfirm
+		pacman -U /home/builder/build-dir/urxvt-vtwheel/*.zst --noconfirm
 		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/urxvt-font-size-git.tar.gz && tar xzvf urxvt-font-size-git.tar.gz"
 		su builder -c "cd /home/builder/build-dir/urxvt-font-size-git && makepkg -s --noconfirm"
-		pacman -U /home/builder/build-dir/urxvt-font-size-git/*.xz --noconfirm
+		pacman -U /home/builder/build-dir/urxvt-font-size-git/*.zst --noconfirm
 		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/prezto-git.tar.gz && tar xzvf prezto-git.tar.gz"
 		su builder -c "cd /home/builder/build-dir/prezto-git && makepkg -s --noconfirm"
-		pacman -U /home/builder/build-dir/prezto-git/*.xz --noconfirm
-		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-font-awesome.tar.gz && tar xzvf ttf-font-awesome.tar.gz"
-		su builder -c "cd /home/builder/build-dir/ttf-font-awesome && makepkg -s --noconfirm"
-		pacman -U /home/builder/build-dir/ttf-font-awesome/*.xz --noconfirm
-		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/i3-gaps.tar.gz && tar xzvf i3-gaps.tar.gz"
-		su builder -c "cd /home/builder/build-dir/i3-gaps && makepkg -s --noconfirm"
-		pacman -U /home/builder/build-dir/i3-gaps/*.xz --noconfirm
+		pacman -U /home/builder/build-dir/prezto-git/*.zst --noconfirm
+		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/ttf-font-awesome-4.tar.gz && tar xzvf ttf-font-awesome-4.tar.gz"
+		su builder -c "cd /home/builder/build-dir/ttf-font-awesome-4 && makepkg -s --noconfirm"
+		pacman -U /home/builder/build-dir/ttf-font-awesome-4/*.zst --noconfirm
+		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/i3-gaps-next-git.tar.gz && tar xzvf i3-gaps-next-git.tar.gz"
+		su builder -c "cd /home/builder/build-dir/i3-gaps-next-git && makepkg -s --noconfirm"
+		pacman -U /home/builder/build-dir/i3-gaps-next-git/*.zst --noconfirm
 		sed -i '/builder ALL=(ALL) NOPASSWD: ALL/d' /etc/sudoers
 		userdel -r builder
 		clear
@@ -503,7 +505,7 @@ urxvtstuff() {
 
 main2() {
 	banner
-	guestbro
+	# guestbro - in process of updating... 
 	makeitbro
 	xseti3
 	envset
