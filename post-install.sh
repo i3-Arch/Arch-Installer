@@ -426,7 +426,7 @@ bobthebuilder() {
 	if [ "$thatquestion" == Y -o "$thatquestion" == y ]
 		then
 		printf "\033[1m\n\n ${green}Setting up pacaur for future use \n\n\033[0m"
-		pacman -S git meson python fakechroot gtest --noconfirm
+		pacman -S git meson python fakechroot gtest jq --noconfirm
 		su "$namebro" -c "mkdir /home/$namebro/build-dir"
 		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/auracle-git.tar.gz && tar xzvf auracle-git.tar.gz"
 		su "$namebro" -c "cd /home/$namebro/build-dir/auracle-git && makepkg -s -S --noconfirm"
