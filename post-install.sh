@@ -109,7 +109,7 @@ usersetup() {
 		$(useradd -m -G adm,disk,audio,network,video "$namebro")
 		printf "\033[1m \n\n ${yellow} Set a Password for this USER now \n\n \033[0m"
 		passwd "$namebro"
-		printf "\033[1m \n\n ${yellow}Would you like to add this user to sudoers? ( user ALL=(ALL)- ALL ) \033[0m"
+		printf "\033[1m \n\n ${yellow}Would you like to add this user to sudoers? ( user ALL=(ALL) ALL ) \033[0m"
 		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \033[0m"
 		printf "\033[1m\n\n ${red}Answer: ${white}\033[0m"
 		read anot
@@ -415,7 +415,7 @@ loginmanage() {
 bobthebuilder() {  
 	clear
 	printf "\033[1m\n\n ${green}Would you like to setup pacaur ? \n\033[0m"
-	printf "\033[1m\n\n ${white}It's an ${red}AUR ${white}helper with cower backend \n\n\033[0m"
+	printf "\033[1m\n\n ${white}It's an ${red}AUR ${white}helper\n\n\033[0m"
 	printf "\033[1m\n\n${white}[${green}Y${white}|${red}N${white}]\n\n\033[0m"
 	printf "\033[1m\n\n${red}Answer: ${white}\033[0m"
 	read thatquestion
