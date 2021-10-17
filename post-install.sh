@@ -427,13 +427,13 @@ bobthebuilder() {
 		pacman -S expac yajl git perl-error fakechroot jq gtest --noconfirm
 		su "$namebro" -c "mkdir /home/$namebro/build-dir"
 		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/auracle-git.tar.gz && tar xzvf auracle-git.tar.gz"
-		su "$namebro" -c "cd /home/$namebro/build-dir/auracle-git && makepkg -s --noconfirm"
+		su "$namebro" -c "cd /home/$namebro/build-dir/auracle-git && makepkg -s -S --noconfirm"
 		pacman -U /home/"$namebro"/build-dir/auracle-git/*.zst --noconfirm
 		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/expac-git.tar.gz && tar xzvf expac-git.tar.gz"
-		su "$namebro" -c "cd /home/$namebro/build-dir/expac-git && makepkg -s --noconfirm"
+		su "$namebro" -c "cd /home/$namebro/build-dir/expac-git && makepkg -s -S --noconfirm"
 		pacman -U /home/"$namebro"/build-dir/expac-git/*.zst --noconfirm
 		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz && tar xzvf pacaur.tar.gz"
-		su "$namebro" -c "cd /home/$namebro/build-dir/pacaur && makepkg -s --noconfirm"
+		su "$namebro" -c "cd /home/$namebro/build-dir/pacaur && makepkg -s -S --noconfirm"
 		pacman -U /home/"$namebro"/build-dir/pacaur/*.zst --noconfirm
 		rm -rf /home/$namebro/build-dir
 	else
