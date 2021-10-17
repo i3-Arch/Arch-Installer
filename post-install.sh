@@ -192,30 +192,30 @@ makeitbro() {
 		read DemChoice
 		if [ "$DemChoice" -eq "1" ]
 			then
-			pacman -Syy xorg-xinit xfce4 xfce4-goodies xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
+			pacman -Syy fakechroot jq gtest xorg-xinit xfce4 xfce4-goodies xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "2" ]
 			then
-			pacman -Syy zsh xorg-xinit xorg vimpager conky zsh-syntax-highlighting xcompmgr transset-df xscreensaver xorg-server vim feh xorg-font-util xorg-xinit xterm dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls xcb-util-image xcb-util-renderutil libev libxkbcommon-x11 xcb-util-cursor xcb-util-keysyms xcb-util-wm xcb-util-xrm docbook-xml libxslt python2 asciidoc docbook-xsl --noconfirm --needed
+			pacman -Syy fakechroot jq gtest zsh xorg-xinit xorg vimpager conky zsh-syntax-highlighting xcompmgr transset-df xscreensaver xorg-server vim feh xorg-font-util xorg-xinit xterm dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls xcb-util-image xcb-util-renderutil libev libxkbcommon-x11 xcb-util-cursor xcb-util-keysyms xcb-util-wm xcb-util-xrm docbook-xml libxslt python2 asciidoc docbook-xsl --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "3" ]
 			then
-			pacman -Syy cinnamon xorg-xinit xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
-		
+			pacman -Syy fakechroot jq gtest cinnamon xorg-xinit xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
+			
 		elif [ "$DemChoice" -eq "4" ]
 			then
-			pacman -Syy xorg-xinit xorg-server feh xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu --noconfirm --needed
+			pacman -Syy fakechroot jq gtest xorg-xinit xorg-server feh xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox abs dmenu --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "5" ]
 			then
-			pacman -Syy awesome xorg-xinit xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm --needed
+			pacman -Syy fakechroot jq gtest awesome xorg-xinit xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "6" ]
 			then
-			pacman -Syy gnome xorg-xinit gnome-extra xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm --needed
+			pacman -Syy fakechroot jq gtest gnome xorg-xinit gnome-extra xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox  --noconfirm --needed
 		elif [ "$DemChoice" -eq "7" ]
 			then
-			pacman -Syy xorg-xinit plasma sddm xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
+			pacman -Syy fakechroot jq gtest xorg-xinit plasma sddm xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox --noconfirm --needed
 		
 		else
 			printf "\033[1m ${yellow}Choice not understood... ${red}Exiting \033[0m"
