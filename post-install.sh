@@ -179,7 +179,7 @@ sleep 2
 makeitbro() {
 		clear
 		printf "\033[1m \n ${red} ** NOTICE ** \n \033[0m"
-		printf "\0331m \n ${red} Some may not work as of now, this code is old... will update sometime \n \033[0m"
+		printf "\033[1m \n ${red} Some may not work as of now, this code is old... will update sometime \n \033[0m"
 		printf "\033[1m \n ${green}Option 1: ${yellow}Install Default Xfce Setup \n \033[0m"
 		printf "\033[1m \n ${green}Option 2: ${yellow}Install Our CUSTOM i3 Setup\n \033[0m"
 		printf "\033[1m \n ${green}Option 3: ${yellow}Install Default Cinnamon Setup \n \033[0m" 
