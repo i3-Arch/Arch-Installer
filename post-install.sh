@@ -109,7 +109,7 @@ usersetup() {
 		$(useradd -m -G adm,disk,audio,network,video "$namebro")
 		printf "\033[1m \n\n ${yellow} Set a Password for this USER now \n\n \033[0m"
 		passwd "$namebro"
-		printf "\033[1m \n\n ${yellow}Would you like to add this user to sudoers? ( user ALL=(ALL) ALL ) \033[0m"
+		printf "\033[1m \n\n ${yellow}Would you like to add this user to sudoers? ( user ALL=(ALL)- ALL ) \033[0m"
 		printf "\033[1m \n\n ${white}[${green}Y${white}|${red}N${white}] \033[0m"
 		printf "\033[1m\n\n ${red}Answer: ${white}\033[0m"
 		read anot
@@ -424,12 +424,15 @@ bobthebuilder() {
 		printf "\033[1m\n\n ${green}Setting up pacaur for future use \n\n\033[0m"
 		pacman -Syy expac yajl git perl-error --noconfirm --needed
 		su "$namebro" -c "mkdir /home/$namebro/build-dir"
-		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz && tar xzvf cower.tar.gz"
-		su "$namebro" -c "cd /home/$namebro/build-dir/cower && makepkg -s --skippgpcheck"
-		pacman -U /home/"$namebro"/build-dir/cower/*.xz --noconfirm
+		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/auracle-git.tar.gz && tar xzvf auracle-git.tar.gz"
+		su "$namebro" -c "cd /home/$namebro/build-dir/auracle-git && makepkg -s --noconfirm"
+		pacman -U /home/"$namebro"/build-dir/auracle-git/*.zst --noconfirm
+		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/expac-git.tar.gz && tar xzvf expac-git.tar.gz"
+		su "$namebro" -c "cd /home/$namebro/build-dir/expac-git && makepkg -s --noconfirm"
+		pacman -U /home/"$namebro"/build-dir/pacaur/*.zst --noconfirm
 		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz && tar xzvf pacaur.tar.gz"
-		su "$namebro" -c "cd /home/$namebro/build-dir/pacaur && makepkg -s"
-		pacman -U /home/"$namebro"/build-dir/pacaur/*.xz --noconfirm
+		su "$namebro" -c "cd /home/$namebro/build-dir/pacaur && makepkg -s --noconfirm"
+		pacman -U /home/"$namebro"/build-dir/pacaur/*.zst --noconfirm
 		rm -rf /home/$namebro/build-dir
 	else
 		printf "\033[1m\n\n ${yellow}You entered no\n\033[0m"
