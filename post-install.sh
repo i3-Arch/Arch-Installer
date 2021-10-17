@@ -483,6 +483,9 @@ urxvtstuff() {
 		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/i3-gaps-next-git.tar.gz && tar xzvf i3-gaps-next-git.tar.gz"
 		su builder -c "cd /home/builder/build-dir/i3-gaps-next-git && makepkg -s --noconfirm"
 		pacman -U /home/builder/build-dir/i3-gaps-next-git/*.zst --noconfirm
+		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/transset-df.tar.gz && tar xzvf transset-df.tar.gz"
+		su builder -c "cd /home/builder/build-dir/transset-df && makepkg -s --noconfirm"
+		pacman -U /home/builder/build-dir/transset-df/*.zst --noconfirm
 		sed -i '/builder ALL=(ALL) NOPASSWD: ALL/d' /etc/sudoers
 		userdel -r builder
 		clear
