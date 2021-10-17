@@ -178,6 +178,7 @@ sleep 2
 
 makeitbro() {
 		clear
+		pacman -Syy
 		printf "\033[1m \n ${red} ** NOTICE ** \n \033[0m"
 		printf "\033[1m \n ${red} Some may not work as of now, this code is old... will update sometime \n \033[0m"
 		printf "\033[1m \n ${green}Option 1: ${yellow}Install Default Xfce Setup \n \033[0m"
@@ -189,7 +190,6 @@ makeitbro() {
 		printf "\033[1m \n ${green}Option 7: ${yellow}Install Default Kde Setup \n\n \033[0m"
 		printf "\033[1m\n${white}Choose a number  ${red}1${white}-${red}7\033[0m"
 		printf "\033[1m \n\n ${yellow}Choice${white}: ${white}\033[0m"
-		pacman -Syy
 		read DemChoice
 		if [ "$DemChoice" -eq "1" ]
 			then
