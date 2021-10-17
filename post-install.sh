@@ -486,7 +486,7 @@ urxvtstuff() {
 		su builder -c "cd /home/builder/build-dir/i3-gaps-next-git && makepkg -s --noconfirm"
 		pacman -U /home/builder/build-dir/i3-gaps-next-git/*.zst --noconfirm
 		su builder -c "cd /home/builder/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/transset-df.tar.gz && tar xzvf transset-df.tar.gz"
-		su builder -c "cd /home/builder/build-dir/transset-df && makepkg -s --noconfirm"
+		su builder -c "cd /home/builder/build-dir/transset-df && wget http://forchheimer.se/transset-df/transset-df-6.tar.gz && makepkg"
 		pacman -U /home/builder/build-dir/transset-df/*.zst --noconfirm
 		sed -i '/builder ALL=(ALL) NOPASSWD: ALL/d' /etc/sudoers
 		userdel -r builder
