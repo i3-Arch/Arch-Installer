@@ -431,7 +431,7 @@ bobthebuilder() {
 		pacman -U /home/"$namebro"/build-dir/auracle-git/*.zst --noconfirm
 		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/expac-git.tar.gz && tar xzvf expac-git.tar.gz"
 		su "$namebro" -c "cd /home/$namebro/build-dir/expac-git && makepkg -s --noconfirm"
-		pacman -U /home/"$namebro"/build-dir/pacaur/*.zst --noconfirm
+		pacman -U /home/"$namebro"/build-dir/expac-git/*.zst --noconfirm
 		su "$namebro" -c "cd /home/$namebro/build-dir && wget https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz && tar xzvf pacaur.tar.gz"
 		su "$namebro" -c "cd /home/$namebro/build-dir/pacaur && makepkg -s --noconfirm"
 		pacman -U /home/"$namebro"/build-dir/pacaur/*.zst --noconfirm
