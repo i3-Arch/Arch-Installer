@@ -196,7 +196,7 @@ makeitbro() {
 		
 		elif [ "$DemChoice" -eq "2" ]
 			then
-			pacman -Syy zsh vimpager conky zsh-syntax-highlighting xcompmgr transset-df xscreensaver xorg-server vim feh xorg-font-util xorg-xinit xterm dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls xcb-util-image xcb-util-renderutil libev libxkbcommon-x11 xcb-util-cursor xcb-util-keysyms xcb-util-wm xcb-util-xrm docbook-xml libxslt python2 asciidoc docbook-xsl --noconfirm --needed
+			pacman -Syy zsh xorg vimpager conky zsh-syntax-highlighting xcompmgr transset-df xscreensaver xorg-server vim feh xorg-font-util xorg-xinit xterm dmenu ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox rxvt-unicode urxvt-perls xcb-util-image xcb-util-renderutil libev libxkbcommon-x11 xcb-util-cursor xcb-util-keysyms xcb-util-wm xcb-util-xrm docbook-xml libxslt python2 asciidoc docbook-xsl --noconfirm --needed
 		
 		elif [ "$DemChoice" -eq "3" ]
 			then
