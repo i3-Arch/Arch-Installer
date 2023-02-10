@@ -94,7 +94,7 @@ grubinst() {
 	grub-install --target=i386-pc $yourdrive
 	sleep 5
 	grub-mkconfig -o /boot/grub/grub.cfg
-	sed -i '118,152d' /boot/grub/grub.cfg
+	#sed -i '118,152d' /boot/grub/grub.cfg
 }
 
 # Install Syslinux
@@ -107,7 +107,7 @@ syslinuxinst() {
 	else
 		sed -i '54s@.*@  APPEND root='"$rewtpart"' rw @' /boot/syslinux/syslinux.cfg
 	fi	
-	sed -i '57,61d' /boot/syslinux/syslinux.cfg
+	#sed -i '57,61d' /boot/syslinux/syslinux.cfg
 	syslinux-install_update -i -a -m
 }
 
