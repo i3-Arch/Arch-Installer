@@ -76,7 +76,7 @@ encrypthomeswap() {
 		if [ "$encSyesno" == Y -o "$encSyesno" == y ]
 			then
 			echo "swap	$swappart	/dev/urandom	swap,cipher=aes-xts-plain64,size=256" >> /etc/crypttab
-			sed -i '14,16d' /etc/fstab
+			#sed -i '14,16d' /etc/fstab
 			echo "/dev/mapper/swap	none	swap	defaults	0 0" >> /etc/fstab
 		fi
 	fi
