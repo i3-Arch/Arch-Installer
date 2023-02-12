@@ -76,7 +76,7 @@ encrypthomeswap() {
 		if [ "$encSyesno" == Y -o "$encSyesno" == y ]
 			then
 			echo "swap	$swappart	/dev/urandom	swap,cipher=aes-xts-plain64,size=256" >> /etc/crypttab
-			sed -i '14,16d' /etc/fstab
+			#sed -i '14,16d' /etc/fstab
 			echo "/dev/mapper/swap	none	swap	defaults	0 0" >> /etc/fstab
 		fi
 	fi
@@ -97,7 +97,7 @@ grubinst() {
 	grub-install --target=i386-pc $yourdrive
 	sleep 5
 	grub-mkconfig -o /boot/grub/grub.cfg
-	sed -i '118,152d' /boot/grub/grub.cfg
+	#sed -i '118,152d' /boot/grub/grub.cfg
 }
 
 # Grub UEFI
@@ -112,7 +112,7 @@ uefiinst() {
 	grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 	sleep 5
 	grub-mkconfig -o /boot/grub/grub.cfg
-	sed -i '118,152d' /boot/grub/grub.cfg
+	#sed -i '118,152d' /boot/grub/grub.cfg
 }
 
 
@@ -126,7 +126,7 @@ syslinuxinst() {
 	else
 		sed -i '54s@.*@  APPEND root='"$rewtpart"' rw @' /boot/syslinux/syslinux.cfg
 	fi	
-	sed -i '57,61d' /boot/syslinux/syslinux.cfg
+	#sed -i '57,61d' /boot/syslinux/syslinux.cfg
 	syslinux-install_update -i -a -m
 }
 
@@ -166,7 +166,7 @@ main() {
 	encrypthomeswap
 	BOOTload
 	localeStuff
-	#rm chrootnset.sh config.sh #cleanup
+	rm chrootnset.sh config.sh #cleanup
 	exit
 }
 
