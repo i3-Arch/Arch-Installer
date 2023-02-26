@@ -46,8 +46,8 @@
 			 
 **2.**
 - No more Menu due to latest Arch image:  ==> NOW JUST RUN
-
-` pacman -Sc ; pacman-key --init ; pacman-key --populate archlinux ; pacman -Syy wget --noconfirm ; wget https://goo.gl/oOS1ez -O installer.sh ; chmod +x *.sh ; ./installer.sh `
+- `pacman -Sc ; pacman-key --init ; pacman-key --populate archlinux ; `
+- ` pacman -Syy wget --noconfirm ; wget https://goo.gl/oOS1ez -O installer.sh ; chmod +x *.sh ; ./installer.sh `
 
 
 
